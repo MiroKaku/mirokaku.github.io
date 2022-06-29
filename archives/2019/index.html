@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.5.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://mirokaku.github.io/"/>
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://mirokaku.github.io/archives/2019/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,13 +33,13 @@
   <!-- feed -->
       <link rel="alternate" href="/atom.xml" title="喵石榴" type="application/atom+xml">
   <!-- 页面元数据 -->
-  <title>喵石榴</title>
+  <title>归档：2019 - 喵石榴</title>
   <meta name="keywords" content="Windows,C++,Driver,Kernel,MiroKaku,MeeSong">
   <meta desc name="description" content="“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。” - MiroKaku - 喵石榴">
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="喵石榴">
-<meta property="og:url" content="https://mirokaku.github.io/">
+<meta property="og:url" content="https://mirokaku.github.io/archives/2019/">
 <meta property="og:site_name" content="喵石榴">
 <meta property="og:description" content="“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”">
 <meta property="og:locale" content="zh_CN">
@@ -2578,7 +2578,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="full" class='cover-wrapper  search' style="display: ;">
+      <div id="half" class='cover-wrapper  search' style="display: ;">
         
   <div id="parallax-window"></div>
 
@@ -2653,7 +2653,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   </div>
 </div>
 
-        <div id="scroll-down" style="display: ;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
       </div>
     
   
@@ -2663,101 +2663,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-  
+	
+		
   <section class="post-list">
     
       
         
           
         
-          
-        
-          
-        
-          
-        
-          
-        
-        
-          
-        
-          
-        
       
     
     
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://mirokaku.github.io/hello-world/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="喵石榴">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="喵石榴">
-    <meta itemprop="description" content="“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/hello-world/"  itemprop="url">
-        Hello World
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' target="_blank" rel="noopener" href='https://github.com/MiroKaku/'><img src='/static/img/avatar.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="/static/img/avatar.jpg">
-            <meta itemprop="name" content="MiroKaku">
-            <meta itemprop="url" content="https://github.com/MiroKaku/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-06-29T09:41:01+00:00">2022-06-29</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/hello/">Hello</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/hello/" itemprop="url"><span itemprop="name">Hello</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/hello-world/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
       
         
           <div class='post-wrapper'>
@@ -2835,6 +2751,7 @@ Qu...
   
 
 
+	
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2940,7 +2857,6 @@ Qu...
 </aside>
 
 
-
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
@@ -2962,9 +2878,9 @@ Qu...
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="full";
+      cover_wrapper.id="half";
       cover_wrapper.style.display="";
-      scroll_down.style.display="";
+      scroll_down.style.display="none";
     
   
 </script>
@@ -4233,7 +4149,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/archives/","name":"Archive"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/archives/2019/","name":"2019年"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
