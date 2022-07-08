@@ -1,0 +1,235 @@
+;-------------------------------------------------------------------------
+; Template.INF -- NDIS 6.x LightWeight Filter Driver
+;
+; Copyright (c) 2019, Microsoft.Com LLC.  All rights reserved.
+;------------------------------------------------------------------------
+
+
+; Class And ClassGuid MSDN:
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/ifs/file-system-filter-driver-classes-and-class-guids
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/system-defined-device-setup-classes-available-to-vendors
+[version]
+Signature       = "$Windows NT$"
+Class           = NetService
+ClassGUID       = {4D36E974-E325-11CE-BFC1-08002BE10318}
+Provider        = %ManufacturerName%
+CatalogFile     = %DriverName%.cat
+DriverVer       = 
+
+
+; Manufacturer MSDN:
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-manufacturer-section
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+; Models MSDN:
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-models-section
+; hw_id(Hardware ID) MSDN:
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/hardware-ids
+[Standard.NT$ARCH$]
+%ServiceDesc%=Install, Root\Template ; hw_id
+
+
+;-------------------------------------------------------------------------
+; Installation Section
+;-------------------------------------------------------------------------
+
+
+[Install.NT$ARCH$]
+AddReg              = InstallNdi
+
+; All LWFs must include the 0x40000 bit (NCF_LW_FILTER). Unlike miniports, you
+; don't usually need to customize this value.
+Characteristics     = 0x40000
+
+; This must be a random, unique value.
+; FILTER_UNIQUE_NAME in filter.h must match this GUID identically.
+; Both should have {curly braces}.
+NetCfgInstanceId    = "{00000000-0000-0000-0000-000000000000}"
+
+Copyfiles           = Install.Drivers
+
+[Install.NT$ARCH$.Remove]
+DelFiles            = Uninstall.Drivers
+DelReg              = UninstallNdi
+
+
+; DestinationDirs MSDN
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-destinationdirs-section
+[DestinationDirs]
+DefaultDestDir = 12
+
+
+; SourceDisksNames MSDN
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-sourcedisksnames-section
+[SourceDisksNames]
+1=%DiskId%,"",,
+
+
+; SourceDisksFiles MSDN
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-sourcedisksfiles-section
+; Each filename entry must specify the exact name of a file on the source disk. 
+;     You cannot use a %strkey% token to specify the file name.
+[SourceDisksFiles]
+Template.sys        =1
+
+
+; Copyfiles MSDN:
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-copyfiles-directive
+[Install.Drivers]
+%DriverName%.sys,Template.sys,,0x00004022 ; COPYFLG_NOSKIP | COPYFLG_NO_VERSION_DIALOG | COPYFLG_IN_USE_RENAME
+
+
+; Delfiles MSDN:
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-delfiles-directive
+[Uninstall.Drivers]
+%DriverName%.sys
+
+
+;-------------------------------------------------------------------------
+; Ndi installation support
+;-------------------------------------------------------------------------
+
+
+[InstallNdi]
+HKR, Ndi,Service,,%ServiceName%
+HKR, Ndi,CoServices,0x00010000,%ServiceName%
+HKR, Ndi,HelpText,,%NdiHelpText%
+
+; Set the FilterClass here.  The FilterClass controls the order in which
+; filters are bound to the underlying miniport.  Possible options include:
+;     Custom, Diagnostic, Failover, Loadbalance, Vpn, Compression, Encryption, Scheduler
+; See MSDN for a description of each. https://docs.microsoft.com/en-us/windows-hardware/drivers/network/configuring-an-inf-file-for-a-modifying-filter-driver
+HKR, Ndi,FilterClass,, compression
+
+; For a Monitoring filter, use this:
+;     HKR, Ndi,FilterType,0x00010001, 1 ; Monitoring filter
+; For a Modifying filter, use this:
+;     HKR, Ndi,FilterType,0x00010001, 2 ; Modifying filter
+HKR, Ndi,FilterType,0x00010001,2
+
+; Specifying Binding Interfaces MSDN:
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/network/specifying-binding-interfaces
+HKR, Ndi\Interfaces,UpperRange,,"noupper"
+HKR, Ndi\Interfaces,LowerRange,,"nolower"
+
+; Ensure that the list of media types below is correct.  Typically,
+; filters include "ethernet".  Filters may also include "ppip" to include
+; native WWAN stacks, but you must be prepared to handle the packet framing.
+; Possible values are listed on MSDN, but common values include:
+;     ethernet, wan, ppip, wlan
+HKR, Ndi\Interfaces, FilterMediaTypes,,"ethernet, wan"
+HKR, Ndi\Interfaces, LowerExclude,, "ndisatm, ndiscowan, ndiswan, ndiswanasync, ndiswanipx, ndiswannbf"
+
+; For a Mandatory filter, use this:
+;     HKR, Ndi,FilterRunType,0x00010001, 1 ; Mandatory filter
+; For an Optional filter, use this:
+;     HKR, Ndi,FilterRunType,0x00010001, 2 ; Optional filter
+; Mandatory Filter Drivers MSDN
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/network/mandatory-filter-drivers
+HKR, Ndi,FilterRunType,0x00010001, 1 ; Mandatory filter
+
+; By default, Mandatory filters unbind all protocols when they are
+; installed/uninstalled, while Optional filters merely pause the stack.  If you
+; would like to override this behavior, you can include these options.  These
+; options only take effect with 6.30 filters on Windows "8" or later.
+; To prevent a full unbind, and merely pause/restart protocols:
+;     HKR, Ndi,UnbindOnAttach,0x00010001, 0 ; Do not unbind during FilterAttach
+;     HKR, Ndi,UnbindOnDetach,0x00010001, 0 ; Do not unbind during FilterDetach
+; To force a full unbind/bind (which includes pause/restart, of course):
+;     HKR, Ndi,UnbindOnAttach,0x00010001, 1 ; Unbind during FilterAttach
+;     HKR, Ndi,UnbindOnDetach,0x00010001, 1 ; Unbind during FilterDetach
+;
+
+; NDIS can start a miniport stack even if some Optional filters are
+; missing.  However, NDIS reserves the right to wait for the Optional
+; filters to be registered, since it's faster to attach a filter if
+; the protocols haven't been bound yet.
+; If your Optional filter is unlikely to be started at boot, you can
+; use this hint to inform NDIS to spend less time waiting for your
+; filter.  Note this setting is ignored for Mandatory filters; NDIS
+; always waits forever for all Mandatory filters.
+;     HKR, Ndi,NdisBootStart,0x00010001, 0 ; Don't wait for this driver to start at boot
+; Enable this setting only if your filter will be bound, but the driver
+; is not usually started at boot.  If your driver will typically start
+; at boot, then enabling this setting would defeat the NDIS heuristic
+; and slightly slow down boot.
+
+
+[UninstallNdi]
+HKR,,,0x00002000
+
+
+;-------------------------------------------------------------------------
+; Service installation support
+;-------------------------------------------------------------------------
+
+
+[Install.NT$ARCH$.Services]
+; You may want to add the SPSVCINST_STARTSERVICE flag, like this:
+;     AddService=%ServiceName%,0x800,InstallService.Arch ; SPSVCINST_STARTSERVICE
+; AddService MSDN
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-addservice-directive
+AddService=%ServiceName%,%ServicInstFlags%,InstallService
+
+
+[InstallService]
+DisplayName     = %ServiceName%
+Description     = %ServiceDesc%
+ServiceBinary   = %12%\%DriverName%.sys
+ServiceType     = 1                 ;SERVICE_KERNEL_DRIVER
+StartType       = 3                 ; 0 = SERVICE_BOOT_START
+                                    ; 1 = SERVICE_SYSTEM_START
+                                    ; 2 = SERVICE_AUTO_START
+                                    ; 3 = SERVICE_DEMAND_START
+                                    ; 4 = SERVICE_DISABLED
+ErrorControl    = 1                 ;SERVICE_ERROR_NORMAL
+LoadOrderGroup  = NDIS
+AddReg          = Common.Params.Registry, NdisImPlatformBindingOptions.Registry
+
+
+[Install.Remove.Services]
+DelService      = %ServiceName%,0x200    ; SPSVCINST_STOPSERVICE
+
+
+[Common.Params.Registry]
+; You can add any sort of NDIS parameters here.  Filter drivers
+; don't always need NDIS parameters, so it's okay to have nothing here.
+
+; Remove the sample parameters below.
+
+; Sample 1: "DriverParam" is a per-driver parameter.
+;   HKR, FilterDriverParams\DriverParam,     ParamDesc,   , "Driverparam for lwf"
+;   HKR, FilterDriverParams\DriverParam,     default,     , "5"
+;   HKR, FilterDriverParams\DriverParam,     type,        , "int"
+
+; Sample 2: "AdapterParam" is a per-module parameter.
+;   HKR, FilterAdapterParams\AdapterParam,   ParamDesc,   , "Adapterparam for lwf"
+;   HKR, FilterAdapterParams\AdapterParam,   default,     , "10"
+;   HKR, FilterAdapterParams\AdapterParam,   type,        , "int"
+
+[NdisImPlatformBindingOptions.Registry]
+; By default, when an LBFO team or Bridge is created, all filters will be
+; unbound from the underlying members and bound to the TNic(s). This keyword
+; allows a component to opt out of the default behavior
+; To prevent binding this filter to the TNic(s):
+;   HKR, Parameters, NdisImPlatformBindingOptions,0x00010001,1 ; Do not bind to TNic
+; To prevent unbinding this filter from underlying members:
+;   HKR, Parameters, NdisImPlatformBindingOptions,0x00010001,2 ; Do not unbind from Members
+; To prevent both binding to TNic and unbinding from members:
+;   HKR, Parameters, NdisImPlatformBindingOptions,0x00010001,3 ; Do not bind to TNic or unbind from Members
+HKR, Parameters, NdisImPlatformBindingOptions,0x00010001,0 ; Subscribe to default behavior
+
+
+;-------------------------------------------------------------------------
+; Strings section
+;-------------------------------------------------------------------------
+
+
+[Strings]
+ManufacturerName    = "Template"
+DriverName          = "Template"
+ServiceName         = "Template"
+ServiceDesc         = "Template NDIS6 Packet Driver"
+DiskId              = "Template Device Installation Disk"
+NdiHelpText         = "A NDIS 6 filter driver to support packet capturing and sending under Windows 7, 8 & 10"

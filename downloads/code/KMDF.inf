@@ -1,0 +1,156 @@
+;-------------------------------------------------------------------------
+; Template.INF -- KMDF Driver
+;
+; Copyright (c) 2019, Microsoft.Com LLC.  All rights reserved.
+;------------------------------------------------------------------------
+
+; KMDF INF MSDN: https://docs.microsoft.com/en-us/windows-hardware/drivers/wdf/using-inx-files-to-create-inf-files
+;
+; Class And ClassGuid MSDN:
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/ifs/file-system-filter-driver-classes-and-class-guids
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/system-defined-device-setup-classes-available-to-vendors
+[version]
+Signature   = "$Windows NT$"
+Class       = Samples
+ClassGUID   = {78A1C341-4539-11d3-B88D-00C04FAD5171}
+Provider    = %ManufacturerName%
+CatalogFile = %DriverName%.cat
+DriverVer   = 
+
+
+; Manufacturer MSDN:
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-manufacturer-section
+[Manufacturer]
+%ManufacturerName%=Standard,,NT$ARCH$
+
+
+; Models MSDN:
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-models-section
+; hw_id(Hardware ID) MSDN:
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/hardware-ids
+[Standard.NT$ARCH$]
+%ServiceDesc%=Install, Root\Template ; hw_id
+
+
+;-------------------------------------------------------------------------
+; Class section 
+;-------------------------------------------------------------------------
+
+
+[ClassInstall32]
+Addreg = ClassInstall.Registry
+
+[ClassInstall.Registry]
+HKR,,,0,Samples ; class name
+HKR,,Icon,,-5
+
+
+;-------------------------------------------------------------------------
+; Installation Section
+;-------------------------------------------------------------------------
+
+
+[Install.NT$ARCH$]
+CopyFiles   = Install.Drivers
+
+[Install.Remove]
+DelFiles    = Uninstall.Drivers
+
+
+; DestinationDirs MSDN
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-destinationdirs-section
+[DestinationDirs]
+DefaultDestDir          = 12
+CoInstaller.Copyfiles   = 11
+
+
+; SourceDisksNames MSDN
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-sourcedisksnames-section
+[SourceDisksNames]
+1=%DiskId%,"",,
+
+
+; SourceDisksFiles MSDN
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-sourcedisksfiles-section
+; Each filename entry must specify the exact name of a file on the source disk. 
+;     You cannot use a %strkey% token to specify the file name.
+[SourceDisksFiles]
+Template.sys = 1,,
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
+
+
+; Copyfiles MSDN:
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-copyfiles-directive
+[Install.Drivers]
+%DriverName%.sys,Template.sys,,0x00004022 ; COPYFLG_NOSKIP | COPYFLG_NO_VERSION_DIALOG | COPYFLG_IN_USE_RENAME
+
+
+; Delfiles MSDN:
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-delfiles-directive
+[Uninstall.Drivers]
+%DriverName%.sys
+
+
+;-------------------------------------------------------------------------
+; Service installation support
+;-------------------------------------------------------------------------
+
+
+; You may want to add the SPSVCINST_STARTSERVICE flag, like this:
+;     AddService=%ServiceName%,0x800,InstallService.Arch ; SPSVCINST_STARTSERVICE
+; AddService MSDN
+;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-addservice-directive
+[Install.NT$ARCH$.Services]
+AddService = %ServiceName%,%ServicInstFlags%,InstallService
+
+
+[InstallService]
+DisplayName     = %ServiceName%
+Description     = %ServiceDesc%
+ServiceBinary   = %12%\%DriverName%.sys
+ServiceType     = 1                 ;SERVICE_KERNEL_DRIVER
+StartType       = 3                 ; 0 = SERVICE_BOOT_START
+                                    ; 1 = SERVICE_SYSTEM_START
+                                    ; 2 = SERVICE_AUTO_START
+                                    ; 3 = SERVICE_DEMAND_START
+                                    ; 4 = SERVICE_DISABLED
+ErrorControl    = 1                 ;SERVICE_ERROR_NORMAL
+
+
+[Install.Remove.Services]
+DelService = %ServiceName%,0x200    ; SPSVCINST_STOPSERVICE
+
+
+;-------------------------------------------------------------------------
+; Install Coinstaller installation
+;-------------------------------------------------------------------------
+
+
+[Install.NT.CoInstallers]
+AddReg      = CoInstaller.Registry
+CopyFiles   = CoInstaller.Copyfiles
+
+[CoInstaller.Registry]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[CoInstaller.Copyfiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[Install.NT.Wdf]
+KmdfService         = %ServiceName%, WDFSection
+[WDFSection]
+KmdfLibraryVersion  = $KMDFVERSION$
+
+
+;-------------------------------------------------------------------------
+; Strings section
+;-------------------------------------------------------------------------
+
+
+[Strings]
+ManufacturerName    = "Template"
+DriverName          = "Template"
+ServiceName         = "Template"
+ServiceDesc         = "Template KMDF Driver"
+DiskId              = "Template Installation Disk"
+ServicInstFlags     = 0x00000002

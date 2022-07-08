@@ -1864,7 +1864,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.af2d54c8.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.4d580c89.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.cbc2c3ea.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1656495673364),
+    lastupdate: new Date(1657276493189),
     sidebar: {
       for_page: ["bulletin","category"],
       for_post: ["toc"],
@@ -2673,6 +2673,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
       
     
     
@@ -2746,6 +2754,310 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           </div>
         
       
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://mirokaku.github.io/Modern-INF-Template/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="喵石榴">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="喵石榴">
+    <meta itemprop="description" content="“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/Modern-INF-Template/"  itemprop="url">
+        现代 INF 模板
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>前几天写了篇《传统 INF 模板》，今天来补充一下 KMDF 和 NDIS6 的 INF 模板. 这两个模板的编写方式和之前 Legacy 的模板不一样，是微软当前推荐使用的编写方法。</p>
+<h2 id="安装和卸载驱动"><a href="#安装和卸载驱动" class="headerlink" title="安装和卸载驱动"></a>安装和卸载驱动</h2><p>现代的 INF 不能直接再使用 <code>InstallHinfSection</code> 来安装和卸载. 我给 devcon 添加了一些代码, 来支持 Legacy 和 NDIS6 的安装.</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">; KMDF（devcon 原版）</span><br><span class="line">devcon.exe install   KMDF.inf       Root\KMDF</span><br><span class="line">     |        |        |                |</span><br><span class="line">安装工具   安装命令  驱动 inf 路径  驱动硬件id(inf有写)</span><br><span class="line"></span><br><span class="line">; KMDF（devcon 修改版 https://github.com/MiroKaku/devcon）</span><br><span class="line">devcon.exe install    KMDF    KMDF.inf       Root\KMDF</span><br><span class="line">     |        |        |         |               |</span><br><span class="line">安装工具    安装命令 安装模式  驱动 inf 路径  驱动硬件id(inf有写)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">; NDIS6.x（原版）</span><br><span class="line">netcfg /l NDIS6.inf /c s /i Root\NDIS6</span><br><span class="line"></span><br><span class="line">; NDIS6.x（devcon 修改版）</span><br><span class="line">devcon.exe install NDIS6 NDIS6.inf Root\NDIS6</span><br></pre></td></tr></table></figure>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' target="_blank" rel="noopener" href='https://github.com/MiroKaku/'><img src='/static/img/avatar.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="/static/img/avatar.jpg">
+            <meta itemprop="name" content="MiroKaku">
+            <meta itemprop="url" content="https://github.com/MiroKaku/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2019-05-28T19:34:46+00:00">2019-05-28</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/windows/">Windows</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/windows/" itemprop="url"><span itemprop="name">Windows</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/Modern-INF-Template/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://mirokaku.github.io/About-InstrumentationCallback/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="喵石榴">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="喵石榴">
+    <meta itemprop="description" content="“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/About-InstrumentationCallback/"  itemprop="url">
+        关于 InstrumentationCallback
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <blockquote>
+<p>分析环境为 x64 版本</p>
+</blockquote>
+<p><code>InstrumentationCallback</code> 回调的技术刚出来的时候就收藏了, 一直没有去研究学习它. 现在有时间来看一下这个东西.</p>
+<p>这个回调存储在 <code>KPROCESS-&gt; InstrumentationCallback</code>.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>: kd&gt; dtx nt!_KPROCESS</span><br><span class="line">    [+<span class="number">0x100</span>] InstrumentationCallback : <span class="number">0x7FF6FA0E11AE</span></span><br></pre></td></tr></table></figure>
+
+<p>它很有意思, <em>当从内核返回到用户层的时候, 就会触发这个回调</em>.<br>下面是一些触发点:</p>
+<ul>
+<li>LdrInitializeThunk</li>
+<li>KiUserExceptionDispatcher</li>
+<li>KiRaiseUserExceptionDispatcher</li>
+<li>KiUserCallbackDispatcher</li>
+<li>KiUserApcDispatcher</li>
+<li>sysret (KeSystemServiceExit)</li>
+</ul>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' target="_blank" rel="noopener" href='https://github.com/MiroKaku/'><img src='/static/img/avatar.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="/static/img/avatar.jpg">
+            <meta itemprop="name" content="MiroKaku">
+            <meta itemprop="url" content="https://github.com/MiroKaku/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2019-05-24T21:22:14+00:00">2019-05-24</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/windows/">Windows</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/windows/" itemprop="url"><span itemprop="name">Windows</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/About-InstrumentationCallback/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://mirokaku.github.io/Windbg-Network/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="喵石榴">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="喵石榴">
+    <meta itemprop="description" content="“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/Windbg-Network/"  itemprop="url">
+        配置 Windows 网络模式内核调试
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        Windbg 版本要与被调试的 Windows 版本一致! 否则可能出现网络包不支持。
+
+配置
+配置虚拟机
+ 123456bcdedit /copy &#123;current&#125; /d TestModebcdedit /set &#123;new&#125; debug on         # 开启调试模式bcdedit /set &#123;new&#125; testsign...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' target="_blank" rel="noopener" href='https://github.com/MiroKaku/'><img src='/static/img/avatar.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="/static/img/avatar.jpg">
+            <meta itemprop="name" content="MiroKaku">
+            <meta itemprop="url" content="https://github.com/MiroKaku/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2018-10-03T19:07:33+00:00">2018-10-03</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/windows/">Windows</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/windows/" itemprop="url"><span itemprop="name">Windows</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/Windbg-Network/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://mirokaku.github.io/IDA-VM-System/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="喵石榴">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="喵石榴">
+    <meta itemprop="description" content="“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/IDA-VM-System/"  itemprop="url">
+        IDA + VMWare 调试系统
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        配置虚拟机打开虚拟机目录下的 vmx 文件, 添加设置项
+32 位客户机系统1234567debugStub.port.guest32          = &quot;54232&quot;   ; x86 默认调试端口 8832debugStub.listen.guest32        = &quot;TRUE&quot;debugStub.listen.guest32.remote...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' target="_blank" rel="noopener" href='https://github.com/MiroKaku/'><img src='/static/img/avatar.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="/static/img/avatar.jpg">
+            <meta itemprop="name" content="MiroKaku">
+            <meta itemprop="url" content="https://github.com/MiroKaku/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2017-05-12T19:00:18+00:00">2017-05-12</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/windows/">Windows</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/windows/" itemprop="url"><span itemprop="name">Windows</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/IDA-VM-System/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
     
   </section>
   
@@ -2806,9 +3118,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             ><div class='name'>Hello</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
+            title="/categories/language/" href="/categories/language/"
+            active-action="action-categorieslanguage"
+            ><div class='name'>Language</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/linux/" href="/categories/linux/"
+            active-action="action-categorieslinux"
+            ><div class='name'>Linux</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/other/" href="/categories/other/"
+            active-action="action-categoriesother"
+            ><div class='name'>other</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/windows/" href="/categories/windows/"
             active-action="action-categorieswindows"
-            ><div class='name'>Windows</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>Windows</div><div class='badge'>(8)</div></a></li>
         
       </ul>
     </div>
@@ -3835,7 +4162,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp"];
   let index = 0;
   let IntervalParallax = null;
 
