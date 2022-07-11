@@ -35,19 +35,17 @@
   <!-- 页面元数据 -->
   <title>ArchLinux 安装笔记 - 喵石榴</title>
   <meta name="keywords" content="ArchLinux,Windows,C++,Driver,Kernel,MiroKaku,MeeSong">
-  <meta desc name="description" content="前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。
-引用参考
-Beginners&#39;guide (简体中文)Installation guide (简体中文)给妹子看的 Arch Linux 桌面日常安装ArchLinux 安装笔记寒假折... - MiroKaku - 喵石榴">
+  <meta desc name="description" content="前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。 - MiroKaku - 喵石榴">
   
 <meta property="og:type" content="article">
 <meta property="og:title" content="ArchLinux 安装笔记">
 <meta property="og:url" content="https://mirokaku.github.io/ArchLinux-install-notes/">
 <meta property="og:site_name" content="喵石榴">
-<meta property="og:description" content="前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。 引用参考 Beginners&#39;guide (简体中文)Installation guide (简体中文)给妹子看的 Arch Linux 桌面日常安装ArchLinux 安装笔记寒假折腾Archlinux的一些经验（新手向）--桌面配置篇ArchLinux使用中常见问题">
+<meta property="og:description" content="前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2016-07-17T16:01:18.000Z">
-<meta property="article:modified_time" content="2022-07-11T02:33:42.000Z">
+<meta property="article:modified_time" content="2022-07-11T03:40:13.000Z">
 <meta property="article:author" content="MiroKaku">
 <meta property="article:tag" content="ArchLinux">
 <meta name="twitter:card" content="summary">
@@ -1868,7 +1866,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.af2d54c8.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.1aa99ff1.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.cbc2c3ea.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1657506850778),
+    lastupdate: new Date(1657510841194),
     sidebar: {
       for_page: ["bulletin","category"],
       for_post: ["toc"],
@@ -2739,14 +2737,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="前提说明"><a href="#前提说明" class="headerlink" title="前提说明"></a>前提说明</h1><p>建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。</p>
-<h1 id="引用参考"><a href="#引用参考" class="headerlink" title="引用参考"></a>引用参考</h1><blockquote>
-<p><a href="https://wiki.archlinux.org/index.php/Beginners%27_guide_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener external nofollow noreferrer">Beginners&#39;guide (简体中文)</a><br><a href="https://wiki.archlinux.org/index.php/Installation_guide_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener external nofollow noreferrer">Installation guide (简体中文)</a><br><a href="https://bigeagle.me/2014/06/archlinux-install-for-beginners/" target="_blank" rel="noopener external nofollow noreferrer">给妹子看的 Arch Linux 桌面日常安装</a><br><a href="https://blog.ikke.moe/posts/archlinux-installation-notes/" target="_blank" rel="noopener external nofollow noreferrer">ArchLinux 安装笔记</a><br><a href="http://blog.csdn.net/u011152627/article/details/18925121" target="_blank" rel="noopener external nofollow noreferrer">寒假折腾Archlinux的一些经验（新手向）--桌面配置篇</a><br><a href="http://blog.csdn.net/u011152627/article/details/38145125" target="_blank" rel="noopener external nofollow noreferrer">ArchLinux使用中常见问题集锦</a></p>
-</blockquote>
-<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>机器: DELL<br>BOOT: UEFI<br>SSD: 256G<br>内存: 8G<br>CPU: i7-6500U<br>安装需求：本机安装单系统<br>ArchLinux: Release 2016.06.01</p>
+    <div class="story post-story"><h2 id="前提说明"><a href="#前提说明" class="headerlink" title="前提说明"></a>前提说明</h2><p>建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。</p>
 <span id="more"></span>
-<h1 id="LiveUSB"><a href="#LiveUSB" class="headerlink" title="LiveUSB"></a>LiveUSB</h1><p>参考 <a href="https://wiki.archlinux.org/index.php/USB_flash_installation_media_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener external nofollow noreferrer">USB flash installation media (简体中文)</a><br>推荐使用里面的手动方法，这样制作的LiveUSB可以使用剩余空间来存储其他东西。</p>
-<h1 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h1><p>镜像中不包含软件包，安装的软件是通过服务器上的源下载，所以安装的时候必须要有网络连接。</p>
+
+</div><div class="story post-story"><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>机器: DELL<br>BOOT: UEFI<br>SSD: 256G<br>内存: 8G<br>CPU: i7-6500U<br>安装需求：本机安装单系统<br>ArchLinux: Release 2016.06.01</p>
+</div><div class="story post-story"><h2 id="LiveUSB"><a href="#LiveUSB" class="headerlink" title="LiveUSB"></a>LiveUSB</h2><p>参考 <a href="https://wiki.archlinux.org/index.php/USB_flash_installation_media_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener external nofollow noreferrer">USB flash installation media (简体中文)</a><br>推荐使用里面的手动方法，这样制作的LiveUSB可以使用剩余空间来存储其他东西。</p>
+</div><div class="story post-story"><h2 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h2><p>镜像中不包含软件包，安装的软件是通过服务器上的源下载，所以安装的时候必须要有网络连接。</p>
 <ul>
 <li>联网<br>有线：</li>
 </ul>
@@ -2769,7 +2765,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>格式化分区<br>a. <code>mkfs.vfat –F32 /dev/sda1</code> ESP分区需要格式化成fat32，否则无法启动<br>b. <code>mkswap /dev/sda2 &amp; swapon /dev/sda2</code> 格式化交换分区，并设置<br>c. <code>mkfs.ext4 –b 4096 /dev/sda3</code> 格式化root分区，并4K对齐</li>
 <li>挂载分区<br>a. <code>mount –t ext4 –o discard,noatime /dev/sda3 /mnt</code><br>b. <code>mkdir –p /mnt/boot/EFI</code><br>c. <code>mount /dev/sda1 /mnt/boot/EFI</code></li>
 </ol>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
+</div><div class="story post-story"><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
 <li><p>配置安装源<br>默认镜像是美国的，在中国速度慢，所以全改中国了..<br><code>sed -i &#39;/Score/&#123;/China/!&#123;n;s/^/#/&#125;&#125;&#39; /etc/pacman.d/mirrorlist</code></p>
 </li>
 <li><p>安装基本系统<br>安装之前先确认是否连网<br><code>pacstrap /mnt base base-devel vim</code></p>
@@ -2824,7 +2820,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ul>
 <li>卸载分区并重启系统<br><code>exit</code><br><code>umount -R /mnt</code><br><code>reboot</code></li>
 </ul>
-<h1 id="折腾新大陆"><a href="#折腾新大陆" class="headerlink" title="折腾新大陆"></a>折腾新大陆</h1><p>重启之后就阔以以root进入到archlinux系统了，首先我们要进行<a href="#%E5%AE%89%E8%A3%85%E5%87%86%E5%A4%87">联网</a>。</p>
+</div><div class="story post-story"><h2 id="折腾新大陆"><a href="#折腾新大陆" class="headerlink" title="折腾新大陆"></a>折腾新大陆</h2><p>重启之后就阔以以root进入到archlinux系统了，首先我们要进行<a href="#%E5%AE%89%E8%A3%85%E5%87%86%E5%A4%87">联网</a>。</p>
 <ul>
 <li><p>添加用户<br><code>useradd –m –g users –G wheel –s /bin/bash username</code><br><code>passwd username</code></p>
 </li>
@@ -2881,7 +2877,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><p>重启<br><code>reboot</code></p>
 </li>
 </ul>
-<h1 id="来到新的世界"><a href="#来到新的世界" class="headerlink" title="来到新的世界"></a>来到新的世界</h1><p>重启你会发现有了界面~</p>
+</div><div class="story post-story"><h2 id="来到新的世界"><a href="#来到新的世界" class="headerlink" title="来到新的世界"></a>来到新的世界</h2><p>重启你会发现有了界面~</p>
 <ul>
 <li><p>配置输入法<br>前面说即使安装完那些东西也调不出来，是有个地方需要配置一下<br>左下角可以有个后台程序栏。右键输入法，选择配置。发现输入法里面并没有拼音，我们添加进安装的 sunpinyin 就好了。<br>注意:切换输入法与 gnome 显示的不一致。<br>默认切换输入法是 <code>ctrl+space</code></p>
 </li>
@@ -2905,8 +2901,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>把下面两个文件里面的 <code>get_user_pages</code> 函数替换成 <code>get_user_pages_remote</code><br><code>sudo vim vmnet-only/driver.c</code><br><code>sudo vim vmmon-only/linux/hostif.c</code></p>
 <p>打包<br><code>sudo tar -uvf vmnet.tar vmnet-only</code><br><code>sudo tar -uvf vmmon.tar vmmon-only</code></p>
 <p>然后删除那解包的文件夹<br><code>sudo rm -r vmnet-only</code><br><code>sudo rm -r vmmon-only</code></p>
-<h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1>
-
+</div><div class="story post-story"><h2 id="引用参考"><a href="#引用参考" class="headerlink" title="引用参考"></a>引用参考</h2><blockquote>
+<p><a href="https://wiki.archlinux.org/index.php/Beginners%27_guide_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener external nofollow noreferrer">Beginners&#39;guide (简体中文)</a><br><a href="https://wiki.archlinux.org/index.php/Installation_guide_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener external nofollow noreferrer">Installation guide (简体中文)</a><br><a href="https://bigeagle.me/2014/06/archlinux-install-for-beginners/" target="_blank" rel="noopener external nofollow noreferrer">给妹子看的 Arch Linux 桌面日常安装</a><br><a href="https://blog.ikke.moe/posts/archlinux-installation-notes/" target="_blank" rel="noopener external nofollow noreferrer">ArchLinux 安装笔记</a><br><a href="http://blog.csdn.net/u011152627/article/details/18925121" target="_blank" rel="noopener external nofollow noreferrer">寒假折腾Archlinux的一些经验（新手向）--桌面配置篇</a><br><a href="http://blog.csdn.net/u011152627/article/details/38145125" target="_blank" rel="noopener external nofollow noreferrer">ArchLinux使用中常见问题集锦</a></p>
+</blockquote>
+</div><div class="story post-story"><h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2>
+</div>
   </div>
   
   
@@ -2930,7 +2929,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-07-11T02:33:42+00:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-07-11T03:40:13+00:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>本页文档最后更新于：2022年7月11日</p>
@@ -2956,11 +2955,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mirokaku.github.io/ArchLinux-install-notes/&title=ArchLinux 安装笔记 - 喵石榴&summary=前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。
-引用参考
-Beginners&#39;guide (简体中文)Installation guide (简体中文)给妹子看的 Arch Linux 桌面日常安装ArchLinux 安装笔记寒假折腾Archlinux的一些经验（新手向）--桌面配置篇ArchLinux使用中常见问题集锦
-
-环境机器: DELLBOOT: UEFISSD: 256G内存: 8GCPU: i7-6500U安装需求：本机安装单系统ArchLinux: Release 2016.06.01"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mirokaku.github.io/ArchLinux-install-notes/&title=ArchLinux 安装笔记 - 喵石榴&summary=前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。"
           
           >
           
@@ -2972,11 +2967,7 @@ Beginners&#39;guide (简体中文)Installation guide (简体中文)给妹子看�
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://mirokaku.github.io/ArchLinux-install-notes/&title=ArchLinux 安装笔记 - 喵石榴&summary=前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。
-引用参考
-Beginners&#39;guide (简体中文)Installation guide (简体中文)给妹子看的 Arch Linux 桌面日常安装ArchLinux 安装笔记寒假折腾Archlinux的一些经验（新手向）--桌面配置篇ArchLinux使用中常见问题集锦
-
-环境机器: DELLBOOT: UEFISSD: 256G内存: 8GCPU: i7-6500U安装需求：本机安装单系统ArchLinux: Release 2016.06.01"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://mirokaku.github.io/ArchLinux-install-notes/&title=ArchLinux 安装笔记 - 喵石榴&summary=前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。"
           
           >
           
@@ -2988,11 +2979,7 @@ Beginners&#39;guide (简体中文)Installation guide (简体中文)给妹子看�
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://mirokaku.github.io/ArchLinux-install-notes/&title=ArchLinux 安装笔记 - 喵石榴&summary=前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。
-引用参考
-Beginners&#39;guide (简体中文)Installation guide (简体中文)给妹子看的 Arch Linux 桌面日常安装ArchLinux 安装笔记寒假折腾Archlinux的一些经验（新手向）--桌面配置篇ArchLinux使用中常见问题集锦
-
-环境机器: DELLBOOT: UEFISSD: 256G内存: 8GCPU: i7-6500U安装需求：本机安装单系统ArchLinux: Release 2016.06.01"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://mirokaku.github.io/ArchLinux-install-notes/&title=ArchLinux 安装笔记 - 喵石榴&summary=前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。"
           
           >
           
@@ -3044,8 +3031,8 @@ Beginners&#39;guide (简体中文)Installation guide (简体中文)给妹子看�
     <div class="prev-next">
       
         <a class='prev' href='/Writing-Solid-Python-Code-Notes/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>《Writing Solid Python Code》 笔记</p>
-          <p class='content'>《编写高质量代码：改善 Python 程序的 91 个建议》 学习笔记之前自己学了很多次 Python，由于用不到，所以总是学完就忘掉了。刚好最近工作需要用到 Python，就借此机会好好学习了...</p>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>《编写高质量代码：改善 Python 程序的 91 个建议》 笔记</p>
+          <p class='content'>之前自己学了很多次 Python，由于用不到，所以总是学完就忘掉了。刚好最近工作需要用到 Python，就借此机会好好学习了一番。Pyhton 的各种特性和风格让我甚是喜欢。不过我总是感觉自己写...</p>
         </a>
       
       
@@ -3112,7 +3099,7 @@ Beginners&#39;guide (简体中文)Installation guide (简体中文)给妹子看�
 
 
     <div class='content'>
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%8F%90%E8%AF%B4%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">前提说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LiveUSB"><span class="toc-number">3.</span> <span class="toc-text">LiveUSB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%87%86%E5%A4%87"><span class="toc-number">4.</span> <span class="toc-text">安装准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">5.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%98%E8%85%BE%E6%96%B0%E5%A4%A7%E9%99%86"><span class="toc-number">6.</span> <span class="toc-text">折腾新大陆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A5%E5%88%B0%E6%96%B0%E7%9A%84%E4%B8%96%E7%95%8C"><span class="toc-number">7.</span> <span class="toc-text">来到新的世界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%8F%82%E8%80%83"><span class="toc-number">8.</span> <span class="toc-text">引用参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9D%9F"><span class="toc-number">9.</span> <span class="toc-text">结束</span></a></li></ol>
     </div>
   </section>
 
@@ -4141,7 +4128,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4458,7 +4445,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/linux/","name":"Linux"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/ArchLinux-install-notes/","name":"ArchLinux 安装笔记"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"ArchLinux 安装笔记","description":"前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。\n引用参考\nBeginners&#39;guide (简体中文)Installation guide (简体中文)给妹子看的 Arch Linux 桌面日常安装ArchLinux 安装笔记寒假折腾Archlinux的一些经验（新手向）--桌面配置篇ArchLinux使用中常见问题集锦\n\n环境机器: DELLBOOT: UEFISSD: 256G内存: 8GCPU: i7-6500U安装需求：本机安装单系统ArchLinux: Release 2016.06.01","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/ArchLinux-install-notes/"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/ArchLinux-install-notes/","wordCount":293,"datePublished":"2016-07-17T16:01:18.000Z","dateModified":"2022-07-11T02:33:42.000Z","articleSection":"Linux","keywords":"ArchLinux","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/linux/","name":"Linux"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/ArchLinux-install-notes/","name":"ArchLinux 安装笔记"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"ArchLinux 安装笔记","description":"前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/ArchLinux-install-notes/"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/ArchLinux-install-notes/","wordCount":60,"datePublished":"2016-07-17T16:01:18.000Z","dateModified":"2022-07-11T03:40:13.000Z","articleSection":"Linux","keywords":"ArchLinux","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

@@ -1864,7 +1864,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: false,
     cdn: {"js":{"app":"/js/app.af2d54c8.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.1aa99ff1.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.cbc2c3ea.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1657506850778),
+    lastupdate: new Date(1657510841194),
     sidebar: {
       for_page: ["bulletin","category"],
       for_post: ["toc"],
@@ -2789,10 +2789,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class='md article-desc' itemprop="articleBody">
     
       <p>前几天写了篇《传统 INF 模板》，今天来补充一下 KMDF 和 NDIS6 的 INF 模板. 这两个模板的编写方式和之前 Legacy 的模板不一样，是微软当前推荐使用的编写方法。</p>
-<h2 id="安装和卸载驱动"><a href="#安装和卸载驱动" class="headerlink" title="安装和卸载驱动"></a>安装和卸载驱动</h2><p>现代的 INF 不能直接再使用 <code>InstallHinfSection</code> 来安装和卸载. 我给 devcon 添加了一些代码, 来支持 Legacy 和 NDIS6 的安装.</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">; KMDF（devcon 原版）</span><br><span class="line">devcon.exe install   KMDF.inf       Root\KMDF</span><br><span class="line">     |        |        |                |</span><br><span class="line">安装工具   安装命令  驱动 inf 路径  驱动硬件id(inf有写)</span><br><span class="line"></span><br><span class="line">; KMDF（devcon 修改版 https://github.com/MiroKaku/devcon）</span><br><span class="line">devcon.exe install    KMDF    KMDF.inf       Root\KMDF</span><br><span class="line">     |        |        |         |               |</span><br><span class="line">安装工具    安装命令 安装模式  驱动 inf 路径  驱动硬件id(inf有写)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">; NDIS6.x（原版）</span><br><span class="line">netcfg /l NDIS6.inf /c s /i Root\NDIS6</span><br><span class="line"></span><br><span class="line">; NDIS6.x（devcon 修改版）</span><br><span class="line">devcon.exe install NDIS6 NDIS6.inf Root\NDIS6</span><br></pre></td></tr></table></figure>
     
   </div>
   
@@ -2836,7 +2832,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://mirokaku.github.io/INF-Template/">
+  <link itemprop="mainEntityOfPage" href="https://mirokaku.github.io/Legacy-INF-Template/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="喵石榴">
   </span>
@@ -2854,7 +2850,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/INF-Template/"  itemprop="url">
+      <a href="/Legacy-INF-Template/"  itemprop="url">
         传统 INF 模板
       </a>
     </h2>
@@ -2863,15 +2859,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       <p>基本上，大家写完驱动都是通过一个加载器来加载驱动，我自己觉得太麻烦了...不如直接右键安装更方便.</p>
 <p>下面是我自己使用的驱动 INF 文件模板，直接替换里面部分文件信息就可以直接使用。</p>
-<h2 id="INF-安装和卸载驱动"><a href="#INF-安装和卸载驱动" class="headerlink" title="INF 安装和卸载驱动"></a>INF 安装和卸载驱动</h2><h3 id="安装驱动"><a href="#安装驱动" class="headerlink" title="安装驱动"></a>安装驱动</h3><ol>
-<li><p>可以直接右键 INF 文件，选择 &quot;安装&quot;</p>
-</li>
-<li><p>通过命令安装</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUNDLL32.EXE SETUPAPI.DLL,InstallHinfSection DefaultInstall 128 C:\WINDOWS\INF\SHELL.INF</span><br></pre></td></tr></table></figure>
-
-<h3 id="卸载驱动"><a href="#卸载驱动" class="headerlink" title="卸载驱动"></a>卸载驱动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUNDLL32.EXE SETUPAPI.DLL,InstallHinfSection DefaultUninstall 128 C:\WINDOWS\INF\SHELL.INF</span><br></pre></td></tr></table></figure>
     
   </div>
   
@@ -2899,7 +2886,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       </div>
       
         <div>
-          <a class='readmore' href='/INF-Template/' itemprop="url">
+          <a class='readmore' href='/Legacy-INF-Template/' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -3015,16 +3002,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p><code>InstrumentationCallback</code> 回调的技术刚出来的时候就收藏了, 一直没有去研究学习它. 现在有时间来看一下这个东西.</p>
 <p>这个回调存储在 <code>KPROCESS-&gt; InstrumentationCallback</code>.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>: kd&gt; dtx nt!_KPROCESS</span><br><span class="line">    [+<span class="number">0x100</span>] InstrumentationCallback : <span class="number">0x7FF6FA0E11AE</span></span><br></pre></td></tr></table></figure>
-
-<p>它很有意思, <em>当从内核返回到用户层的时候, 就会触发这个回调</em>.<br>下面是一些触发点:</p>
-<ul>
-<li>LdrInitializeThunk</li>
-<li>KiUserExceptionDispatcher</li>
-<li>KiRaiseUserExceptionDispatcher</li>
-<li>KiUserCallbackDispatcher</li>
-<li>KiUserApcDispatcher</li>
-<li>sysret (KeSystemServiceExit)</li>
-</ul>
     
   </div>
   
@@ -3340,14 +3317,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <ul class="entry navigation">
         
           <li><a class="flat-box"
-            title="/categories/hello/" href="/categories/hello/"
-            active-action="action-categorieshello"
-            ><div class='name'>Hello</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
             title="/categories/language/" href="/categories/language/"
             active-action="action-categorieslanguage"
-            ><div class='name'>Language</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>Language</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/linux/" href="/categories/linux/"
@@ -4389,7 +4361,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp"];
   let index = 0;
   let IntervalParallax = null;
 
