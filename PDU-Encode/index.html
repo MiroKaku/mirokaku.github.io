@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/5.6.0'>
+    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#5.7.6'>
   <meta name="generator" content="Hexo 6.2.0">
-  <meta name="Volantis" content="5.6.0">
+  <meta name="Volantis" content="5.7.6">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -26,9 +26,9 @@
   
   <!-- Custom Files headBegin end-->
     <link rel="shortcut icon" type='image/x-icon' href="https://avatars.githubusercontent.com/u/50670906?v=4">
-  <link rel="preload" href="/css/style.cbc2c3ea.css" as="style">
-  <link rel="preload" href="https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" href="https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/css/style.css" as="style">
+  <link rel="preload" href="https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
   <!-- feed -->
       <link rel="alternate" href="/atom.xml" title="喵石榴" type="application/atom+xml">
@@ -45,7 +45,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2017-05-18T11:36:02.000Z">
-<meta property="article:modified_time" content="2022-10-16T04:30:44.000Z">
+<meta property="article:modified_time" content="2022-10-16T04:30:53.000Z">
 <meta property="article:author" content="MiroKaku">
 <meta property="article:tag" content="Windows,C++,Driver,Kernel,MiroKaku,MeeSong">
 <meta name="twitter:card" content="summary">
@@ -54,15 +54,6 @@
     /* 首屏样式 */
     #safearea {
   display: none;
-}
-/*
-  * Workaround for Chrome bug, part 1
-  * Chunk rendering for all but the first article.
-  * /layout/_partial/scripts/content-visibility-scroll-fix.ejs
-*/
-.post-story + .post-story {
-  content-visibility: auto;
-  contain-intrinsic-size: 10px 500px;
 }
 :root {
   --color-site-body: #f4f4f4;
@@ -944,14 +935,14 @@ button {
 }
 @font-face {
   font-family: 'HYRunYuan';
-  src: url("https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2");
+  src: url("https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
   font-family: 'YRDZSTJF';
-  src: url("https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2");
+  src: url("https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -1785,8 +1776,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.cbc2c3ea.css" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.cbc2c3ea.css"></noscript>
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1859,14 +1850,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   /************这个文件存放不需要重载的全局变量和全局函数*********/
   window.volantis = {}; // volantis 全局变量
-  volantis.debug = false; // 开启调试模式
+  volantis.debug = "env"; // 调试模式
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    debug: false,
-    cdn: {"js":{"app":"/js/app.af2d54c8.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.1aa99ff1.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.cbc2c3ea.css"}},
+    debug: "env",
+    cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1665894659010),
+    lastupdate: new Date(1665894668818),
     sidebar: {
       for_page: ["bulletin","category"],
       for_post: ["toc"],
@@ -2827,7 +2818,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <td align="left">用户数据</td>
 </tr>
 </tbody></table>
-<div class="story post-story"><h2 id="SCA-结构部分详细说明"><a href="#SCA-结构部分详细说明" class="headerlink" title="SCA 结构部分详细说明"></a>SCA 结构部分详细说明</h2><p><code>&lt;sc_len&gt;</code>：表示 <SCA>（短信中心号码）的长度，包含两个字符，指示 <type_addr> 和 <numbers> 所占字符的个数除于 2。</p>
+<h2 id="SCA-结构部分详细说明"><a href="#SCA-结构部分详细说明" class="headerlink" title="SCA 结构部分详细说明"></a>SCA 结构部分详细说明</h2><p><code>&lt;sc_len&gt;</code>：表示 <SCA>（短信中心号码）的长度，包含两个字符，指示 <type_addr> 和 <numbers> 所占字符的个数除于 2。</p>
 <p><code>&lt;type_addr&gt;</code>：表示号码地址类型，包含两个字符，其结构如下：</p>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bit7 </span>   <span class="keyword">bit6 </span>   <span class="keyword">bit5 </span>   <span class="keyword">bit4 </span>   <span class="keyword">bit3 </span>   <span class="keyword">bit2 </span>   <span class="keyword">bit1 </span>   <span class="keyword">bit0</span></span><br><span class="line"><span class="keyword"></span><span class="number">1</span>          Type-of-number       Numbering-plan-identification</span><br><span class="line"><span class="number">1</span>       <span class="number">0</span>       <span class="number">0</span>       <span class="number">1</span>       <span class="number">0</span>       <span class="number">0</span>       <span class="number">0</span>       <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
@@ -2908,7 +2899,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </tbody></table>
 <p><code>&lt;numbers&gt;</code>：表示地址号码，一个字节储存两个数字，且 bit3 ~ bit0 储存第一个数字，bit7 ~ bit4 储存第二个数字，如果号码为奇数，则最后一位补F后，再进行反转。如果为偶数，则不需要补F。像是反序的 8421 BCD 码，可如下例所示：</p>
 <p>例如有<br>13 81 23 45 67 8<br>存储为<br>21 18 32 54 76 F8</p>
-</div><div class="story post-story"><h2 id="TPDU-结构部分"><a href="#TPDU-结构部分" class="headerlink" title="TPDU 结构部分"></a>TPDU 结构部分</h2><p><code>&lt;option&gt;</code>：</p>
+<h2 id="TPDU-结构部分"><a href="#TPDU-结构部分" class="headerlink" title="TPDU 结构部分"></a>TPDU 结构部分</h2><p><code>&lt;option&gt;</code>：</p>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RP    UDHI    SRR    VPF    RD    MTI</span><br><span class="line"><span class="keyword">bit7 </span> <span class="keyword">bit6 </span>   <span class="keyword">bit5 </span>  <span class="keyword">bit4-3 </span><span class="keyword">bit2 </span> <span class="keyword">bit1-0</span></span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -3094,7 +3085,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p><code>&lt;UD&gt;</code>：表示用户数据，其有效数据由参数 <UDL> 决定。</p>
 <h1 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h1><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">AT+CMGW=<span class="number">30</span></span><br><span class="line"><span class="number">0891683108705505F011000791680180F60008AA1200480065006C006C006F002055B555B5FF01</span></span><br><span class="line"></span><br><span class="line">AT 指令后面这个长度是 &lt;TPUD 结构的<span class="number">8</span>位字节个数&gt;</span><br><span class="line"></span><br><span class="line">首先看下 SCA 结构 <span class="number">0891683108705505F0</span></span><br><span class="line"></span><br><span class="line"><span class="number">0x08</span></span><br><span class="line">SCA 号码类型和号码的长度</span><br><span class="line"></span><br><span class="line"><span class="number">0x91</span></span><br><span class="line">SCA 号码为国际号码，即 <span class="string">&quot;+&quot;</span></span><br><span class="line"></span><br><span class="line">683108705505F0</span><br><span class="line">可解析短信中心号码为 <span class="number">8613800755500</span></span><br><span class="line"></span><br><span class="line">然后看下 TPUD 结构 11000791680180F60008AA1200480065006C006C006F002055B555B5FF01</span><br><span class="line"></span><br><span class="line"><span class="number">0x11</span> options</span><br><span class="line">Bit No. <span class="number">7</span>       <span class="number">6</span>       <span class="number">5</span>       <span class="number">4</span>       <span class="number">3</span>       <span class="number">2</span>       <span class="number">1</span>       <span class="number">0</span></span><br><span class="line">        RP      UDHI    SRR     VPF     VPF     RD      MTI     MTI</span><br><span class="line">        <span class="number">0</span>       <span class="number">0</span>       <span class="number">0</span>       <span class="number">1</span>       <span class="number">0</span>       <span class="number">0</span>       <span class="number">0</span>       <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="number">0x00</span> MR</span><br><span class="line">置为<span class="number">00</span>即可</span><br><span class="line"></span><br><span class="line"><span class="number">0791680180F6</span> DA</span><br><span class="line">解析为 <span class="number">07</span> <span class="number">91</span> <span class="number">8610086</span></span><br><span class="line"></span><br><span class="line"><span class="number">0x00</span> PID</span><br><span class="line">对于标准情况下的MS-to-SC短消息传送，只需设置PID为<span class="number">00</span></span><br><span class="line"></span><br><span class="line"><span class="number">0x08</span> DCS</span><br><span class="line">USC2（16bit）双字节字符集</span><br><span class="line"></span><br><span class="line"><span class="number">0xAA</span> 有效期</span><br><span class="line"></span><br><span class="line">第一种情况（相对的）：VPF=<span class="number">10</span>  VP=AAH（四天），在这里是第一种</span><br><span class="line">第二种情况（绝对的）：VPF=<span class="number">11</span></span><br><span class="line"></span><br><span class="line">年    月	日	时	分	秒	时区</span><br><span class="line"><span class="number">30</span>    <span class="number">80</span>	<span class="number">02</span>	<span class="number">90</span>	<span class="number">54</span>	<span class="number">33</span>	<span class="number">20</span></span><br><span class="line">           表示：<span class="number">03</span>-<span class="number">08</span>-<span class="number">20</span> <span class="number">09</span>:<span class="number">45</span>:<span class="number">33</span></span><br><span class="line"></span><br><span class="line"><span class="number">0x12</span> UDL</span><br><span class="line"><span class="number">18</span> 个<span class="number">8</span>位字节</span><br><span class="line"></span><br><span class="line"><span class="number">0048</span> <span class="number">0065</span> <span class="number">006C</span> <span class="number">006C</span> <span class="number">006F</span> <span class="number">0020</span> <span class="number">55B5</span> <span class="number">55B5</span> FF01</span><br><span class="line">H    e    l    l    o    空格  喵   喵   ！</span><br></pre></td></tr></table></figure>
 
-</div>
   </div>
   
   
@@ -3118,7 +3108,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-10-16T04:30:44+00:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-10-16T04:30:53+00:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>本页文档最后更新于：2022年10月16日</p>
@@ -3439,7 +3429,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/5.6.0" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
+        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#5.7.6" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
 
       
     
@@ -3493,7 +3483,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.af2d54c8.js"></script>
+<script src="/js/app.js"></script>
 
 
 
@@ -3747,7 +3737,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   </ul>
 </div>
-<script src="/js/plugins/rightMenus.1aa99ff1.js"></script>
+<script src="/js/plugins/rightMenus.js"></script>
 <script>
   const RightMenusFunction = {};
   
@@ -3998,19 +3988,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/tags/sites.76bf19b8.js")
+        volantis.js("/js/plugins/tags/sites.js")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/tags/friends.f372da57.js")
+        volantis.js("/js/plugins/tags/friends.js")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/tags/contributors.aec80453.js")
+        volantis.js("/js/plugins/tags/contributors.js")
       }
     
   };
@@ -4069,33 +4059,6 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-   <script type="text/javascript">
-  function pjax_scrollrebeal() {
-    ScrollReveal().reveal("#l_main .reveal", {
-      distance: "32px",
-      duration: "800",
-      interval: "20",
-      scale: "1",
-      easing: "ease-out",
-    });
-  }
-  function init_scrollrebeal() {
-    if (typeof ScrollReveal == "undefined") {
-      volantis.requestAnimationFrame(init_scrollrebeal);
-    } else {
-      pjax_scrollrebeal();
-    }
-  }
-  volantis.js("https://unpkg.com/volantis-static@0.0.1654736714924/libs/scrollreveal/dist/scrollreveal.min.js");
-  document.addEventListener("DOMContentLoaded", init_scrollrebeal);
-  volantis.pjax.push(
-    pjax_scrollrebeal,
-    "pjax_scrollrebeal",
-    (setRequestAnimationFrame = false)
-  );
-</script>
-
-
 
 
   <script>
@@ -4106,7 +4069,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://unpkg.com/volantis-static@0.0.1654736714924/libs/meting/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.dbe5eea9.js')
+    await volantis.js('/js/plugins/aplayer.js')
   
   })();
 
@@ -4240,7 +4203,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.0e52f222.js");
+    return volantis.js("/js/search/hexo.js");
   }
 
   function loadSearchService() {
@@ -4315,7 +4278,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4358,7 +4321,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.8bf0ab10.js').then(()=>{
+    volantis.js('/js/plugins/parallax.js').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4526,94 +4489,6 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   });
 </script>
 
-<script>
-  try {
-    // https://web.dev/content-visibility/
-    // https://www.caniuse.com/?search=content-visibility
-    // https://infrequently.org/2020/12/content-visibility-scroll-fix/
-    // https://infrequently.org/2020/12/resize-resilient-deferred-rendering/
-
-    // 备注 目前已知的问题:
-    // 动态修改导致的内容高度变化(例如评论框异步渲染的外部盒子高度变化) 无法提前获知, 进而导致的首次滚动条跳动无法去除 (wontfix) 事实上不使用 content-visibility 也会有跳动, 不过是比使用 content-visibility 跳动提前
-    // scrollreveal 插件潜在问题 目前尚不明确
-
-    let eqIsh = (a, b, fuzz = 2) => {
-      return Math.abs(a - b) <= fuzz;
-    };
-
-    let rectNotEQ = (a, b) => {
-      return !eqIsh(a.width, b.width) || !eqIsh(a.height, b.height);
-    };
-
-    // Keep a map of elements and the dimensions of
-    // their place-holders, re-setting the element's
-    // intrinsic size when we get updated measurements
-    // from observers.
-    let spaced = new WeakMap();
-
-    // Only call this when known cheap, post layout
-    let reserveSpace = (el, rect = el.getClientBoundingRect()) => {
-      let old = spaced.get(el);
-      // Set intrinsic size to prevent jumping on un-painting:
-      //    https://drafts.csswg.org/css-sizing-4/#intrinsic-size-override
-      if (!old || rectNotEQ(old, rect)) {
-        spaced.set(el, rect);
-        el.style["contain-intrinsic-size"] = `${rect.width}px ${rect.height}px`;
-      }
-    };
-
-    let iObs = new IntersectionObserver(
-      (entries, o) => {
-        entries.forEach((entry) => {
-          // We don't care if the element is intersecting or
-          // has been laid out as our page structure ensures
-          // they'll get the right width.
-          reserveSpace(entry.target, entry.boundingClientRect);
-        });
-      },
-      { rootMargin: "500px 0px 500px 0px" }
-    );
-
-    let rObs = new ResizeObserver((entries, o) => {
-      entries.forEach((entry) => {
-        reserveSpace(entry.target, entry.contentRect);
-      });
-    });
-
-    let resizeResilientDeferredRendering = (Selector) => {
-      let articles = document.querySelectorAll(Selector);
-
-      if (articles.length) {
-        articles.forEach((el) => {
-          iObs.observe(el);
-          rObs.observe(el);
-        });
-
-        // Workaround for Chrome bug, part 2.
-        //
-        // Re-enable browser management of rendering for the
-        // first article after the first paint. Double-rAF
-        // to ensure we get called after a layout.
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            articles[0].style["content-visibility"] = "auto";
-          });
-        });
-      }
-    };
-
-    let contentVisibilityScrollFix = () => {
-      if (!("content-visibility" in document.documentElement.style)) {
-        return;
-      }
-      resizeResilientDeferredRendering(".post-story");
-    };
-    contentVisibilityScrollFix();
-    volantis.pjax.push(contentVisibilityScrollFix);
-  } catch (error) {
-    console.log(error);
-  }
-</script>
 
 
 <script>
@@ -4632,7 +4507,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/other/","name":"other"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/PDU-Encode/","name":"PDU 编码规则"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"PDU 编码规则","description":"PDU模式不仅支持中文短信，也能发送英文短信。PDU模式收发短信可以使用3种编码：7-bit、8-bit和UCS2编码。7-bit编码用于发送普通的ASCII字符，8-bit编码通常用于发送数据消息，UCS2编码用于发送Unicode字符。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/PDU-Encode/"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/PDU-Encode/","wordCount":120,"datePublished":"2017-05-18T11:36:02.000Z","dateModified":"2022-10-16T04:30:44.000Z","articleSection":"other","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/other/","name":"other"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/PDU-Encode/","name":"PDU 编码规则"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"PDU 编码规则","description":"PDU模式不仅支持中文短信，也能发送英文短信。PDU模式收发短信可以使用3种编码：7-bit、8-bit和UCS2编码。7-bit编码用于发送普通的ASCII字符，8-bit编码通常用于发送数据消息，UCS2编码用于发送Unicode字符。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/PDU-Encode/"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/PDU-Encode/","wordCount":120,"datePublished":"2017-05-18T11:36:02.000Z","dateModified":"2022-10-16T04:30:53.000Z","articleSection":"other","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

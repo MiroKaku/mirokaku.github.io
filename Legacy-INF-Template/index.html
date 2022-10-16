@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/5.6.0'>
+    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#5.7.6'>
   <meta name="generator" content="Hexo 6.2.0">
-  <meta name="Volantis" content="5.6.0">
+  <meta name="Volantis" content="5.7.6">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -26,9 +26,9 @@
   
   <!-- Custom Files headBegin end-->
     <link rel="shortcut icon" type='image/x-icon' href="https://avatars.githubusercontent.com/u/50670906?v=4">
-  <link rel="preload" href="/css/style.cbc2c3ea.css" as="style">
-  <link rel="preload" href="https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" href="https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/css/style.css" as="style">
+  <link rel="preload" href="https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
   <!-- feed -->
       <link rel="alternate" href="/atom.xml" title="喵石榴" type="application/atom+xml">
@@ -46,7 +46,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2019-05-25T16:53:18.000Z">
-<meta property="article:modified_time" content="2022-10-16T04:30:44.000Z">
+<meta property="article:modified_time" content="2022-10-16T04:30:53.000Z">
 <meta property="article:author" content="MiroKaku">
 <meta property="article:tag" content="Kernel">
 <meta property="article:tag" content="INF">
@@ -56,15 +56,6 @@
     /* 首屏样式 */
     #safearea {
   display: none;
-}
-/*
-  * Workaround for Chrome bug, part 1
-  * Chunk rendering for all but the first article.
-  * /layout/_partial/scripts/content-visibility-scroll-fix.ejs
-*/
-.post-story + .post-story {
-  content-visibility: auto;
-  contain-intrinsic-size: 10px 500px;
 }
 :root {
   --color-site-body: #f4f4f4;
@@ -946,14 +937,14 @@ button {
 }
 @font-face {
   font-family: 'HYRunYuan';
-  src: url("https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2");
+  src: url("https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
   font-family: 'YRDZSTJF';
-  src: url("https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2");
+  src: url("https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -1787,8 +1778,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.cbc2c3ea.css" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.cbc2c3ea.css"></noscript>
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1861,14 +1852,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   /************这个文件存放不需要重载的全局变量和全局函数*********/
   window.volantis = {}; // volantis 全局变量
-  volantis.debug = false; // 开启调试模式
+  volantis.debug = "env"; // 调试模式
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    debug: false,
-    cdn: {"js":{"app":"/js/app.af2d54c8.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.1aa99ff1.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.cbc2c3ea.css"}},
+    debug: "env",
+    cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1665894659010),
+    lastupdate: new Date(1665894668818),
     sidebar: {
       for_page: ["bulletin","category"],
       for_post: ["toc"],
@@ -2743,7 +2734,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>下面是我自己使用的驱动 INF 文件模板，直接替换里面部分文件信息就可以直接使用。</p>
 <span id="more"></span>
 
-<div class="story post-story"><h2 id="INF-安装和卸载驱动"><a href="#INF-安装和卸载驱动" class="headerlink" title="INF 安装和卸载驱动"></a>INF 安装和卸载驱动</h2><h3 id="安装驱动"><a href="#安装驱动" class="headerlink" title="安装驱动"></a>安装驱动</h3><ol>
+<h2 id="INF-安装和卸载驱动"><a href="#INF-安装和卸载驱动" class="headerlink" title="INF 安装和卸载驱动"></a>INF 安装和卸载驱动</h2><h3 id="安装驱动"><a href="#安装驱动" class="headerlink" title="安装驱动"></a>安装驱动</h3><ol>
 <li><p>可以直接右键 INF 文件，选择 &quot;安装&quot;</p>
 </li>
 <li><p>通过命令安装</p>
@@ -2753,17 +2744,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <h3 id="卸载驱动"><a href="#卸载驱动" class="headerlink" title="卸载驱动"></a>卸载驱动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUNDLL32.EXE SETUPAPI.DLL,InstallHinfSection DefaultUninstall 128 C:\WINDOWS\INF\SHELL.INF</span><br></pre></td></tr></table></figure>
 
-</div><div class="story post-story"><h2 id="NT-驱动-INF-模板"><a href="#NT-驱动-INF-模板" class="headerlink" title="NT 驱动 INF 模板"></a>NT 驱动 INF 模板</h2><p>有几个地方需要自行替换内容</p>
+<h2 id="NT-驱动-INF-模板"><a href="#NT-驱动-INF-模板" class="headerlink" title="NT 驱动 INF 模板"></a>NT 驱动 INF 模板</h2><p>有几个地方需要自行替换内容</p>
 <pre><code>1. `Version` 里面的 `Class`，`ClassGuid`，`DriverVer`
 2. `SourceDisksFiles` 里面的文件名
 3. `Strings` 里面的所有信息，根据自己的需求来填写
 </code></pre>
 <figure class="highlight ini"><figcaption><span>NT</span><a href="/downloads/code/NT.inf">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">; Template.INF -- NT Legacy Driver</span></span><br><span class="line"><span class="comment">;</span></span><br><span class="line"><span class="comment">; Copyright (c) 2019, Microsoft.Com LLC.  All rights reserved.</span></span><br><span class="line"><span class="comment">;------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; INF MSDN:</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/roadmap-for-device-and-driver-installation--windows-vista-and-later-</span></span><br><span class="line"><span class="comment">;</span></span><br><span class="line"><span class="comment">; Class And ClassGuid MSDN:</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/ifs/file-system-filter-driver-classes-and-class-guids</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/system-defined-device-setup-classes-available-to-vendors</span></span><br><span class="line"><span class="section">[Version]</span></span><br><span class="line"><span class="attr">Signature</span>   = <span class="string">&quot;$WINDOWS NT$&quot;</span></span><br><span class="line"><span class="attr">Class</span>       = AntiVirus</span><br><span class="line"><span class="attr">ClassGuid</span>   = {b1d1a169-c54f-<span class="number">4379</span>-<span class="number">81</span>db-bee7d88d7454}</span><br><span class="line"><span class="attr">Provider</span>    = %ManufacturerName%</span><br><span class="line"><span class="attr">CatalogFile</span> = %DriverName%.cat</span><br><span class="line"><span class="attr">DriverVer</span>   = </span><br><span class="line"><span class="attr">PnpLockdown</span> = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">; Installation Section</span></span><br><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; DestinationDirs MSDN</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-destinationdirs-section</span></span><br><span class="line"><span class="section">[DestinationDirs]</span></span><br><span class="line"><span class="attr">DefaultDestDir</span> = <span class="number">12</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; SourceDisksNames MSDN</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-sourcedisksnames-section</span></span><br><span class="line"><span class="section">[SourceDisksNames]</span></span><br><span class="line"><span class="attr">1</span> = %DiskId%,,,<span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; SourceDisksFiles MSDN</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-sourcedisksfiles-section</span></span><br><span class="line"><span class="comment">; Each filename entry must specify the exact name of a file on the source disk. </span></span><br><span class="line"><span class="comment">;     You cannot use a %strkey% token to specify the file name.</span></span><br><span class="line"><span class="section">[SourceDisksFiles]</span></span><br><span class="line"><span class="attr">Template.sys</span> = <span class="number">1</span>,,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; Copyfiles MSDN:</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-copyfiles-directive</span></span><br><span class="line"><span class="section">[Install.Drivers]</span></span><br><span class="line">%DriverName%.sys,Template.sys,,0x00004022 <span class="comment">; COPYFLG_NOSKIP | COPYFLG_NO_VERSION_DIALOG | COPYFLG_IN_USE_RENAME</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; Delfiles MSDN:</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-delfiles-directive</span></span><br><span class="line"><span class="section">[Uninstall.Drivers]</span></span><br><span class="line">%DriverName%.sys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">; Service installation support</span></span><br><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">[DefaultInstall.NT$ARCH$]</span></span><br><span class="line"><span class="attr">CopyFiles</span>       = Install.Drivers</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; LegacyUninstall MSDN:</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/develop/creating-a-primitive-driver</span></span><br><span class="line"><span class="section">[DefaultUninstall.NT$ARCH$]</span></span><br><span class="line"><span class="attr">LegacyUninstall</span> = <span class="number">1</span></span><br><span class="line"><span class="attr">DelFiles</span>        = Uninstall.Drivers</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">[DefaultInstall.NT$ARCH$.Services]</span></span><br><span class="line"><span class="comment">; You may want to add the SPSVCINST_STARTSERVICE flag, like this:</span></span><br><span class="line"><span class="comment">;     AddService=%ServiceName%,0x800,InstallService.Arch ; SPSVCINST_STARTSERVICE</span></span><br><span class="line"><span class="comment">; AddService MSDN</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-addservice-directive</span></span><br><span class="line"><span class="attr">AddService</span>      = %ServiceName%,%ServicInstFlags%,InstallService</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; DelService MSDN:</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-delservice-directive</span></span><br><span class="line"><span class="section">[DefaultUninstall.NT$ARCH$.Services]</span></span><br><span class="line"><span class="attr">DelService</span>      = %ServiceName%,<span class="number">0</span>x200</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">[InstallService]</span></span><br><span class="line"><span class="attr">DisplayName</span>    = %ServiceName%</span><br><span class="line"><span class="attr">Description</span>    = %ServiceDesc%</span><br><span class="line"><span class="attr">ServiceBinary</span>  = %<span class="number">12</span>%\%DriverName%.sys</span><br><span class="line"><span class="attr">ServiceType</span>    = <span class="number">1</span>                  <span class="comment">; SERVICE_KERNEL_DRIVER</span></span><br><span class="line"><span class="attr">StartType</span>      = <span class="number">3</span>                  <span class="comment">; 0 = SERVICE_BOOT_START</span></span><br><span class="line">                                    <span class="comment">; 1 = SERVICE_SYSTEM_START</span></span><br><span class="line">                                    <span class="comment">; 2 = SERVICE_AUTO_START</span></span><br><span class="line">                                    <span class="comment">; 3 = SERVICE_DEMAND_START</span></span><br><span class="line">                                    <span class="comment">; 4 = SERVICE_DISABLED</span></span><br><span class="line"><span class="attr">ErrorControl</span>   = <span class="number">1</span>                  <span class="comment">; SERVICE_ERROR_NORMAL</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">; Strings section</span></span><br><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">[Strings]</span></span><br><span class="line"><span class="attr">ManufacturerName</span>        = <span class="string">&quot;Template&quot;</span></span><br><span class="line"><span class="attr">DriverName</span>              = <span class="string">&quot;Template&quot;</span></span><br><span class="line"><span class="attr">ServiceName</span>             = <span class="string">&quot;Template&quot;</span></span><br><span class="line"><span class="attr">ServiceDesc</span>             = <span class="string">&quot;Template Legacy Driver&quot;</span></span><br><span class="line"><span class="attr">DiskId</span>                  = <span class="string">&quot;Template Device Installation Disk&quot;</span></span><br><span class="line"><span class="attr">ServicInstFlags</span>         = <span class="number">0</span>x00000000</span><br></pre></td></tr></table></figure>
 
-</div><div class="story post-story"><h2 id="MiniFilter-驱动-INF-模板"><a href="#MiniFilter-驱动-INF-模板" class="headerlink" title="MiniFilter 驱动 INF 模板"></a>MiniFilter 驱动 INF 模板</h2><p>MiniFilter 的 INF 和 NT 基本差不多，只是多了个 MiniFilter 的 Instance 注册表的补充.</p>
+<h2 id="MiniFilter-驱动-INF-模板"><a href="#MiniFilter-驱动-INF-模板" class="headerlink" title="MiniFilter 驱动 INF 模板"></a>MiniFilter 驱动 INF 模板</h2><p>MiniFilter 的 INF 和 NT 基本差不多，只是多了个 MiniFilter 的 Instance 注册表的补充.</p>
 <figure class="highlight ini"><figcaption><span>MiniFilter</span><a href="/downloads/code/MiniFilter.inf">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">; Template.INF -- MiniFilter Driver</span></span><br><span class="line"><span class="comment">;</span></span><br><span class="line"><span class="comment">; Copyright (c) 2019, Microsoft.Com LLC.  All rights reserved.</span></span><br><span class="line"><span class="comment">;------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; INF MSDN:</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/roadmap-for-device-and-driver-installation--windows-vista-and-later-</span></span><br><span class="line"><span class="comment">;</span></span><br><span class="line"><span class="comment">; Class And ClassGuid MSDN:</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/ifs/file-system-filter-driver-classes-and-class-guids</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/system-defined-device-setup-classes-available-to-vendors</span></span><br><span class="line"><span class="section">[Version]</span></span><br><span class="line"><span class="attr">Signature</span>   = <span class="string">&quot;$WINDOWS NT$&quot;</span></span><br><span class="line"><span class="attr">Class</span>       = AntiVirus</span><br><span class="line"><span class="attr">ClassGuid</span>   = {b1d1a169-c54f-<span class="number">4379</span>-<span class="number">81</span>db-bee7d88d7454}</span><br><span class="line"><span class="attr">Provider</span>    = %ManufacturerName%</span><br><span class="line"><span class="attr">CatalogFile</span> = %DriverName%.cat</span><br><span class="line"><span class="attr">DriverVer</span>   = </span><br><span class="line"><span class="attr">PnpLockdown</span> = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">; Installation Section</span></span><br><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; DestinationDirs MSDN</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-destinationdirs-section</span></span><br><span class="line"><span class="section">[DestinationDirs]</span></span><br><span class="line"><span class="attr">DefaultDestDir</span> = <span class="number">12</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; SourceDisksNames MSDN</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-sourcedisksnames-section</span></span><br><span class="line"><span class="section">[SourceDisksNames]</span></span><br><span class="line"><span class="attr">1</span> = %DiskId%,,,<span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; SourceDisksFiles MSDN</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-sourcedisksfiles-section</span></span><br><span class="line"><span class="comment">; Each filename entry must specify the exact name of a file on the source disk. </span></span><br><span class="line"><span class="comment">;     You cannot use a %strkey% token to specify the file name.</span></span><br><span class="line"><span class="section">[SourceDisksFiles]</span></span><br><span class="line"><span class="attr">Template.sys</span> = <span class="number">1</span>,,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; Copyfiles MSDN:</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-copyfiles-directive</span></span><br><span class="line"><span class="section">[Install.Drivers]</span></span><br><span class="line">%DriverName%.sys,Template.sys,,0x00004022 <span class="comment">; COPYFLG_NOSKIP | COPYFLG_NO_VERSION_DIALOG | COPYFLG_IN_USE_RENAME</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; Delfiles MSDN:</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-delfiles-directive</span></span><br><span class="line"><span class="section">[Uninstall.Drivers]</span></span><br><span class="line">%DriverName%.sys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">; Service installation support</span></span><br><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">[DefaultInstall.NT$ARCH$]</span></span><br><span class="line"><span class="attr">CopyFiles</span>       = Install.Drivers</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; LegacyUninstall MSDN:</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/develop/creating-a-primitive-driver</span></span><br><span class="line"><span class="section">[DefaultUninstall.NT$ARCH$]</span></span><br><span class="line"><span class="attr">LegacyUninstall</span> = <span class="number">1</span></span><br><span class="line"><span class="attr">DelFiles</span>        = Uninstall.Drivers</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">[DefaultInstall.NT$ARCH$.Services]</span></span><br><span class="line"><span class="comment">; You may want to add the SPSVCINST_STARTSERVICE flag, like this:</span></span><br><span class="line"><span class="comment">;     AddService=%ServiceName%,0x800,InstallService.Arch ; SPSVCINST_STARTSERVICE</span></span><br><span class="line"><span class="comment">; AddService MSDN</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-addservice-directive</span></span><br><span class="line"><span class="attr">AddService</span>      = %ServiceName%,%ServicInstFlags%,InstallService</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">; DelService MSDN:</span></span><br><span class="line"><span class="comment">;     https://docs.microsoft.com/en-us/windows-hardware/drivers/install/inf-delservice-directive</span></span><br><span class="line"><span class="section">[DefaultUninstall.NT$ARCH$.Services]</span></span><br><span class="line"><span class="attr">DelService</span>      = %ServiceName%,<span class="number">0</span>x200</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">[InstallService]</span></span><br><span class="line"><span class="attr">DisplayName</span>    = %ServiceName%</span><br><span class="line"><span class="attr">Description</span>    = %ServiceDesc%</span><br><span class="line"><span class="attr">ServiceBinary</span>  = %<span class="number">12</span>%\%DriverName%.sys</span><br><span class="line"><span class="attr">ServiceType</span>    = <span class="number">1</span>                  <span class="comment">; SERVICE_KERNEL_DRIVER</span></span><br><span class="line"><span class="attr">StartType</span>      = <span class="number">3</span>                  <span class="comment">; 0 = SERVICE_BOOT_START</span></span><br><span class="line">                                    <span class="comment">; 1 = SERVICE_SYSTEM_START</span></span><br><span class="line">                                    <span class="comment">; 2 = SERVICE_AUTO_START</span></span><br><span class="line">                                    <span class="comment">; 3 = SERVICE_DEMAND_START</span></span><br><span class="line">                                    <span class="comment">; 4 = SERVICE_DISABLED</span></span><br><span class="line"><span class="attr">ErrorControl</span>   = <span class="number">1</span>                  <span class="comment">; SERVICE_ERROR_NORMAL</span></span><br><span class="line"><span class="attr">LoadOrderGroup</span> = FSFilter Anti-Virus<span class="comment">; Reference Version.Class</span></span><br><span class="line"><span class="attr">Dependencies</span>   = FltMgr</span><br><span class="line"><span class="attr">AddReg</span>         = MiniFlt.AddInstance</span><br><span class="line"></span><br><span class="line"><span class="comment">; Minifilter drivers use an AddRegistry section to define minifilter instances and to specify a default instance</span></span><br><span class="line"><span class="section">[MiniFlt.AddInstance]</span></span><br><span class="line">HKR,%InstancesName%,%DefaultInstanceName%,0x00000000,%DefaultInstance%</span><br><span class="line">HKR,%InstancesName%&quot;\&quot;%Instance1.Name%,%AltitudeName%,0x00000000,%Instance1.Altitude%</span><br><span class="line">HKR,%InstancesName%&quot;\&quot;%Instance1.Name%,%FlagsName%,0x00010001,%Instance1.Flags%</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">; Strings section</span></span><br><span class="line"><span class="comment">;-------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">[Strings]</span></span><br><span class="line"><span class="attr">ManufacturerName</span>        = <span class="string">&quot;Template&quot;</span></span><br><span class="line"><span class="attr">DriverName</span>              = <span class="string">&quot;Template&quot;</span></span><br><span class="line"><span class="attr">ServiceName</span>             = <span class="string">&quot;Template&quot;</span></span><br><span class="line"><span class="attr">ServiceDesc</span>             = <span class="string">&quot;Template MiniFilter Driver&quot;</span></span><br><span class="line"><span class="attr">DiskId</span>                  = <span class="string">&quot;Template Device Installation Disk&quot;</span></span><br><span class="line"><span class="attr">ServicInstFlags</span>         = <span class="number">0</span>x00000000</span><br><span class="line"></span><br><span class="line"><span class="attr">InstancesName</span>           = <span class="string">&quot;Instances&quot;</span></span><br><span class="line"><span class="attr">DefaultInstanceName</span>     = <span class="string">&quot;DefaultInstance&quot;</span></span><br><span class="line"><span class="attr">AltitudeName</span>            = <span class="string">&quot;Altitude&quot;</span></span><br><span class="line"><span class="attr">FlagsName</span>               = <span class="string">&quot;Flags&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">DefaultInstance</span>         = <span class="string">&quot;Template Instance&quot;</span></span><br><span class="line"><span class="attr">Instance1.Name</span>          = <span class="string">&quot;Template Instance&quot;</span></span><br><span class="line"><span class="attr">Instance1.Altitude</span>      = <span class="string">&quot;400000&quot;</span>      <span class="comment">; https://docs.microsoft.com/en-us/windows-hardware/drivers/ifs/minifilter-altitude-request</span></span><br><span class="line"><span class="attr">Instance1.Flags</span>         = <span class="number">0</span>x0           <span class="comment">; 0x0 = Allow all attachments</span></span><br><span class="line">                                        <span class="comment">; 0x1 = Suppress automatic attachments</span></span><br></pre></td></tr></table></figure>
 
-</div>
   </div>
   
   
@@ -2787,7 +2777,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-10-16T04:30:44+00:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-10-16T04:30:53+00:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>本页文档最后更新于：2022年10月16日</p>
@@ -3113,7 +3103,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/5.6.0" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
+        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#5.7.6" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
 
       
     
@@ -3167,7 +3157,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.af2d54c8.js"></script>
+<script src="/js/app.js"></script>
 
 
 
@@ -3421,7 +3411,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   </ul>
 </div>
-<script src="/js/plugins/rightMenus.1aa99ff1.js"></script>
+<script src="/js/plugins/rightMenus.js"></script>
 <script>
   const RightMenusFunction = {};
   
@@ -3672,19 +3662,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/tags/sites.76bf19b8.js")
+        volantis.js("/js/plugins/tags/sites.js")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/tags/friends.f372da57.js")
+        volantis.js("/js/plugins/tags/friends.js")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/tags/contributors.aec80453.js")
+        volantis.js("/js/plugins/tags/contributors.js")
       }
     
   };
@@ -3743,33 +3733,6 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-   <script type="text/javascript">
-  function pjax_scrollrebeal() {
-    ScrollReveal().reveal("#l_main .reveal", {
-      distance: "32px",
-      duration: "800",
-      interval: "20",
-      scale: "1",
-      easing: "ease-out",
-    });
-  }
-  function init_scrollrebeal() {
-    if (typeof ScrollReveal == "undefined") {
-      volantis.requestAnimationFrame(init_scrollrebeal);
-    } else {
-      pjax_scrollrebeal();
-    }
-  }
-  volantis.js("https://unpkg.com/volantis-static@0.0.1654736714924/libs/scrollreveal/dist/scrollreveal.min.js");
-  document.addEventListener("DOMContentLoaded", init_scrollrebeal);
-  volantis.pjax.push(
-    pjax_scrollrebeal,
-    "pjax_scrollrebeal",
-    (setRequestAnimationFrame = false)
-  );
-</script>
-
-
 
 
   <script>
@@ -3780,7 +3743,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://unpkg.com/volantis-static@0.0.1654736714924/libs/meting/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.dbe5eea9.js')
+    await volantis.js('/js/plugins/aplayer.js')
   
   })();
 
@@ -3914,7 +3877,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.0e52f222.js");
+    return volantis.js("/js/search/hexo.js");
   }
 
   function loadSearchService() {
@@ -3989,7 +3952,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4032,7 +3995,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.8bf0ab10.js').then(()=>{
+    volantis.js('/js/plugins/parallax.js').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4200,94 +4163,6 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   });
 </script>
 
-<script>
-  try {
-    // https://web.dev/content-visibility/
-    // https://www.caniuse.com/?search=content-visibility
-    // https://infrequently.org/2020/12/content-visibility-scroll-fix/
-    // https://infrequently.org/2020/12/resize-resilient-deferred-rendering/
-
-    // 备注 目前已知的问题:
-    // 动态修改导致的内容高度变化(例如评论框异步渲染的外部盒子高度变化) 无法提前获知, 进而导致的首次滚动条跳动无法去除 (wontfix) 事实上不使用 content-visibility 也会有跳动, 不过是比使用 content-visibility 跳动提前
-    // scrollreveal 插件潜在问题 目前尚不明确
-
-    let eqIsh = (a, b, fuzz = 2) => {
-      return Math.abs(a - b) <= fuzz;
-    };
-
-    let rectNotEQ = (a, b) => {
-      return !eqIsh(a.width, b.width) || !eqIsh(a.height, b.height);
-    };
-
-    // Keep a map of elements and the dimensions of
-    // their place-holders, re-setting the element's
-    // intrinsic size when we get updated measurements
-    // from observers.
-    let spaced = new WeakMap();
-
-    // Only call this when known cheap, post layout
-    let reserveSpace = (el, rect = el.getClientBoundingRect()) => {
-      let old = spaced.get(el);
-      // Set intrinsic size to prevent jumping on un-painting:
-      //    https://drafts.csswg.org/css-sizing-4/#intrinsic-size-override
-      if (!old || rectNotEQ(old, rect)) {
-        spaced.set(el, rect);
-        el.style["contain-intrinsic-size"] = `${rect.width}px ${rect.height}px`;
-      }
-    };
-
-    let iObs = new IntersectionObserver(
-      (entries, o) => {
-        entries.forEach((entry) => {
-          // We don't care if the element is intersecting or
-          // has been laid out as our page structure ensures
-          // they'll get the right width.
-          reserveSpace(entry.target, entry.boundingClientRect);
-        });
-      },
-      { rootMargin: "500px 0px 500px 0px" }
-    );
-
-    let rObs = new ResizeObserver((entries, o) => {
-      entries.forEach((entry) => {
-        reserveSpace(entry.target, entry.contentRect);
-      });
-    });
-
-    let resizeResilientDeferredRendering = (Selector) => {
-      let articles = document.querySelectorAll(Selector);
-
-      if (articles.length) {
-        articles.forEach((el) => {
-          iObs.observe(el);
-          rObs.observe(el);
-        });
-
-        // Workaround for Chrome bug, part 2.
-        //
-        // Re-enable browser management of rendering for the
-        // first article after the first paint. Double-rAF
-        // to ensure we get called after a layout.
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            articles[0].style["content-visibility"] = "auto";
-          });
-        });
-      }
-    };
-
-    let contentVisibilityScrollFix = () => {
-      if (!("content-visibility" in document.documentElement.style)) {
-        return;
-      }
-      resizeResilientDeferredRendering(".post-story");
-    };
-    contentVisibilityScrollFix();
-    volantis.pjax.push(contentVisibilityScrollFix);
-  } catch (error) {
-    console.log(error);
-  }
-</script>
 
 
 <script>
@@ -4306,7 +4181,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/windows/","name":"Windows"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/Legacy-INF-Template/","name":"传统 INF 模板"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"传统 INF 模板","description":"基本上，大家写完驱动都是通过一个加载器来加载驱动，我自己觉得太麻烦了...不如直接右键安装更方便.\n下面是我自己使用的驱动 INF 文件模板，直接替换里面部分文件信息就可以直接使用。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/Legacy-INF-Template/"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/Legacy-INF-Template/","wordCount":91,"datePublished":"2019-05-25T16:53:18.000Z","dateModified":"2022-10-16T04:30:44.000Z","articleSection":"Windows","keywords":"Kernel,INF","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/windows/","name":"Windows"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/Legacy-INF-Template/","name":"传统 INF 模板"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"传统 INF 模板","description":"基本上，大家写完驱动都是通过一个加载器来加载驱动，我自己觉得太麻烦了...不如直接右键安装更方便.\n下面是我自己使用的驱动 INF 文件模板，直接替换里面部分文件信息就可以直接使用。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/Legacy-INF-Template/"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/Legacy-INF-Template/","wordCount":91,"datePublished":"2019-05-25T16:53:18.000Z","dateModified":"2022-10-16T04:30:53.000Z","articleSection":"Windows","keywords":"Kernel,INF","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

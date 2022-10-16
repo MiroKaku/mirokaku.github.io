@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/5.6.0'>
+    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#5.7.6'>
   <meta name="generator" content="Hexo 6.2.0">
-  <meta name="Volantis" content="5.6.0">
+  <meta name="Volantis" content="5.7.6">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -26,9 +26,9 @@
   
   <!-- Custom Files headBegin end-->
     <link rel="shortcut icon" type='image/x-icon' href="https://avatars.githubusercontent.com/u/50670906?v=4">
-  <link rel="preload" href="/css/style.cbc2c3ea.css" as="style">
-  <link rel="preload" href="https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" href="https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/css/style.css" as="style">
+  <link rel="preload" href="https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
   <!-- feed -->
       <link rel="alternate" href="/atom.xml" title="喵石榴" type="application/atom+xml">
@@ -45,7 +45,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2016-08-02T09:44:56.000Z">
-<meta property="article:modified_time" content="2022-10-16T04:30:44.000Z">
+<meta property="article:modified_time" content="2022-10-16T04:30:53.000Z">
 <meta property="article:author" content="MiroKaku">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -54,15 +54,6 @@
     /* 首屏样式 */
     #safearea {
   display: none;
-}
-/*
-  * Workaround for Chrome bug, part 1
-  * Chunk rendering for all but the first article.
-  * /layout/_partial/scripts/content-visibility-scroll-fix.ejs
-*/
-.post-story + .post-story {
-  content-visibility: auto;
-  contain-intrinsic-size: 10px 500px;
 }
 :root {
   --color-site-body: #f4f4f4;
@@ -944,14 +935,14 @@ button {
 }
 @font-face {
   font-family: 'HYRunYuan';
-  src: url("https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2");
+  src: url("https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
   font-family: 'YRDZSTJF';
-  src: url("https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2");
+  src: url("https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -1785,8 +1776,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.cbc2c3ea.css" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.cbc2c3ea.css"></noscript>
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1859,14 +1850,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   /************这个文件存放不需要重载的全局变量和全局函数*********/
   window.volantis = {}; // volantis 全局变量
-  volantis.debug = false; // 开启调试模式
+  volantis.debug = "env"; // 调试模式
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    debug: false,
-    cdn: {"js":{"app":"/js/app.af2d54c8.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.1aa99ff1.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.cbc2c3ea.css"}},
+    debug: "env",
+    cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1665894659010),
+    lastupdate: new Date(1665894668818),
     sidebar: {
       for_page: ["bulletin","category"],
       for_post: ["toc"],
@@ -2740,7 +2731,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <p>之前自己学了很多次 Python，由于用不到，所以总是学完就忘掉了。<br>刚好最近工作需要用到 Python，就借此机会好好学习了一番。<br>Pyhton 的各种特性和风格让我甚是喜欢。不过我总是感觉自己写的代码不是那么漂亮，不够 Pythonic。<br>所以我想通过学习一些经典建议来让我有个思路。</p>
 <span id="more"></span>
 
-<div class="story post-story"><h2 id="建议-1：理解-Pythonic-概念"><a href="#建议-1：理解-Pythonic-概念" class="headerlink" title="建议 1：理解 Pythonic 概念"></a>建议 1：理解 Pythonic 概念</h2><p>对于 Pythonic 的概念，大家心中的指南就是 Tim Peters 的 《The Zen of Python》（Python 之禅）。<br>下面几点来自其中的内容：</p>
+<h2 id="建议-1：理解-Pythonic-概念"><a href="#建议-1：理解-Pythonic-概念" class="headerlink" title="建议 1：理解 Pythonic 概念"></a>建议 1：理解 Pythonic 概念</h2><p>对于 Pythonic 的概念，大家心中的指南就是 Tim Peters 的 《The Zen of Python》（Python 之禅）。<br>下面几点来自其中的内容：</p>
 <ul>
 <li>美胜丑，显胜隐，简胜杂，平胜陡，疏胜密。</li>
 <li>找到简单问题的一个方法，最好是唯一的方法（正确的解决之道）。</li>
@@ -2751,7 +2742,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>包和模块的命名采用小写、单数形式，而且短小。</li>
 <li>包通常仅作为命名空间，如只包含空的 <code>__init__.py</code> 文件</li>
 </ul>
-</div><div class="story post-story"><h2 id="建议-2：编写-Pythonic-代码"><a href="#建议-2：编写-Pythonic-代码" class="headerlink" title="建议 2：编写 Pythonic 代码"></a>建议 2：编写 Pythonic 代码</h2><ol>
+<h2 id="建议-2：编写-Pythonic-代码"><a href="#建议-2：编写-Pythonic-代码" class="headerlink" title="建议 2：编写 Pythonic 代码"></a>建议 2：编写 Pythonic 代码</h2><ol>
 <li>要避免劣化代码</li>
 </ol>
 <ul>
@@ -2770,7 +2761,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <ol start="3">
 <li>使用工具来达到检查和约束，比如我个人使用 Pycharm IDE 来写 Python，对代码风格的要求挺严格的...</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-3：理解-Python-与-C-语言的不同之处"><a href="#建议-3：理解-Python-与-C-语言的不同之处" class="headerlink" title="建议 3：理解 Python 与 C 语言的不同之处"></a>建议 3：理解 Python 与 C 语言的不同之处</h2><p>我们都知道，Python 底层是用 C 语言实现的，但切忌用 C 语言的思维和风格来编写 Python 代码。尤其重要的是，不要使用之前的编程思想。</p>
+<h2 id="建议-3：理解-Python-与-C-语言的不同之处"><a href="#建议-3：理解-Python-与-C-语言的不同之处" class="headerlink" title="建议 3：理解 Python 与 C 语言的不同之处"></a>建议 3：理解 Python 与 C 语言的不同之处</h2><p>我们都知道，Python 底层是用 C 语言实现的，但切忌用 C 语言的思维和风格来编写 Python 代码。尤其重要的是，不要使用之前的编程思想。</p>
 <ol>
 <li>“缩进”与“{}”<br>与 C、C++、Java 等语言使用花括号来分隔代码段不同，Python 中使用严格的代码缩进方式分隔代码块。<br>另外，建议 Tab 替换成 4 个空格，不要混用 Tab 键和空格。</li>
 <li>&#39; 与 &quot;<br>C 语言中单引号 <code>&#39;</code> 与双引号 <code>&quot;</code> 由严格的区别，单引号代表一个字符，它实际对应于编译器所采用的字符集中的一个整数值。而双引号则表示字符串，默认以 <code>\0</code> 结尾。<br>但是在 Python 中，单引号与双引号没有明显区别。</li>
@@ -2787,14 +2778,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="number">0</span>: <span class="string">&quot;You typed zero.&quot;</span>,</span><br><span class="line">        <span class="number">1</span>: <span class="string">&quot;You are in top.&quot;</span>,</span><br><span class="line">        <span class="number">2</span>: <span class="string">&quot;n is an even number.&quot;</span></span><br><span class="line">    &#125;.get(n, <span class="string">&quot;Only single-digit numbers are allowed.&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>Python 和其他语言的差异远不止这些。但总归一句话：不要被其他语言的思维和习惯困扰，掌握 Python 的这些和思维方式才是硬道理。</p>
-</div><div class="story post-story"><h2 id="建议-4：在代码中适当添加注释"><a href="#建议-4：在代码中适当添加注释" class="headerlink" title="建议 4：在代码中适当添加注释"></a>建议 4：在代码中适当添加注释</h2><p>Python 中有三种形式的代码注释：块注释、行注释以及文档注释（docstring）。这三种注释的惯用法大概如下几种：</p>
+<h2 id="建议-4：在代码中适当添加注释"><a href="#建议-4：在代码中适当添加注释" class="headerlink" title="建议 4：在代码中适当添加注释"></a>建议 4：在代码中适当添加注释</h2><p>Python 中有三种形式的代码注释：块注释、行注释以及文档注释（docstring）。这三种注释的惯用法大概如下几种：</p>
 <ol>
 <li>使用块或行注释的时候仅仅注释那些复杂的操作、算法，还有可能别人难以理解的技巧或者不够一目了然地代码。</li>
 <li>注释和代码隔开一定的距离，同时在块注释之后最好多留几行空白再写代码。</li>
 <li>给外部可访问的函数和方法添加文档注释，无论简单与否。<br>注释要清楚地描述方法的功能，并对参数、返回值以及可能发生的异常进行说明，使得外部调用它的人员仅仅看docstring就能正确使用。<br>较为复杂的内部方法也需要进行注释。</li>
 <li>推荐在文件头中包含 copyright 申明、模块描述等，如有比较可以考虑加入作者信息及变更记录。</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-5：通过适当添加空行使代码布局更为优雅、合理"><a href="#建议-5：通过适当添加空行使代码布局更为优雅、合理" class="headerlink" title="建议 5：通过适当添加空行使代码布局更为优雅、合理"></a>建议 5：通过适当添加空行使代码布局更为优雅、合理</h2><p>Python 代码布局也有一些基本规则可以遵循（PEP8 中有详细规范..）：</p>
+<h2 id="建议-5：通过适当添加空行使代码布局更为优雅、合理"><a href="#建议-5：通过适当添加空行使代码布局更为优雅、合理" class="headerlink" title="建议 5：通过适当添加空行使代码布局更为优雅、合理"></a>建议 5：通过适当添加空行使代码布局更为优雅、合理</h2><p>Python 代码布局也有一些基本规则可以遵循（PEP8 中有详细规范..）：</p>
 <ol>
 <li>在一组代码表达完一个完整的思路之后，应该用空白行进行间隔。如每个函数之间，导入声明、变量赋值等。</li>
 <li>尽量保持上下文语义的易理解性</li>
@@ -2808,15 +2799,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 </li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-6：编写函数的-4-个原则"><a href="#建议-6：编写函数的-4-个原则" class="headerlink" title="建议 6：编写函数的 4 个原则"></a>建议 6：编写函数的 4 个原则</h2><p>** 原则 1 ** 函数设计要尽量短小，嵌套层次不宜过深。<br>** 原则 2 ** 函数申明应该做到合理、简单、易于使用。<br>** 原则 3 ** 函数参数设计应该考虑向下兼容。<br>** 原则 4 ** 一个函数只做一件事儿，尽量保证函数语句粒度的一致性。</p>
+<h2 id="建议-6：编写函数的-4-个原则"><a href="#建议-6：编写函数的-4-个原则" class="headerlink" title="建议 6：编写函数的 4 个原则"></a>建议 6：编写函数的 4 个原则</h2><p>** 原则 1 ** 函数设计要尽量短小，嵌套层次不宜过深。<br>** 原则 2 ** 函数申明应该做到合理、简单、易于使用。<br>** 原则 3 ** 函数参数设计应该考虑向下兼容。<br>** 原则 4 ** 一个函数只做一件事儿，尽量保证函数语句粒度的一致性。</p>
 <p>Python 中函数设计的好习惯还包括：不要再函数中定义可变对象作为默认值，使用异常替换返回错误，保证通过单元测试等。</p>
-</div><div class="story post-story"><h2 id="建议-7：将常量集中到一个文件"><a href="#建议-7：将常量集中到一个文件" class="headerlink" title="建议 7：将常量集中到一个文件"></a>建议 7：将常量集中到一个文件</h2><p>Python 中使用常量一般有以下两种方式：</p>
+<h2 id="建议-7：将常量集中到一个文件"><a href="#建议-7：将常量集中到一个文件" class="headerlink" title="建议 7：将常量集中到一个文件"></a>建议 7：将常量集中到一个文件</h2><p>Python 中使用常量一般有以下两种方式：</p>
 <ul>
 <li>通过命名风格来提醒使用者该变量代表的意义为常量，如常量名所有字母大写，用下划线连接各个单词，如 MAX_OVERFLOW，这只是一种约定俗成的风格。</li>
 <li>通过自定义的类实现常量功能。这要求符合“命名全部为大写”和“值一旦绑定便不可再修改”这两个条件。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">_const</span>:</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">ConstError</span>(<span class="title class_ inherited__">TypeError</span>): <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">ConstCaseError</span>(<span class="title class_ inherited__">ConstError</span>): <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__setattr__</span>(<span class="params">self, name, value</span>):</span><br><span class="line">        <span class="keyword">if</span> self.__dict__.has_key(name):</span><br><span class="line">            <span class="keyword">raise</span> self.ConstError, <span class="string">&quot;Can&#x27;t change const.&#123;&#125;&quot;</span>.<span class="built_in">format</span>(name)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> name.isupper():</span><br><span class="line">            <span class="keyword">raise</span> self.ConstCaseError, <span class="string">&#x27;const name &quot;&#123;&#125;&quot; is not all uppercase&#x27;</span>.<span class="built_in">format</span>(name)</span><br><span class="line">        self.__dict__[name] = value</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.modules[__name__] = _const()</span><br></pre></td></tr></table></figure>
 如果上面的代码对应的模块名为 const，使用的时候只需要 import const，便可直接定义常量了，如下代码：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> const</span><br><span class="line">const.COMPANY = <span class="string">&quot;IBM&quot;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-</div><div class="story post-story"><h2 id="建议-8：利用-assert-语句来发现问题"><a href="#建议-8：利用-assert-语句来发现问题" class="headerlink" title="建议 8：利用 assert 语句来发现问题"></a>建议 8：利用 assert 语句来发现问题</h2><p>断言（assert）在很多语言中都存在，它主要为调试程序服务，能够快速方便的检查程序的异常或者发现不恰当的输入等，可防止意想不到的情况出现。</p>
+<h2 id="建议-8：利用-assert-语句来发现问题"><a href="#建议-8：利用-assert-语句来发现问题" class="headerlink" title="建议 8：利用 assert 语句来发现问题"></a>建议 8：利用 assert 语句来发现问题</h2><p>断言（assert）在很多语言中都存在，它主要为调试程序服务，能够快速方便的检查程序的异常或者发现不恰当的输入等，可防止意想不到的情况出现。</p>
 <p>对 Python 中使用断言需要说明如下：</p>
 <ol>
 <li><strong>debug</strong> 的值默认设置为 True，而且是只读的。</li>
@@ -2830,12 +2821,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>在函数调用后，当需要确认返回值是否合理时可以使用断言。</li>
 <li>当条件是业务逻辑继续下去的先决条件时可以使用断言。</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-9：数据交换值得时候不推荐使用中间变量"><a href="#建议-9：数据交换值得时候不推荐使用中间变量" class="headerlink" title="建议 9：数据交换值得时候不推荐使用中间变量"></a>建议 9：数据交换值得时候不推荐使用中间变量</h2><h2 id="建议-10：充分利用-Lazy-evaluation-的特性"><a href="#建议-10：充分利用-Lazy-evaluation-的特性" class="headerlink" title="建议 10：充分利用 Lazy evaluation 的特性"></a>建议 10：充分利用 Lazy evaluation 的特性</h2><p>Lazy evaluation 常被译为“延迟计算”或“惰性计算”，值得是仅仅在真正需要执行的时候才会计算表达式的值。<br>充分利用 Lazy evaluation 的特性带来的好处有两个方面：</p>
+<h2 id="建议-9：数据交换值得时候不推荐使用中间变量"><a href="#建议-9：数据交换值得时候不推荐使用中间变量" class="headerlink" title="建议 9：数据交换值得时候不推荐使用中间变量"></a>建议 9：数据交换值得时候不推荐使用中间变量</h2><h2 id="建议-10：充分利用-Lazy-evaluation-的特性"><a href="#建议-10：充分利用-Lazy-evaluation-的特性" class="headerlink" title="建议 10：充分利用 Lazy evaluation 的特性"></a>建议 10：充分利用 Lazy evaluation 的特性</h2><p>Lazy evaluation 常被译为“延迟计算”或“惰性计算”，值得是仅仅在真正需要执行的时候才会计算表达式的值。<br>充分利用 Lazy evaluation 的特性带来的好处有两个方面：</p>
 <ol>
 <li>避免不必要的计算，带来性能上的提升。</li>
 <li>节省空间，使得无限循环的数据结构成为可能。</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-11：理解枚举替代实现的缺陷"><a href="#建议-11：理解枚举替代实现的缺陷" class="headerlink" title="建议 11：理解枚举替代实现的缺陷"></a>建议 11：理解枚举替代实现的缺陷</h2><p>在 Python 3.4 之前，并没有提供枚举类型。所以人们充分利用 Python 的dong&#39;tai动态性这个特征，行除了美剧的各种替代实现：</p>
+<h2 id="建议-11：理解枚举替代实现的缺陷"><a href="#建议-11：理解枚举替代实现的缺陷" class="headerlink" title="建议 11：理解枚举替代实现的缺陷"></a>建议 11：理解枚举替代实现的缺陷</h2><p>在 Python 3.4 之前，并没有提供枚举类型。所以人们充分利用 Python 的dong&#39;tai动态性这个特征，行除了美剧的各种替代实现：</p>
 <ol>
 <li><p>使用类属性</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Seasons</span>:</span><br><span class="line">    Spring, Summer, Autumn, Winter = <span class="built_in">range</span>(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
@@ -2852,10 +2843,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>支持无意义的操作，比如相加</li>
 </ul>
 <p>在3.4之后，加入了枚举 Enum，其实现主要参考 flufl.enum，但两者之间存在一些差别。</p>
-</div><div class="story post-story"><h2 id="建议-12：不推荐使用-type-来进行类型检查"><a href="#建议-12：不推荐使用-type-来进行类型检查" class="headerlink" title="建议 12：不推荐使用 type 来进行类型检查"></a>建议 12：不推荐使用 type 来进行类型检查</h2><p>基于内建类型扩展的用户自定义类型，type函数并不能准确返回结果。<br>任意泪的实例的 <code>type()</code> 返回结果都是 <code>&lt;type &#39;instance&#39;&gt;</code>。<br>我们可以使用 isinstance() 函数来检测类型。</p>
-</div><div class="story post-story"><h2 id="建议-13：尽量转换为浮点类型后再做除法"><a href="#建议-13：尽量转换为浮点类型后再做除法" class="headerlink" title="建议 13：尽量转换为浮点类型后再做除法"></a>建议 13：尽量转换为浮点类型后再做除法</h2><h2 id="建议-14：警惕-eval-的安全漏洞"><a href="#建议-14：警惕-eval-的安全漏洞" class="headerlink" title="建议 14：警惕 eval() 的安全漏洞"></a>建议 14：警惕 eval() 的安全漏洞</h2><p>Python 中 eval() 函数将字符串 str 当初有效的表达式来求值并返回计算结果。其函数声明如下：<br><code>eval(expression[, globals[, locals]])</code><br>其中参数 globals 为字典形式，locals 为任何映射对象，他们分别表示全局和局部命名空间。<br>如果传入 globals 参数的字典中缺少 <code>__builtins__</code> 的时候，当前的全局命名空间将作为 globals 参数输入并且在表达式计算之前被解析。<br>locals 参数默认与 globals 相同，如果两者都省略的话，表达式将在 eval() 调用的环境中执行。</p>
+<h2 id="建议-12：不推荐使用-type-来进行类型检查"><a href="#建议-12：不推荐使用-type-来进行类型检查" class="headerlink" title="建议 12：不推荐使用 type 来进行类型检查"></a>建议 12：不推荐使用 type 来进行类型检查</h2><p>基于内建类型扩展的用户自定义类型，type函数并不能准确返回结果。<br>任意泪的实例的 <code>type()</code> 返回结果都是 <code>&lt;type &#39;instance&#39;&gt;</code>。<br>我们可以使用 isinstance() 函数来检测类型。</p>
+<h2 id="建议-13：尽量转换为浮点类型后再做除法"><a href="#建议-13：尽量转换为浮点类型后再做除法" class="headerlink" title="建议 13：尽量转换为浮点类型后再做除法"></a>建议 13：尽量转换为浮点类型后再做除法</h2><h2 id="建议-14：警惕-eval-的安全漏洞"><a href="#建议-14：警惕-eval-的安全漏洞" class="headerlink" title="建议 14：警惕 eval() 的安全漏洞"></a>建议 14：警惕 eval() 的安全漏洞</h2><p>Python 中 eval() 函数将字符串 str 当初有效的表达式来求值并返回计算结果。其函数声明如下：<br><code>eval(expression[, globals[, locals]])</code><br>其中参数 globals 为字典形式，locals 为任何映射对象，他们分别表示全局和局部命名空间。<br>如果传入 globals 参数的字典中缺少 <code>__builtins__</code> 的时候，当前的全局命名空间将作为 globals 参数输入并且在表达式计算之前被解析。<br>locals 参数默认与 globals 相同，如果两者都省略的话，表达式将在 eval() 调用的环境中执行。</p>
 <p>如果使用对象不是信任源，应该尽量避免使用 eval，在需要使用 eval 的地方可用安全性更好的 ast.literal_eval 替代。</p>
-</div><div class="story post-story"><h2 id="建议-15：使用-enumerate-获取序列迭代的索引和值"><a href="#建议-15：使用-enumerate-获取序列迭代的索引和值" class="headerlink" title="建议 15：使用 enumerate() 获取序列迭代的索引和值"></a>建议 15：使用 enumerate() 获取序列迭代的索引和值</h2><h2 id="建议-16：分清-x3D-x3D-与-is-的适用场景"><a href="#建议-16：分清-x3D-x3D-与-is-的适用场景" class="headerlink" title="建议 16：分清 &#x3D;&#x3D; 与 is 的适用场景"></a>建议 16：分清 &#x3D;&#x3D; 与 is 的适用场景</h2><table>
+<h2 id="建议-15：使用-enumerate-获取序列迭代的索引和值"><a href="#建议-15：使用-enumerate-获取序列迭代的索引和值" class="headerlink" title="建议 15：使用 enumerate() 获取序列迭代的索引和值"></a>建议 15：使用 enumerate() 获取序列迭代的索引和值</h2><h2 id="建议-16：分清-x3D-x3D-与-is-的适用场景"><a href="#建议-16：分清-x3D-x3D-与-is-的适用场景" class="headerlink" title="建议 16：分清 &#x3D;&#x3D; 与 is 的适用场景"></a>建议 16：分清 &#x3D;&#x3D; 与 is 的适用场景</h2><table>
 <thead>
 <tr>
 <th align="left">操作符</th>
@@ -2872,7 +2863,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </tr>
 </tbody></table>
 <p>is 表示的是对象标识符 (object identity)，而 &#x3D;&#x3D; 表示的意思是相等。<br>is 的作用是用来检查对象的标识符是否一致的，也就是比较两个对象在内存中是否拥有同一块内存空间。<br>&#x3D;&#x3D; 才是用来检验两个对象的值是否相等的，它实际调用内部 <code>__eq__()</code> 方法。</p>
-</div><div class="story post-story"><h2 id="建议-17：考虑兼容性，尽可能使用-Unicode"><a href="#建议-17：考虑兼容性，尽可能使用-Unicode" class="headerlink" title="建议 17：考虑兼容性，尽可能使用 Unicode"></a>建议 17：考虑兼容性，尽可能使用 Unicode</h2><h2 id="建议-18：构建合理的包层次来管理-module"><a href="#建议-18：构建合理的包层次来管理-module" class="headerlink" title="建议 18：构建合理的包层次来管理 module"></a>建议 18：构建合理的包层次来管理 module</h2><p>什么是包？简单说包即是目录，但是与目录不同，它除了包含常规的 Python 文件以外，还包含一个 <code>__init__.py</code> 文件，同时它允许嵌套。<br>包有以下几种导入方法：</p>
+<h2 id="建议-17：考虑兼容性，尽可能使用-Unicode"><a href="#建议-17：考虑兼容性，尽可能使用-Unicode" class="headerlink" title="建议 17：考虑兼容性，尽可能使用 Unicode"></a>建议 17：考虑兼容性，尽可能使用 Unicode</h2><h2 id="建议-18：构建合理的包层次来管理-module"><a href="#建议-18：构建合理的包层次来管理-module" class="headerlink" title="建议 18：构建合理的包层次来管理 module"></a>建议 18：构建合理的包层次来管理 module</h2><p>什么是包？简单说包即是目录，但是与目录不同，它除了包含常规的 Python 文件以外，还包含一个 <code>__init__.py</code> 文件，同时它允许嵌套。<br>包有以下几种导入方法：</p>
 <ol>
 <li>直接导入一个包<br><code>import Package</code></li>
 <li>导入子模块或子包，包嵌套的情况下可以进行嵌套导入<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Package <span class="keyword">import</span> Module1</span><br><span class="line"><span class="keyword">import</span> Package.Module1</span><br></pre></td></tr></table></figure></li>
@@ -2882,7 +2873,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>合理组织代码，便于维护和使用</li>
 <li>能够有效的避免命名空间冲突</li>
 </ul>
-</div><div class="story post-story"><h2 id="建议-19：有节制的使用-from-import-语句"><a href="#建议-19：有节制的使用-from-import-语句" class="headerlink" title="建议 19：有节制的使用 from...import 语句"></a>建议 19：有节制的使用 from...import 语句</h2><p>在使用 import 的时候注意以下几点：</p>
+<h2 id="建议-19：有节制的使用-from-import-语句"><a href="#建议-19：有节制的使用-from-import-语句" class="headerlink" title="建议 19：有节制的使用 from...import 语句"></a>建议 19：有节制的使用 from...import 语句</h2><p>在使用 import 的时候注意以下几点：</p>
 <ul>
 <li>一般情况下尽量优先使用 import a 形式</li>
 <li>有节制地使用 from a import B 形式，可以直接访问 B</li>
@@ -2900,8 +2891,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>命名空间的冲突</li>
 <li>循环嵌套导入的问题</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-20：优先使用-absolute-import-来导入模块"><a href="#建议-20：优先使用-absolute-import-来导入模块" class="headerlink" title="建议 20：优先使用 absolute import 来导入模块"></a>建议 20：优先使用 absolute import 来导入模块</h2><h2 id="建议-21：i-x3D-1-不等于-i"><a href="#建议-21：i-x3D-1-不等于-i" class="headerlink" title="建议 21：i+&#x3D;1 不等于 ++i"></a>建议 21：i+&#x3D;1 不等于 ++i</h2><p>Python 中是不支持概念中 ++i 操作的。<br>但是如果你这么写，会被 Python 解释成 +(+i)，其中 + 表示正号</p>
-</div><div class="story post-story"><h2 id="建议-22：使用-with-自动关闭资源"><a href="#建议-22：使用-with-自动关闭资源" class="headerlink" title="建议 22：使用 with 自动关闭资源"></a>建议 22：使用 with 自动关闭资源</h2><p>with 语句可以在代码块执行完毕后还原进入该代码块时的现场。包含有 with 语句的代码块的执行过程如下：</p>
+<h2 id="建议-20：优先使用-absolute-import-来导入模块"><a href="#建议-20：优先使用-absolute-import-来导入模块" class="headerlink" title="建议 20：优先使用 absolute import 来导入模块"></a>建议 20：优先使用 absolute import 来导入模块</h2><h2 id="建议-21：i-x3D-1-不等于-i"><a href="#建议-21：i-x3D-1-不等于-i" class="headerlink" title="建议 21：i+&#x3D;1 不等于 ++i"></a>建议 21：i+&#x3D;1 不等于 ++i</h2><p>Python 中是不支持概念中 ++i 操作的。<br>但是如果你这么写，会被 Python 解释成 +(+i)，其中 + 表示正号</p>
+<h2 id="建议-22：使用-with-自动关闭资源"><a href="#建议-22：使用-with-自动关闭资源" class="headerlink" title="建议 22：使用 with 自动关闭资源"></a>建议 22：使用 with 自动关闭资源</h2><p>with 语句可以在代码块执行完毕后还原进入该代码块时的现场。包含有 with 语句的代码块的执行过程如下：</p>
 <ol>
 <li>计算表达式的值，返回一个上下文管理器对象。</li>
 <li>加载上下文管理器对象的 <code>__exit__()</code> 方法以备后用</li>
@@ -2911,14 +2902,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>如果步骤5中代码正常结束，调用上下文管理器的 <code>__exit__()</code> 方法，其返回值直接忽略。</li>
 <li>如果步骤5中代码执行过程中发生异常，调用上下文管理器的 <code>__exit__()</code> 方法，并将异常类型、值及 traceback 信息作为参数传递给 <code>__exit__()</code> 方法。<br>如果 <code>__exit__()</code> 返回值为 False，则异常会重新抛出；如果其返回值为 True，异常被挂起，程序继续执行。</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-23：使用-else-子句简化循环（异常处理）"><a href="#建议-23：使用-else-子句简化循环（异常处理）" class="headerlink" title="建议 23：使用 else 子句简化循环（异常处理）"></a>建议 23：使用 else 子句简化循环（异常处理）</h2><h2 id="建议-24：遵循异常处理的几点基本原则"><a href="#建议-24：遵循异常处理的几点基本原则" class="headerlink" title="建议 24：遵循异常处理的几点基本原则"></a>建议 24：遵循异常处理的几点基本原则</h2><ol>
+<h2 id="建议-23：使用-else-子句简化循环（异常处理）"><a href="#建议-23：使用-else-子句简化循环（异常处理）" class="headerlink" title="建议 23：使用 else 子句简化循环（异常处理）"></a>建议 23：使用 else 子句简化循环（异常处理）</h2><h2 id="建议-24：遵循异常处理的几点基本原则"><a href="#建议-24：遵循异常处理的几点基本原则" class="headerlink" title="建议 24：遵循异常处理的几点基本原则"></a>建议 24：遵循异常处理的几点基本原则</h2><ol>
 <li>注意异常的粒度，不推荐在 try 中放入过多的代码。</li>
 <li>谨慎使用单独的 except 语句处理所有异常，最好能定位具体的异常。</li>
 <li>注意异常捕获的顺序，在合适的层次处理异常。推荐的方法是将继承结构中子类异常在前面的 except 语句中抛出，而父类异常在后面的 except 语句中抛出。</li>
 <li>使用更为友好的异常信息，遵循异常参数的规范。</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-25：避免-finally-中可能发生的陷阱"><a href="#建议-25：避免-finally-中可能发生的陷阱" class="headerlink" title="建议 25：避免 finally 中可能发生的陷阱"></a>建议 25：避免 finally 中可能发生的陷阱</h2><p>在实际应用程序开发过程中，并不推荐在 finally 中使用 return 语句或 break 进行返回，这种处理方式不仅会带来误解而且可能会引起非常严重的错误。</p>
-</div><div class="story post-story"><h2 id="建议-26：深入理解-None，正确判断对象是否为空"><a href="#建议-26：深入理解-None，正确判断对象是否为空" class="headerlink" title="建议 26：深入理解 None，正确判断对象是否为空"></a>建议 26：深入理解 None，正确判断对象是否为空</h2><p>Python 中以下数据会当作空来处理：</p>
+<h2 id="建议-25：避免-finally-中可能发生的陷阱"><a href="#建议-25：避免-finally-中可能发生的陷阱" class="headerlink" title="建议 25：避免 finally 中可能发生的陷阱"></a>建议 25：避免 finally 中可能发生的陷阱</h2><p>在实际应用程序开发过程中，并不推荐在 finally 中使用 return 语句或 break 进行返回，这种处理方式不仅会带来误解而且可能会引起非常严重的错误。</p>
+<h2 id="建议-26：深入理解-None，正确判断对象是否为空"><a href="#建议-26：深入理解-None，正确判断对象是否为空" class="headerlink" title="建议 26：深入理解 None，正确判断对象是否为空"></a>建议 26：深入理解 None，正确判断对象是否为空</h2><p>Python 中以下数据会当作空来处理：</p>
 <ul>
 <li>常量 None</li>
 <li>常量 Flase</li>
@@ -2934,8 +2925,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p><strong>正确的比较</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test_list = []</span><br><span class="line"><span class="keyword">if</span> test_list:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;list is:&#x27;</span>, test_list)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;list is empty&#x27;</span>) </span><br></pre></td></tr></table></figure>
 
-</div><div class="story post-story"><h2 id="建议-27：连接字符串应优先使用-join-而不是"><a href="#建议-27：连接字符串应优先使用-join-而不是" class="headerlink" title="建议 27：连接字符串应优先使用 join 而不是 +"></a>建议 27：连接字符串应优先使用 join 而不是 +</h2><p>jion 的效率要高于 + 操作符<br>jion 的时间复杂度为O(n), + 的时间复杂度为 O(n^2)</p>
-</div><div class="story post-story"><h2 id="建议-28：格式化字符串时尽量使用-format-方式而不是"><a href="#建议-28：格式化字符串时尽量使用-format-方式而不是" class="headerlink" title="建议 28：格式化字符串时尽量使用 .format 方式而不是 %"></a>建议 28：格式化字符串时尽量使用 .format 方式而不是 %</h2><p>% 操作符格式化字符串时有如下几种用法：</p>
+<h2 id="建议-27：连接字符串应优先使用-join-而不是"><a href="#建议-27：连接字符串应优先使用-join-而不是" class="headerlink" title="建议 27：连接字符串应优先使用 join 而不是 +"></a>建议 27：连接字符串应优先使用 join 而不是 +</h2><p>jion 的效率要高于 + 操作符<br>jion 的时间复杂度为O(n), + 的时间复杂度为 O(n^2)</p>
+<h2 id="建议-28：格式化字符串时尽量使用-format-方式而不是"><a href="#建议-28：格式化字符串时尽量使用-format-方式而不是" class="headerlink" title="建议 28：格式化字符串时尽量使用 .format 方式而不是 %"></a>建议 28：格式化字符串时尽量使用 .format 方式而不是 %</h2><p>% 操作符格式化字符串时有如下几种用法：</p>
 <ol>
 <li>直接格式化字符或者数值<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;your score is %06.1f&#x27;</span> % <span class="number">9.5</span>)</span><br></pre></td></tr></table></figure></li>
 <li>以元组的形式格式化<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;the %s of a circle with radius %f is %0.3f&#x27;</span> %(<span class="string">&#x27;circumference&#x27;</span>, <span class="number">3</span>, math.pi*radius*<span class="number">2</span>))</span><br></pre></td></tr></table></figure></li>
@@ -3000,7 +2991,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>% 最终会被 .format 方式所替代</li>
 <li>% 方法在某些情况下使用时需要特别小心</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-29：区别对待可变对象和不可变对象"><a href="#建议-29：区别对待可变对象和不可变对象" class="headerlink" title="建议 29：区别对待可变对象和不可变对象"></a>建议 29：区别对待可变对象和不可变对象</h2><p>数字、字符串、元组属于不可变对象<br>字典、列表、字节数组属于可变对象</p>
+<h2 id="建议-29：区别对待可变对象和不可变对象"><a href="#建议-29：区别对待可变对象和不可变对象" class="headerlink" title="建议 29：区别对待可变对象和不可变对象"></a>建议 29：区别对待可变对象和不可变对象</h2><p>数字、字符串、元组属于不可变对象<br>字典、列表、字节数组属于可变对象</p>
 <p>看一个经典例子：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, coures=[]</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.course = coures</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add_course</span>(<span class="params">self, course_name</span>):</span><br><span class="line">        self.course.append(course_name)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">print_course</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> self.course:</span><br><span class="line">            <span class="built_in">print</span>(item)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    stu_a = Student(<span class="string">&#x27;Wang yi&#x27;</span>)</span><br><span class="line">    stu_a.add_course(<span class="string">&#x27;English&#x27;</span>)</span><br><span class="line">    stu_a.add_course(<span class="string">&#x27;Math&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(stu_a.name + <span class="string">&quot;&#x27;s course:&quot;</span>)</span><br><span class="line">    stu_a.print_course()</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;----------------------------&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    stu_b = Student(<span class="string">&#x27;Li san&#x27;</span>)</span><br><span class="line">    stu_b.add_course(<span class="string">&#x27;Chinese&#x27;</span>)</span><br><span class="line">    stu_b.add_course(<span class="string">&#x27;Physics&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(stu_b.name + <span class="string">&quot;&#x27;s course:&quot;</span>)</span><br><span class="line">    stu_b.print_course()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 <p>结果</p>
@@ -3016,7 +3007,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>对于不可变对象，当我们对其进行相关操作的时候，Python 实际上仍然保持原来的值，并重新创建一个新的对象。<br>比如字符串操作</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 = <span class="string">&#x27;123&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2 = s1</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(s2)</span><br><span class="line"><span class="number">2279910241368</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(s1)</span><br><span class="line"><span class="number">2279910241368</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(s1[:<span class="number">1</span>])</span><br><span class="line"><span class="number">2279905395408</span></span><br></pre></td></tr></table></figure>
 
-</div><div class="story post-story"><h2 id="建议-30：-、-和-：一致的容器初始化形式"><a href="#建议-30：-、-和-：一致的容器初始化形式" class="headerlink" title="建议 30：[]、() 和 {}：一致的容器初始化形式"></a>建议 30：[]、() 和 {}：一致的容器初始化形式</h2><p>建议使用列表解析来初始化，即列表推导式（或元组和字典）<br>列表推导式的语法为：<code>[expr for iter_item in iterable if cond_expr]</code><br>元组推导式的语法为：<code>(expr for iter_item in iterable if cond_expr)</code><br>集合推导式的语法为：<code>&#123;expr for iter_item in iterable if cond_expr&#125;</code><br>字典推导式的语法为：<code>&#123;exprk:exprv for iter_item in iterable if cond_expr&#125;</code></p>
+<h2 id="建议-30：-、-和-：一致的容器初始化形式"><a href="#建议-30：-、-和-：一致的容器初始化形式" class="headerlink" title="建议 30：[]、() 和 {}：一致的容器初始化形式"></a>建议 30：[]、() 和 {}：一致的容器初始化形式</h2><p>建议使用列表解析来初始化，即列表推导式（或元组和字典）<br>列表推导式的语法为：<code>[expr for iter_item in iterable if cond_expr]</code><br>元组推导式的语法为：<code>(expr for iter_item in iterable if cond_expr)</code><br>集合推导式的语法为：<code>&#123;expr for iter_item in iterable if cond_expr&#125;</code><br>字典推导式的语法为：<code>&#123;exprk:exprv for iter_item in iterable if cond_expr&#125;</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>[v**<span class="number">2</span> <span class="keyword">if</span> v%<span class="number">2</span> == <span class="number">0</span> <span class="keyword">else</span> v+<span class="number">1</span> <span class="keyword">for</span> v <span class="keyword">in</span> [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,-<span class="number">1</span>] <span class="keyword">if</span> v&gt;<span class="number">0</span>]</span><br><span class="line">[<span class="number">4</span>, <span class="number">4</span>, <span class="number">16</span>]</span><br></pre></td></tr></table></figure>
 
 <p>列表推导式非常灵活：</p>
@@ -3031,11 +3022,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>使用列表推导式更为直观清晰，代码更为简洁</li>
 <li>列表推导式的效率更高</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-31：记住函数传参既不是传值也不是传引用"><a href="#建议-31：记住函数传参既不是传值也不是传引用" class="headerlink" title="建议 31：记住函数传参既不是传值也不是传引用"></a>建议 31：记住函数传参既不是传值也不是传引用</h2><p>先看两张图</p>
+<h2 id="建议-31：记住函数传参既不是传值也不是传引用"><a href="#建议-31：记住函数传参既不是传值也不是传引用" class="headerlink" title="建议 31：记住函数传参既不是传值也不是传引用"></a>建议 31：记住函数传参既不是传值也不是传引用</h2><p>先看两张图</p>
 <p><img src="https://raw.githubusercontent.com/MiroKaku/MyBlog.PictureHost/main/img/2022-07-08/Writing-Solid-Python-Code-Notes/python-31.1-55c74.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/MiroKaku/MyBlog.PictureHost/main/img/2022-07-08/Writing-Solid-Python-Code-Notes/python-31.1-55c74.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><br><img src="https://raw.githubusercontent.com/MiroKaku/MyBlog.PictureHost/main/img/2022-07-08/Writing-Solid-Python-Code-Notes/python-31.2-7876c.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/MiroKaku/MyBlog.PictureHost/main/img/2022-07-08/Writing-Solid-Python-Code-Notes/python-31.2-7876c.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
 <p>对于在Python函数参数是传值还是传引用这个问题：<br>正确叫法应该是传对象或者说传对象的引用。函数参数在传递的过程中将整个对象传入，<br>对可变对象的修改在函数外部以及内部都可见，调用者和被调用者之间共享这个对象，<br>而对于不可变对象， 由于并不能真正被修改，因此修改往往是通过生成一个新对象然后赋值来实现的</p>
-</div><div class="story post-story"><h2 id="建议-32：-警惕默认参数潜在的问题"><a href="#建议-32：-警惕默认参数潜在的问题" class="headerlink" title="建议 32： 警惕默认参数潜在的问题"></a>建议 32： 警惕默认参数潜在的问题</h2><p>这个问题同 <a href="#%E5%BB%BA%E8%AE%AE-29%EF%BC%9A%E5%8C%BA%E5%88%AB%E5%AF%B9%E5%BE%85%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1">建议 29：区别对待可变对象和不可变对象</a> 的例子</p>
-</div><div class="story post-story"><h2 id="建议-33：慎用变长参数"><a href="#建议-33：慎用变长参数" class="headerlink" title="建议 33：慎用变长参数"></a>建议 33：慎用变长参数</h2><p>Python 支持可变长度的参数列表，可以通过在函数定义的时候使用 *args 和 **kwargs 这两个特殊语法来实现。</p>
+<h2 id="建议-32：-警惕默认参数潜在的问题"><a href="#建议-32：-警惕默认参数潜在的问题" class="headerlink" title="建议 32： 警惕默认参数潜在的问题"></a>建议 32： 警惕默认参数潜在的问题</h2><p>这个问题同 <a href="#%E5%BB%BA%E8%AE%AE-29%EF%BC%9A%E5%8C%BA%E5%88%AB%E5%AF%B9%E5%BE%85%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1">建议 29：区别对待可变对象和不可变对象</a> 的例子</p>
+<h2 id="建议-33：慎用变长参数"><a href="#建议-33：慎用变长参数" class="headerlink" title="建议 33：慎用变长参数"></a>建议 33：慎用变长参数</h2><p>Python 支持可变长度的参数列表，可以通过在函数定义的时候使用 *args 和 **kwargs 这两个特殊语法来实现。</p>
 <ol>
 <li>使用 *args 来实现可变参数列表： *args 用于接收一个包装为元组形式的参数列表来传递非关键字参数，参数个数可以任意。</li>
 <li>使用 **kwargs 接受字典形式的关键字参数列表，其中字典的键值对分别表示不可变参数的参数名和值</li>
@@ -3051,7 +3042,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>如果参数的数目不确定，可以考虑使用变长参数</li>
 <li>用来实现函数的多态或者在继承情况下子类需要调用父类的某些方法的时候</li>
 </ul>
-</div><div class="story post-story"><h2 id="建议-34：深入理解-str-和-repr-的区别"><a href="#建议-34：深入理解-str-和-repr-的区别" class="headerlink" title="建议 34：深入理解 str() 和 repr() 的区别"></a>建议 34：深入理解 str() 和 repr() 的区别</h2><p>函数 str() 和 repr() 都可以将 Python 中的对象转换为字符串，他们的使用及输出都非常相似</p>
+<h2 id="建议-34：深入理解-str-和-repr-的区别"><a href="#建议-34：深入理解-str-和-repr-的区别" class="headerlink" title="建议 34：深入理解 str() 和 repr() 的区别"></a>建议 34：深入理解 str() 和 repr() 的区别</h2><p>函数 str() 和 repr() 都可以将 Python 中的对象转换为字符串，他们的使用及输出都非常相似</p>
 <p><img src="https://raw.githubusercontent.com/MiroKaku/MyBlog.PictureHost/main/img/2022-07-08/Writing-Solid-Python-Code-Notes/python-34.1-c7dbb.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/MiroKaku/MyBlog.PictureHost/main/img/2022-07-08/Writing-Solid-Python-Code-Notes/python-34.1-c7dbb.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><br><img src="https://raw.githubusercontent.com/MiroKaku/MyBlog.PictureHost/main/img/2022-07-08/Writing-Solid-Python-Code-Notes/python-34.2-e700e.png" class="lazyload" data-srcset="https://raw.githubusercontent.com/MiroKaku/MyBlog.PictureHost/main/img/2022-07-08/Writing-Solid-Python-Code-Notes/python-34.2-e700e.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
 <p>区别主要有以下几点：</p>
 <ol>
@@ -3060,9 +3051,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>repr() 的返回值一般可以用 eval() 函数来还原对象，通常来说有这个等式：<code>obj == eval(repr(obj))</code></li>
 <li>这两个方法分别调用内建的 <code>__str__()</code> 和 <code>__repr__()</code> 方法，一般来说在类中都应该定义 <code>__repr__()</code> 方法，而 <code>__str__()</code> 方法则为可选，<br>当可读性比准确性更重要的时候应该考虑定义 <code>__str__()</code> 方法。如果类中没有定义 <code>__str__()</code> 方法，则默认会使用 <code>__repr__()</code> 方法的结果来返回对象的字符串形式。<br>用户实现 <code>__repr__()</code> 方法的时候最好保证其返回值可以用 eval() 方法使对象重新还原</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-35：分清-staticmenthod-和-classmethod-的适用场景"><a href="#建议-35：分清-staticmenthod-和-classmethod-的适用场景" class="headerlink" title="建议 35：分清 staticmenthod 和 classmethod 的适用场景"></a>建议 35：分清 staticmenthod 和 classmethod 的适用场景</h2><p>静态方法没有常规方法的特殊行为，如绑定、非绑定、隐式参数等规则<br>类方法的调用使用类本身作为其隐含参数，但调用本身并不需要显示提供该参数</p>
+<h2 id="建议-35：分清-staticmenthod-和-classmethod-的适用场景"><a href="#建议-35：分清-staticmenthod-和-classmethod-的适用场景" class="headerlink" title="建议 35：分清 staticmenthod 和 classmethod 的适用场景"></a>建议 35：分清 staticmenthod 和 classmethod 的适用场景</h2><p>静态方法没有常规方法的特殊行为，如绑定、非绑定、隐式参数等规则<br>类方法的调用使用类本身作为其隐含参数，但调用本身并不需要显示提供该参数</p>
 <p>类方法能够根据不同的类型返回对应的类的实例<br>既不跟特定的实例相关，也不跟特定的类相关的时候，用静态方法更合适</p>
-</div><div class="story post-story"><h2 id="建议-36：掌握字符串的基本用法"><a href="#建议-36：掌握字符串的基本用法" class="headerlink" title="建议 36：掌握字符串的基本用法"></a>建议 36：掌握字符串的基本用法</h2><p>小技巧<br>Python 遇到未闭合的小括号时会自动将多行代码拼接为一行和把相邻的两个字符串字面量拼接到一起。</p>
+<h2 id="建议-36：掌握字符串的基本用法"><a href="#建议-36：掌握字符串的基本用法" class="headerlink" title="建议 36：掌握字符串的基本用法"></a>建议 36：掌握字符串的基本用法</h2><p>小技巧<br>Python 遇到未闭合的小括号时会自动将多行代码拼接为一行和把相邻的两个字符串字面量拼接到一起。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = (<span class="string">&#x27;SELECT * &#x27;</span></span><br><span class="line"><span class="meta">... </span>     <span class="string">&#x27;FROM atable &#x27;</span></span><br><span class="line"><span class="meta">... </span>     <span class="string">&#x27;WHERE afield=&quot;value&quot;&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(s)</span><br><span class="line">SELECT * FROM atable WHERE afield=<span class="string">&quot;value&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>性质判定</p>
@@ -3294,7 +3285,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <td align="left">以 encoding 指定的编码格式解码 string，如果出错默认报一个 ValueError 的 异 常 ， 除 非 errors 指 定 的 是 &#39;ignore&#39; 或 者&#39;replace&#39;</td>
 </tr>
 </tbody></table>
-</div><div class="story post-story"><h2 id="建议-37：按需选择-sort-或者-sorted"><a href="#建议-37：按需选择-sort-或者-sorted" class="headerlink" title="建议 37：按需选择 sort() 或者 sorted()"></a>建议 37：按需选择 sort() 或者 sorted()</h2><p><code>sorted(iterable[, cmp[, key[, reverse]]])</code><br><code>s.sort([cmp[, key[, reverse]]])</code></p>
+<h2 id="建议-37：按需选择-sort-或者-sorted"><a href="#建议-37：按需选择-sort-或者-sorted" class="headerlink" title="建议 37：按需选择 sort() 或者 sorted()"></a>建议 37：按需选择 sort() 或者 sorted()</h2><p><code>sorted(iterable[, cmp[, key[, reverse]]])</code><br><code>s.sort([cmp[, key[, reverse]]])</code></p>
 <ul>
 <li>cmp 为用户定义的任何比较函数，函数的参数为两个可比较的元素（来自iterable或者list），函数根据第一个参数与第二个参数的关系依次返回 -1、0、+1（第一个参数小于第二个参数则返回负数）。该参数默认值为None。</li>
 <li>key 是带一个参数的函数，用来为每个元素提取比较值，默认为None（即直接比较每个元素）</li>
@@ -3313,14 +3304,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>字典中混合 list 排序<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mydict = &#123;<span class="string">&#x27;Li&#x27;</span>: [<span class="string">&#x27;M&#x27;</span>, <span class="number">7</span>],</span><br><span class="line">          <span class="string">&#x27;Zhang&#x27;</span>: [<span class="string">&#x27;E&#x27;</span>, <span class="number">2</span>],</span><br><span class="line">          <span class="string">&#x27;Wang&#x27;</span>: [<span class="string">&#x27;p&#x27;</span>, <span class="number">3</span>],</span><br><span class="line">          <span class="string">&#x27;Du&#x27;</span>: [<span class="string">&#x27;c&#x27;</span>, <span class="number">2</span>],</span><br><span class="line">          <span class="string">&#x27;Ma&#x27;</span>: [<span class="string">&#x27;c&#x27;</span>, <span class="number">9</span>],</span><br><span class="line">          <span class="string">&#x27;Zhe&#x27;</span>: [<span class="string">&#x27;H&#x27;</span>, <span class="number">7</span>]&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sorted</span>(mydict.items(), key=<span class="keyword">lambda</span> item: itemgetter(<span class="number">1</span>)(itemgetter(<span class="number">1</span>)(item))))</span><br><span class="line"></span><br><span class="line">[(<span class="string">&#x27;Zhang&#x27;</span>, [<span class="string">&#x27;E&#x27;</span>, <span class="number">2</span>]), (<span class="string">&#x27;Du&#x27;</span>, [<span class="string">&#x27;c&#x27;</span>, <span class="number">2</span>]), (<span class="string">&#x27;Wang&#x27;</span>, [<span class="string">&#x27;p&#x27;</span>, <span class="number">3</span>]), (<span class="string">&#x27;Li&#x27;</span>, [<span class="string">&#x27;M&#x27;</span>, <span class="number">7</span>]), (<span class="string">&#x27;Zhe&#x27;</span>, [<span class="string">&#x27;H&#x27;</span>, <span class="number">7</span>]), (<span class="string">&#x27;Ma&#x27;</span>, [<span class="string">&#x27;c&#x27;</span>, <span class="number">9</span>])]</span><br></pre></td></tr></table></figure></li>
 <li>list 中混合字典排序<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gameresult = [&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;wins&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;losses&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;rating&#x27;</span>: <span class="number">75.00</span>&#125;,</span><br><span class="line">              &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;David&#x27;</span>, <span class="string">&#x27;wins&#x27;</span>:<span class="number">3</span>, <span class="string">&#x27;losses&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;rating&#x27;</span>: <span class="number">57.00</span>&#125;,</span><br><span class="line">              &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Carol&#x27;</span>, <span class="string">&#x27;wins&#x27;</span>:<span class="number">4</span>, <span class="string">&#x27;losses&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;rating&#x27;</span>: <span class="number">57.00</span>&#125;]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sorted</span>(gameresult, key=itemgetter(<span class="string">&#x27;rating&#x27;</span>, <span class="string">&#x27;name&#x27;</span>)))</span><br><span class="line"></span><br><span class="line">[&#123;<span class="string">&#x27;wins&#x27;</span>: <span class="number">4</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Carol&#x27;</span>, <span class="string">&#x27;losses&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;rating&#x27;</span>: <span class="number">57.0</span>&#125;, &#123;<span class="string">&#x27;wins&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;David&#x27;</span>, <span class="string">&#x27;losses&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;rating&#x27;</span>: <span class="number">57.0</span>&#125;, &#123;<span class="string">&#x27;wins&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;losses&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;rating&#x27;</span>: <span class="number">75.0</span>&#125;]</span><br></pre></td></tr></table></figure></li>
 </ul>
-</div><div class="story post-story"><h2 id="建议-38：-使用-copy-模块进行深拷贝对象"><a href="#建议-38：-使用-copy-模块进行深拷贝对象" class="headerlink" title="建议 38： 使用 copy 模块进行深拷贝对象"></a>建议 38： 使用 copy 模块进行深拷贝对象</h2><p>概念：</p>
+<h2 id="建议-38：-使用-copy-模块进行深拷贝对象"><a href="#建议-38：-使用-copy-模块进行深拷贝对象" class="headerlink" title="建议 38： 使用 copy 模块进行深拷贝对象"></a>建议 38： 使用 copy 模块进行深拷贝对象</h2><p>概念：</p>
 <ul>
 <li>浅拷贝（shallow copy）：构造一个新的复合对象并将从原对象中发现的引用插入该对象中。浅拷贝的实现方式与多种，如工厂函数、切片操作、copy模块中的copy操作。</li>
 <li>深拷贝（deep copy）：也是构造一个新的复合对象，但是遇到引用会继续递归拷贝其所指向的具体内容，也就是说它会针对引用所指向的对象继续执行拷贝，因此产生的对象不受其他引用对象操作的影响。</li>
 </ul>
-</div><div class="story post-story"><h2 id="建议-39：使用-Counter-进行计数统计"><a href="#建议-39：使用-Counter-进行计数统计" class="headerlink" title="建议 39：使用 Counter 进行计数统计"></a>建议 39：使用 Counter 进行计数统计</h2><p>Counter 类是自 Python2.7 起增加的，属于字典的子类，是一个容器对象，主要用来统计散列对象。</p>
-</div><div class="story post-story"><h2 id="建议-40：深入掌握-ConfigParser"><a href="#建议-40：深入掌握-ConfigParser" class="headerlink" title="建议 40：深入掌握 ConfigParser"></a>建议 40：深入掌握 ConfigParser</h2><h2 id="建议-41：使用-argparse-处理命令行参数"><a href="#建议-41：使用-argparse-处理命令行参数" class="headerlink" title="建议 41：使用 argparse 处理命令行参数"></a>建议 41：使用 argparse 处理命令行参数</h2><p>另外，还有更先进好用的 docopt，不过暂时还没加入标准库。详见 <a href="http://docopt.org/" target="_blank" rel="noopener external nofollow noreferrer">docopt</a></p>
-</div><div class="story post-story"><h2 id="建议-42：使用-pandas-处理大型-CSV-文件"><a href="#建议-42：使用-pandas-处理大型-CSV-文件" class="headerlink" title="建议 42：使用 pandas 处理大型 CSV 文件"></a>建议 42：使用 pandas 处理大型 CSV 文件</h2><p>CSV(Comma Separated Values) 作为一种逗号分隔符型值的纯文本格式文件，在实际应用中经常用到，如数据库的导入导出、数据分析中记录的存储等。</p>
+<h2 id="建议-39：使用-Counter-进行计数统计"><a href="#建议-39：使用-Counter-进行计数统计" class="headerlink" title="建议 39：使用 Counter 进行计数统计"></a>建议 39：使用 Counter 进行计数统计</h2><p>Counter 类是自 Python2.7 起增加的，属于字典的子类，是一个容器对象，主要用来统计散列对象。</p>
+<h2 id="建议-40：深入掌握-ConfigParser"><a href="#建议-40：深入掌握-ConfigParser" class="headerlink" title="建议 40：深入掌握 ConfigParser"></a>建议 40：深入掌握 ConfigParser</h2><h2 id="建议-41：使用-argparse-处理命令行参数"><a href="#建议-41：使用-argparse-处理命令行参数" class="headerlink" title="建议 41：使用 argparse 处理命令行参数"></a>建议 41：使用 argparse 处理命令行参数</h2><p>另外，还有更先进好用的 docopt，不过暂时还没加入标准库。详见 <a href="http://docopt.org/" target="_blank" rel="noopener external nofollow noreferrer">docopt</a></p>
+<h2 id="建议-42：使用-pandas-处理大型-CSV-文件"><a href="#建议-42：使用-pandas-处理大型-CSV-文件" class="headerlink" title="建议 42：使用 pandas 处理大型 CSV 文件"></a>建议 42：使用 pandas 处理大型 CSV 文件</h2><p>CSV(Comma Separated Values) 作为一种逗号分隔符型值的纯文本格式文件，在实际应用中经常用到，如数据库的导入导出、数据分析中记录的存储等。</p>
 <p>CSV 处理相关 API：</p>
 <ol>
 <li>&#39;reader(csvfile[, dialect&#x3D;&#39;excel&#39;][, fmtparam])&#39;，主要用于 CSV 文件的读取，返回一个 reader 对象用于在 CSV 文件内容上进行行迭代</li>
@@ -3334,12 +3325,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>Series：它是一种类似数据的带索引的一维数据结构，支持的类型与 NumPy 兼容。</li>
 <li>DataFrame：类似于电子表格，其数据为排好序的数据列的集合，每一列都可以是不同的数据类型，它类似于一个二维数据结构，支持行和列的索引。</li>
 </ul>
-</div><div class="story post-story"><h2 id="建议-43：一般情况使用-ElementTree-解析-XML"><a href="#建议-43：一般情况使用-ElementTree-解析-XML" class="headerlink" title="建议 43：一般情况使用 ElementTree 解析 XML"></a>建议 43：一般情况使用 ElementTree 解析 XML</h2><ul>
+<h2 id="建议-43：一般情况使用-ElementTree-解析-XML"><a href="#建议-43：一般情况使用-ElementTree-解析-XML" class="headerlink" title="建议 43：一般情况使用 ElementTree 解析 XML"></a>建议 43：一般情况使用 ElementTree 解析 XML</h2><ul>
 <li>使用简单</li>
 <li>内存上消耗明显低于 DOM 解析。</li>
 <li>支持 XPath 查询</li>
 </ul>
-</div><div class="story post-story"><h2 id="建议-44：理解模块-pickle-优劣"><a href="#建议-44：理解模块-pickle-优劣" class="headerlink" title="建议 44：理解模块 pickle 优劣"></a>建议 44：理解模块 pickle 优劣</h2><p>pickle 估计是最通用的序列化模块了，它还有个 C 语言的实现 cPickle，相比 pickle 来说具有较好的性能，其速度大概是 pickle 的 1000 倍，除了不能被继承之外，它们两者的使用基本上区别不大</p>
+<h2 id="建议-44：理解模块-pickle-优劣"><a href="#建议-44：理解模块-pickle-优劣" class="headerlink" title="建议 44：理解模块 pickle 优劣"></a>建议 44：理解模块 pickle 优劣</h2><p>pickle 估计是最通用的序列化模块了，它还有个 C 语言的实现 cPickle，相比 pickle 来说具有较好的性能，其速度大概是 pickle 的 1000 倍，除了不能被继承之外，它们两者的使用基本上区别不大</p>
 <p>pickle 中最主要的两个函数对儿为 dump() 和 load()，分别来进行对象的序列化和反序列化：</p>
 <ul>
 <li>pickle.dump(obj, file[, protocol])：序列化数据到一个文件描述符。</li>
@@ -3359,7 +3350,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>pickle 存在安全性问题</li>
 <li>pickle 协议是 Python 特性的，不同语言之间的兼容性难以保证</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-45：序列化的另一个不错的选择——JSON"><a href="#建议-45：序列化的另一个不错的选择——JSON" class="headerlink" title="建议 45：序列化的另一个不错的选择——JSON"></a>建议 45：序列化的另一个不错的选择——JSON</h2><p>相比 pickle，JSON 具有以下优势：</p>
+<h2 id="建议-45：序列化的另一个不错的选择——JSON"><a href="#建议-45：序列化的另一个不错的选择——JSON" class="headerlink" title="建议 45：序列化的另一个不错的选择——JSON"></a>建议 45：序列化的另一个不错的选择——JSON</h2><p>相比 pickle，JSON 具有以下优势：</p>
 <ol>
 <li>使用简单，支持多种数据类型，仅存在以下两大数据结构：</li>
 </ol>
@@ -3372,15 +3363,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>JSON 支持跨平台跨语言</li>
 <li>具有较强的扩展性，JSON 模块还提供了编码（JSONEncoder）和解码类（JSONDecoder），以便用户对其默认不支持的序列化类型进行扩展</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-46：使用-traceback-获取栈信息"><a href="#建议-46：使用-traceback-获取栈信息" class="headerlink" title="建议 46：使用 traceback 获取栈信息"></a>建议 46：使用 traceback 获取栈信息</h2><p>常用方法：</p>
+<h2 id="建议-46：使用-traceback-获取栈信息"><a href="#建议-46：使用-traceback-获取栈信息" class="headerlink" title="建议 46：使用 traceback 获取栈信息"></a>建议 46：使用 traceback 获取栈信息</h2><p>常用方法：</p>
 <ol>
 <li>traceback.print_exception(type, value, traceback[, limit[, file]])，根据 limit 的设置打印栈信息，file 为 None 的情况下定位到 sys.stderr，否则写入到文件；<br>其中 type、value、traceback 这3个参数对应的值可以从 sys.exc_info() 中获取</li>
 <li>traceback.print_exc(limit[, file])，为 print_exception 函数的缩写，不需要传入 type、value、traceback 这三个参数</li>
 <li>traceback.format_exc([limit])，与 print_exc() 类似，区别在于返回形式为字符串</li>
 <li>traceback.extract_stack([file[, limit]])，从当前栈帧中提取 trace 信息。</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-47：使用-logging-记录日志信息"><a href="#建议-47：使用-logging-记录日志信息" class="headerlink" title="建议 47：使用 logging 记录日志信息"></a>建议 47：使用 logging 记录日志信息</h2><p>使用见 <a href="http://hgoldfish.com/blogs/article/7/" target="_blank" rel="noopener external nofollow noreferrer">Python的日志系统</a></p>
-</div><div class="story post-story"><h2 id="建议-48：使用-threading-模块编写多线程程序"><a href="#建议-48：使用-threading-模块编写多线程程序" class="headerlink" title="建议 48：使用 threading 模块编写多线程程序"></a>建议 48：使用 threading 模块编写多线程程序</h2><p>实际应用中推荐使用 threading 模块而不是 thread 模块：</p>
+<h2 id="建议-47：使用-logging-记录日志信息"><a href="#建议-47：使用-logging-记录日志信息" class="headerlink" title="建议 47：使用 logging 记录日志信息"></a>建议 47：使用 logging 记录日志信息</h2><p>使用见 <a href="http://hgoldfish.com/blogs/article/7/" target="_blank" rel="noopener external nofollow noreferrer">Python的日志系统</a></p>
+<h2 id="建议-48：使用-threading-模块编写多线程程序"><a href="#建议-48：使用-threading-模块编写多线程程序" class="headerlink" title="建议 48：使用 threading 模块编写多线程程序"></a>建议 48：使用 threading 模块编写多线程程序</h2><p>实际应用中推荐使用 threading 模块而不是 thread 模块：</p>
 <ol>
 <li>threading 模块对同步原语的支持更为完善和丰富</li>
 <li>threading 模块在主线程和子线程交互上更为友好</li>
@@ -3388,12 +3379,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>python3 中已经不存在 thread 模块</li>
 </ol>
 <p>使用见 <a href="http://hgoldfish.com/blogs/article/80/" target="_blank" rel="noopener external nofollow noreferrer">Python中使用线程的技巧</a></p>
-</div><div class="story post-story"><h2 id="建议-49：使用-Queue-使多线程编程更安全"><a href="#建议-49：使用-Queue-使多线程编程更安全" class="headerlink" title="建议 49：使用 Queue 使多线程编程更安全"></a>建议 49：使用 Queue 使多线程编程更安全</h2><h2 id="建议-50：利用模块实现单例模式"><a href="#建议-50：利用模块实现单例模式" class="headerlink" title="建议 50：利用模块实现单例模式"></a>建议 50：利用模块实现单例模式</h2><h2 id="建议-51：用-mixin-模式让程序更加灵活"><a href="#建议-51：用-mixin-模式让程序更加灵活" class="headerlink" title="建议 51：用 mixin 模式让程序更加灵活"></a>建议 51：用 mixin 模式让程序更加灵活</h2><h2 id="建议-52：用发布订阅模式实现松耦合"><a href="#建议-52：用发布订阅模式实现松耦合" class="headerlink" title="建议 52：用发布订阅模式实现松耦合"></a>建议 52：用发布订阅模式实现松耦合</h2><h2 id="建议-53：用状态模式美化代码"><a href="#建议-53：用状态模式美化代码" class="headerlink" title="建议 53：用状态模式美化代码"></a>建议 53：用状态模式美化代码</h2><h2 id="建议-54：理解-built-in-objects"><a href="#建议-54：理解-built-in-objects" class="headerlink" title="建议 54：理解 built-in objects"></a>建议 54：理解 built-in objects</h2><p>Python 一切皆对象。<br>自 Python2.2 之后，为了弥补内建类型和古典类之间的鸿沟，引入了新式类。<br>新式类中，object 是所有内建类型的积累，用户定义的类可以继承自 object 也可继承自内建类型。</p>
+<h2 id="建议-49：使用-Queue-使多线程编程更安全"><a href="#建议-49：使用-Queue-使多线程编程更安全" class="headerlink" title="建议 49：使用 Queue 使多线程编程更安全"></a>建议 49：使用 Queue 使多线程编程更安全</h2><h2 id="建议-50：利用模块实现单例模式"><a href="#建议-50：利用模块实现单例模式" class="headerlink" title="建议 50：利用模块实现单例模式"></a>建议 50：利用模块实现单例模式</h2><h2 id="建议-51：用-mixin-模式让程序更加灵活"><a href="#建议-51：用-mixin-模式让程序更加灵活" class="headerlink" title="建议 51：用 mixin 模式让程序更加灵活"></a>建议 51：用 mixin 模式让程序更加灵活</h2><h2 id="建议-52：用发布订阅模式实现松耦合"><a href="#建议-52：用发布订阅模式实现松耦合" class="headerlink" title="建议 52：用发布订阅模式实现松耦合"></a>建议 52：用发布订阅模式实现松耦合</h2><h2 id="建议-53：用状态模式美化代码"><a href="#建议-53：用状态模式美化代码" class="headerlink" title="建议 53：用状态模式美化代码"></a>建议 53：用状态模式美化代码</h2><h2 id="建议-54：理解-built-in-objects"><a href="#建议-54：理解-built-in-objects" class="headerlink" title="建议 54：理解 built-in objects"></a>建议 54：理解 built-in objects</h2><p>Python 一切皆对象。<br>自 Python2.2 之后，为了弥补内建类型和古典类之间的鸿沟，引入了新式类。<br>新式类中，object 是所有内建类型的积累，用户定义的类可以继承自 object 也可继承自内建类型。</p>
 <blockquote>
 <p>这里的鸿沟指的是：在 2.2 版本之前，类和类型并不统一，如 a 是古典类 ClassA 的一个实例，那么 <code>a.__class__</code> 返回 <code>&#39;class__main__ClassA&#39;</code>，<code>type(a)</code> 返回 <code>&lt;type&#39;instalce&#39;&gt;</code>。<br>当引入新类后，比如 ClassB 是个新类，b 是 ClassB 的实例，b.<strong>class</strong> 和 type(b) 都是返回 <code>&#39;class__main__.ClassB&#39;</code></p>
 </blockquote>
 <p>新式类相对于古典类来说有很多优势：能够基于内建类型构建新的用户类型，支持 property 和描述符特性等。</p>
-</div><div class="story post-story"><h2 id="建议-55：-init-不是构造方法"><a href="#建议-55：-init-不是构造方法" class="headerlink" title="建议 55：__init__() 不是构造方法"></a>建议 55：<code>__init__()</code> 不是构造方法</h2><p>实际上 <code>__init__()</code> 并不是真正意义上的构造方法，<code>__init__()</code>方法所做的工作是在类的对象创建好之后进行变量的初始化。<code>__new__()</code>方法才会真正创建实例，是类的构方法。</p>
+<h2 id="建议-55：-init-不是构造方法"><a href="#建议-55：-init-不是构造方法" class="headerlink" title="建议 55：__init__() 不是构造方法"></a>建议 55：<code>__init__()</code> 不是构造方法</h2><p>实际上 <code>__init__()</code> 并不是真正意义上的构造方法，<code>__init__()</code>方法所做的工作是在类的对象创建好之后进行变量的初始化。<code>__new__()</code>方法才会真正创建实例，是类的构方法。</p>
 <p>两个方法之间的不同点，总结如下：</p>
 <ul>
 <li><code>object.__new__(cls[, args...])</code>：其中 cls 代表类，args 为参数列表</li>
@@ -3410,7 +3401,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>用来实现工厂模式或者单例模式或者进行元类便哼的时候</li>
 <li>作为用来初始化的 <code>__init__()</code> 方法在多继承的情况下，子类的 <code>__init__()</code> 方法如果不显式调用父类的 <code>__init__()</code> 方法，则父类的 <code>__init__()</code> 方法不会被调用。</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-56：理解名字查找机制"><a href="#建议-56：理解名字查找机制" class="headerlink" title="建议 56：理解名字查找机制"></a>建议 56：理解名字查找机制</h2><p>在 Python 中，所有所谓的变量其实都是名字，这些名字指向一个或者多个 Python 对象。</p>
+<h2 id="建议-56：理解名字查找机制"><a href="#建议-56：理解名字查找机制" class="headerlink" title="建议 56：理解名字查找机制"></a>建议 56：理解名字查找机制</h2><p>在 Python 中，所有所谓的变量其实都是名字，这些名字指向一个或者多个 Python 对象。</p>
 <p>Python 中有 4 中作用域：</p>
 <ul>
 <li><strong>局部作用域</strong>：一般来说函数的每次调用都会创建一个新的本地作用于，拥有新的命名空间。</li>
@@ -3425,12 +3416,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>在外层查找，即在内置模块中查找，也就是在 <code>__builtin__</code> 中查找</li>
 </ol>
 <p>若要修改全局变量，在 Python3 中可以使用 nonlocal 来声明变量</p>
-</div><div class="story post-story"><h2 id="建议-57：为什么需要-self-参数"><a href="#建议-57：为什么需要-self-参数" class="headerlink" title="建议 57：为什么需要 self 参数"></a>建议 57：为什么需要 self 参数</h2><ol>
+<h2 id="建议-57：为什么需要-self-参数"><a href="#建议-57：为什么需要-self-参数" class="headerlink" title="建议 57：为什么需要 self 参数"></a>建议 57：为什么需要 self 参数</h2><ol>
 <li>Python 在当初设计的时候借鉴了其他语言的一些特征，如 Moudla-3 中方法会显示的在参数列表中传入 self。</li>
 <li>Python 语言本身的动态性决定了使用 self 能够带来一定便利。</li>
 <li>在存在同名的局部变量以及实例变量的情况下使用 self 使得实例变量更容易被区分</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-58：理解-MRO-与多继承"><a href="#建议-58：理解-MRO-与多继承" class="headerlink" title="建议 58：理解 MRO 与多继承"></a>建议 58：理解 MRO 与多继承</h2><h2 id="建议-59：理解描述符机制"><a href="#建议-59：理解描述符机制" class="headerlink" title="建议 59：理解描述符机制"></a>建议 59：理解描述符机制</h2><h2 id="建议-60：区别-getattr-和-getattribute-方法"><a href="#建议-60：区别-getattr-和-getattribute-方法" class="headerlink" title="建议 60：区别 __getattr__() 和 __getattribute__() 方法"></a>建议 60：区别 <code>__getattr__()</code> 和 <code>__getattribute__()</code> 方法</h2><p><code>__getattr__()</code> 和 <code>__getattribute__()</code> 都可以用作实例属性的获取和拦截（仅对实例属性）<br><code>__getattr__()</code> 适用于未定义的属性，即该属性在实例中以及对应的类的基类以及祖先类中都不存在<br><code>__getattribute__()</code> 对于所有属性的访问都会调用该方法，仅应用于新式类</p>
+<h2 id="建议-58：理解-MRO-与多继承"><a href="#建议-58：理解-MRO-与多继承" class="headerlink" title="建议 58：理解 MRO 与多继承"></a>建议 58：理解 MRO 与多继承</h2><h2 id="建议-59：理解描述符机制"><a href="#建议-59：理解描述符机制" class="headerlink" title="建议 59：理解描述符机制"></a>建议 59：理解描述符机制</h2><h2 id="建议-60：区别-getattr-和-getattribute-方法"><a href="#建议-60：区别-getattr-和-getattribute-方法" class="headerlink" title="建议 60：区别 __getattr__() 和 __getattribute__() 方法"></a>建议 60：区别 <code>__getattr__()</code> 和 <code>__getattribute__()</code> 方法</h2><p><code>__getattr__()</code> 和 <code>__getattribute__()</code> 都可以用作实例属性的获取和拦截（仅对实例属性）<br><code>__getattr__()</code> 适用于未定义的属性，即该属性在实例中以及对应的类的基类以及祖先类中都不存在<br><code>__getattribute__()</code> 对于所有属性的访问都会调用该方法，仅应用于新式类</p>
 <p>覆盖这些方法时，几点注意事项：</p>
 <ol>
 <li><p>避免无穷递归。例如：</p>
@@ -3447,7 +3438,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <blockquote>
 <p><code>__getattribute__()</code> 总是会被调用，而 <code>__getattr__()</code> 只有在 <code>__getattribute__()</code> 中引发异常的情况下才会被调用。</p>
 </blockquote>
-</div><div class="story post-story"><h2 id="建议-61：使用更为安全的-property"><a href="#建议-61：使用更为安全的-property" class="headerlink" title="建议 61：使用更为安全的 property"></a>建议 61：使用更为安全的 property</h2><p>property 是用来实现属性可管理性的 built-in 数据类型，其实质是一种特殊的数据描述符。<br>它和普通描述符的区别在于：普通描述符提供的是一种较为低级的控制属性访问的机制，而 property 是它的高级应用，它以标准库的形式提供描述符的实现，其签名形式为：<br><code>property(fget=None, fset=None, fdel=None, doc=None) -&gt; property attribute</code></p>
+<h2 id="建议-61：使用更为安全的-property"><a href="#建议-61：使用更为安全的-property" class="headerlink" title="建议 61：使用更为安全的 property"></a>建议 61：使用更为安全的 property</h2><p>property 是用来实现属性可管理性的 built-in 数据类型，其实质是一种特殊的数据描述符。<br>它和普通描述符的区别在于：普通描述符提供的是一种较为低级的控制属性访问的机制，而 property 是它的高级应用，它以标准库的形式提供描述符的实现，其签名形式为：<br><code>property(fget=None, fset=None, fdel=None, doc=None) -&gt; property attribute</code></p>
 <p>property 的优势可以简单概括为以下几点：</p>
 <ol>
 <li>代码更简洁，可读性更强。</li>
@@ -3455,7 +3446,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>代码可维护性更好</li>
 <li>控制属性访问权限，提高数据安全性</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-62：掌握-metaclass"><a href="#建议-62：掌握-metaclass" class="headerlink" title="建议 62：掌握 metaclass"></a>建议 62：掌握 metaclass</h2><p>什么是元类？</p>
+<h2 id="建议-62：掌握-metaclass"><a href="#建议-62：掌握-metaclass" class="headerlink" title="建议 62：掌握 metaclass"></a>建议 62：掌握 metaclass</h2><p>什么是元类？</p>
 <ul>
 <li>元类是关于类的类，是类的模板</li>
 <li>元类是用来控制如何创建类的，正如类是创建对象的模板一样</li>
@@ -3469,7 +3460,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <blockquote>
 <p>元类用来指导类的生成，元方法可以从元类或者类中调用，不能从类的实例中调用，而类方法既可以从类中调用，也可以从类的实例中调用。</p>
 </blockquote>
-</div><div class="story post-story"><h2 id="建议-63：-熟悉-Python-对象协议"><a href="#建议-63：-熟悉-Python-对象协议" class="headerlink" title="建议 63： 熟悉 Python 对象协议"></a>建议 63： 熟悉 Python 对象协议</h2><ol>
+<h2 id="建议-63：-熟悉-Python-对象协议"><a href="#建议-63：-熟悉-Python-对象协议" class="headerlink" title="建议 63： 熟悉 Python 对象协议"></a>建议 63： 熟悉 Python 对象协议</h2><ol>
 <li><p>用以比较大小的协议，这个协议依赖于 <code>__cmp__()</code> 方法，相等返回0，小于返回负值，大于返回正值。<br>还有其他诸如 <code>__eq__()</code>、<code>__ne__()</code>、<code>__lt__()</code>、<code>__gt__()</code> 等方法来实现相等、不等、小于和大于的判定。这也就是 Python 对 &#x3D;&#x3D;、!&#x3D;、&lt; 和 &gt; 等操作符的进行重载的支撑机制</p>
 </li>
 <li><p>数值类型相关的协议</p>
@@ -3513,18 +3504,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><p>上下文管理器协议<br>这个协议通过 <code>__enter__()</code> 和 <code>__exit__()</code> 这两个方法来实现对资源的清理。</p>
 </li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-64：利用操作符重载实现中缀语法"><a href="#建议-64：利用操作符重载实现中缀语法" class="headerlink" title="建议 64：利用操作符重载实现中缀语法"></a>建议 64：利用操作符重载实现中缀语法</h2><p>可以安装 pipe 来实现 <code>pip install pipe</code></p>
-</div><div class="story post-story"><h2 id="建议-65：熟悉-Python-的迭代器协议"><a href="#建议-65：熟悉-Python-的迭代器协议" class="headerlink" title="建议 65：熟悉 Python 的迭代器协议"></a>建议 65：熟悉 Python 的迭代器协议</h2><p>迭代器协议归纳：</p>
+<h2 id="建议-64：利用操作符重载实现中缀语法"><a href="#建议-64：利用操作符重载实现中缀语法" class="headerlink" title="建议 64：利用操作符重载实现中缀语法"></a>建议 64：利用操作符重载实现中缀语法</h2><p>可以安装 pipe 来实现 <code>pip install pipe</code></p>
+<h2 id="建议-65：熟悉-Python-的迭代器协议"><a href="#建议-65：熟悉-Python-的迭代器协议" class="headerlink" title="建议 65：熟悉 Python 的迭代器协议"></a>建议 65：熟悉 Python 的迭代器协议</h2><p>迭代器协议归纳：</p>
 <ol>
 <li>实现 <code>__iter__()</code> 方法，返回一个迭代器</li>
 <li>实现 next() 方法，返回当前的元素，并指向下一个元素的为止，如果当前为止已无元素，则抛出 StopIteration 异常</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-66：熟悉-Python-的生成器"><a href="#建议-66：熟悉-Python-的生成器" class="headerlink" title="建议 66：熟悉 Python 的生成器"></a>建议 66：熟悉 Python 的生成器</h2><p>如果一个函数使用了 yield 语句，那么它就是一个生成器函数。<br>每一个生成器函数调用之后，它的函数体并不执行，而是到第一次调用 next() 的时候才开始执行，执行到 yield 表达式为止。</p>
-</div><div class="story post-story"><h2 id="建议-67：基于生成器的协程及-greenlet"><a href="#建议-67：基于生成器的协程及-greenlet" class="headerlink" title="建议 67：基于生成器的协程及 greenlet"></a>建议 67：基于生成器的协程及 greenlet</h2><h2 id="建议-68：理解-GIL-的局限性"><a href="#建议-68：理解-GIL-的局限性" class="headerlink" title="建议 68：理解 GIL 的局限性"></a>建议 68：理解 GIL 的局限性</h2><p>针对这种，不建议高密集的计算使用多线程，建议堵塞I&#x2F;O的使用..</p>
-</div><div class="story post-story"><h2 id="建议-69：对象的管理与垃圾回收"><a href="#建议-69：对象的管理与垃圾回收" class="headerlink" title="建议 69：对象的管理与垃圾回收"></a>建议 69：对象的管理与垃圾回收</h2><p>Python 使用引用计数器的方法来管理内存中的对象，即针对每一个对象维护一个引用计数值来表示该对象当前有多少个引用。<br>引用计数算法最明显的缺点是无法解决循环引用的问题，即两个对象相互引用。</p>
+<h2 id="建议-66：熟悉-Python-的生成器"><a href="#建议-66：熟悉-Python-的生成器" class="headerlink" title="建议 66：熟悉 Python 的生成器"></a>建议 66：熟悉 Python 的生成器</h2><p>如果一个函数使用了 yield 语句，那么它就是一个生成器函数。<br>每一个生成器函数调用之后，它的函数体并不执行，而是到第一次调用 next() 的时候才开始执行，执行到 yield 表达式为止。</p>
+<h2 id="建议-67：基于生成器的协程及-greenlet"><a href="#建议-67：基于生成器的协程及-greenlet" class="headerlink" title="建议 67：基于生成器的协程及 greenlet"></a>建议 67：基于生成器的协程及 greenlet</h2><h2 id="建议-68：理解-GIL-的局限性"><a href="#建议-68：理解-GIL-的局限性" class="headerlink" title="建议 68：理解 GIL 的局限性"></a>建议 68：理解 GIL 的局限性</h2><p>针对这种，不建议高密集的计算使用多线程，建议堵塞I&#x2F;O的使用..</p>
+<h2 id="建议-69：对象的管理与垃圾回收"><a href="#建议-69：对象的管理与垃圾回收" class="headerlink" title="建议 69：对象的管理与垃圾回收"></a>建议 69：对象的管理与垃圾回收</h2><p>Python 使用引用计数器的方法来管理内存中的对象，即针对每一个对象维护一个引用计数值来表示该对象当前有多少个引用。<br>引用计数算法最明显的缺点是无法解决循环引用的问题，即两个对象相互引用。</p>
 <p>我们可以使用自带的 gc 模块来跟踪对象的 “入引用” 和 “出引用”。</p>
-</div><div class="story post-story"><h2 id="建议-70：从-PyPi-安装包"><a href="#建议-70：从-PyPi-安装包" class="headerlink" title="建议 70：从 PyPi 安装包"></a>建议 70：从 PyPi 安装包</h2><p>PyPi 全称 Python Package Index，直译过来就是 Python包索引，它是Python编程语言的软件仓库。</p>
-</div><div class="story post-story"><h2 id="建议-71：使用-pip-和-yolk-安装、管理包"><a href="#建议-71：使用-pip-和-yolk-安装、管理包" class="headerlink" title="建议 71：使用 pip 和 yolk 安装、管理包"></a>建议 71：使用 pip 和 yolk 安装、管理包</h2><h2 id="建议-72：做-paster-创建包"><a href="#建议-72：做-paster-创建包" class="headerlink" title="建议 72：做 paster 创建包"></a>建议 72：做 paster 创建包</h2><h2 id="建议-73：理解单元测试概念"><a href="#建议-73：理解单元测试概念" class="headerlink" title="建议 73：理解单元测试概念"></a>建议 73：理解单元测试概念</h2><p>单元测试带来以下好处：</p>
+<h2 id="建议-70：从-PyPi-安装包"><a href="#建议-70：从-PyPi-安装包" class="headerlink" title="建议 70：从 PyPi 安装包"></a>建议 70：从 PyPi 安装包</h2><p>PyPi 全称 Python Package Index，直译过来就是 Python包索引，它是Python编程语言的软件仓库。</p>
+<h2 id="建议-71：使用-pip-和-yolk-安装、管理包"><a href="#建议-71：使用-pip-和-yolk-安装、管理包" class="headerlink" title="建议 71：使用 pip 和 yolk 安装、管理包"></a>建议 71：使用 pip 和 yolk 安装、管理包</h2><h2 id="建议-72：做-paster-创建包"><a href="#建议-72：做-paster-创建包" class="headerlink" title="建议 72：做 paster 创建包"></a>建议 72：做 paster 创建包</h2><h2 id="建议-73：理解单元测试概念"><a href="#建议-73：理解单元测试概念" class="headerlink" title="建议 73：理解单元测试概念"></a>建议 73：理解单元测试概念</h2><p>单元测试带来以下好处：</p>
 <ul>
 <li>减少了潜在 bug，提高了代码的质量。</li>
 <li>大大缩减软件修复的成本。</li>
@@ -3559,7 +3550,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>测试用例集，测试用例的集合，使用 TestSuite 类来实现</li>
 <li>测试运行器，控制和驱动整个单元测试过程，一般使用 TestRunner 类作为测试用例的基本执行环境，常用的运行器为 TextTestRunner，它是 TestRunner 的子类，以文字方式运行测试并报告结果。</li>
 </ul>
-</div><div class="story post-story"><h2 id="建议-74：为包编写单元测试-nose"><a href="#建议-74：为包编写单元测试-nose" class="headerlink" title="建议 74：为包编写单元测试 nose"></a>建议 74：为包编写单元测试 nose</h2><h2 id="建议-75：利用测试驱动开发提高代码的可测性"><a href="#建议-75：利用测试驱动开发提高代码的可测性" class="headerlink" title="建议 75：利用测试驱动开发提高代码的可测性"></a>建议 75：利用测试驱动开发提高代码的可测性</h2><p>测试驱动开发流程：</p>
+<h2 id="建议-74：为包编写单元测试-nose"><a href="#建议-74：为包编写单元测试-nose" class="headerlink" title="建议 74：为包编写单元测试 nose"></a>建议 74：为包编写单元测试 nose</h2><h2 id="建议-75：利用测试驱动开发提高代码的可测性"><a href="#建议-75：利用测试驱动开发提高代码的可测性" class="headerlink" title="建议 75：利用测试驱动开发提高代码的可测性"></a>建议 75：利用测试驱动开发提高代码的可测性</h2><p>测试驱动开发流程：</p>
 <ol>
 <li>编写部分测试用例，并运行测试</li>
 <li>如果测试用过，则回到测试用例编写的步骤，继续添加新的测试用例</li>
@@ -3572,15 +3563,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>测试驱动开发本身就是一门学问，不要指望通过一个简单的例子就掌握其精髓。</li>
 <li>代码的不可测性可以从以下几个方面考量：<br>实践 TDD 困难；外部依赖太多；<br>需要写很多模拟代码才能完成测试；<br>职责太多导致功能模糊；<br>内部状态过多且没有办法去操作和维护这些状态；<br>函数没有明显返回或者参数过多；<br>低内聚高耦合等等</li>
 </ul>
-</div><div class="story post-story"><h2 id="建议-76：使用-Pylint-检查代码风格"><a href="#建议-76：使用-Pylint-检查代码风格" class="headerlink" title="建议 76：使用 Pylint 检查代码风格"></a>建议 76：使用 Pylint 检查代码风格</h2><p>我使用 PyChrame 貌似内置..严格遵循 PEP8 标准</p>
-</div><div class="story post-story"><h2 id="建议-77：进行高效的代码审查"><a href="#建议-77：进行高效的代码审查" class="headerlink" title="建议 77：进行高效的代码审查"></a>建议 77：进行高效的代码审查</h2><h2 id="建议-78：将包发布到-PyPI"><a href="#建议-78：将包发布到-PyPI" class="headerlink" title="建议 78：将包发布到 PyPI"></a>建议 78：将包发布到 PyPI</h2><h2 id="建议-79：了解代码优化的基本原则"><a href="#建议-79：了解代码优化的基本原则" class="headerlink" title="建议 79：了解代码优化的基本原则"></a>建议 79：了解代码优化的基本原则</h2><ol>
+<h2 id="建议-76：使用-Pylint-检查代码风格"><a href="#建议-76：使用-Pylint-检查代码风格" class="headerlink" title="建议 76：使用 Pylint 检查代码风格"></a>建议 76：使用 Pylint 检查代码风格</h2><p>我使用 PyChrame 貌似内置..严格遵循 PEP8 标准</p>
+<h2 id="建议-77：进行高效的代码审查"><a href="#建议-77：进行高效的代码审查" class="headerlink" title="建议 77：进行高效的代码审查"></a>建议 77：进行高效的代码审查</h2><h2 id="建议-78：将包发布到-PyPI"><a href="#建议-78：将包发布到-PyPI" class="headerlink" title="建议 78：将包发布到 PyPI"></a>建议 78：将包发布到 PyPI</h2><h2 id="建议-79：了解代码优化的基本原则"><a href="#建议-79：了解代码优化的基本原则" class="headerlink" title="建议 79：了解代码优化的基本原则"></a>建议 79：了解代码优化的基本原则</h2><ol>
 <li>优先保证代码是可工作的</li>
 <li>权衡优化的代价</li>
 <li>定义性能指标，集中力量解决首要问题</li>
 <li>不要忽略可读性</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-80：借助性能优化工具"><a href="#建议-80：借助性能优化工具" class="headerlink" title="建议 80：借助性能优化工具"></a>建议 80：借助性能优化工具</h2><p>例如 Pypy</p>
-</div><div class="story post-story"><h2 id="建议-81：利用-cProfile-定位性能瓶颈"><a href="#建议-81：利用-cProfile-定位性能瓶颈" class="headerlink" title="建议 81：利用 cProfile 定位性能瓶颈"></a>建议 81：利用 cProfile 定位性能瓶颈</h2><p>cProfile 的统计结果及其各项意义</p>
+<h2 id="建议-80：借助性能优化工具"><a href="#建议-80：借助性能优化工具" class="headerlink" title="建议 80：借助性能优化工具"></a>建议 80：借助性能优化工具</h2><p>例如 Pypy</p>
+<h2 id="建议-81：利用-cProfile-定位性能瓶颈"><a href="#建议-81：利用-cProfile-定位性能瓶颈" class="headerlink" title="建议 81：利用 cProfile 定位性能瓶颈"></a>建议 81：利用 cProfile 定位性能瓶颈</h2><p>cProfile 的统计结果及其各项意义</p>
 <table>
 <thead>
 <tr>
@@ -3704,7 +3695,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <td align="left">函数内部运行时间，不计调用子函数的时间</td>
 </tr>
 </tbody></table>
-</div><div class="story post-story"><h2 id="建议-82：使用-memory-profiler-和-objgraph-剖析内存使用"><a href="#建议-82：使用-memory-profiler-和-objgraph-剖析内存使用" class="headerlink" title="建议 82：使用 memory_profiler 和 objgraph 剖析内存使用"></a>建议 82：使用 memory_profiler 和 objgraph 剖析内存使用</h2><h2 id="建议-83：努力降低算法复杂度"><a href="#建议-83：努力降低算法复杂度" class="headerlink" title="建议 83：努力降低算法复杂度"></a>建议 83：努力降低算法复杂度</h2><p>常见数据结构基本操作的时间复杂度</p>
+<h2 id="建议-82：使用-memory-profiler-和-objgraph-剖析内存使用"><a href="#建议-82：使用-memory-profiler-和-objgraph-剖析内存使用" class="headerlink" title="建议 82：使用 memory_profiler 和 objgraph 剖析内存使用"></a>建议 82：使用 memory_profiler 和 objgraph 剖析内存使用</h2><h2 id="建议-83：努力降低算法复杂度"><a href="#建议-83：努力降低算法复杂度" class="headerlink" title="建议 83：努力降低算法复杂度"></a>建议 83：努力降低算法复杂度</h2><p>常见数据结构基本操作的时间复杂度</p>
 <table>
 <thead>
 <tr>
@@ -3726,28 +3717,27 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                 | 切片操作                        | O(_k_)        | O(_k_)
 </code></pre>
 <p>set                 | x in s                         | O(<em>1</em>)        | O(<em>n</em>)<br>                    | 并 s or t                      | O(len(<em>s</em>)+len(<em>t</em>)) |<br>                    | 交 s&amp;t                         | O(min(len(<em>s</em>), len(<em>t</em>))) | O(len(<em>s</em>) * len(<em>t</em>))<br>                    | 差 s-t                         | O(len(<em>s</em>))   |<br>dict                | 获取修改元素的值，删除           | O(<em>1</em>)        | O(<em>n</em>)<br>                    | 迭代操作                        | O(<em>n</em>)        | O(<em>n</em>)<br>collections.deque   | 入列、出列、（包括左边出入列）    | O(<em>1</em>)        | O(<em>n</em>)<br>                    | 扩大队列                        | O(<em>k</em>)        | O(<em>k</em>)<br>                    | 删除元素                        | O(<em>n</em>)        | O(<em>n</em>)</p>
-</div><div class="story post-story"><h2 id="建议-84：掌握循环优化的基本技巧"><a href="#建议-84：掌握循环优化的基本技巧" class="headerlink" title="建议 84：掌握循环优化的基本技巧"></a>建议 84：掌握循环优化的基本技巧</h2><ol>
+<h2 id="建议-84：掌握循环优化的基本技巧"><a href="#建议-84：掌握循环优化的基本技巧" class="headerlink" title="建议 84：掌握循环优化的基本技巧"></a>建议 84：掌握循环优化的基本技巧</h2><ol>
 <li>减少循环内部的计算</li>
 <li>将显式循环改为隐式循环</li>
 <li>在循环中尽量引用局部变量</li>
 <li>关注内层嵌套循环</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-85：使用生成器提高效率"><a href="#建议-85：使用生成器提高效率" class="headerlink" title="建议 85：使用生成器提高效率"></a>建议 85：使用生成器提高效率</h2><p>生成器的优点有如下几条：</p>
+<h2 id="建议-85：使用生成器提高效率"><a href="#建议-85：使用生成器提高效率" class="headerlink" title="建议 85：使用生成器提高效率"></a>建议 85：使用生成器提高效率</h2><p>生成器的优点有如下几条：</p>
 <ul>
 <li>生成器提供了一种更为便利的产生迭代器的方式，用户一般不需要自己实现 <code>__iter__</code> 和 <code>next</code> 方法，它默认返回一个迭代器</li>
 <li>代码更为简洁、优雅</li>
 <li>充分利用了延迟评估的特性，仅在需要的时候才产生对应的元素，而不是一次生成所有的元素，从而节省了内存空间，提高效率</li>
 <li>使得协程更为容易实现。（Python3.5 中引入了 async 和 wait 关键字）</li>
 </ul>
-</div><div class="story post-story"><h2 id="建议-86：使用不同的数据结构优化性能"><a href="#建议-86：使用不同的数据结构优化性能" class="headerlink" title="建议 86：使用不同的数据结构优化性能"></a>建议 86：使用不同的数据结构优化性能</h2><h2 id="建议-87：充分利用-set-的优势"><a href="#建议-87：充分利用-set-的优势" class="headerlink" title="建议 87：充分利用 set 的优势"></a>建议 87：充分利用 set 的优势</h2><h2 id="建议-88：使用-multiprocessing-克服-GIL-的缺陷"><a href="#建议-88：使用-multiprocessing-克服-GIL-的缺陷" class="headerlink" title="建议 88：使用 multiprocessing 克服 GIL 的缺陷"></a>建议 88：使用 multiprocessing 克服 GIL 的缺陷</h2><p>Multiprocessing 模块在使用上需要注意以下几个要点：</p>
+<h2 id="建议-86：使用不同的数据结构优化性能"><a href="#建议-86：使用不同的数据结构优化性能" class="headerlink" title="建议 86：使用不同的数据结构优化性能"></a>建议 86：使用不同的数据结构优化性能</h2><h2 id="建议-87：充分利用-set-的优势"><a href="#建议-87：充分利用-set-的优势" class="headerlink" title="建议 87：充分利用 set 的优势"></a>建议 87：充分利用 set 的优势</h2><h2 id="建议-88：使用-multiprocessing-克服-GIL-的缺陷"><a href="#建议-88：使用-multiprocessing-克服-GIL-的缺陷" class="headerlink" title="建议 88：使用 multiprocessing 克服 GIL 的缺陷"></a>建议 88：使用 multiprocessing 克服 GIL 的缺陷</h2><p>Multiprocessing 模块在使用上需要注意以下几个要点：</p>
 <ol>
 <li>进程之间的通信优先考虑 Pipe 和 Queue，而不是 Lock、Event、Condition、Semaphore 等同步原语</li>
 <li>尽量避免资源共享。如果不可避免，可以通过 multiprocessing.Value 和 multiprocessing.Array 或者 multiprocessing.sharedctype 来实现内存共享。<br>也可以通过服务器进程管理器 Manager() 来实现数据和状态的共享。</li>
 <li>注意平台之间的差异。</li>
 <li>尽量避免使用 terminate() 方式终止进程，并且确保 pool.map 中传入的参数是可以序列化的</li>
 </ol>
-</div><div class="story post-story"><h2 id="建议-89：使用线程池提高效率"><a href="#建议-89：使用线程池提高效率" class="headerlink" title="建议 89：使用线程池提高效率"></a>建议 89：使用线程池提高效率</h2><h2 id="建议-90：使用-C-x2F-C-模块扩展提高性能"><a href="#建议-90：使用-C-x2F-C-模块扩展提高性能" class="headerlink" title="建议 90：使用 C&#x2F;C++ 模块扩展提高性能"></a>建议 90：使用 C&#x2F;C++ 模块扩展提高性能</h2><h2 id="建议-91：使用-Cython-编写扩展模块"><a href="#建议-91：使用-Cython-编写扩展模块" class="headerlink" title="建议 91：使用 Cython 编写扩展模块"></a>建议 91：使用 Cython 编写扩展模块</h2>
-</div>
+<h2 id="建议-89：使用线程池提高效率"><a href="#建议-89：使用线程池提高效率" class="headerlink" title="建议 89：使用线程池提高效率"></a>建议 89：使用线程池提高效率</h2><h2 id="建议-90：使用-C-x2F-C-模块扩展提高性能"><a href="#建议-90：使用-C-x2F-C-模块扩展提高性能" class="headerlink" title="建议 90：使用 C&#x2F;C++ 模块扩展提高性能"></a>建议 90：使用 C&#x2F;C++ 模块扩展提高性能</h2><h2 id="建议-91：使用-Cython-编写扩展模块"><a href="#建议-91：使用-Cython-编写扩展模块" class="headerlink" title="建议 91：使用 Cython 编写扩展模块"></a>建议 91：使用 Cython 编写扩展模块</h2>
   </div>
   
   
@@ -3771,7 +3761,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-10-16T04:30:44+00:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-10-16T04:30:53+00:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>本页文档最后更新于：2022年10月16日</p>
@@ -4097,7 +4087,7 @@ Hello World123456789#import &lt;Foundation/Foundation.h&...</p>
       
     
       
-        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/5.6.0" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
+        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#5.7.6" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
 
       
     
@@ -4151,7 +4141,7 @@ Hello World123456789#import &lt;Foundation/Foundation.h&...</p>
 
 <!-- internal -->
 
-<script src="/js/app.af2d54c8.js"></script>
+<script src="/js/app.js"></script>
 
 
 
@@ -4405,7 +4395,7 @@ Hello World123456789#import &lt;Foundation/Foundation.h&...</p>
 
   </ul>
 </div>
-<script src="/js/plugins/rightMenus.1aa99ff1.js"></script>
+<script src="/js/plugins/rightMenus.js"></script>
 <script>
   const RightMenusFunction = {};
   
@@ -4656,19 +4646,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/tags/sites.76bf19b8.js")
+        volantis.js("/js/plugins/tags/sites.js")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/tags/friends.f372da57.js")
+        volantis.js("/js/plugins/tags/friends.js")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/tags/contributors.aec80453.js")
+        volantis.js("/js/plugins/tags/contributors.js")
       }
     
   };
@@ -4727,33 +4717,6 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-   <script type="text/javascript">
-  function pjax_scrollrebeal() {
-    ScrollReveal().reveal("#l_main .reveal", {
-      distance: "32px",
-      duration: "800",
-      interval: "20",
-      scale: "1",
-      easing: "ease-out",
-    });
-  }
-  function init_scrollrebeal() {
-    if (typeof ScrollReveal == "undefined") {
-      volantis.requestAnimationFrame(init_scrollrebeal);
-    } else {
-      pjax_scrollrebeal();
-    }
-  }
-  volantis.js("https://unpkg.com/volantis-static@0.0.1654736714924/libs/scrollreveal/dist/scrollreveal.min.js");
-  document.addEventListener("DOMContentLoaded", init_scrollrebeal);
-  volantis.pjax.push(
-    pjax_scrollrebeal,
-    "pjax_scrollrebeal",
-    (setRequestAnimationFrame = false)
-  );
-</script>
-
-
 
 
   <script>
@@ -4764,7 +4727,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://unpkg.com/volantis-static@0.0.1654736714924/libs/meting/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.dbe5eea9.js')
+    await volantis.js('/js/plugins/aplayer.js')
   
   })();
 
@@ -4898,7 +4861,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.0e52f222.js");
+    return volantis.js("/js/search/hexo.js");
   }
 
   function loadSearchService() {
@@ -4973,7 +4936,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -5016,7 +4979,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.8bf0ab10.js').then(()=>{
+    volantis.js('/js/plugins/parallax.js').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -5184,94 +5147,6 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   });
 </script>
 
-<script>
-  try {
-    // https://web.dev/content-visibility/
-    // https://www.caniuse.com/?search=content-visibility
-    // https://infrequently.org/2020/12/content-visibility-scroll-fix/
-    // https://infrequently.org/2020/12/resize-resilient-deferred-rendering/
-
-    // 备注 目前已知的问题:
-    // 动态修改导致的内容高度变化(例如评论框异步渲染的外部盒子高度变化) 无法提前获知, 进而导致的首次滚动条跳动无法去除 (wontfix) 事实上不使用 content-visibility 也会有跳动, 不过是比使用 content-visibility 跳动提前
-    // scrollreveal 插件潜在问题 目前尚不明确
-
-    let eqIsh = (a, b, fuzz = 2) => {
-      return Math.abs(a - b) <= fuzz;
-    };
-
-    let rectNotEQ = (a, b) => {
-      return !eqIsh(a.width, b.width) || !eqIsh(a.height, b.height);
-    };
-
-    // Keep a map of elements and the dimensions of
-    // their place-holders, re-setting the element's
-    // intrinsic size when we get updated measurements
-    // from observers.
-    let spaced = new WeakMap();
-
-    // Only call this when known cheap, post layout
-    let reserveSpace = (el, rect = el.getClientBoundingRect()) => {
-      let old = spaced.get(el);
-      // Set intrinsic size to prevent jumping on un-painting:
-      //    https://drafts.csswg.org/css-sizing-4/#intrinsic-size-override
-      if (!old || rectNotEQ(old, rect)) {
-        spaced.set(el, rect);
-        el.style["contain-intrinsic-size"] = `${rect.width}px ${rect.height}px`;
-      }
-    };
-
-    let iObs = new IntersectionObserver(
-      (entries, o) => {
-        entries.forEach((entry) => {
-          // We don't care if the element is intersecting or
-          // has been laid out as our page structure ensures
-          // they'll get the right width.
-          reserveSpace(entry.target, entry.boundingClientRect);
-        });
-      },
-      { rootMargin: "500px 0px 500px 0px" }
-    );
-
-    let rObs = new ResizeObserver((entries, o) => {
-      entries.forEach((entry) => {
-        reserveSpace(entry.target, entry.contentRect);
-      });
-    });
-
-    let resizeResilientDeferredRendering = (Selector) => {
-      let articles = document.querySelectorAll(Selector);
-
-      if (articles.length) {
-        articles.forEach((el) => {
-          iObs.observe(el);
-          rObs.observe(el);
-        });
-
-        // Workaround for Chrome bug, part 2.
-        //
-        // Re-enable browser management of rendering for the
-        // first article after the first paint. Double-rAF
-        // to ensure we get called after a layout.
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            articles[0].style["content-visibility"] = "auto";
-          });
-        });
-      }
-    };
-
-    let contentVisibilityScrollFix = () => {
-      if (!("content-visibility" in document.documentElement.style)) {
-        return;
-      }
-      resizeResilientDeferredRendering(".post-story");
-    };
-    contentVisibilityScrollFix();
-    volantis.pjax.push(contentVisibilityScrollFix);
-  } catch (error) {
-    console.log(error);
-  }
-</script>
 
 
 <script>
@@ -5290,7 +5165,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/language/","name":"Language"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/Writing-Solid-Python-Code-Notes/","name":"《编写高质量代码：改善 Python 程序的 91 个建议》 笔记"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"《编写高质量代码：改善 Python 程序的 91 个建议》 笔记","description":"之前自己学了很多次 Python，由于用不到，所以总是学完就忘掉了。刚好最近工作需要用到 Python，就借此机会好好学习了一番。Pyhton 的各种特性和风格让我甚是喜欢。不过我总是感觉自己写的代码不是那么漂亮，不够 Pythonic。所以我想通过学习一些经典建议来让我有个思路。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/Writing-Solid-Python-Code-Notes/"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/Writing-Solid-Python-Code-Notes/","wordCount":141,"datePublished":"2016-08-02T09:44:56.000Z","dateModified":"2022-10-16T04:30:44.000Z","articleSection":"Language","keywords":"Python","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/language/","name":"Language"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/Writing-Solid-Python-Code-Notes/","name":"《编写高质量代码：改善 Python 程序的 91 个建议》 笔记"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"《编写高质量代码：改善 Python 程序的 91 个建议》 笔记","description":"之前自己学了很多次 Python，由于用不到，所以总是学完就忘掉了。刚好最近工作需要用到 Python，就借此机会好好学习了一番。Pyhton 的各种特性和风格让我甚是喜欢。不过我总是感觉自己写的代码不是那么漂亮，不够 Pythonic。所以我想通过学习一些经典建议来让我有个思路。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/Writing-Solid-Python-Code-Notes/"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/Writing-Solid-Python-Code-Notes/","wordCount":141,"datePublished":"2016-08-02T09:44:56.000Z","dateModified":"2022-10-16T04:30:53.000Z","articleSection":"Language","keywords":"Python","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/5.6.0'>
+    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#5.7.6'>
   <meta name="generator" content="Hexo 6.2.0">
-  <meta name="Volantis" content="5.6.0">
+  <meta name="Volantis" content="5.7.6">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -26,9 +26,9 @@
   
   <!-- Custom Files headBegin end-->
     <link rel="shortcut icon" type='image/x-icon' href="https://avatars.githubusercontent.com/u/50670906?v=4">
-  <link rel="preload" href="/css/style.cbc2c3ea.css" as="style">
-  <link rel="preload" href="https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" href="https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/css/style.css" as="style">
+  <link rel="preload" href="https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
   <!-- feed -->
       <link rel="alternate" href="/atom.xml" title="喵石榴" type="application/atom+xml">
@@ -45,7 +45,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2016-09-03T13:20:00.000Z">
-<meta property="article:modified_time" content="2022-10-16T04:30:44.000Z">
+<meta property="article:modified_time" content="2022-10-16T04:30:53.000Z">
 <meta property="article:author" content="MiroKaku">
 <meta property="article:tag" content="Objective-C">
 <meta name="twitter:card" content="summary">
@@ -54,15 +54,6 @@
     /* 首屏样式 */
     #safearea {
   display: none;
-}
-/*
-  * Workaround for Chrome bug, part 1
-  * Chunk rendering for all but the first article.
-  * /layout/_partial/scripts/content-visibility-scroll-fix.ejs
-*/
-.post-story + .post-story {
-  content-visibility: auto;
-  contain-intrinsic-size: 10px 500px;
 }
 :root {
   --color-site-body: #f4f4f4;
@@ -944,14 +935,14 @@ button {
 }
 @font-face {
   font-family: 'HYRunYuan';
-  src: url("https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2");
+  src: url("https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/HYRunYuan.woff2");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
   font-family: 'YRDZSTJF';
-  src: url("https://fastly.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2");
+  src: url("https://gcore.jsdelivr.net/gh/inkss/common@1/fonts/canva/%E6%9D%A8%E4%BB%BB%E4%B8%9C%E7%AB%B9%E7%9F%B3%E4%BD%93.woff2");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -1785,8 +1776,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.cbc2c3ea.css" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.cbc2c3ea.css"></noscript>
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1859,14 +1850,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   /************这个文件存放不需要重载的全局变量和全局函数*********/
   window.volantis = {}; // volantis 全局变量
-  volantis.debug = false; // 开启调试模式
+  volantis.debug = "env"; // 调试模式
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    debug: false,
-    cdn: {"js":{"app":"/js/app.af2d54c8.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.1aa99ff1.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.cbc2c3ea.css"}},
+    debug: "env",
+    cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1665894659010),
+    lastupdate: new Date(1665894668818),
     sidebar: {
       for_page: ["bulletin","category"],
       for_post: ["toc"],
@@ -2740,7 +2731,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <p>之前学习 Objective-C 时整理的笔记，文章内错误之处还望指点...</p>
 <span id="more"></span>
 
-<div class="story post-story"><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> *argv[])</span>&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        <span class="comment">// insert code here...</span></span><br><span class="line">        NSLog(@<span class="string">&quot;Hello, World&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> *argv[])</span>&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        <span class="comment">// insert code here...</span></span><br><span class="line">        NSLog(@<span class="string">&quot;Hello, World&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>#import</code> 就相当于 C++ 里面的 <code>#include</code></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@autoreleasepool &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2749,7 +2740,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p><code>@&quot;Hello, World&quot;</code> 此处的 @ 符号在位于一对双引号的字符串前面，这称为常量 NSString 对象。<br>如果前面没有 @ 字符，就是在编写常量 C 类型的字符串。有了这个符号就是在编写 NSString 字符串对象。</p>
 <p>同 C 语言一样，Objective-C 的所有程序语句必须使用分号（;）结束。</p>
 <p>这篇文章主要是讲 Objective-C 与 C++ 的区别...</p>
-</div><div class="story post-story"><h2 id="类、对象和方法"><a href="#类、对象和方法" class="headerlink" title="类、对象和方法"></a>类、对象和方法</h2><h3 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h3><p>Objective-C的面向对象语法源自SmallTalk，消息传递（Message Passing）风格&#x2F;在源码风格方面，这是它与C Family语言（包括C&#x2F;C++、Java、世界上最好的语言PHP）差别最大的地方。</p>
+<h2 id="类、对象和方法"><a href="#类、对象和方法" class="headerlink" title="类、对象和方法"></a>类、对象和方法</h2><h3 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h3><p>Objective-C的面向对象语法源自SmallTalk，消息传递（Message Passing）风格&#x2F;在源码风格方面，这是它与C Family语言（包括C&#x2F;C++、Java、世界上最好的语言PHP）差别最大的地方。</p>
 <p>在Java、C++世界，我们调用一个对象的某个方法，在Objective-C里，这称作给类型发送一个消息，这可不仅仅是文字游戏，他们的技术细节也是不同。</p>
 <p>在Java、C++里，对象和方法关系非常严格，一个方法必须属于一个类对象，否则编译要报错的。<br>而在Objective-C里，类型和消息的关系比较松散，消息处理到运行时（runtime）才会动态确定，给类型发送一个它无法处理的消息，也只会抛出一个异常而不会挂掉。</p>
 <table>
@@ -2883,7 +2874,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (id) init &#123;</span><br><span class="line">    <span class="keyword">if</span> (self = [super init]) &#123; <span class="comment">// 必须调用父类的 init</span></span><br><span class="line">        <span class="comment">// do something here ...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-</div><div class="story post-story"><h2 id="数据类型和表达式"><a href="#数据类型和表达式" class="headerlink" title="数据类型和表达式"></a>数据类型和表达式</h2><p>OC 有4个基本数据类型：int, float, double, char。概念同C++一样<br>5个限定词：long, long long, short, unsigned, signed。概念同 C++ 一样</p>
+<h2 id="数据类型和表达式"><a href="#数据类型和表达式" class="headerlink" title="数据类型和表达式"></a>数据类型和表达式</h2><p>OC 有4个基本数据类型：int, float, double, char。概念同C++一样<br>5个限定词：long, long long, short, unsigned, signed。概念同 C++ 一样</p>
 <p>下面来说几个特殊的类型：</p>
 <ul>
 <li>BOOL 类型<br>概念同 C++ 一样，但是预定义的真假值与 C++ 不同：</li>
@@ -2998,17 +2989,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </tr>
 </tbody></table>
 <p>基本算术运算符概念同 C++ 一样</p>
-</div><div class="story post-story"><h2 id="循环结构和选择结构"><a href="#循环结构和选择结构" class="headerlink" title="循环结构和选择结构"></a>循环结构和选择结构</h2><p>同C++11一样，for循环有两种：普通for循环，快速for循环</p>
+<h2 id="循环结构和选择结构"><a href="#循环结构和选择结构" class="headerlink" title="循环结构和选择结构"></a>循环结构和选择结构</h2><p>同C++11一样，for循环有两种：普通for循环，快速for循环</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种遍历：普通 for 循环</span></span><br><span class="line"><span class="type">long</span> <span class="type">int</span> count = [<span class="built_in">array</span> count];</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; count; ++i) &#123;</span><br><span class="line">    NSLog(@<span class="string">&quot;1 遍历 array：%zi -&gt; %@&quot;</span>, i, [<span class="built_in">array</span> objectAtIndex:i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种遍历：快速 for 循环</span></span><br><span class="line"><span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (id obj in <span class="built_in">array</span>) &#123;</span><br><span class="line">    NSLog(@<span class="string">&quot;2 遍历 array：%zi -&gt; %@&quot;</span>, i, obj);</span><br><span class="line">    ++i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>其他的 while，do…while，break，continue 都同 C++ 一致<br>选择结构，if，if…else…，switch同 C++ 一致</p>
-</div><div class="story post-story"><h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h3 id="合成存取方法"><a href="#合成存取方法" class="headerlink" title="合成存取方法"></a>合成存取方法</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">@interface Fraction : NSObject</span><br><span class="line"></span><br><span class="line">@property <span class="type">int</span> numerator, denominator;</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>)    print;</span><br><span class="line">- (<span class="type">double</span>)  convertToNum;</span><br><span class="line"></span><br><span class="line">@ end</span><br><span class="line"></span><br><span class="line">@Implementation Fraction</span><br><span class="line"></span><br><span class="line">@synthesize numerator, denominator;</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>) print &#123;</span><br><span class="line">    NSLog(@<span class="string">&quot;%i / %i&quot;</span>, numerator, denominator);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="type">double</span>) convertToNum &#123;</span><br><span class="line">    <span class="keyword">if</span> (denominator != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="type">double</span>) numerator / denominator;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> NAN;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@ end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        Fraction *objFraction = [Fraction new];</span><br><span class="line">        [objFraction setNumerator:<span class="number">1</span>];</span><br><span class="line">        [objFraction setDenominator:<span class="number">2</span>];</span><br><span class="line">        [objFraction print];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h3 id="合成存取方法"><a href="#合成存取方法" class="headerlink" title="合成存取方法"></a>合成存取方法</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">@interface Fraction : NSObject</span><br><span class="line"></span><br><span class="line">@property <span class="type">int</span> numerator, denominator;</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>)    print;</span><br><span class="line">- (<span class="type">double</span>)  convertToNum;</span><br><span class="line"></span><br><span class="line">@ end</span><br><span class="line"></span><br><span class="line">@Implementation Fraction</span><br><span class="line"></span><br><span class="line">@synthesize numerator, denominator;</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>) print &#123;</span><br><span class="line">    NSLog(@<span class="string">&quot;%i / %i&quot;</span>, numerator, denominator);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="type">double</span>) convertToNum &#123;</span><br><span class="line">    <span class="keyword">if</span> (denominator != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="type">double</span>) numerator / denominator;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> NAN;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@ end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        Fraction *objFraction = [Fraction new];</span><br><span class="line">        [objFraction setNumerator:<span class="number">1</span>];</span><br><span class="line">        [objFraction setDenominator:<span class="number">2</span>];</span><br><span class="line">        [objFraction print];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>从OC 2.0开始，可自动生成设值方法和取值方法。<br>第一步是在接口部分中使用@property指令标识属性。<br>第二步是在实现部分中使用@synthesize</p>
 <p>如果使用了@property指令，就不需要再实现部分声明相应的实例变量。</p>
 <p>当然，你并不需要使用@synthesize指令，使用@property指令编译器也会自动为你生成setter和getter。<br>但是要注意，如果你不使用@sythesize，那么编译器生成的实例变量会以下画线（_）字符作为其名称的第一个字符。</p>
 <h3 id="访问属性"><a href="#访问属性" class="headerlink" title="访问属性"></a>访问属性</h3><p>访问属性有两种格式：<br><code>Instance.property = value;</code> 等价为 <code>[Instance setProperty: value];</code></p>
-</div><div class="story post-story"><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@interface ClassA : NSObject &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>) initVar;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ClassA</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>) initVar &#123;</span><br><span class="line">    x = <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@interface ClassB : ClassA</span><br><span class="line">- (<span class="type">void</span>) printVar;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ClassB</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>) printVar &#123;</span><br><span class="line">    NSLog(@<span class="string">&quot;x = %i&quot;</span>, x);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@interface ClassA : NSObject &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>) initVar;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ClassA</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>) initVar &#123;</span><br><span class="line">    x = <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@interface ClassB : ClassA</span><br><span class="line">- (<span class="type">void</span>) printVar;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation ClassB</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>) printVar &#123;</span><br><span class="line">    NSLog(@<span class="string">&quot;x = %i&quot;</span>, x);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
 
 <p>在这段代码里面，ClassA继承于NSObject，ClassB继承于ClassA。<br>语法同C++差不多。但是有一点要注意：OC只能是单继承，而C++可以多继承。</p>
 <p>继承的概念作用于整个继承链。</p>
@@ -3069,7 +3060,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>C++ 输出的结果是100<br>而OC输出的结果是200，OC是真的覆盖…</p>
 <p>另外，OC不支持运算符重载…</p>
 <h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p>@try、@catch、@throw、@finally这些概念同C一样。</p>
-</div><div class="story post-story"><h2 id="分类和协议"><a href="#分类和协议" class="headerlink" title="分类和协议"></a>分类和协议</h2><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>在Objective-C的设计中，一个主要的考虑即为大型代码框架的维护。<br>结构化编程的经验显示，改进代码的一种主要方法即为将其分解为更小的片段。<br>Objective-C借用并扩展了Smalltalk实现中的“分类”概念，用以帮助达到分解代码的目的。</p>
+<h2 id="分类和协议"><a href="#分类和协议" class="headerlink" title="分类和协议"></a>分类和协议</h2><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>在Objective-C的设计中，一个主要的考虑即为大型代码框架的维护。<br>结构化编程的经验显示，改进代码的一种主要方法即为将其分解为更小的片段。<br>Objective-C借用并扩展了Smalltalk实现中的“分类”概念，用以帮助达到分解代码的目的。</p>
 <p>分类中的方法是在运行时被加入类中的，这一特性允许程序员向现存的类中增加方法，而无需持有原有的代码，或是重新编译原有的类。<br>在运行时，分类中的方法与类原有的方法并无区别，其代码可以访问包括私有类成员变量在内的所有成员变量。</p>
 <p>若分类声明了与类中原有方法同名的函数，则分类中的方法会被调用。因此分类不仅可以增加类的方法，也可以代替原有的方法。<br>这个特性可以用于修正原有代码中的错误，更可以从根本上改变程序中原有类的行为。<br>若两个分类中的方法同名，则被调用的方法是不可预测的。</p>
 <p>举个例子：</p>
@@ -3094,12 +3085,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ([currentObject respondsToSelector: @selector (print)] == YES) &#123;</span><br><span class="line">    [currentObject print];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>通过在类型名称之后的尖括号中添加协议名称，借助编译器来检查变量的一致性：<code>id &lt;Drawable&gt; currentObject;</code></p>
-</div><div class="story post-story"><h2 id="块"><a href="#块" class="headerlink" title="块"></a>块</h2><p>概念上，匿名函数，lambda，closure（或OC中的blocks）是一个东西。<br>详见：<a href="http://www.cnblogs.com/BigFeng/p/5204899.html" target="_blank" rel="noopener external nofollow noreferrer">浅析匿名函数、lambda表达式、闭包（closure）区别与作用</a></p>
+<h2 id="块"><a href="#块" class="headerlink" title="块"></a>块</h2><p>概念上，匿名函数，lambda，closure（或OC中的blocks）是一个东西。<br>详见：<a href="http://www.cnblogs.com/BigFeng/p/5204899.html" target="_blank" rel="noopener external nofollow noreferrer">浅析匿名函数、lambda表达式、闭包（closure）区别与作用</a></p>
 <p>块是以插入字符 <code>^</code> 开头为标识的。后面跟的一个括号表示块所需要的参数列表。<br>同样，也可以将这个块赋给一个变量。<br>举个栗子：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">__block <span class="type">int</span> foo = <span class="number">10</span>;</span><br><span class="line"><span class="type">void</span> (^printFoo)(<span class="type">void</span>) = ^(<span class="type">void</span>) &#123;</span><br><span class="line">                            foo = <span class="number">20</span>;</span><br><span class="line">                            NSLog(@<span class="string">&quot;foo = %i&quot;</span>, foo);</span><br><span class="line">                        &#125;;</span><br><span class="line"></span><br><span class="line">printFoo();</span><br></pre></td></tr></table></figure>
 
 <p>如果要试图在块内部改变变量的值，需要在定义本地变量之前插入 __block 修改器。</p>
-</div><div class="story post-story"><h2 id="数字、字符串和集合"><a href="#数字、字符串和集合" class="headerlink" title="数字、字符串和集合"></a>数字、字符串和集合</h2><p>在Foundation框架包括大量的类、方法和函数。可以通过这条代码来导入：<code>#import &lt;Foundation/Foundation.h&gt;</code></p>
+<h2 id="数字、字符串和集合"><a href="#数字、字符串和集合" class="headerlink" title="数字、字符串和集合"></a>数字、字符串和集合</h2><p>在Foundation框架包括大量的类、方法和函数。可以通过这条代码来导入：<code>#import &lt;Foundation/Foundation.h&gt;</code></p>
 <p>里面的东西就相当于C++的标准库似的。使用的时候看看文档就好了。</p>
 <h3 id="数字对象"><a href="#数字对象" class="headerlink" title="数字对象"></a>数字对象</h3><p>NSNumber类包含多个方法，可以使用初始值创建NSNumber对象。</p>
 <p>NSNumber 的创建方法和检索方法：</p>
@@ -3251,7 +3242,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h3 id="集合对象"><a href="#集合对象" class="headerlink" title="集合对象"></a>集合对象</h3><p>set是一组单值对象集合，它可以是可变的，也可以是不可变的。<br>操作包括：搜索、添加、删除集合中的成员（仅可变集合），比较两个集合，计算两个集合的交集和并集等。</p>
 <p>也是和C++里面的std::set差不多</p>
 <p>Foundation框架同样提供了一个名为NSCountedSet的类，这种集合同一对象可以出现多次，<br>然而并非在集合众存在多次这个对象，而是维护一个计数值。</p>
-</div><div class="story post-story"><h2 id="使用文件"><a href="#使用文件" class="headerlink" title="使用文件"></a>使用文件</h2><h3 id="管理文件和目录：NSFileManager"><a href="#管理文件和目录：NSFileManager" class="headerlink" title="管理文件和目录：NSFileManager"></a>管理文件和目录：NSFileManager</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        NSString        *fName = @<span class="string">&quot;~/Documents/testfile&quot;</span>;</span><br><span class="line">        NSFileManager   *fm;</span><br><span class="line">        NSDictionary    *attr;</span><br><span class="line">        NSError         *err;</span><br><span class="line"></span><br><span class="line">        fName = [fName stringByExpandingTildeInPath];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需要创建文件管理器的实例</span></span><br><span class="line">        fm = [NSFileManager defaultManager];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 首先确认文件存在</span></span><br><span class="line">        <span class="keyword">if</span> ([fm fileExistsAtPath: fName] == NO) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;File doesn&#x27;t exist!&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建一个副本</span></span><br><span class="line">        <span class="comment">// 这里要注意下比较坑，如果同名文件存在，是会copy失败的</span></span><br><span class="line">        <span class="comment">// 而且返回的失败信息是 testfile 文件不存在....</span></span><br><span class="line">        <span class="keyword">if</span> ([fm copyItemAtPath: fName toPath: @<span class="string">&quot;newfile&quot;</span> error: &amp;err] == NO) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;File Copy failed!, %@&quot;</span>, err);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 测试两个文件是否一致</span></span><br><span class="line">        <span class="keyword">if</span> ([fm contentsEqualAtPath: fName andPath: @<span class="string">&quot;newfile&quot;</span>] == NO) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;Files are not equal!&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 重命名副本</span></span><br><span class="line">        <span class="keyword">if</span> ([fm moveItemAtPath:@<span class="string">&quot;newfile&quot;</span> toPath:@<span class="string">&quot;newfile2&quot;</span> error:&amp;err] == NO) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;File rename failed&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取 newfile2 的大小</span></span><br><span class="line">        <span class="keyword">if</span> ((attr = [fm attributesOfItemAtPath:@<span class="string">&quot;newfile2&quot;</span> error:&amp;err]) == nil) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;Couldn&#x27;t get file attributes!&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        NSLog(@<span class="string">&quot;File size is %llu bytes&quot;</span>, [[attr objectForKey:NSFileSize] unsignedLongLongValue]);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 最后删除原始文件</span></span><br><span class="line">        <span class="keyword">if</span> ([fm removeItemAtPath:fName error:&amp;err] == NO) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;file removal failed&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">6</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        NSLog(@<span class="string">&quot;All operations were successful&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 显示新创建的文件内容</span></span><br><span class="line"></span><br><span class="line">        NSLog(@<span class="string">&quot;%@&quot;</span>, [NSString stringWithContentsOfFile:@<span class="string">&quot;newfile2&quot;</span> encoding:NSUTF8StringEncoding error:&amp;err]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用文件"><a href="#使用文件" class="headerlink" title="使用文件"></a>使用文件</h2><h3 id="管理文件和目录：NSFileManager"><a href="#管理文件和目录：NSFileManager" class="headerlink" title="管理文件和目录：NSFileManager"></a>管理文件和目录：NSFileManager</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        NSString        *fName = @<span class="string">&quot;~/Documents/testfile&quot;</span>;</span><br><span class="line">        NSFileManager   *fm;</span><br><span class="line">        NSDictionary    *attr;</span><br><span class="line">        NSError         *err;</span><br><span class="line"></span><br><span class="line">        fName = [fName stringByExpandingTildeInPath];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需要创建文件管理器的实例</span></span><br><span class="line">        fm = [NSFileManager defaultManager];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 首先确认文件存在</span></span><br><span class="line">        <span class="keyword">if</span> ([fm fileExistsAtPath: fName] == NO) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;File doesn&#x27;t exist!&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建一个副本</span></span><br><span class="line">        <span class="comment">// 这里要注意下比较坑，如果同名文件存在，是会copy失败的</span></span><br><span class="line">        <span class="comment">// 而且返回的失败信息是 testfile 文件不存在....</span></span><br><span class="line">        <span class="keyword">if</span> ([fm copyItemAtPath: fName toPath: @<span class="string">&quot;newfile&quot;</span> error: &amp;err] == NO) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;File Copy failed!, %@&quot;</span>, err);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 测试两个文件是否一致</span></span><br><span class="line">        <span class="keyword">if</span> ([fm contentsEqualAtPath: fName andPath: @<span class="string">&quot;newfile&quot;</span>] == NO) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;Files are not equal!&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 重命名副本</span></span><br><span class="line">        <span class="keyword">if</span> ([fm moveItemAtPath:@<span class="string">&quot;newfile&quot;</span> toPath:@<span class="string">&quot;newfile2&quot;</span> error:&amp;err] == NO) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;File rename failed&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取 newfile2 的大小</span></span><br><span class="line">        <span class="keyword">if</span> ((attr = [fm attributesOfItemAtPath:@<span class="string">&quot;newfile2&quot;</span> error:&amp;err]) == nil) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;Couldn&#x27;t get file attributes!&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        NSLog(@<span class="string">&quot;File size is %llu bytes&quot;</span>, [[attr objectForKey:NSFileSize] unsignedLongLongValue]);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 最后删除原始文件</span></span><br><span class="line">        <span class="keyword">if</span> ([fm removeItemAtPath:fName error:&amp;err] == NO) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;file removal failed&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">6</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        NSLog(@<span class="string">&quot;All operations were successful&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 显示新创建的文件内容</span></span><br><span class="line"></span><br><span class="line">        NSLog(@<span class="string">&quot;%@&quot;</span>, [NSString stringWithContentsOfFile:@<span class="string">&quot;newfile2&quot;</span> encoding:NSUTF8StringEncoding error:&amp;err]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="使用-NSData-类"><a href="#使用-NSData-类" class="headerlink" title="使用 NSData 类"></a>使用 NSData 类</h3><p>使用文件时，需要频繁的将数据读入到一个缓冲区，Foundation的NSData类提供了一种简单的方式，它用来设置缓冲区，将文件的内容读入缓冲区，或将缓冲区的内容写到一个文件。<br>据说，据说哈，32位应用的NSData缓冲区最多可存储2G的数据。64位的最多可存储8EB的数据…</p>
 <p>举例子：</p>
@@ -3260,7 +3251,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h3 id="枚举目录中的内容"><a href="#枚举目录中的内容" class="headerlink" title="枚举目录中的内容"></a>枚举目录中的内容</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    @autorelease &#123;</span><br><span class="line">        NSString        *fName = @<span class="string">&quot;~/Documents/testfile&quot;</span>;</span><br><span class="line">        NSFileManager   *fm;</span><br><span class="line">        NSDirectoryEnumerator *dirEnum;</span><br><span class="line">        NSArray         *dirArray;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 把短路径转换成全路径</span></span><br><span class="line">        fName = [fName stringByExpandingTildeInPath];</span><br><span class="line"></span><br><span class="line">        fm = [NSFileManager defaultManager];</span><br><span class="line"></span><br><span class="line">        dirEnum = [fm enumeratorAtPath:path];</span><br><span class="line"></span><br><span class="line">        NSLog(@<span class="string">&quot;contents of %@&quot;</span>, path);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> ((path = [dirEnum nextObject]) != nil) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;%@&quot;</span>, path);</span><br><span class="line">        &#125;</span><br><span class="line">        NSLog(@<span class="string">&quot;-----------------------------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 另一种遍历方法</span></span><br><span class="line">        dirArray = [fm contentsOfDirectoryAtPath:[fm currentDirectoryPath] error:<span class="literal">NULL</span>];</span><br><span class="line">        NSLog(@<span class="string">&quot;contents using contentsOfDirectoryAtPath:error:&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (path in dirArray) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;%@&quot;</span>, path);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这两种枚举技术的不同在于：<br>enumeratorAtPath: 方法列出了目录中的内容，包含子目录<br>contentsOfDirectoryAtPath:error: 方法不会列出子目录内容</p>
-</div><div class="story post-story"><h2 id="使用路径：NSPathUtilities-h"><a href="#使用路径：NSPathUtilities-h" class="headerlink" title="使用路径：NSPathUtilities.h"></a>使用路径：NSPathUtilities.h</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    @autorelease &#123;</span><br><span class="line">        NSString        *fName = @<span class="string">&quot;path.m&quot;</span>;</span><br><span class="line">        NSFileManager   *fm= [NSFileManager defaultManager];</span><br><span class="line">        NSString        *path, *tempdir, *extension, *homedir, *fullpath;</span><br><span class="line"></span><br><span class="line">        NSArray         *components;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取临时目录</span></span><br><span class="line">        tempdir = NSTemporaryDirectory();</span><br><span class="line">        NSLog(@<span class="string">&quot;tempoary directory is %@&quot;</span>, tempdir);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 从当前目录中提取基本目录</span></span><br><span class="line">        path = [fm currentDirectoryPath];</span><br><span class="line">        NSLog(@<span class="string">&quot;Base dir is %@&quot;</span>, [path lastPathComponent]);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建 fName 在当前目录的完整路径</span></span><br><span class="line">        fullpath = [path stringByAppendingPathComponent:fName];</span><br><span class="line">        NSLog(@<span class="string">&quot;fullpath to %@ is %@&quot;</span>, fName, fullpath);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取文件扩展名</span></span><br><span class="line">        extension = [fullpath pathExtension];</span><br><span class="line">        NSLog(@<span class="string">&quot;extension for %@ is %@&quot;</span>, fullpath, extension);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取用户主目录</span></span><br><span class="line">        homedir = NSHomeDirectory();</span><br><span class="line">        NSLog(@<span class="string">&quot;Your home directory is %@&quot;</span>, homedir);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 拆分路径为各个组成部分</span></span><br><span class="line">        components = [homedir pathComponents];</span><br><span class="line">        <span class="keyword">for</span> (path in components) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;%@&quot;</span>, path);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用路径：NSPathUtilities-h"><a href="#使用路径：NSPathUtilities-h" class="headerlink" title="使用路径：NSPathUtilities.h"></a>使用路径：NSPathUtilities.h</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    @autorelease &#123;</span><br><span class="line">        NSString        *fName = @<span class="string">&quot;path.m&quot;</span>;</span><br><span class="line">        NSFileManager   *fm= [NSFileManager defaultManager];</span><br><span class="line">        NSString        *path, *tempdir, *extension, *homedir, *fullpath;</span><br><span class="line"></span><br><span class="line">        NSArray         *components;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取临时目录</span></span><br><span class="line">        tempdir = NSTemporaryDirectory();</span><br><span class="line">        NSLog(@<span class="string">&quot;tempoary directory is %@&quot;</span>, tempdir);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 从当前目录中提取基本目录</span></span><br><span class="line">        path = [fm currentDirectoryPath];</span><br><span class="line">        NSLog(@<span class="string">&quot;Base dir is %@&quot;</span>, [path lastPathComponent]);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建 fName 在当前目录的完整路径</span></span><br><span class="line">        fullpath = [path stringByAppendingPathComponent:fName];</span><br><span class="line">        NSLog(@<span class="string">&quot;fullpath to %@ is %@&quot;</span>, fName, fullpath);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取文件扩展名</span></span><br><span class="line">        extension = [fullpath pathExtension];</span><br><span class="line">        NSLog(@<span class="string">&quot;extension for %@ is %@&quot;</span>, fullpath, extension);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取用户主目录</span></span><br><span class="line">        homedir = NSHomeDirectory();</span><br><span class="line">        NSLog(@<span class="string">&quot;Your home directory is %@&quot;</span>, homedir);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 拆分路径为各个组成部分</span></span><br><span class="line">        components = [homedir pathComponents];</span><br><span class="line">        <span class="keyword">for</span> (path in components) &#123;</span><br><span class="line">            NSLog(@<span class="string">&quot;%@&quot;</span>, path);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Foundation框架的NSSearchPathForDirectoriesInDomains 函数，用于获取系统的特殊目录，如 Application 和 Documents 目录。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSArray *dirList = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);</span><br><span class="line">NSString *docDir = dirList[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
@@ -3345,11 +3336,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <td align="left">将当前进程名称设置为 name，应该谨慎的使用这个方法，因为关于进程名称存在一些假设，比如用户默认设置</td>
 </tr>
 </tbody></table>
-</div><div class="story post-story"><h2 id="深拷贝，实现-协议"><a href="#深拷贝，实现-协议" class="headerlink" title="深拷贝，实现  协议"></a>深拷贝，实现 <NSCoping> 协议</h2><p>如果我们要实现深拷贝，就要根据<code>&lt;NSCoping&gt;</code>协议实现其中一两个方法。<br>实现<code>&lt;NSCoping&gt;</code>协议是，类必须实现 <code>copyWithZone:</code> 方法来响应 copy 消息（这条 copy 消息仅将一条带有 nil 参数的 <code>copyWithZone:</code> 消息发送给你的类）。<br>如果要想区分可变不可变副本，还要根据 <code>&lt;NSMutableCoping&gt;</code> 协议实现 <code>mutableCopyWithZone:</code> 方法。<br>产生对象的可变副本并不要求被复制的对象本身也是可变的（反之亦然）。</p>
+<h2 id="深拷贝，实现-协议"><a href="#深拷贝，实现-协议" class="headerlink" title="深拷贝，实现  协议"></a>深拷贝，实现 <NSCoping> 协议</h2><p>如果我们要实现深拷贝，就要根据<code>&lt;NSCoping&gt;</code>协议实现其中一两个方法。<br>实现<code>&lt;NSCoping&gt;</code>协议是，类必须实现 <code>copyWithZone:</code> 方法来响应 copy 消息（这条 copy 消息仅将一条带有 nil 参数的 <code>copyWithZone:</code> 消息发送给你的类）。<br>如果要想区分可变不可变副本，还要根据 <code>&lt;NSMutableCoping&gt;</code> 协议实现 <code>mutableCopyWithZone:</code> 方法。<br>产生对象的可变副本并不要求被复制的对象本身也是可变的（反之亦然）。</p>
 <p>举例子：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">- (id) copyWithZone: (NSZone* ) zone &#123;</span><br><span class="line">    <span class="comment">// 如果类产生子类，那么这个方法将被继承</span></span><br><span class="line">    <span class="comment">// 这种情况下，应该使用 [self class]</span></span><br><span class="line">    <span class="comment">// 即从该类分配一个新对象，而不是 copy 的接收者</span></span><br><span class="line">    Fraction *newFract = [[[self class] allocWithZone: zone] init];</span><br><span class="line"></span><br><span class="line">    [newFract setTo: numerator over: denominator];</span><br><span class="line">    <span class="keyword">return</span> newFract;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        Fraction *f1 = [Fraction new];</span><br><span class="line">        Fraction *f2;</span><br><span class="line"></span><br><span class="line">        [f1 setTo:<span class="number">2</span> over:<span class="number">5</span>];</span><br><span class="line">        f2 = [f1 copy];</span><br><span class="line"></span><br><span class="line">        [f2 setTo:<span class="number">1</span> over:<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">        [f1 print];</span><br><span class="line">        [f2 print];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-</div><div class="story post-story"><h2 id="Cocoa-和-Cocoa-Touch-简介"><a href="#Cocoa-和-Cocoa-Touch-简介" class="headerlink" title="Cocoa 和 Cocoa Touch 简介"></a>Cocoa 和 Cocoa Touch 简介</h2><p>Cocoa 是一种为Mac OS X应用程序提供了丰富用户体验的框架，实际上由3个框架组成：<br>Foundation框架、便于使用数据库存储和管理数据的Core Data框架，以及Application Kit (AppKit)框架。<br>AppKit 框架提供了与窗口、按钮、列表等相关的类。</p>
+<h2 id="Cocoa-和-Cocoa-Touch-简介"><a href="#Cocoa-和-Cocoa-Touch-简介" class="headerlink" title="Cocoa 和 Cocoa Touch 简介"></a>Cocoa 和 Cocoa Touch 简介</h2><p>Cocoa 是一种为Mac OS X应用程序提供了丰富用户体验的框架，实际上由3个框架组成：<br>Foundation框架、便于使用数据库存储和管理数据的Core Data框架，以及Application Kit (AppKit)框架。<br>AppKit 框架提供了与窗口、按钮、列表等相关的类。</p>
 <h3 id="框架层"><a href="#框架层" class="headerlink" title="框架层"></a>框架层</h3><p><img src="https://raw.githubusercontent.com/MiroKaku/MyBlog.PictureHost/main/img/2022-07-11/OC-Notes/hierarchy-42151.jpg" class="lazyload" data-srcset="https://raw.githubusercontent.com/MiroKaku/MyBlog.PictureHost/main/img/2022-07-11/OC-Notes/hierarchy-42151.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
 <p>内核以设备驱动程序的形式提供与硬件的底层通信。<br>它负责管理系统资源，包括调度需要执行的程序、管理内存和电源，以及执行基本的I&#x2F;O操作。</p>
 <p>核心服务提供的支持比它上面层次更加底层或更加“核心”。<br>例如提供对集合、网络、调试、文件管理、文件夹、内存管理、线程、时间和电源的管理。</p>
@@ -3357,11 +3348,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>Cocoa层位于应用程序层之下。Cocoa包括Foundation、Core Data 和 AppKit框架。<br>Foundation框架提供处理集合、字符串、内存管理、文件系统、存档等相关的类。<br>AppKit框架提供管理视图、窗口、文档和多用户界面相关的类。</p>
 <h3 id="Cocoa-Touch"><a href="#Cocoa-Touch" class="headerlink" title="Cocoa Touch"></a>Cocoa Touch</h3><p>Cocoa框架应用于Mac OS X桌面与笔记本电脑应用程序的开发，而Cocoa Touch框架应用于iOS设备上应用程序的开发。</p>
 <p>Cocoa 和 Cocoa Touch 都有 Foundation 和 Core Data 框架。然而在Cocoa Touch下，UIKit代替了AppKit框架。<br>提供了很多相同类型对象的自持。比如窗口、视图、按钮、文本域等。<br>另外Cocoa Touch 还提供使用陀螺仪和加速器的类和触摸式界面。去掉了不需要的类。</p>
-</div><div class="story post-story"><h2 id="引用参考"><a href="#引用参考" class="headerlink" title="引用参考"></a>引用参考</h2><blockquote>
+<h2 id="引用参考"><a href="#引用参考" class="headerlink" title="引用参考"></a>引用参考</h2><blockquote>
 <p>《Objective-C程序设计，第六版》<br><a href="https://zh.wikipedia.org/wiki/Objective-C" target="_blank" rel="noopener external nofollow noreferrer">《Objective-C维基百科》</a><br><a href="https://github.com/qinjx/30min_guides/blob/master/ios.md" target="_blank" rel="noopener external nofollow noreferrer">《iOS开发60分钟入门》</a>  </p>
 </blockquote>
 
-</div>
   </div>
   
   
@@ -3385,7 +3375,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-10-16T04:30:44+00:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-10-16T04:30:53+00:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>本页文档最后更新于：2022年10月16日</p>
@@ -3706,7 +3696,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/5.6.0" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
+        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#5.7.6" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
 
       
     
@@ -3760,7 +3750,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.af2d54c8.js"></script>
+<script src="/js/app.js"></script>
 
 
 
@@ -4014,7 +4004,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   </ul>
 </div>
-<script src="/js/plugins/rightMenus.1aa99ff1.js"></script>
+<script src="/js/plugins/rightMenus.js"></script>
 <script>
   const RightMenusFunction = {};
   
@@ -4265,19 +4255,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/tags/sites.76bf19b8.js")
+        volantis.js("/js/plugins/tags/sites.js")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/tags/friends.f372da57.js")
+        volantis.js("/js/plugins/tags/friends.js")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/tags/contributors.aec80453.js")
+        volantis.js("/js/plugins/tags/contributors.js")
       }
     
   };
@@ -4336,33 +4326,6 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-   <script type="text/javascript">
-  function pjax_scrollrebeal() {
-    ScrollReveal().reveal("#l_main .reveal", {
-      distance: "32px",
-      duration: "800",
-      interval: "20",
-      scale: "1",
-      easing: "ease-out",
-    });
-  }
-  function init_scrollrebeal() {
-    if (typeof ScrollReveal == "undefined") {
-      volantis.requestAnimationFrame(init_scrollrebeal);
-    } else {
-      pjax_scrollrebeal();
-    }
-  }
-  volantis.js("https://unpkg.com/volantis-static@0.0.1654736714924/libs/scrollreveal/dist/scrollreveal.min.js");
-  document.addEventListener("DOMContentLoaded", init_scrollrebeal);
-  volantis.pjax.push(
-    pjax_scrollrebeal,
-    "pjax_scrollrebeal",
-    (setRequestAnimationFrame = false)
-  );
-</script>
-
-
 
 
   <script>
@@ -4373,7 +4336,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://unpkg.com/volantis-static@0.0.1654736714924/libs/meting/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.dbe5eea9.js')
+    await volantis.js('/js/plugins/aplayer.js')
   
   })();
 
@@ -4507,7 +4470,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.0e52f222.js");
+    return volantis.js("/js/search/hexo.js");
   }
 
   function loadSearchService() {
@@ -4582,7 +4545,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4625,7 +4588,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.8bf0ab10.js').then(()=>{
+    volantis.js('/js/plugins/parallax.js').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4793,94 +4756,6 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   });
 </script>
 
-<script>
-  try {
-    // https://web.dev/content-visibility/
-    // https://www.caniuse.com/?search=content-visibility
-    // https://infrequently.org/2020/12/content-visibility-scroll-fix/
-    // https://infrequently.org/2020/12/resize-resilient-deferred-rendering/
-
-    // 备注 目前已知的问题:
-    // 动态修改导致的内容高度变化(例如评论框异步渲染的外部盒子高度变化) 无法提前获知, 进而导致的首次滚动条跳动无法去除 (wontfix) 事实上不使用 content-visibility 也会有跳动, 不过是比使用 content-visibility 跳动提前
-    // scrollreveal 插件潜在问题 目前尚不明确
-
-    let eqIsh = (a, b, fuzz = 2) => {
-      return Math.abs(a - b) <= fuzz;
-    };
-
-    let rectNotEQ = (a, b) => {
-      return !eqIsh(a.width, b.width) || !eqIsh(a.height, b.height);
-    };
-
-    // Keep a map of elements and the dimensions of
-    // their place-holders, re-setting the element's
-    // intrinsic size when we get updated measurements
-    // from observers.
-    let spaced = new WeakMap();
-
-    // Only call this when known cheap, post layout
-    let reserveSpace = (el, rect = el.getClientBoundingRect()) => {
-      let old = spaced.get(el);
-      // Set intrinsic size to prevent jumping on un-painting:
-      //    https://drafts.csswg.org/css-sizing-4/#intrinsic-size-override
-      if (!old || rectNotEQ(old, rect)) {
-        spaced.set(el, rect);
-        el.style["contain-intrinsic-size"] = `${rect.width}px ${rect.height}px`;
-      }
-    };
-
-    let iObs = new IntersectionObserver(
-      (entries, o) => {
-        entries.forEach((entry) => {
-          // We don't care if the element is intersecting or
-          // has been laid out as our page structure ensures
-          // they'll get the right width.
-          reserveSpace(entry.target, entry.boundingClientRect);
-        });
-      },
-      { rootMargin: "500px 0px 500px 0px" }
-    );
-
-    let rObs = new ResizeObserver((entries, o) => {
-      entries.forEach((entry) => {
-        reserveSpace(entry.target, entry.contentRect);
-      });
-    });
-
-    let resizeResilientDeferredRendering = (Selector) => {
-      let articles = document.querySelectorAll(Selector);
-
-      if (articles.length) {
-        articles.forEach((el) => {
-          iObs.observe(el);
-          rObs.observe(el);
-        });
-
-        // Workaround for Chrome bug, part 2.
-        //
-        // Re-enable browser management of rendering for the
-        // first article after the first paint. Double-rAF
-        // to ensure we get called after a layout.
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            articles[0].style["content-visibility"] = "auto";
-          });
-        });
-      }
-    };
-
-    let contentVisibilityScrollFix = () => {
-      if (!("content-visibility" in document.documentElement.style)) {
-        return;
-      }
-      resizeResilientDeferredRendering(".post-story");
-    };
-    contentVisibilityScrollFix();
-    volantis.pjax.push(contentVisibilityScrollFix);
-  } catch (error) {
-    console.log(error);
-  }
-</script>
 
 
 <script>
@@ -4899,7 +4774,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/language/","name":"Language"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/OC-Notes/","name":"Objective-C 学习笔记"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Objective-C 学习笔记","description":"之前学习 Objective-C 时整理的笔记，文章内错误之处还望指点...","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/OC-Notes/"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/OC-Notes/","wordCount":38,"datePublished":"2016-09-03T13:20:00.000Z","dateModified":"2022-10-16T04:30:44.000Z","articleSection":"Language","keywords":"Objective-C","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/language/","name":"Language"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/OC-Notes/","name":"Objective-C 学习笔记"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Objective-C 学习笔记","description":"之前学习 Objective-C 时整理的笔记，文章内错误之处还望指点...","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/OC-Notes/"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/OC-Notes/","wordCount":38,"datePublished":"2016-09-03T13:20:00.000Z","dateModified":"2022-10-16T04:30:53.000Z","articleSection":"Language","keywords":"Objective-C","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
