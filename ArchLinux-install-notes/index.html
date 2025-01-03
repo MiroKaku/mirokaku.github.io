@@ -47,7 +47,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2016-07-17T16:01:18.000Z">
-<meta property="article:modified_time" content="2025-01-03T00:58:38.000Z">
+<meta property="article:modified_time" content="2025-01-03T00:58:57.000Z">
 <meta property="article:author" content="MiroKaku">
 <meta property="article:tag" content="ArchLinux">
 <meta name="twitter:card" content="summary">
@@ -1859,7 +1859,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1735865947597),
+    lastupdate: new Date(1735865965612),
     sidebar: {
       for_page: ["bulletin","category"],
       for_post: ["toc"],
@@ -2816,9 +2816,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </tbody></table>
 <p><code>pacman –S grub efibootmgr</code><br><code>grub-install –target=x86_64-efi –efi-directory=/boot/EFI –bootloader-id=arch_grub –recheck</code><br><code>grub-mkconfig –o /boot/grub/grub.cfg</code><br>**注意:**有些BIOS需要自己设置EFI文件位置才能找到efi文件。比如我的DELL</p>
 <ul>
-<li>配置网络<br><code>echo myhostname &gt; /etc/hostname</code><br>并在 &#x2F;etc&#x2F;hosts 添加同样主机名<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#&lt;ip-address&gt;    &lt;hostname.domain.org&gt;        &lt;hostname&gt;</span></span><br><span class="line">127.0.0.1        localhost.localdomain        localhost        myhostname</span><br><span class="line">::1              localhost.localdomain        localhost        myhostname</span><br></pre></td></tr></table></figure>
-有线网络<br>Interface 是您的网络接口名，见连网<br><code>systemctl enable dhcpcd@interface.service</code></li>
+<li>配置网络<br><code>echo myhostname &gt; /etc/hostname</code><br>并在 &#x2F;etc&#x2F;hosts 添加同样主机名</li>
 </ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#&lt;ip-address&gt;    &lt;hostname.domain.org&gt;        &lt;hostname&gt;</span></span><br><span class="line">127.0.0.1        localhost.localdomain        localhost        myhostname</span><br><span class="line">::1              localhost.localdomain        localhost        myhostname</span><br></pre></td></tr></table></figure>
+<p>有线网络<br>Interface 是您的网络接口名，见连网<br><code>systemctl enable dhcpcd@interface.service</code></p>
 <p>无线网络<br><code>pacman –S iw wpa_supplicant dialog</code></p>
 <ul>
 <li>卸载分区并重启系统<br><code>exit</code><br><code>umount -R /mnt</code><br><code>reboot</code></li>
@@ -2830,15 +2831,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><p>sudo<br><code>pacman –S sudo</code><br><code>vim /etc/sudoers</code><br>找到 root ALL&#x3D;(ALL) ALL<br>照着这个，在下面添加一个 username ALL&#x3D;(ALL) ALL</p>
 </li>
 <li><p>安装 yaourt<br><code>vim /etc/pacman.conf</code><br>加入下面的内容:</p>
+</li>
+</ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line"><span class="comment"># The Chinese Arch Linux communities packages.</span></span><br><span class="line">SigLevel = Optional TrustAll</span><br><span class="line">Server = http://mirrors.163.com/archlinux-cn/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
 <p>更新并安装yaourt</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman –Syu</span><br><span class="line">pacman –S yaourt</span><br><span class="line">pacman –S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
-</li>
+
+<ul>
 <li><p>安装 SSH、GIT、wget<br><code>pacman –S git openssh wget</code></p>
 </li>
 <li><p>安装 zsh</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman –S zsh</span><br><span class="line">chsh /bin/zsh</span><br><span class="line">sh –c “$(curl –fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)”</span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman –S zsh</span><br><span class="line">chsh /bin/zsh</span><br><span class="line">sh –c “$(curl –fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)”</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li><p>安装 screenfetch<br><code>pacman –S screenfetch</code></p>
 </li>
 <li><p>NTFS 读写<br><code>pacman –S ntfs-3g</code></p>
@@ -2856,10 +2863,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><p>安装 gnome 桌面环境<br>按需，个人安装的gnome，觉得新版3.20挺好看的<br><code>pacman –S gnome</code><br><code>pacman –S gnome-tweak-tool</code></p>
 </li>
 <li><p>VPN 扩展</p>
+</li>
+</ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman –S networkmanager-pptp</span><br><span class="line">yaourt networkmanager-l2tp</span><br><span class="line">systemctl restart NetworkManager</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动服务<br>显示管理器gnome默认是用的GDM<br><code>systemctl enable gdm.service</code></p>
-</li>
+
+<ul>
+<li>启动服务<br>显示管理器gnome默认是用的GDM<br><code>systemctl enable gdm.service</code></li>
 </ul>
 <p>网络管理<br><code>systemctl enable NetworkManager.service</code></p>
 <p>更新<br><code>pacman –Syu</code></p>
@@ -2931,7 +2940,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-01-03T00:58:38+00:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-01-03T00:58:57+00:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>本页文档最后更新于：2025年1月3日</p>
@@ -4103,7 +4112,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1654736714924/media/wallpaper/minimalist/2020/025.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4332,7 +4341,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/linux/","name":"Linux"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/ArchLinux-install-notes/","name":"ArchLinux 安装笔记"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"ArchLinux 安装笔记","description":"前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/ArchLinux-install-notes/"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/ArchLinux-install-notes/","wordCount":60,"datePublished":"2016-07-17T16:01:18.000Z","dateModified":"2025-01-03T00:58:38.000Z","articleSection":"Linux","keywords":"ArchLinux","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/linux/","name":"Linux"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/ArchLinux-install-notes/","name":"ArchLinux 安装笔记"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴","url":"https://mirokaku.github.io/","keywords":"Windows,C++,Driver,Kernel,MiroKaku,MeeSong","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”","author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“梦想总是与你的价值观相联系。你相信什么，就会遇见什么。”"},"publisher":{"@type":"Organization","name":"喵石榴","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"ArchLinux 安装笔记","description":"前提说明建议优先选择官方文档为参考，内容随时更新且非常详细。这里记录是包含一些自己遇到的坑。且只针对自己安装需求的情况。","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/ArchLinux-install-notes/"},"author":{"@type":"Person","name":"MiroKaku","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/ArchLinux-install-notes/","wordCount":60,"datePublished":"2016-07-17T16:01:18.000Z","dateModified":"2025-01-03T00:58:57.000Z","articleSection":"Linux","keywords":"ArchLinux","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
