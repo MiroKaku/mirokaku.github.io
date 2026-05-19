@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#6.0.2'>
+    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#6.0.3'>
   <meta name="generator" content="Hexo 8.1.2">
-  <meta name="Volantis" content="6.0.2">
+  <meta name="Volantis" content="6.0.3">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="noindex,follow">
@@ -44,8 +44,8 @@
 <meta property="og:site_name" content="喵石榴-MeeSong">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2026-05-19T08:12:56.058Z">
-<meta property="article:modified_time" content="2026-05-19T08:12:36.000Z">
+<meta property="article:published_time" content="2026-05-19T08:13:10.207Z">
+<meta property="article:modified_time" content="2026-05-19T08:12:53.000Z">
 <meta property="article:author" content="MeeSong">
 <meta property="article:tag" content="Windows,Veil,MiroKaku,MeeSong">
 <meta name="twitter:card" content="summary">
@@ -1957,6 +1957,35 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 })();
   volantis.debug = "env"; // 调试模式
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
+  /******************** volantis.getFunctionHash ********************************/
+// 简易文本哈希
+volantis.simpleTextHash= (str) => {
+  // 初始哈希值：选择质数5381（DJB2算法推荐的起始值）
+  let hash = 5381;
+  // 遍历每个字符，更新哈希值
+  for (let i = 0; i < str.length; i++) {
+    // 等价于 hash = hash * 33 + charCode（位移运算更高效）
+    hash = (hash << 5) + hash + str.charCodeAt(i);
+    // 避免数值过大溢出（可选：取模2^32，模拟32位无符号整数）
+    hash = hash & hash; // 或 hash >>> 0（转换为无符号）
+  }
+  // 转换为十六进制字符串，确保至少8位（补前导零）
+  return hash.toString(16).padStart(8, '0');
+}
+
+// 获取函数内容的哈希
+volantis.getFunctionHash= (func) => {
+    // 提取函数源码字符串
+    const funcStr = func.toString();
+    // 计算哈希值
+    return volantis.simpleTextHash(funcStr);
+}
+
+// 测试示例
+//function sampleFunc(a, b) {
+//    return a * b + 10;
+//}
+//console.log(volantis.getFunctionHash(sampleFunc)); // 输出函数源码的MD5哈希
   /******************** volantis.EventListener ********************************/
   // 事件监听器 see: /source/js/app.js
   volantis.EventListener = {}
@@ -2056,14 +2085,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       }
     };
     this.push = (fn, name, setRequestAnimationFrame = true) => {
+      if (typeof fn !== 'function') return;
       let myfn = fn
       if (setRequestAnimationFrame) {
         myfn = () => {
           volantis.requestAnimationFrame(fn)
         }
       }
-      var f = new Item(myfn, name);
-      this.list.push(f);
+      name = name || volantis.getFunctionHash(fn)
+      const idx = this.list.findIndex(item => item.name === name);
+      if (idx !== -1) {
+        this.list[idx] = new Item(myfn, name);
+        return;
+      }
+      this.list.push(new Item(myfn, name));
     };
     this.remove = (name) => {
       for (let index = 0; index < this.list.length; index++) {
@@ -2076,7 +2111,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     // 构造一个可以run的对象
     function Item(fn, name) {
       // 函数名称
-      this.name = name || fn.name;
+      this.name = name || volantis.getFunctionHash(fn);
       // run方法
       this.run = () => {
         try {
@@ -2199,15 +2234,42 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       }
     }
   }
+  /********************** 节流和防抖 ********************************/
+  // 节流函数：确保指定时间内仅执行一次 时间戳版本的节流实现
+  volantis.throttle=(func, delay = 200) => {
+    let lastTime = 0;
+    return function (...args) {
+      const now = Date.now();
+      if (now - lastTime >= delay) {
+        func.apply(this, args);
+        lastTime = now;
+      }
+    };
+  };
+  // 防抖函数 setTimeout实现
+  volantis.debounce=(func, wait = 200) => {
+    let timer = null;
+    return function () {
+      if (timer) {
+        clearTimeout(timer)
+      }
+      timer = setTimeout(() => {
+        func.apply(this, arguments)
+        timer = null
+      }, wait)
+    };
+  };
   /********************** requestAnimationFrame ********************************/
   // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
   // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
   volantis.requestAnimationFrame = (fn) => {
     if (!window.requestAnimationFrame) {
-      window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || function (callback) {
+        return window.setTimeout(callback, 1000 / 60);
+      };
     }
-    window.requestAnimationFrame(fn)
-  }
+    return window.requestAnimationFrame(fn);
+  };
   /************************ layoutHelper *****************************************/
   volantis.layoutHelper = (helper, html, opt) => {
     opt = Object.assign({ clean: false, pjax: true }, opt)
@@ -2360,13 +2422,80 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     img.onerror = null;
   }
   /******************************************************************************/
+// Hack Interval
+// 保存原生定时器方法
+const nativeSetTimeout = window.setTimeout;
+const nativeSetInterval = window.setInterval;
+const nativeClearTimeout = window.clearTimeout;
+const nativeClearInterval = window.clearInterval;
+
+// 存储活动定时器ID的数组
+volantis.activeTimeout = [];
+volantis.activeInterval = [];
+
+// 重写setTimeout：执行后自动移除ID
+window.setTimeout = function(callback, delay, ...args) {
+  // 包装回调函数，执行后从列表移除ID
+  const wrappedCallback = function(...innerArgs) {
+    try {
+      // 执行原始回调（保持this指向和参数传递）
+      return callback.apply(this, innerArgs);
+    } finally {
+      // 无论回调是否报错，均移除ID
+      const index = volantis.activeTimeout.indexOf(timerId);
+      if (index !== -1) volantis.activeTimeout.splice(index, 1);
+    }
+  };
+  
+  // 调用原生setTimeout获取ID
+  const timerId = nativeSetTimeout(wrappedCallback, delay, ...args);
+  // 添加到活动列表
+  volantis.activeTimeout.push(timerId);
+  return timerId;
+};
+
+// 重写setInterval：需显式清除才移除ID
+window.setInterval = function(callback, delay, ...args) {
+  const timerId = nativeSetInterval(callback, delay, ...args);
+  volantis.activeInterval.push(timerId);
+  return timerId;
+};
+
+// 重写清除方法：同步移除ID列表记录
+window.clearTimeout = function(timerId) {
+  nativeClearTimeout(timerId);
+  const index = volantis.activeTimeout.indexOf(timerId);
+  if (index !== -1) volantis.activeTimeout.splice(index, 1);
+};
+
+window.clearInterval = function(timerId) {
+  nativeClearInterval(timerId);
+  const index = volantis.activeInterval.indexOf(timerId);
+  if (index !== -1) volantis.activeInterval.splice(index, 1);
+};
+volantis.getActiveInterval = function () {
+  return [...volantis.activeInterval];
+}
+volantis.getActiveTimeout = function () {
+  return [...volantis.activeTimeout];
+}
+volantis.clearAllTimers = function (){
+  volantis.getActiveInterval().forEach(function(i) {
+    clearInterval(i);
+  });
+  volantis.getActiveTimeout().forEach(function(i) {
+    clearTimeout(i);
+  });
+}
+volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
+  /******************************************************************************/
 </script>
 <script>
   volantis.GLOBAL_CONFIG ={
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1779178389277),
+    lastupdate: new Date(1779178402102),
     cdn: {
       izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
       izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
@@ -2420,7 +2549,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
   
-    <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“自由从不降临于人类，人类必须上升至其高度。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴-MeeSong"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","keywords":"Windows,Veil,MiroKaku,MeeSong","description":"“自由从不降临于人类，人类必须上升至其高度。”","author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“自由从不降临于人类，人类必须上升至其高度。”"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"所有标签","description":"“自由从不降临于人类，人类必须上升至其高度。”","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/tags/"},"author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/tags/","wordCount":0,"datePublished":"2026-05-19T08:12:56.058Z","dateModified":"2026-05-19T08:12:36.000Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+    <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“自由从不降临于人类，人类必须上升至其高度。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴-MeeSong"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","keywords":"Windows,Veil,MiroKaku,MeeSong","description":"“自由从不降临于人类，人类必须上升至其高度。”","author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“自由从不降临于人类，人类必须上升至其高度。”"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"所有标签","description":"“自由从不降临于人类，人类必须上升至其高度。”","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/tags/"},"author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/tags/","wordCount":0,"datePublished":"2026-05-19T08:13:10.207Z","dateModified":"2026-05-19T08:12:53.000Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
   
   <!-- import head_end begin -->
   <!-- import head_end end -->
@@ -2997,7 +3126,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     
       
-        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#6.0.2" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
+        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#6.0.3" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
 
       
     
@@ -3647,7 +3776,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     document.addEventListener("DOMContentLoaded", ()=>{
       SetAPlayerPlugin();
     });
-    volantis.pjax.push(SetAPlayerPlugin);
+    volantis.pjax.push(SetAPlayerPlugin,"SetAPlayerPlugin");
   
 </script>
 
@@ -3788,7 +3917,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3888,17 +4017,18 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   volantis.css("https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.min.css");
   volantis.js("https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js").then(() => {
     Pace.options.restartOnPushState = false;
-    volantis.pjax.send(Pace.restart);
+    volantis.pjax.send(Pace.restart,"Pace.restart");
     // 阅读进度
-    volantis.scroll.push(() => {
+    volantis.scroll.push(volantis.debounce(() => {
       Pace.stop();
       Pace.trigger('start');
       Pace.bar.update(volantis.scroll.progress() * 100);
       document.body.className = document.body.className.replaceAll("pace-running ","");
-    },"阅读进度")
+    }),"阅读进度")
     // todo：配置项开关, 哪些页面添加阅读进度
   })
 </script>
+
 
 
 <!-- pjax 标签必须存在于所有页面 否则 pjax error -->
@@ -3953,7 +4083,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     volantis.activateNavIndex = 0
     activateNavByIndex(navItems[volantis.activateNavIndex])
     if (targets[0]) {
-      volantis.scroll.push(() => {
+      volantis.scroll.push(volantis.debounce(() => {
         if (targets[0].getBoundingClientRect().top >= 0) {
           volantis.activateNavIndex = 0
         } else if (targets[targets.length - 1].getBoundingClientRect().top < 0) {
@@ -3969,7 +4099,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
           }
         }
         activateNavByIndex(navItems[volantis.activateNavIndex])
-      })
+      }),"sidebar-toc")
     }
 
     // 方案二：
@@ -4017,7 +4147,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   document.addEventListener("DOMContentLoaded", () => {
     volantis.requestAnimationFrame(listenSidebarTOC)
   });
-  volantis.pjax.push(listenSidebarTOC);
+  volantis.pjax.push(listenSidebarTOC,"listenSidebarTOC");
 </script>
 
 
@@ -4149,7 +4279,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 const performanceMonitor = {
   slowThreshold: 800,     // 慢请求阈值(毫秒)
   slowCount: 0,           // 连续慢请求计数
-  maxSlowAllowed: 2,      // 允许的最大连续慢请求数
+  maxSlowAllowed: 1,      // 允许的最大连续慢请求数
   requestStartTime: 0,    // 请求开始时间戳
 
   // 记录请求开始时间
@@ -4200,7 +4330,7 @@ const performanceMonitor = {
           "script[type='application/ld+json']",
         ],
         cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
-        timeout: 5000,
+        timeout: 900,
         
       });
     });
