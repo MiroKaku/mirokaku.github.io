@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#6.0.3'>
+    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#6.0.4'>
   <meta name="generator" content="Hexo 8.1.2">
-  <meta name="Volantis" content="6.0.3">
+  <meta name="Volantis" content="6.0.4">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="index,follow,max-image-preview:large">
@@ -11,8 +11,6 @@
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
       <link rel="preconnect" href="https://unpkg.com" crossorigin>
-      <link rel='dns-prefetch' href='https://cdn.bootcdn.net'>
-      <link rel="preconnect" href="https://cdn.bootcdn.net" crossorigin>
   <meta name="renderer" content="webkit">
   <meta name="force-rendering" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -29,8 +27,8 @@
   <!-- Custom Files headBegin end-->
     <link rel="shortcut icon" type='image/x-icon' href="https://avatars.githubusercontent.com/u/50670906?v=4">
   <link rel="preload" href="/css/style.css" as="style">
-  <link rel="preload" href="https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-<link rel="preload" href="https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="volantis-static/media/fonts/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="volantis-static/media/fonts/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- feed -->
       <link rel="alternate" href="/atom.xml" title="喵石榴-MeeSong" type="application/atom+xml">
@@ -45,15 +43,15 @@
 <meta property="og:site_name" content="喵石榴-MeeSong">
 <meta property="og:description" content="配置虚拟机打开虚拟机目录下的 vmx 文件, 添加设置项 32 位客户机系统1234567debugStub.port.guest32          &#x3D; &quot;54232&quot;   ; x86 默认调试端口 8832debugStub.listen.guest32        &#x3D; &quot;TRUE&quot;debugStub.listen.guest32.remote &#x3D;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2017-05-12T19:00:18.000Z">
-<meta property="article:modified_time" content="2026-06-08T23:54:03.000Z">
+<meta property="article:modified_time" content="2026-06-10T23:03:33.000Z">
 <meta property="article:author" content="MeeSong">
 <meta property="article:tag" content="Debug">
 <meta property="article:tag" content="Kernel">
 <meta property="article:tag" content="Windbg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
     /* 首屏样式 */
     #safearea {
@@ -943,14 +941,14 @@ button {
 }
 @font-face {
   font-family: 'Dosis';
-  src: url("https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/Dosis/Dosis-Medium.ttf");
+  src: url("volantis-static/media/fonts/Dosis/Dosis-Medium.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
   font-family: 'Dosis';
-  src: url("https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/Dosis/Dosis-Medium.ttf");
+  src: url("volantis-static/media/fonts/Dosis/Dosis-Medium.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -2230,7 +2228,7 @@ volantis.getFunctionHash= (func) => {
   volantis.import = {
     jQuery: () => {
       if (typeof jQuery == "undefined") {
-        return volantis.js("https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js")
+        return volantis.js("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js")
       } else {
         return new Promise(resolve => {
           resolve()
@@ -2418,11 +2416,11 @@ volantis.getFunctionHash= (func) => {
   /******************************************************************************/
   //图像加载出错时的处理
   function errorImgAvatar(img) {
-    img.src = "https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg";
+    img.src = "https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/avatar/round/3442075.svg";
     img.onerror = null;
   }
   function errorImgCover(img) {
-    img.src = "https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg";
+    img.src = "https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/cover/76b86c0226ffd.svg";
     img.onerror = null;
   }
   /******************************************************************************/
@@ -2498,13 +2496,13 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
   volantis.GLOBAL_CONFIG ={
     root: '/',
     debug: "env",
-    default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1780962870820),
+    default: {"avatar":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/image/2659360.svg"},
+    lastupdate: new Date(1781132645534),
     cdn: {
-      izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
-      izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
-      fancybox_css: 'https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/4.0.31/fancybox.min.css',
-      fancybox_js: 'https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/4.0.31/fancybox.umd.min.js'
+      izitoast_css: 'https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
+      izitoast_js: 'https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
+      fancybox_css: 'https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/4.0.31/fancybox.min.css',
+      fancybox_js: 'https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/4.0.31/fancybox.umd.min.js'
     },
     sidebar: {
       for_page: ["bulletin","category"],
@@ -2553,7 +2551,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
 </script>
 
   
-    <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“自由从不降临于人类，人类必须上升至其高度。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴-MeeSong"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/Windows/","name":"Windows"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/IDA-VM-System/","name":"IDA + VMWare 调试系统"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","keywords":"Windows,Veil,MiroKaku,MeeSong","description":"“自由从不降临于人类，人类必须上升至其高度。”","author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“自由从不降临于人类，人类必须上升至其高度。”"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"IDA + VMWare 调试系统","description":"“自由从不降临于人类，人类必须上升至其高度。”","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/IDA-VM-System/"},"author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/IDA-VM-System/","wordCount":0,"datePublished":"2017-05-12T19:00:18.000Z","dateModified":"2026-06-08T23:54:03.000Z","articleSection":"Windows","keywords":"Kernel,Windbg,Debug","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+    <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“自由从不降临于人类，人类必须上升至其高度。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴-MeeSong"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/Windows/","name":"Windows"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/IDA-VM-System/","name":"IDA + VMWare 调试系统"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","keywords":"Windows,Veil,MiroKaku,MeeSong","description":"“自由从不降临于人类，人类必须上升至其高度。”","author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“自由从不降临于人类，人类必须上升至其高度。”"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"IDA + VMWare 调试系统","description":"“自由从不降临于人类，人类必须上升至其高度。”","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/IDA-VM-System/"},"author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/IDA-VM-System/","wordCount":0,"datePublished":"2017-05-12T19:00:18.000Z","dateModified":"2026-06-10T23:03:33.000Z","articleSection":"Windows","keywords":"Kernel,Windbg,Debug","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
   
   <!-- import head_end begin -->
   <!-- import head_end end -->
@@ -2955,7 +2953,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
 
   
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
   <div class="article-meta" id="top">
@@ -3055,10 +3053,10 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2026-06-08T23:54:03+00:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2026-06-10T23:03:33+00:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：2026年6月8日</p>
+    <p>本页文档最后更新于：2026年6月10日</p>
   </a>
 </div>
 
@@ -3088,7 +3086,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           >
           
-            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <img src="volantis-static/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="volantis-static/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
           
         </a>
       
@@ -3100,7 +3098,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           >
           
-            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <img src="volantis-static/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="volantis-static/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
           
         </a>
       
@@ -3112,7 +3110,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           >
           
-            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <img src="volantis-static/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="volantis-static/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
           
         </a>
       
@@ -3120,7 +3118,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
       
         
         <div class='hoverbox'>
-          <a class='share'><img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/wechat.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/wechat.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a>
+          <a class='share'><img src="volantis-static/media/org.volantis/logo/128/wechat.png" class="lazyload" data-srcset="volantis-static/media/org.volantis/logo/128/wechat.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a>
           <div class='target'>
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAADB0lEQVR42u3aQXLCQAwEQP7/6eSeCuXVSFAW9N4M2N5tLlOSHj/Wv+uBAAwYMGDAgFkD8wjX3/ufXV+95+q+Z/ef/q58HjBgwIABAwbMOpjjAHQIc7qRVwHG5wEDBgwYMGDArIXpBrqr+6pA6Xvi84ABAwYMGDBgvgamWljqBkQwYMCAAQMGDJjpgFctTHULWNVgCAYMGDBgwID5fJhqg6r7eTVITgVQMGDAgAEDBsznwFRXtfD07uv4PGDAgAEDBgyYNTDTq9swSwPm2P7BgAEDBgwYMGtgqgWhbgBMG2np/eUGHBgwYMCAAQNmDUw1mB03roYHibr7Oh48AgMGDBgwYMCsg7kKTNUDVuHS/XT3fdxwAwMGDBgwYMDcHmaqgNQFO71Of/f0ezBgwIABAwbMx8F0B31Og1wa7MYaeGDAgAEDBgyYNTDdwHQKmRamukCn+wcDBgwYMGDA7IV51UBz2jDrFrbiPwYMGDBgwIABsw5mqoFV3VAcxJpAT+8DAwYMGDBgwKyDmQ5u3QBXhRwLqGDAgAEDBgyYNTCnG6sepPucaoFpqvEGBgwYMGDAgNkDUw1kUxtNA+BUEIwLVWDAgAEDBgyY28GcHiwFSBtxabCsFtjAgAEDBgwYMPtgTlc1UJ0Gt3RwKG0YXj4PDBgwYMCAAbMGpluIOoWZ/l1ayIobbmDAgAEDBgyY28JUH1wNail4GhTj84EBAwYMGDBg1sJ0B3i6ga47MJ02AsGAAQMGDBgwe2GqgzrVQea4cNQcDGoHPDBgwIABAwbMbWG6qwqUFrLSwle5oAYGDBgwYMCAWQPzCNdUA64b3LrviSeqwIABAwYMGDC3gakGuulg1i2YVRuC5U4kGDBgwIABA+b2MK8qMHW/nwqklwNJYMCAAQMGDJivg3lVYIwHgMI/FAwYMGDAgAHzPTBpkJsCmS6IgQEDBgwYMGD2wlQDWXdAufqedDD77Z1IMGDAgAEDBszbYOIHFQd3ukEyfe4pNBgwYMCAAQNmD4wFBgwYMGDAgFm2fgG9jmZ/5Rdg+wAAAABJRU5ErkJggg==">
           </div>
@@ -3134,7 +3132,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           >
           
-            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/telegram.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/telegram.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <img src="volantis-static/media/org.volantis/logo/128/telegram.png" class="lazyload" data-srcset="volantis-static/media/org.volantis/logo/128/telegram.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
           
         </a>
       
@@ -3355,7 +3353,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
                 target="_blank"
                 rel="external nofollow noopener noreferrer" itemprop="url">
                 
-                  <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/020-rss.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/020-rss.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                  <img src="volantis-static/media/org.volantis/icon/1322024-social-media/020-rss.svg" class="lazyload" data-srcset="volantis-static/media/org.volantis/icon/1322024-social-media/020-rss.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
                 
               </a>
             
@@ -3366,7 +3364,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
                 target="_blank"
                 rel="external nofollow noopener noreferrer" itemprop="url">
                 
-                  <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/029-github.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/029-github.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                  <img src="volantis-static/media/org.volantis/icon/1322024-social-media/029-github.svg" class="lazyload" data-srcset="volantis-static/media/org.volantis/icon/1322024-social-media/029-github.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
                 
               </a>
             
@@ -3377,7 +3375,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
                 target="_blank"
                 rel="external nofollow noopener noreferrer" itemprop="url">
                 
-                  <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/018-twitter.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/018-twitter.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                  <img src="volantis-static/media/org.volantis/icon/1322024-social-media/018-twitter.svg" class="lazyload" data-srcset="volantis-static/media/org.volantis/icon/1322024-social-media/018-twitter.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
                 
               </a>
             
@@ -3386,7 +3384,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
       
     
       
-        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#6.0.3" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
+        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#6.0.4" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
 
       
     
@@ -3429,7 +3427,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
 
 <script>
   
-  volantis.css("https://unpkg.com/volantis-static@0.0.1660614606622/libs/@fortawesome/fontawesome-pro/css/all.min.css");
+  volantis.css("https://unpkg.com/volantis-static@0.0.1761982841160/libs/@fortawesome/fontawesome-pro/css/all.min.css");
   
   
   
@@ -3915,7 +3913,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.1.0/lazyload.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/17.1.0/lazyload.min.js"></script>
 <script>
   // https://www.npmjs.com/package/vanilla-lazyload
   // Set the options globally
@@ -3954,7 +3952,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 	hoverDelay: 0
   };
 </script>
-<script defer src="https://unpkg.com/volantis-static@0.0.1660614606622/libs/flying-pages/flying-pages.min.js"></script>
+<script defer src="https://unpkg.com/volantis-static@0.0.1761982841160/libs/flying-pages/flying-pages.min.js"></script>
 
 
 
@@ -3963,12 +3961,12 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  volantis.css("https://cdn.bootcdn.net/ajax/libs/aplayer/1.10.1/APlayer.min.css");
+  volantis.css("https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css");
 
   
     (async () => {
       // APlayer 需要在  MetingJS 之前加载
-      await volantis.js("https://cdn.bootcdn.net/ajax/libs/aplayer/1.10.1/APlayer.min.js")
+      await volantis.js("https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js")
       await volantis.js("https://unpkg.com/meting@2/dist/Meting.min.js")
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
@@ -4177,7 +4175,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/042.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4236,8 +4234,8 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   <script>
   function load_swiper() {
     if (!document.querySelectorAll(".swiper-container")[0]) return;
-    volantis.css("https://cdn.bootcdn.net/ajax/libs/Swiper/8.3.2/swiper-bundle.min.css");
-    volantis.js("https://cdn.bootcdn.net/ajax/libs/Swiper/8.3.2/swiper-bundle.min.js").then(() => {
+    volantis.css("https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.3.2/swiper-bundle.min.css");
+    volantis.js("https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.3.2/swiper-bundle.min.js").then(() => {
       pjax_swiper();
     });
   }
@@ -4274,8 +4272,8 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  volantis.css("https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.min.css");
-  volantis.js("https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js").then(() => {
+  volantis.css("https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.min.css");
+  volantis.js("https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js").then(() => {
     Pace.options.restartOnPushState = false;
     volantis.pjax.send(Pace.restart,"Pace.restart");
     // 阅读进度
@@ -4532,7 +4530,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="https://cdn.bootcdn.net/ajax/libs/pjax/0.2.8/pjax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script>
 
 <script>
 // 性能监控与降级控制
