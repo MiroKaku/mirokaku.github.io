@@ -885,14 +885,14 @@ button {
 }
 @font-face {
   font-family: 'Dosis';
-  src: url("volantis-static/media/fonts/Dosis/Dosis-Medium.ttf");
+  src: url("https://unpkg.com/volantis-static@0.0.1761982841160/media/fonts/Dosis/Dosis-Medium.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
   font-family: 'Dosis';
-  src: url("volantis-static/media/fonts/Dosis/Dosis-Medium.ttf");
+  src: url("https://unpkg.com/volantis-static@0.0.1761982841160/media/fonts/Dosis/Dosis-Medium.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
