@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#6.1.0'>
+    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#6.2.0'>
   <meta name="generator" content="Hexo 8.1.2">
-  <meta name="Volantis" content="6.1.0">
+  <meta name="Volantis" content="6.2.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="noindex,follow">
@@ -80,6 +80,7 @@
   --color-read-bkg: #e0d8c8;
   --color-read-post: #f8f1e2;
   --color-copyright-bkg: #f5f5f5;
+  --link-color: #00323c;
 }
 * {
   box-sizing: border-box;
@@ -811,6 +812,7 @@ button {
     --color-meta: rgba(191,191,191,0.871);
     --color-link: rgba(191,191,191,0.871);
     --color-copyright-bkg: #21252b;
+    --link-color: #e4e4e4;
   }
   :root:not([color-scheme]) img {
     filter: brightness(70%) !important;
@@ -883,6 +885,7 @@ button {
   --color-meta: rgba(191,191,191,0.871);
   --color-link: rgba(191,191,191,0.871);
   --color-copyright-bkg: #21252b;
+  --link-color: #e4e4e4;
 }
 [color-scheme='dark'] img {
   filter: brightness(70%) !important;
@@ -934,6 +937,9 @@ button {
   [color-scheme='dark'] .l_header .m_search {
     background: var(--color-site-bg) !important;
   }
+}
+[color-scheme='dark'] .friend-card.color-bk-dark {
+  filter: brightness(0.8);
 }
 @font-face {
   font-family: 'Dosis';
@@ -2224,7 +2230,7 @@ volantis.getFunctionHash= (func) => {
   volantis.import = {
     jQuery: () => {
       if (typeof jQuery == "undefined") {
-        return volantis.js("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js")
+        return volantis.js("https://unpkg.com/jquery@3.7.1/dist/jquery.min.js")
       } else {
         return new Promise(resolve => {
           resolve()
@@ -2493,12 +2499,12 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/image/2659360.svg","topic":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/10433048.png","project":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2779789.png"},
-    lastupdate: new Date(1784244741282),
+    lastupdate: new Date(1784331100271),
     cdn: {
-      izitoast_css: 'https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
-      izitoast_js: 'https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
-      fancybox_css: 'https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/4.0.31/fancybox.min.css',
-      fancybox_js: 'https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/4.0.31/fancybox.umd.min.js'
+      izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
+      izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
+      fancybox_css: 'https://unpkg.com/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css',
+      fancybox_js: 'https://unpkg.com/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js'
     },
     sidebar: {
       webinfo: {
@@ -3023,9 +3029,9 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           <!-- 显示文章更新时间，使用schema.org的dateModified属性 -->
           <time class="update-time" itemprop="dateModified" 
-                datetime="2026-07-16T23:31:54+00:00" 
-                title="2026年7月16日">
-            2026-07-16
+                datetime="2026-07-17T23:31:09+00:00" 
+                title="2026年7月17日">
+            2026-07-17
           </time>
           
           <!-- 显示文章分类（如果需要显示） -->
@@ -3136,9 +3142,9 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           <!-- 显示文章更新时间，使用schema.org的dateModified属性 -->
           <time class="update-time" itemprop="dateModified" 
-                datetime="2026-07-16T23:31:54+00:00" 
-                title="2026年7月16日">
-            2026-07-16
+                datetime="2026-07-17T23:31:09+00:00" 
+                title="2026年7月17日">
+            2026-07-17
           </time>
           
           <!-- 显示文章分类（如果需要显示） -->
@@ -3254,9 +3260,9 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           <!-- 显示文章更新时间，使用schema.org的dateModified属性 -->
           <time class="update-time" itemprop="dateModified" 
-                datetime="2026-07-16T23:31:54+00:00" 
-                title="2026年7月16日">
-            2026-07-16
+                datetime="2026-07-17T23:31:09+00:00" 
+                title="2026年7月17日">
+            2026-07-17
           </time>
           
           <!-- 显示文章分类（如果需要显示） -->
@@ -3376,9 +3382,9 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           <!-- 显示文章更新时间，使用schema.org的dateModified属性 -->
           <time class="update-time" itemprop="dateModified" 
-                datetime="2026-07-16T23:31:54+00:00" 
-                title="2026年7月16日">
-            2026-07-16
+                datetime="2026-07-17T23:31:09+00:00" 
+                title="2026年7月17日">
+            2026-07-17
           </time>
           
           <!-- 显示文章分类（如果需要显示） -->
@@ -3496,9 +3502,9 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           <!-- 显示文章更新时间，使用schema.org的dateModified属性 -->
           <time class="update-time" itemprop="dateModified" 
-                datetime="2026-07-16T23:31:54+00:00" 
-                title="2026年7月16日">
-            2026-07-16
+                datetime="2026-07-17T23:31:09+00:00" 
+                title="2026年7月17日">
+            2026-07-17
           </time>
           
           <!-- 显示文章分类（如果需要显示） -->
@@ -3621,9 +3627,9 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           <!-- 显示文章更新时间，使用schema.org的dateModified属性 -->
           <time class="update-time" itemprop="dateModified" 
-                datetime="2026-07-16T23:31:54+00:00" 
-                title="2026年7月16日">
-            2026-07-16
+                datetime="2026-07-17T23:31:09+00:00" 
+                title="2026年7月17日">
+            2026-07-17
           </time>
           
           <!-- 显示文章分类（如果需要显示） -->
@@ -3768,7 +3774,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
 
 
   <div class='content'>
-    <widget class="widget-wrapper} recent post-list"><div class="widget-body fs14"><a class="item title" href="/About-InstrumentationCallback/"><span class="title">关于 InstrumentationCallback</span></a><a class="item title" href="/About-ProcessHollowing/"><span class="title">关于 ProcessHollowing</span></a><a class="item title" href="/ArchLinux-install-notes/"><span class="title">ArchLinux 安装笔记</span></a><a class="item title" href="/Legacy-INF-Template/"><span class="title">传统 INF 模板</span></a><a class="item title" href="/Modern-INF-Template/"><span class="title">现代 INF 模板</span></a><a class="item title" href="/PDU-Encode/"><span class="title">PDU 编码规则</span></a><a class="item title" href="/Windbg-Network/"><span class="title">配置 Windows 网络模式内核调试</span></a><a class="item title" href="/IDA-VM-System/"><span class="title">IDA + VMWare 调试系统</span></a><a class="item title" href="/driver-load-order/"><span class="title">让你的驱动启动顺序快人一步!</span></a></div></widget>
+    <widget class="widget-wrapper} recent post-list"><div class="widget-body fs14"><a class="item title" href="/About-InstrumentationCallback/"><span class="title">关于 InstrumentationCallback</span></a><a class="item title" href="/ArchLinux-install-notes/"><span class="title">ArchLinux 安装笔记</span></a><a class="item title" href="/IDA-VM-System/"><span class="title">IDA + VMWare 调试系统</span></a><a class="item title" href="/Legacy-INF-Template/"><span class="title">传统 INF 模板</span></a><a class="item title" href="/Modern-INF-Template/"><span class="title">现代 INF 模板</span></a><a class="item title" href="/PDU-Encode/"><span class="title">PDU 编码规则</span></a><a class="item title" href="/Windbg-Network/"><span class="title">配置 Windows 网络模式内核调试</span></a><a class="item title" href="/About-ProcessHollowing/"><span class="title">关于 ProcessHollowing</span></a><a class="item title" href="/driver-load-order/"><span class="title">让你的驱动启动顺序快人一步!</span></a></div></widget>
   </div>
 </section>
 
@@ -3782,6 +3788,14 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3934,13 +3948,13 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
       
     
       
-        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#6.1.0" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
+        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#6.2.0" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
 
       
     
       
         
-          <div><p><span>本站总访问量为 <span id='busuanzi_value_site_pv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span>访客数为 <span id='busuanzi_value_site_uv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+          <div><p><span>本站总访问量为 <span id='busuanzi_site_pv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span>访客数为 <span id='busuanzi_site_uv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
 </div>
         
       
@@ -3987,7 +4001,9 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
 
 
 <!-- internal -->
+<!-- 这里不能使用 Hexo 内置的 helper: js(theme.cdn.volantis_app) ， 会导致多加一个 config.site_root -->
 <script src="/js/app.js"></script>
+
 
 
   
@@ -4447,6 +4463,12 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
       }
     
     
+      const fpostsjs = document.getElementById('fposts-api');
+      if (fpostsjs != undefined && typeof FpostsJS === 'undefined') {
+        volantis.js("/js/plugins/tags/fposts.js")
+      }
+    
+    
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
         volantis.js("/js/plugins/tags/contributors.js")
@@ -4463,7 +4485,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/17.1.0/lazyload.min.js"></script>
+  <script defer src="https://unpkg.com/vanilla-lazyload@19.1.3/dist/lazyload.min.js"></script>
 <script>
   // https://www.npmjs.com/package/vanilla-lazyload
   // Set the options globally
@@ -4510,14 +4532,15 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script>
-  volantis.css("https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css");
+  
+    <script>
+  volantis.css("https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css");
 
   
     (async () => {
       // APlayer 需要在  MetingJS 之前加载
-      await volantis.js("https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js")
-      await volantis.js("https://unpkg.com/meting@2/dist/Meting.min.js")
+      await volantis.js("https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js")
+      await volantis.js("https://unpkg.com/meting@2.0.1/dist/Meting.min.js")
     
       // 右键 music 需要在 APlayer  MetingJS 之后加载
       await volantis.js('/js/plugins/aplayer.js')
@@ -4588,6 +4611,9 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   
 </script>
 
+    
+  
+  
 
 
 
@@ -4725,7 +4751,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/042.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/004.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4784,8 +4810,8 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   <script>
   function load_swiper() {
     if (!document.querySelectorAll(".swiper-container")[0]) return;
-    volantis.css("https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.3.2/swiper-bundle.min.css");
-    volantis.js("https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.3.2/swiper-bundle.min.js").then(() => {
+    volantis.css("https://unpkg.com/swiper@11.1.14/swiper-bundle.min.css");
+    volantis.js("https://unpkg.com/swiper@11.1.14/swiper-bundle.min.js").then(() => {
       pjax_swiper();
     });
   }
@@ -4833,8 +4859,8 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     } 
   }
   // 引入脚本
-  volantis.css("https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.min.css");
-  volantis.js("https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js").then(() => {
+  volantis.css("https://unpkg.com/pace-js@1.2.4/themes/blue/pace-theme-minimal.css");
+  volantis.js("https://unpkg.com/pace-js@1.2.4/pace.min.js").then(() => {
     Pace.options.restartOnPushState = false;
     volantis.pjax.send(Pace.restart,"Pace.restart");
     volantis.pjax.push(()=>{setTimeout(()=>{Pace.stop()},1200)},"Pace.stop");
@@ -5081,6 +5107,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
+
       
         <!--
   pjax重载区域接口：
@@ -5092,7 +5119,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script>
+<script src="https://unpkg.com/pjax@0.2.8/pjax.min.js"></script>
 
 <script>
 // 性能监控与降级控制

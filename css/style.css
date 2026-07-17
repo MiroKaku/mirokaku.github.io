@@ -3652,6 +3652,39 @@ img.lazyload:not(.placeholder).loaded {
   margin-bottom: 0.5em;
   line-height: 1.5;
 }
+.bber-talk {
+  padding: 0.2rem 1rem;
+}
+.bber-talk :hover {
+  border-color: #49b1f5;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.bber-talk a {
+  color: var(--font-color);
+}
+.bber-talk .talk-list {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block !important;
+  max-height: 25px;
+  overflow: hidden;
+}
+.bber-talk .talk-list :hover {
+  color: #49b1f5 !important;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -khtml-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+}
+.bber-talk .talk-list .item {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 98%;
+  overflow: hidden;
+}
 .snackbar-wrap {
   position: fixed;
   width: 100%;
@@ -4992,6 +5025,320 @@ details[open] >div.content > .note:last-child,
 details[open] >div.content > details:last-child {
   margin-bottom: 0;
 }
+.users-posts-wrap .grid-box {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2px;
+  overflow: hidden;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+.users-posts-wrap .user-post-card {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 16px;
+  font-weight: 500;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--color-block);
+  padding: 1rem;
+}
+.users-posts-wrap .user-post-card div,
+.users-posts-wrap .user-post-card span {
+  line-height: 1.2;
+}
+.users-posts-wrap .user-post-card .labels {
+  margin-top: 4px;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -khtml-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.users-posts-wrap .user-post-card .labels .label {
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 6px;
+  margin: 4px 2px 0 2px;
+  line-height: 1;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+}
+.users-posts-wrap .user-post-card .avatar-box {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+.users-posts-wrap .user-post-card .card-link {
+  color: var(--text-p1);
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -khtml-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -o-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  position: relative;
+  flex-shrink: 0;
+  transition: width 0.2s ease-out;
+  -webkit-transition: width 0.2s ease-out;
+  -khtml-transition: width 0.2s ease-out;
+  -moz-transition: width 0.2s ease-out;
+  -o-transition: width 0.2s ease-out;
+  -ms-transition: width 0.2s ease-out;
+}
+.users-posts-wrap .user-post-card .card-link span {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  position: relative;
+}
+.users-posts-wrap .user-post-card .card-link .title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  max-width: 100%;
+}
+.users-posts-wrap .user-post-card .card-link img {
+  object-fit: cover;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  width: 64px;
+  height: 64px;
+  background: var(--color-card);
+  border-radius: 64px;
+  -webkit-border-radius: 64px;
+}
+.users-posts-wrap .user-post-card .previews {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -khtml-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+.users-posts-wrap .user-post-card .previews .empty {
+  min-height: 1rem;
+}
+.users-posts-wrap .user-post-card .previews .desc {
+  font-size: 1.2rem;
+  color: var(--text-p3);
+  font-weight: 400;
+  margin: 1rem 0;
+  margin-right: auto;
+  position: relative;
+}
+.users-posts-wrap .user-post-card .previews .desc:before {
+  position: absolute;
+  font-weight: 900;
+  font-size: 32px;
+  color: var(--color-block);
+  top: 0;
+  content: '“';
+  left: -16px;
+  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -khtml-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+}
+.users-posts-wrap .user-post-card .previews .spacer {
+  height: 100%;
+}
+.users-posts-wrap .user-post-card .previews .posts {
+  margin: 0.5rem 0 1rem 0;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.users-posts-wrap .user-post-card .previews .post-link {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  color: var(--text-p1);
+  position: relative;
+  transition: color 0.2s ease-out;
+  -webkit-transition: color 0.2s ease-out;
+  -khtml-transition: color 0.2s ease-out;
+  -moz-transition: color 0.2s ease-out;
+  -o-transition: color 0.2s ease-out;
+  -ms-transition: color 0.2s ease-out;
+}
+.users-posts-wrap .user-post-card .previews .post-link+.post-link {
+  margin-top: 1rem;
+}
+.users-posts-wrap .user-post-card .previews .post-link:before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 2px;
+  height: calc(0.875rem - 2px);
+  width: 4px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--color-block);
+  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -khtml-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+}
+.users-posts-wrap .user-post-card .previews .post-link:hover:before {
+  background: #ff5722;
+  height: 100%;
+  top: 0;
+}
+.users-posts-wrap .user-post-card .previews .post-link span {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  position: relative;
+}
+.users-posts-wrap .user-post-card .previews .title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  max-width: 100%;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  position: relative;
+}
+.users-posts-wrap .user-post-card .previews .date {
+  font-size: 0.75rem;
+  color: var(--text-p3);
+  margin-top: 0.25rem;
+}
+.users-posts-wrap .user-post-card .previews .no-post {
+  font-size: 0.8125rem;
+  color: var(--text-p4);
+}
+.users-posts-wrap .user-post-card:hover .desc:before {
+  color: #ff5722;
+  transform: scale(1.2) translateX(-4px);
+  -webkit-transform: scale(1.2) translateX(-4px);
+  -khtml-transform: scale(1.2) translateX(-4px);
+  -moz-transform: scale(1.2) translateX(-4px);
+  -o-transform: scale(1.2) translateX(-4px);
+  -ms-transform: scale(1.2) translateX(-4px);
+}
+.users-posts-wrap .user-post-card .card-link:hover img {
+  transform: scale(1.2) rotate(8deg);
+  -webkit-transform: scale(1.2) rotate(8deg);
+  -khtml-transform: scale(1.2) rotate(8deg);
+  -moz-transform: scale(1.2) rotate(8deg);
+  -o-transform: scale(1.2) rotate(8deg);
+  -ms-transform: scale(1.2) rotate(8deg);
+  box-shadow: 0 2px 4px 0px rgba(0,0,0,0.1), 0 4px 8px 0px rgba(0,0,0,0.1), 0 8px 16px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 2px 4px 0px rgba(0,0,0,0.1), 0 4px 8px 0px rgba(0,0,0,0.1), 0 8px 16px 0px rgba(0,0,0,0.1);
+}
+.users-posts-wrap .user-post-card .post-link:hover {
+  color: #ff5722;
+}
 .md .frame-wrap {
   position: relative;
   overflow: hidden;
@@ -5710,6 +6057,7 @@ div.note.blue::before {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  position: relative;
 }
 .sites-wrap .group-body .site-card .card-link >img {
   width: 100%;
@@ -5777,6 +6125,53 @@ div.note.blue::before {
   overflow: hidden;
   -webkit-line-clamp: 2;
 }
+.sites-wrap .group-body .site-card .card-link .labels {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -khtml-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -khtml-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  -o-justify-content: flex-end;
+  -ms-justify-content: flex-end;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -khtml-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+}
+.sites-wrap .group-body .site-card .card-link .labels .label {
+  font-weight: 500;
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 6px 2px 6px;
+  margin: 2px;
+  line-height: 1;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+}
 .sites-wrap .site-card .card-link >img {
   transition: all 0.28s ease;
   -webkit-transition: all 0.28s ease;
@@ -5784,6 +6179,17 @@ div.note.blue::before {
   -moz-transition: all 0.28s ease;
   -o-transition: all 0.28s ease;
   -ms-transition: all 0.28s ease;
+}
+.sites-wrap .site-card .card-link:hover .labels {
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  transform: translateY(-4px);
+  -webkit-transform: translateY(-4px);
+  -khtml-transform: translateY(-4px);
+  -moz-transform: translateY(-4px);
+  -o-transform: translateY(-4px);
+  -ms-transform: translateY(-4px);
 }
 .sites-wrap .site-card .card-link:hover >img {
   box-shadow: 0 4px 8px 0px rgba(0,0,0,0.1), 0 2px 4px 0px rgba(0,0,0,0.1), 0 4px 8px 0px rgba(0,0,0,0.1), 0 8px 16px 0px rgba(0,0,0,0.1);
@@ -7316,7 +7722,7 @@ button[disabled],
 html input[disabled],
 .article .widget,
 #l_body .post section.meta .new-meta-box .new-meta-item .notlink,
-ul.list-v.rightmenu a,
+#rightmenu-wrapper ul.list-v.rightmenu a,
 span.btn a:not([href]),
 div.tabs ul.nav-tabs li.tab.active a,
 kbd,
@@ -7343,7 +7749,8 @@ input[type=submit],
 table::-webkit-scrollbar-thumb,
 scrollbar::-webkit-scrollbar-thumb,
 #scroll-down,
-ul.list-v.rightmenu li.music a.nav.volume .aplayer-volume-bar,
+#rightmenu-wrapper .aplayer-volume-bar,
+#rightmenu-wrapper li.music.ctrl a,
 #u-search .modal .modal-header .btn-close,
 #u-search .modal .modal-footer .nav,
 article .checkbox input,
@@ -7717,6 +8124,20 @@ ul.list-v.rightmenu li.music .nav.volume .aplayer-volume-bar .aplayer-volume {
   background: #3dd9b6;
   height: 100%;
   width: 100%;
+}
+.fancybox__container {
+  padding: 10px !important;
+}
+.fancybox__slide {
+  padding: 2.5rem !important;
+}
+.f-button:first-child {
+  border-radius: 12px 0 0 12px;
+  -webkit-border-radius: 12px 0 0 12px;
+}
+.f-button:last-child {
+  border-radius: 0 12px 12px 0;
+  -webkit-border-radius: 0 12px 12px 0;
 }
 @media (prefers-color-scheme: dark) {
   :root {
