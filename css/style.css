@@ -3252,7 +3252,6 @@ img.lazyload:not(.placeholder).loaded {
     background: transparent !important;
     margin-top: 32px;
     backdrop-filter: none;
-    color: var(--color-site-inner);
   }
 }
 .widget.text .content {
@@ -6339,7 +6338,7 @@ p.p.gray {
   -webkit-border-radius: 4px;
   --gap-p: 2rem;
 }
-.swiper-container:not(.swiper-container-initialized) {
+.swiper-container:not(.swiper-initialized) {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
   display: none;

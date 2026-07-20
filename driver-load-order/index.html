@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#6.2.0'>
+    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#6.4.0'>
   <meta name="generator" content="Hexo 8.1.2">
-  <meta name="Volantis" content="6.2.0">
+  <meta name="Volantis" content="6.4.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="index,follow,max-image-preview:large">
@@ -27,8 +27,8 @@
   <!-- Custom Files headBegin end-->
     <link rel="shortcut icon" type='image/x-icon' href="https://avatars.githubusercontent.com/u/50670906?v=4">
   <link rel="preload" href="/css/style.css" as="style">
-  <link rel="preload" href="https://unpkg.com/volantis-static@0.0.1761982841160/media/fonts/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-<link rel="preload" href="https://unpkg.com/volantis-static@0.0.1761982841160/media/fonts/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="volantis-static/media/fonts/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="volantis-static/media/fonts/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- feed -->
       <link rel="alternate" href="/atom.xml" title="喵石榴-MeeSong" type="application/atom+xml">
@@ -45,7 +45,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2019-06-27T17:50:05.000Z">
-<meta property="article:modified_time" content="2026-07-17T23:31:09.000Z">
+<meta property="article:modified_time" content="2026-07-20T23:01:50.000Z">
 <meta property="article:author" content="MeeSong">
 <meta property="article:tag" content="Kernel">
 <meta name="twitter:card" content="summary">
@@ -945,14 +945,14 @@ button {
 }
 @font-face {
   font-family: 'Dosis';
-  src: url("https://unpkg.com/volantis-static@0.0.1761982841160/media/fonts/Dosis/Dosis-Medium.ttf");
+  src: url("volantis-static/media/fonts/Dosis/Dosis-Medium.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
   font-family: 'Dosis';
-  src: url("https://unpkg.com/volantis-static@0.0.1761982841160/media/fonts/Dosis/Dosis-Medium.ttf");
+  src: url("volantis-static/media/fonts/Dosis/Dosis-Medium.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -1858,8 +1858,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <script>
-  /************这个文件存放不需要重载的全局变量和全局函数*********/
-  // window.volantis = {}; // volantis 全局变量
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+/**
+ * Volantis 主题全局变量
+ * 定义 window.volantis 全局对象和基础工具函数，需在所有其他脚本之前同步加载。
+ *
+ * 模块结构：
+ *   volantis.dom          - DOM 选择与封装
+ *   volantis.EventListener - 事件监听器管理（Pjax 清理）
+ *   volantis.pjax         - Pjax 生命周期回调
+ *   volantis.dark         - 暗色模式切换
+ *   volantis.js/css       - 动态脚本/样式加载（按需加载用）
+ *   volantis.scroll       - 滚动事件引擎
+ *   volantis.layoutHelper - 布局注入辅助
+ *   volantis.requestAnimationFrame - rAF 兼容封装
+ */
+// 全局变量和函数
+// window.volantis = {}; // volantis 全局变量
 /**
  * 内存安全的全局 volantis 对象实现
  * 特性：
@@ -1961,9 +1976,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   });
 
 })();
-  volantis.debug = "env"; // 调试模式
-  volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
-  /******************** volantis.getFunctionHash ********************************/
+volantis.debug = "env"; // 调试模式
+// 页面DOM操作模块
+volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
+/******************** volantis.getFunctionHash ********************************/
 // 简易文本哈希
 volantis.simpleTextHash= (str) => {
   // 初始哈希值：选择质数5381（DJB2算法推荐的起始值）
@@ -1991,160 +2007,215 @@ volantis.getFunctionHash= (func) => {
 //function sampleFunc(a, b) {
 //    return a * b + 10;
 //}
-//console.log(volantis.getFunctionHash(sampleFunc)); // 输出函数源码的MD5哈希
-  /******************** volantis.EventListener ********************************/
-  // 事件监听器 see: /source/js/app.js
-  volantis.EventListener = {}
-  // 这里存放pjax切换页面时将被移除的事件监听器
-  volantis.EventListener.list = []
-  //构造方法
-  function volantisEventListener(type, f, ele) {
-    this.type = type
-    this.f = f
-    this.ele = ele
+//console.log(volantis.getFunctionHash(sampleFunc)); // 输出函数源码的哈希
+/******************** volantis.EventListener ********************************/
+// 事件监听器 see: /source/js/app.js
+// 事件监听器模块
+volantis.EventListener = {
+  list: [],
+
+  // 移除所有需要清理的事件监听器
+  remove() {
+    this.list.forEach(listener => {
+      listener.ele.removeEventListener(listener.type, listener.f, false);
+    });
+    this.list = [];
   }
-  // 移除事件监听器
-  volantis.EventListener.remove = () => {
-    volantis.EventListener.list.forEach(function (i) {
-      i.ele.removeEventListener(i.type, i.f, false)
-    })
-    volantis.EventListener.list = [];
+};
+
+// 事件监听器构造函数
+class VolantisEventListener {
+  constructor(type, handler, element) {
+    this.type = type;
+    this.f = handler;
+    this.ele = element;
   }
-  /******************** volantis.dom.$ ********************************/
-  // 注：这里没有选择器，也没有forEach一次只处理一个dom，这里重新封装主题常用的dom方法，返回的是dom对象，对象包含了以下方法，同时保留dom的原生API
-  function volantisDom(ele) {
-    if (!ele) ele = document.createElement("div")
-    this.ele = ele;
-    // ==============================================================
-    this.ele.find = (c) => {
-      let q = this.ele.querySelector(c)
-      if (q)
-        return new volantisDom(q)
-    }
-    // ==============================================================
-    this.ele.hasClass = (c) => {
-      return this.ele.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
-    }
-    this.ele.addClass = (c) => {
-      this.ele.classList.add(c);
-      return this.ele
-    }
-    this.ele.removeClass = (c) => {
-      this.ele.classList.remove(c);
-      return this.ele
-    }
-    this.ele.toggleClass = (c) => {
-      if (this.ele.hasClass(c)) {
-        this.ele.removeClass(c)
-      } else {
-        this.ele.addClass(c)
-      }
-      return this.ele
-    }
-    // ==============================================================
-    // 参数 r 为 true 表示pjax切换页面时事件监听器将被移除，false不移除
-    this.ele.on = (c, f, r = 1) => {
-      this.ele.addEventListener(c, f, false)
-      if (r) {
-        volantis.EventListener.list.push(new volantisEventListener(c, f, this.ele))
-      }
-      return this.ele
-    }
-    this.ele.click = (f, r) => {
-      this.ele.on("click", f, r)
-      return this.ele
-    }
-    this.ele.scroll = (f, r) => {
-      this.ele.on("scroll", f, r)
-      return this.ele
-    }
-    // ==============================================================
-    this.ele.html = (c) => {
-      // if(c=== undefined){
-      //   return this.ele.innerHTML
-      // }else{
-      this.ele.innerHTML = c
-      return this.ele
-      // }
-    }
-    // ==============================================================
-    this.ele.hide = (c) => {
-      this.ele.style.display = "none"
-      return this.ele
-    }
-    this.ele.show = (c) => {
-      this.ele.style.display = "block"
-      return this.ele
-    }
-    // ==============================================================
-    return this.ele
-  }
-  volantis.dom.$ = (ele) => {
-    return !!ele ? new volantisDom(ele) : null;
-  }
-  /******************** RunItem ********************************/
-  function RunItem() {
-    this.list = []; // 存放回调函数
-    this.start = () => {
-      for (var i = 0; i < this.list.length; i++) {
-        this.list[i].run();
-      }
-    };
-    this.push = (fn, name, setRequestAnimationFrame = true) => {
-      if (typeof fn !== 'function') return;
-      let myfn = fn
-      if (setRequestAnimationFrame) {
-        myfn = () => {
-          volantis.requestAnimationFrame(fn)
+}
+/******************** volantis.dom.$ ********************************/
+// 注：这里没有选择器，也没有forEach一次只处理一个dom，这里重新封装主题常用的dom方法，返回的是dom对象，对象包含了以下方法，同时保留dom的原生API
+// DOM 操作封装
+class VolantisDom {
+  constructor(ele) {
+    this._ele = ele || document.createElement('div');
+    return new Proxy(this, {
+      get(target, prop) {
+        if (target[prop] !== undefined) {
+          return target[prop];
         }
-      }
-      name = name || volantis.getFunctionHash(fn)
-      const idx = this.list.findIndex(item => item.name === name);
-      if (idx !== -1) {
-        this.list[idx] = new Item(myfn, name);
-        return;
-      }
-      this.list.push(new Item(myfn, name));
-    };
-    this.remove = (name) => {
-      for (let index = 0; index < this.list.length; index++) {
-        const e = this.list[index];
-        if (e.name == name) {
-          this.list.splice(index, 1);
+        if (target._ele[prop] !== undefined) {
+          if (typeof target._ele[prop] === 'function') {
+            return target._ele[prop].bind(target._ele);
+          }
+          return target._ele[prop];
         }
+        return undefined;
+      },
+      set(target, prop, value) {
+        if (target._ele[prop] !== undefined) {
+          target._ele[prop] = value;
+          return true;
+        }
+        target[prop] = value;
+        return true;
       }
+    });
+  }
+
+  // 自定义方法
+  find(selector) {
+    const found = this._ele.querySelector(selector);
+    return found ? new VolantisDom(found) : null;
+  }
+
+  hasClass(className) {
+    return this._ele.classList.contains(className);
+  }
+
+  addClass(classNames) {
+    if (typeof classNames !== 'string') return this;
+    classNames.split(' ').forEach(className => {
+      className && this._ele.classList.add(className);
+    });
+    return this;
+  }
+
+  removeClass(classNames) {
+    if (typeof classNames !== 'string') return this;
+    classNames.split(' ').forEach(className => {
+      className && this._ele.classList.remove(className);
+    });
+    return this;
+  }
+
+  toggleClass(classNames) {
+    if (typeof classNames !== 'string') return this;
+    classNames.split(' ').forEach(className => {
+      className && this._ele.classList.toggle(className);
+    });
+    return this;
+  }
+
+  on(event, handler, removeOnPjax = true) {
+    if (typeof handler !== 'function') return this;
+    this._ele.addEventListener(event, handler, false);
+    if (removeOnPjax) {
+      volantis.EventListener.list.push(
+        new VolantisEventListener(event, handler, this._ele)
+      );
     }
-    // 构造一个可以run的对象
-    function Item(fn, name) {
-      // 函数名称
-      this.name = name || volantis.getFunctionHash(fn);
-      // run方法
-      this.run = () => {
-        try {
-          fn()
-        } catch (error) {
-          console.log(error);
-        }
+    return this;
+  }
+
+  click(handler, removeOnPjax) {
+    return this.on('click', handler, removeOnPjax);
+  }
+
+  scroll(handler, removeOnPjax) {
+    return this.on('scroll', handler, removeOnPjax);
+  }
+
+  html(content) {
+    if (content === undefined) {
+      return this._ele.innerHTML;
+    }
+    this._ele.innerHTML = content;
+    return this;
+  }
+
+  hide() {
+    this._ele.classList.remove('show');
+    this._ele.style.removeProperty('display');
+    return this;
+  }
+
+  show() {
+    this._ele.classList.add('show');
+    this._ele.style.removeProperty('display');
+    return this;
+  }
+}
+// DOM 选择工厂函数
+volantis.dom.$ = (ele) => {
+  if (!ele) return null;
+  if (ele instanceof VolantisDom) {
+    return ele;
+  }
+  if (ele instanceof NodeList || ele instanceof HTMLCollection) {
+    return Array.from(ele).map(item => new VolantisDom(item));
+  }
+  if (ele instanceof Node) {
+    return new VolantisDom(ele);
+  }
+  return null;
+};
+/******************** RunItem ********************************/
+// 任务执行管理器
+class RunItem {
+  constructor() {
+    this.list = [];
+  }
+
+  start() {
+    this.list.forEach(item => item.run());
+  }
+
+  // name 存在时同名替换，否则追加
+  push(fn, name, useRequestAnimationFrame = true) {
+    if (typeof fn !== 'function') return;
+
+    let taskFn = fn;
+    if (useRequestAnimationFrame) {
+      taskFn = () => {
+        volantis.requestAnimationFrame(fn);
       };
     }
+
+    name = name || volantis.getFunctionHash(fn)
+    const idx = this.list.findIndex(item => item.name === name);
+    if (idx !== -1) {
+      this.list[idx] = new TaskItem(taskFn, name);
+      return;
+    }
+    this.list.push(new TaskItem(taskFn, name));
   }
-  /******************** Pjax ********************************/
-  // /layout/_plugins/pjax/index.ejs
-  // volantis.pjax.send(callBack[,"callBackName"]) 传入pjax:send回调函数
-  // volantis.pjax.push(callBack[,"callBackName"]) 传入pjax:complete回调函数
-  // volantis.pjax.error(callBack[,"callBackName"]) 传入pjax:error回调函数
-  volantis.pjax = {};
-  volantis.pjax.method = {
-    complete: new RunItem(),
-    error: new RunItem(),
-    send: new RunItem(),
-  };
-  volantis.pjax = Object.assign(volantis.pjax, {
-    push: volantis.pjax.method.complete.push,
-    error: volantis.pjax.method.error.push,
-    send: volantis.pjax.method.send.push,
-  });
-  /******************** RightMenu ********************************/
+
+  remove(name) {
+    if (typeof name !== 'string') return;
+    this.list = this.list.filter(item => item.name !== name);
+  }
+}
+
+class TaskItem {
+  constructor(fn, name) {
+    this.name = name || volantis.getFunctionHash(fn);
+    this.fn = fn;
+  }
+
+  run() {
+    try {
+      this.fn();
+    } catch (error) {
+      console.error(`Error executing task ${this.name}:`, error);
+    }
+  }
+}
+/******************** Pjax ********************************/
+// /layout/_plugins/pjax/index.ejs
+// volantis.pjax.send(callBack[,"callBackName"]) 传入pjax:send回调函数
+// volantis.pjax.push(callBack[,"callBackName"]) 传入pjax:complete回调函数
+// volantis.pjax.error(callBack[,"callBackName"]) 传入pjax:error回调函数
+volantis.pjax = {};
+volantis.pjax.method = {
+  complete: new RunItem(),
+  error: new RunItem(),
+  send: new RunItem()
+};
+volantis.pjax = Object.assign(volantis.pjax, {
+  push: volantis.pjax.method.complete.push.bind(volantis.pjax.method.complete),
+  error: volantis.pjax.method.error.push.bind(volantis.pjax.method.error),
+  send: volantis.pjax.method.send.push.bind(volantis.pjax.method.send)
+});
+/******************** RightMenu ********************************/
   // volantis.rightmenu.handle(callBack[,"callBackName"]) 外部菜单项控制
   // 可在 volantis.mouseEvent 处获取右键事件
   volantis.rightmenu = {};
@@ -2152,20 +2223,20 @@ volantis.getFunctionHash= (func) => {
     handle: new RunItem(),
   }
   volantis.rightmenu = Object.assign(volantis.rightmenu, {
-    handle: volantis.rightmenu.method.handle.push,
+    handle: volantis.rightmenu.method.handle.push.bind(volantis.rightmenu.method.handle),
   });
-  /********************  Dark Mode  ********************************/
+/********************  Dark Mode  ********************************/
   // /layout/_partial/scripts/darkmode.ejs
   // volantis.dark.mode 当前模式 dark or light
   // volantis.dark.toggle() 暗黑模式触发器
   // volantis.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
-  volantis.dark = {};
-  volantis.dark.method = {
-    toggle: new RunItem(),
-  };
-  volantis.dark = Object.assign(volantis.dark, {
-    push: volantis.dark.method.toggle.push,
-  });
+volantis.dark = {};
+volantis.dark.method = {
+  toggle: new RunItem()
+};
+volantis.dark = Object.assign(volantis.dark, {
+  push: volantis.dark.method.toggle.push.bind(volantis.dark.method.toggle)
+});
   /********************  Message  ********************************/
   // VolantisApp.message
   /********************  isMobile  ********************************/
@@ -2182,51 +2253,75 @@ volantis.getFunctionHash= (func) => {
   //     await volantis.js("...theme.plugins.aplayer.js.meting...")
   // })();
 
-  // 已经加入了setTimeout
-  volantis.js = (src, cb) => {
-    return new Promise(resolve => {
-      setTimeout(function () {
-        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
-        var script = document.createElement("script");
-        script.setAttribute("type", "text/javascript");
-        if (cb) {
-          if (JSON.stringify(cb)) {
-            for (let p in cb) {
-              if (p == "onload") {
-                script[p] = () => {
-                  cb[p]()
-                  resolve()
-                }
-              } else {
-                script[p] = cb[p]
-                script.onload = resolve
-              }
-            }
-          } else {
-            script.onload = () => {
-              cb()
-              resolve()
-            };
-          }
+// 脚本动态加载（按需加载用）
+// volantis.js(src, cb)  cb: onload 回调或属性对象 {defer:true, onload:()=>{}}
+// volantis.css(src)
+volantis.js = (src, cb) => {
+  const escapeSelector = str => str.replace(/[#".'()[\]]/g, '\\$&');
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
+    const existingScript = document.querySelector(`script[src="${escapeSelector(src)}"]`);
+    if (existingScript) {
+      resolve();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = src;
+
+    const handleLoad = () => {
+      if (typeof cb === 'function') cb();
+      resolve();
+    };
+
+    script.onload = handleLoad;
+    script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+
+    if (cb && typeof cb === 'object' && !Array.isArray(cb)) {
+      for (const p in cb) {
+        if (!cb.hasOwnProperty(p)) continue;
+        if (p === 'onload') {
+          script.onload = () => {
+            cb[p]();
+            resolve();
+          };
+        } else if (p === 'pjax') {
+          script.setAttribute('pjax', '');
+          script.setAttribute('data-pjax', '');
+        } else if (cb[p] === true) {
+          script.setAttribute(p, '');
         } else {
-          script.onload = resolve
+          script.setAttribute(p, cb[p]);
         }
-        script.setAttribute("src", src);
-        HEAD.appendChild(script);
-      });
+      }
+    }
+
+    (document.head || document.documentElement).appendChild(script);
     });
-  }
-  volantis.css = (src) => {
-    return new Promise(resolve => {
-      setTimeout(function () {
-        var link = document.createElement('link');
-        link.rel = "stylesheet";
-        link.href = src;
-        link.onload = resolve;
-        document.getElementsByTagName("head")[0].appendChild(link);
-      });
+  });
+};
+
+volantis.css = (src) => {
+  const escapeSelector = str => str.replace(/[#".'()[\]]/g, '\\$&');
+  return new Promise((resolve, reject) => {
+   setTimeout(function () {
+    const existingLink = document.querySelector(`link[href="${escapeSelector(src)}"]`);
+    if (existingLink) {
+      resolve();
+      return;
+    }
+    const link = document.createElement('link');
+    Object.assign(link, {
+      rel: 'stylesheet',
+      href: src,
+      onload: () => resolve(),
+      onerror: () => reject(new Error(`Failed to load CSS: ${src}`))
     });
-  }
+    document.head.appendChild(link);
+    });
+  });
+};
+
+
   /********************按需加载的插件********************************/
   // volantis.import.jQuery().then(()=>{})
   volantis.import = {
@@ -2276,34 +2371,33 @@ volantis.getFunctionHash= (func) => {
     }
     return window.requestAnimationFrame(fn);
   };
-  /************************ layoutHelper *****************************************/
-  volantis.layoutHelper = (helper, html, opt) => {
-    opt = Object.assign({ clean: false, pjax: true }, opt)
-    function myhelper(helper, html, clean) {
-      volantis.tempDiv = document.createElement("div");
-      volantis.tempDiv.innerHTML = html;
-      let layoutHelper = document.querySelector("#layoutHelper-" + helper)
-      if (layoutHelper) {
-        if (clean) {
-          layoutHelper.innerHTML = ""
-        }
-        layoutHelper.append(volantis.tempDiv);
-      }
+/************************ layoutHelper *****************************************/
+// Layout Helper
+volantis.layoutHelper = (helper, html, opt = {}) => {
+  const { clean = false, pjax = true } = { ...opt };
+  const handleLayout = () => {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    const layoutHelper = document.querySelector(`#layoutHelper-${helper}`);
+    if (layoutHelper) {
+      if (clean) layoutHelper.innerHTML = '';
+      layoutHelper.append(tempDiv);
     }
-    myhelper(helper, html, opt.clean)
-    if (opt.pjax) {
-      volantis.pjax.push(() => {
-        myhelper(helper, html, opt.clean)
-      }, "layoutHelper-" + helper)
-    }
+  };
+
+  handleLayout();
+  if (pjax) {
+    volantis.pjax.push(handleLayout, `layoutHelper-${helper}`);
   }
-  /****************************** 滚动事件处理 ****************************************/
-  volantis.scroll = {
+};
+/****************************** 滚动事件处理 ****************************************/
+// 滚动事件处理
+volantis.scroll = {
     engine: new RunItem(),
     unengine: new RunItem(),
   };
   volantis.scroll = Object.assign(volantis.scroll, {
-    push: volantis.scroll.engine.push,
+    push: volantis.scroll.engine.push.bind(volantis.scroll.engine),
   });
   // 滚动条距离顶部的距离
   volantis.scroll.getScrollTop = () => {
@@ -2415,10 +2509,11 @@ volantis.getFunctionHash= (func) => {
       })
     }
   }
-  /******************************************************************************/
-  /******************************************************************************/
-  /******************************************************************************/
-  //图像加载出错时的处理
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+//图像加载出错时的处理
+// 图片错误降级
   function errorImgAvatar(img) {
     img.src = "https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/avatar/round/3442075.svg";
     img.onerror = null;
@@ -2427,7 +2522,7 @@ volantis.getFunctionHash= (func) => {
     img.src = "https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/cover/76b86c0226ffd.svg";
     img.onerror = null;
   }
-  /******************************************************************************/
+/******************************************************************************/
 // Hack Interval
 // 保存原生定时器方法
 const nativeSetTimeout = window.setTimeout;
@@ -2494,14 +2589,28 @@ volantis.clearAllTimers = function (){
   });
 }
 volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
-  /******************************************************************************/
+/******************************************************************************/
+// DOMContentLoaded：缓存 DOM 引用
+document.addEventListener('DOMContentLoaded', function () {
+  /******************** volantis.dom ********************************/
+  // 页面选择器 将dom对象缓存起来 see: /source/js/app.js etc.
+  volantis.dom.bodyAnchor = volantis.dom.$(document.getElementById("safearea")); // 页面主体
+  volantis.dom.topBtn = volantis.dom.$(document.getElementById('s-top')); // 向上
+  volantis.dom.wrapper = volantis.dom.$(document.getElementById('wrapper')); // 整个导航栏
+  volantis.dom.coverAnchor = volantis.dom.$(document.querySelector('#l_cover .cover-wrapper')); // 1个
+  volantis.dom.switcher = volantis.dom.$(document.querySelector('#l_header .switcher .s-search')); // 搜索按钮   移动端 1个
+  volantis.dom.header = volantis.dom.$(document.getElementById('l_header')); // 移动端导航栏
+  volantis.dom.search = volantis.dom.$(document.querySelector('#l_header .m_search')); // 搜索框 桌面端 移动端 1个
+  volantis.dom.mPhoneList = volantis.dom.$(document.querySelectorAll('#l_header .m-phone .list-v')); //  手机端 子菜单 多个
+});
+/******************************************************************************/
 </script>
 <script>
   volantis.GLOBAL_CONFIG ={
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/image/2659360.svg","topic":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/10433048.png","project":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2779789.png"},
-    lastupdate: new Date(1784331100271),
+    lastupdate: new Date(1784588538116),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2554,7 +2663,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
 
 
   
-    <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“自由从不降临于人类，人类必须上升至其高度。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴-MeeSong"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/Windows/","name":"Windows"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/driver-load-order/","name":"让你的驱动启动顺序快人一步!"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","keywords":"Windows,Veil,MiroKaku,MeeSong","description":"“自由从不降临于人类，人类必须上升至其高度。”","author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“自由从不降临于人类，人类必须上升至其高度。”"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"让你的驱动启动顺序快人一步!","description":"呀，锁上了！","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/driver-load-order/"},"author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/driver-load-order/","wordCount":6,"datePublished":"2019-06-27T17:50:05.000Z","dateModified":"2026-07-17T23:31:09.000Z","articleSection":"Windows","keywords":"Kernel","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+    <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“自由从不降临于人类，人类必须上升至其高度。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴-MeeSong"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/Windows/","name":"Windows"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/driver-load-order/","name":"让你的驱动启动顺序快人一步!"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","keywords":"Windows,Veil,MiroKaku,MeeSong","description":"“自由从不降临于人类，人类必须上升至其高度。”","author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“自由从不降临于人类，人类必须上升至其高度。”"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"让你的驱动启动顺序快人一步!","description":"呀，锁上了！","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/driver-load-order/"},"author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/driver-load-order/","wordCount":6,"datePublished":"2019-06-27T17:50:05.000Z","dateModified":"2026-07-20T23:01:50.000Z","articleSection":"Windows","keywords":"Kernel","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
   
   <!-- import head_end begin -->
   <!-- import head_end end -->
@@ -2856,7 +2965,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
       <div id="l_cover">
   
     
-      <!-- see: /layout/_partial/scripts/_ctrl.ejs -->
+      <!-- see: /layout/_logic/_cover_ctrl.ejs -->
       <div id="none" class='cover-wrapper post search' style="display: none;">
         
   <div id="parallax-window"></div>
@@ -2941,6 +3050,9 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
       <div id="safearea">
         <div class="body-wrapper">
           
+
+
+
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="https://mirokaku.github.io/driver-load-order/">
@@ -3023,12 +3135,12 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
      data-hbe-format="4"
      data-wpm="Oh, this is an invalid password. Check and try again, please."
      data-whm="Oh, this is an invalid password. Check and try again, please."
-     data-salt="99947bc0e5f5ed60184f26913d8290d278e285678708f63d1d24cc62f5628af4"
-     data-nonce="c43cab753cf39ec5924ed153"
+     data-salt="b5c731667b009fbb688641089269be50544a3ba8e62fddfe2e36eb7f72567193"
+     data-nonce="a412eedd9340909859ac534f"
      data-kdf-iterations="250000"
      data-auto-save="false">
   <script id="hbeData" type="hbeData">
-    ebefea56250d78831a6d0de95f3ed3a388e89744091ceff39688b850406facf112030657b588d387a1c8c2b7756beac6f3ac9f5a8b9779b3620a0637a89808f1a88264716008c8cbcdcd6ecd99838ebf85dbef3282e7f890abf6747c9029a5e62135a09241072853a11de7763a0332fdf8f9728c23fd9335297672a8454a7a8fa72b84dcc3fb634a8538d606c4c5e737f8a7c2a7a4665eeab64e49851125960ed81a3f102296ca463ac3fb94738b99aae392a138700e4857909b89ed49cf694545ac560cd8706aad2f5e687f6b974e1cf3082de32b40b94403a25f1c93882b0a21d67d90a3eef42f0c54192c2331c6afcbb2dd716d2a5ec3b2472f62dd9e3bee11db22160696b256fc99d5e722cfd46d771ab740e4e7c3276fda0af81a9d5e7228c35be53f0db217143e6c1d61c9aa8e1867b3694b532dbd1b7fd8ec918919340958520a4da5c2fab7676ddf969c2ad7fdedd974497bdd52f88260019aa3941b4983dadea1518d0a1063875c534020a6b71e23926fb839a6df193fbc5a96be9fdbdc2004e34992931411ddd1d6c708731c6e15fb8c5d77a694ce1cda41df3fd4c35c1aae3cebb5a9b3609f23380cf20b0a61d36a4dfad911591b7e6eedd881748ed5f69026da76e87254032cfc32276cff3be372f142900f87130f4ced1c7a1dcf7ba5f952373863feec405c625745f9af6de6d4df4c41177ff66692abb8303852a73bfad83f3935ab313ebf2f0b10c3cae8de6715377ecf27dae30c716d26a6afedcac52f3a985b3c452fdbbd6e84cc5d61c0c0e4512a74de6d484a867de91126ee5d635b6173b4abdb1b287fca50f10b79b9054724b70d4a5fd1082416508d46cb7d14b6ab91d7048b9dac0d11f0da19d3f653e27424dff609e09f4d772a2f6c60f831e8e804711701646839188c0f10f61d054a567b943b28dcf5a8986f97556860ce47960b721fc3db85933fa80e7527d2a52dec8ac58a729dccdc247e30c0d350a8c3ef4a6a20baf1be11d2beed6b4bf2171dc6222d7ffa97ead807ac19e07590363d344167681267a6e00db82950f6480892a7bb0dbdd686425908d892fb1861c5b5732603974e8f214ca8a267f24b88c98c405012d461882471af109c46773990e1a46bd4d9450bc88e6c5380eb7f7268fe06a6582075125459b82c9a075f5b6bd51a8791c59d2e5d640e0ee557770244f19fba465892f4db535da712251d1215346f6debcea1ce7de44259f3f879c9aa9ba00a30db90303ecc8096b5e80e5a637d90b3b95cc611cf5dc30aadf7f28332a1cd03bd3c79866b154dc36fa168585d78192e2cd5eeb16445cf4f90aab95f95a3dd64c163922a0ae0d9bd2f76e9359c14d66615781b729e705f874d1ceeb77966615dddd848c0665caf5fc3f656f4a4f2e262badd6f5965dec071e3466f68e2ef85cb57ec403ca143a4448e95cd68f597f46b269fd81c67989052ee2d836c5da94e150df01019faf80ba039c3a6d1f18a51b12d65dea5a01cbbc74e85e1b6d106939e5b65151d22899c0133528e086b394e4a47aaf0de48b049ccb55025d4168960819a12004d053715d07b02f21fdc8ee80a3ce5697f0cb6561d60e0bc8c782b5fe3f700ff2543c4610dff982db63fa1e266c577f4d56108f51e5e0122367c9848a5d59b5c16a0b1e5db2e125d25ce56731bdcd60a6a8143e5abc1a33cc2722023b72296ff7921df28a016625354767b4d9910a84aa70350b4f3764b0cbf1e2ad8cb560b22b3142655a79c78c1838d9edba114cee0e0725b7df85aa39675dbb97b9da6390dd9434ef030d1e326eb39a2cb7abfab1976d6c6f156f18def1c9479e3e7bfbe00a0d0ab79e9a61c303c8f0793b8f3bd28796e3d7cb2475e13cd260ccf0b6fdc451a81b7b30f6ba689e8c96c43d6f9f02756b49d35d925b24115134fc37c943392f4eba6850528bbe0a384116835c9de8d5a2b4427d49b96a0eb22db60ae672d77dbe43004d0acb552591093029a29522233350271c4a04ceda9d0517201de971dfa0eb2dc533046c9a3f1de3267680e1e7f5c78eb68f8a669d54ed43872dca3358435f7f050bcd5ef1c267326a8ce2f1b6b4e06bce0510b0b7641ff13d8e99417ed66f386b177162a57dd122388bc8a03620450374136ddc68d3cd9acb01dfbcc5847c7f645df7dd0180c94b6a1cc766c5f43a151f3531812e778068399e4467e7d04c3e9180151555f4727d5a6121832f8a4968427e98b6bdf376757c37ac38c7d35e07b3cfc6324bcdc9e0623655e3fcd06d8396346033cb63fd6910a651d0d6b3214c96934be744dd80b838c4e974740b82bf08320bb0617d39a68702d3ac7f0eac94d4a6549ed555654668ca1a84e4a6c01be25053243cb47e22b68cd393385a3091bdca7f30cdc07c0f3960683bb76a3c6aa8572be470dc6d769fde65f3fad30e1d4ac96546c7bc7d2e12ff89e832e7496b1bfc6909573b25d07a96b54ea7f7acb0298fcdcd1121a8e7eebdf50357075b8b129f1e3de3142f8f24f00bd3c8a5deb5ab7f7066fc302849544319a123f85f950b23d78a2f14a53835b7dcc7020325e4ca1e74efa0f2fff6094412c553974ee22fa0ad61077db617d8564b7af3cb6049e4b391980574028823c6d0dc3281ef47ec8dd52061d9e313205db68e5a8b72a89da6e736e0d956062f0ad22646197b1c7c250cffee4558731e39babd0541cdc395bb1777852d873b27e9999f0f61858334f462723da6eb07382e06f18b7d6ceb5cc19882cc49879f0e107223920aac26c8838a6123d0af096cbc59a05c40876fb32a840d928af1d1c8cb66dd63c6a121cbd89c917dffae0890b3bdf386a25006623711f1c8ac5634367e5a55413c16bc25001a7d36c4d7eee488de989dd186b77c5e4ae1cfcbb6301408686921dd0d828cd25b18b674b18381be8ab24c9d095d9845af0c3dcf860ff40e697145b4b5ddfd9c700da03ee4a9019866d10ab812a339a900813b61a2e01377051246789946ffa724f08fb0c93446671c416aa435b35c06a640c6c7231922f60ec510cf208b6c237e1a3e74dff1f835c9f68dc8e5d622d91e820c7474d01ea1d3ecd8a27fdb404375ba1a40201987af5d723cc3564dae7792f0320bc07a3b88d8e8a8c11c68345f23ca55a111288ff7f87d0524d5c72942a3c0e8c2ad5810f5c85f3f730e058b8bddcf8b36b4475b499b940e9f8611da2dba3d368184416e4e7fe17dc5901b028b6b25b024e2ee9829959c14a3d68d3848ce07722d5f69b65c29c9e23db791bd6435c50b9a7ad51219809e4032e5c0d9bbd47b6b4cf61d3dfa1ee6649e99a1865f34e9d64f79a1ba13fcb8d6aca4b1825ed3fe6533fdf161cdec1ce59bde48c331f5df944291bff8e8678a870b4211c1ea79628dfe739db383bfe41750257b0d827bc390f1893988d047cf1771f995c09f34e7fb06e3aeb18cf0f8474b7d3edb3a48d73b518a3f1ecc014ec0fadef315abce826c68885be859b3b8953d10b5f989ceb7636fc9a53f0514554e530bd3577b967980127776c6b3fa51580e667b79058c6c2704b67b30695d8aaa6327409a7f6dcca5b3c305358ea91ac3b6ed14b9d12800435437d52276114746a9bb8288e34855fac8c38aef06ed5dc9eaa4fe33b96454e606f2226b120e6d4c9d8aaf67740896ed65b2771bcf0e911be8e78d1311524f61057f4e79464bcc31f2bf7d537dca51de046976651956ac48b5e7dc04eafcb14d4e5fd5e8cbb20f0229ee7c80744eb139e1f31498ef7a2718ce9d4c375f790fdc73aa9540af7f516c3fc0bc6253a048d7f695b2c4d5d26a41ff42aead065743ca8f53e15709e4d73c4b8705b72619e16de9c7f2c8236e417ae1391c532cb03b9c1d75da5f2bc61cbd6c1d31a8608985b13f28642feb28711133cb46b01873460357ecf7b0ef8f5cc4be64ed77c85b53719df0f85f217e48709a624515939475f74f9a49702db7b28e6a8b5a3fd286536f53d8584275e55594b8b4412503669aa52833c25148c0737652168e99820b71419627b65352c6be8075637da49fe9b93b9511f411aaebcbaebf1d6d379873933258d509a1dce948ab45fc6c34f9eb08f024906d30ac8ca3be09bec48eafc6e852d113e4b9bd4411f28b8142a7d43e0de9ddfb89f846839ae7d71441ac68d061b2c884f158d0e83cf50a58c0806f01b9576c21997dc4b5e572a1d16ba48aa274d4e20cef68baaa5fd677512439b210379f20abae0157da9c0b16d869a0d4031b8dc90c0152cc14754e2c13a37fae3fa64a047ee8ca122d5766068ac444ac0409edfa4232212d976faceb3b6af56db24c43f75255a13bf7906a430b2b097eab34a7d2afcc4d3c4338ecd0f96429ef08e673fd387d420c9b6e5ee8b6ebcf246ea129a7b15f50f057ad15fe21fe2dfeaae03bd1073445995dc7abca8d1400ba7ca77b472d014b79affefd1a0b674b6f903abb8c8ba4e8aca3ea488f9fb6ba2a88c9bec0a7d7bcd01455c5a0b1d4ba94825a24280a9e7146079838b8e96ee28f7c2300133cead03797d9acfd9024001d45dea58d3362ee7d270fac8805f1230856b382b22d8f95c6da1119d526ba67eb151eaf51f518ee08331280599d69d9dc6fd1ce77f52031b2bf1e03ff5909be8dd1ee38d93742768c1ea345f50e1e4c8ddd191e7ccd1de69fff75f25303e626fb863b27297c8a2300f147ae846ae4b9cc0cd4438047d6c2cdb9efa1f4c45fa7f82218da5b6b1b597b6eb12e1faee99841a8de827330f9e426b61825d221ec904bdd6cfb5ccc44d245d9eb872ce6e3507843f257c1f631432a91f31cba93509390c40d113571ae031f7d20c85ae28996c48c11d76262a3211f9343225d66e4215fd19a4dab7569a5b0fa7219f8151ce1f92c72993dad04b660f416cff8a4842918ad8383371278c603b9232cdf3e564398b27bdee1b1df66917fce20bfa51bf110168842ebff55056f42b41bcaa443ceae4c126ea70446ea2c062d1a07262a0e7e33bc2122087f127641c96f71408a4824a9d50f05c2fcf06f915949a111b5e75d2e61dc69019b99cde588f54a4c7215d9259c84e713a3a75b804f74882427ad59124d2d43b4e51c54fedb909be42462b66d0104bc44dff283bb9e8b89013da50d0d325a3266f37c7291f03c291054d1473816cfb47c1b0aa76a81764ddec92efe059e66f9a6ef72938138f9f5e1c8d13c17b3162fe43804f9cc8e7cf49e795438726b0c6a29a81ba3d84ae4e89be2248402cbbe230136c88e1dc0774fd4dde577d1bd408f699954a4a8ebe9d010fa0466572be62f886dce9cb138d2bd1ce5580a7fd467c9f993c25709fe27e59781319fc69f73fee2f1fc95338e15a5ddb99fbfabab82ad15734f37f9d97d7287b39000865997443348298b667a19931bca7cc6c1754a605e80f6d8fcfaeceb5a28f5dcfc8a2373482e9c5179356e7001017a0833394c91bc4795b445ab3f29abcf8034063f20eb6d5da8be99b16995fae92831b246862829db1a8a6643ae1ac4024c03acf62dac3620649b2e93c5a106d79acb314c4b0112d362c90d925d0b27ce2721855d39d1f06c3addcb924348ce42f9bca88f0953db060d94e460224230e17302faeecb0330e9b6308b9efa40d6cb53ef29e3528fd42410d04340211eeb47a6789bf1fee6f7a496beaa89c83f7d7f399a37d39e16683029b602b522bb8f716a14c9bc725adcabf3449bfc5f699a715f92da2b791af7f8fef6eeb4030b113c0f8cdd6b39e012bc17c7be8b0a12f035a3271884672096504c3366fc4273c5295f922ada70cf05a0f4de760db116607b51dfa61be6b9762ebbf6d8aa0861d8f0df9d85fc9382007164ec2a949b299175392b334f48117f2dbc13dc2753693b277ea9ef0df945c16451c97b9795fae0d38c1402c5014cd75d2a9d9ab4852880fcfdf4cb64dc2b3a86e4fc347419e10ac30ef1f1b94ffba4c04bf574123beccecab8e182f7bc21a100252aac400d2d8eb11bdeea45a81c9847e6e82b151e7a204c891b530ee78c0665cfcd9d3985b29ca9b49750d08eab82fc9ee28c46f01b269f09f9d2ba1905a00481b581da4b85f37d085d5c50057027f03c5e73cc3a4fd3a525537c34d190d6e8b261f76da141fef8fa5a16bf2afdf1912dc650d66207371ec52c7863ee060ac64f1d536de794f2858c2956a0fa9113fe5eaadb102400788d52cf65b584a52226ed9ba68aa6678611626bb4640ffd2107b1049b78fd735b5f65ceb463d882fac3ec6c5ef0a8565e429d69ade1d668e5b67821f5c20d417c2a5bef4bea3166db1150f04628ff6ea1493304ec1f384bca0c4148f02d3a14507f0ef5770b101bdaddfd17cc1787fbdf04771a47b20d9e7ba78a50e2db836dbe5380f27c2aa2c3305364e93b7afd8dd20f19b2230a77d68a429d18a7dd6abc306ae2e5860a1c2fc7f60cb9af57b4ae0025738ad91efc19e85fa053be51ada491e73900a67112c03d53fd898fbab0650d8ff71bc00b59b3d9ab6938534b89e7599aef917da3497097589ef42678ae2eb226783ac0eef72b2c2e35bc659a4e9c0544b1a52e4f62a3d50678acbc0c950058051ed9e6d912a90451ebdea7325d455392f49138152b72cfb56967dfe4d74d6b32f07b77e2ca09c8eee6d8b03c398e946c16b0ffe2c46fce6830d0917d94649cc0276a252c128eee251fb42010cf9d924c72f448585b18e835997aca32cf81a26203b7e0cd8f949da558e3fc37ccad14520b727ce126abd5080f0f34d5e3b39cae2c8aac0c49cce87c32fca31412d3a182cf2382f6108138a8613af2646934a430c8ee01dd652343abd00a3bdfd9b89a70db100289f558db6a2270f5614ece2925a225a968f439a9e9736d525e87e106b650d4dc2fcdef8a702667c9baa97ba1e8e298963dcf29c683a2ca4b3224ffd6db712964800b3633dbd08e52562dc1c69ba26b4dda7e3d55b15afd596dfc86d1490f5ed2eeb582c9eb3797fc8f6ed4f37f9db87d32a28af09407bc416cdf9a9ef4481d564f9e68e9d5fc7a3ad38b9e7d4f3f845b7c13704e7a9126a50844c76409d8723a7b6ab5029e0b6082d28f9e5c52a59369e7c5c58fe401dc6a94ce226ee138f837f774ed2464dee0ac5d421e7593e2b0c4264c1d1148011ebdf5015a10e956756cae935eb6d6f4f818ea9b1036b2ff670b9c3b53f660c8d4fcbe3cb51fb6a7e4ab50568a73ee153c71051ebd75472a001a9f9a511847d4488281b5d1d500d7176cfa927e73648bd99e7c85e2215c9f1219a80a06704cc3a72b96a8a8471e4f992a0419e749fd87946f46fd464d9a6c9dd2324805f5518f120af5fadc27bc66c3754a8fa191d05b25a2d6c2080bb168cea8ad63bfb3809910079b79442949ee9cb52f0869024e71f02feee9ce6deafe1adc4d2133c6de2e4913365c786ed0f055e656a61ba426413117ed5d5901eb36918481c7a776d851daa78293eb11127b6b224a40c493481922ed2db90f860ad0db95d6bf65dcce3a362ace381fb3f38c127e9dbb98caa21609ee04a290b63f038131c9c60c43e679dd191cbdcd125466aac70c3f6b9f0fe814c210a11bda053ec279e879f3906558a6e79eaff9055375eb4e5b221b4f88a7c1c6bee7cc07a3de1fd09e6224832cfc11eb4c595ab58c8a58f069df39b35345ea34d492fa01b3e546b06b889e7d721f84d847c54f5db92b8e3ab66ab79fc35dbab8200c8ba9eb3231a95602d9284a8bf54704be4dc490478a51dd9f4759569324dbfa48898241f4dcd97e994a01751d019f0b8e7557adbb2824c815f7cf5fc8bfd74854f6b0a87b17c0cb1eb98ce6c300f07a9856febf4a09eb167446c6a56e5f9e29d874eb2c7a66784a0784243855017f1196eec64d82c4443cdd4a0bebb23618a435f57f43e131b2c79cc0a41a53ffd24af91e02a166d6ab8789b54130f5fa1d09ee002266740495493373f30862f6b5134eae7865cafe1d5883cfd307ea08e21473b3c4ff7d98ac725ea09705401682fb330e1a0e4a6ba12015a126b3b07ba4c0af4bef1911ca5f86c618f8eb42d570e53adc6e086b9986e456093e605dbcfd0a30e0080efe4dcc0f6c718eaa69e8a836f8b899c3d203e1457d7438aeef478765c1ef7b982879fa81947714af72fc0bcfd20a5de0a1d2073ac104a101d764a59ca14925afad23e267ca9afdbe0199f3c71df810ab886bd44116dd84a2221be0d1d8ee66a722ef1269ad56ebbb9cd66810a8e0c1fa49ccc72781b79a2ddaa32e52cd6b0b3ee8a2ef45ce92895f5b6b0618c90492087d94bf4981ea877a6f614aaf9a042737cb5d67b366970811e9b31362dbfd72f5d8a8f11dbf203e62c5f8595a1fe35fc23d37eb1491f6873ad5426c91b4a6b4d8a00f41c6f4cac7db436d6e586b974d1e68f4f26d4763f67c2966206a70b4d5ae110bbf6eee67ec2a2c6955e242a636fa71976406a6e11400e08a04d500fceb7f0778055d3dbf2c24a89ea164e365035701776085313a80aa840cebb42ff776c3bec5b3f09ebd1e43215c45c5b70e827b92d0d82b00fad04501368ea690e09c968ece67f1e8e3d730edf61bd344f6786696f9021b12899131d9fbd956e6367fd1de24c372e18087ca945c8ebcb92e0340e9b874d625b5003d845860868884115e5e9b3e2901dcf29b028e11e990fb0c84a6a455168237d670a665214d5
+    cd434cd2c5a5252d0a0061b42d264eefdd0870ea50a77ba5a9c90dcc496663961db449833606d7a564728569aa1a835331829c74e3c1832858304d7afa28f68b933e091793ac17230d85a0681ce2b57987dc8a2dc6f82d09eee37c133e60ab867096d4cd3d419708e98df955a4613505b0e079fcd8fa30edfecf529aa4525e007940691e4e04e027469452cfc1ecc52657d38ef2f9682ca21f6f628eb85602349da802cd6ad6b9a4d2b1b97488533fc2f185770ebbfad7c7c9d318d9b38fe7bd87fe7a6eb20cac8a90f639ebd40c6bac4103624b45dc3aa55e5cfd189ffaf704f6e7389158b3fc9074c9d0e9e2be888b8c83d2d391ff96af82f8c868080abb889417ab27c4e0e6f4633956ed8ce90395911d86f02e4a6955c7bcfc77237cbe29214cd8fd29b2d3e8ff0bf37aebdc0eea5a709cc27bbb5189fb11a8e1d64c8628744e7b9f1ea6d8aeb0733ea376141c544ba51f6686ec157027d7306b9ecbceb1893b07c46e82d8e1728d4e668d636a05081f52bfdc5b367e3cc938e320ca868e271265470664fbe894fb1c256ebd9fc7625269d8588891736fc6cf22fb5b05511f244cba34a31ffb6b0c23139c4ad3206220ca5bdafee9800305c82174f1bb1bf3c6fe9767a9dfb5cd29fdc89465c61708ef0e43124e1b02a04e6cf685b4556d617a48823731205c08f873d481382523175dee9c96db9cbc9ebe63ad9934914f4329a09bb99101ac083c95628534c0ae916c3aaf983e6d66fa2629be2bd6c326a99a3f4f7ed718c62b50bcb706ee7382cbc5d074b5e7723bd55255c99493d8890f6d2ff713c560eb6f283fc5d17f16baa914a664911205e62403bf58d16e9935e380e7bc7a4b77b67ccce71990af5c41cc5935e8ee85ae4ff520ddff94577cea7569392bf8b8f5d5bc1030cac62784ed8f59b307246a2817595032b010714306c1616f15137700eb480944be1d0ed0c6f97daf39a4e214979f31a8d379649a72706183a5d703fbbea3653919ad7ab488810d39c02034f80f3a63e056e7b456296607a530676c3e3002935ec36c97feb19bb787bb32db4ead5ddf318ee11aa7de7c5f31175e44c90a0d532e8a7273fa7c6ed76d42c7bb49f1ad122dfe7c3dcc63651e4d8bbb8950ffd90d070a3d0d3e0a76dd25acf53ad39bc2296ec2c264d365044a97585bc155b18b8952aab0d470d0ba97cd9a89b3259e2b70604ce0568aaa437180b7592df05a727b2c0e32b4346c965b228c3fb86601eb030e2f3045293a8913508e2777b50a065730df25096b1f6c35fd55977efbf82ae396d7043200ec91cda0063d83555f46d5306865ab199c80521c612200f619dacc3bec2bd3a3c0b164868659548500364b85bd26c36b370eeb29d58d1f2613d6cbd2ea42ed4f089555e836a6cbc7edbbf9934aef79c4cab8e19b0c493fa7ff5c6a3c62e75e914d03a5ca721bb9936599bfa396bf5ec2b0c804da24beb1c36b98efc5de5348c559670d08df0c3708ff5e2cf758059439777c88a98e23d0c84ee6aaa2c06a8a1ae6cabc845156c4201e2a4f95189f7c58b82198d97194aa6d14c924e82a3d39362571253a7780d99d1a74e536a8b79cc0e6e37a3eb62c7036573bbc0058a7a0ae1c391bb82b4793542e7b032fbde3b1f7d324412bf49172bd857d0e27136fcab75d9768f70a8e944c0f9ee7169b11066ae0d032365422829b8912b24cf2f178ad313b2fa790f035a7f70f4183e134a2ad2c228eeb1784c1377a18e7e25cfb44f75c7dfb97b9f89b898d1dd6378591ebddc1cc7d9b5692edb41dbc75c83ff1f099ac6b64c893ee086682d860d6e138d877906a013d91e518e20f36924f036d12e7a7d8b2f37ae12697bba04fe530c063ec23cc5ebfb5dbbb3a158643090f0fcc459bc6d84634f339a8dc70a7744b80466f7e5e8cd2aae498aa36ca139b85f5ed893e87e4386c8b98a7931a99e1ca628648d4bb34f2411a207ad22fe44083fc36a8ed7ad5394e128c978bbf61d5b8f72922c352cba9c6e9f71a35cd81777203f6339ec4c79ce7c57d2221e59d9294cfe7bf781cdeb283c468c59a1dd9a7883c7ca71e6fb691032ded1eb334a3410f487cf74c1111ed56674c54c41a5f9fb563b2f7fadae3136fc172ad8499a14d2bb8e8c002abb4fca6c8f0fc54ff3a1e90d9f36de749ccd86f861b4f046de2698eb809b3449ffe1e78da29e1e3104a54696a51857eb225f2debb5451a07dbd9cfebe3bb26f3133e82e87f5611cc9189db0f876086f9a6da32d9019fc764eb3131435a88c5c7ddc53d8eaba2abc0494fae4e937ddb637f42eb6aca60cd44837f2c1550fd3300bbda516ccd7846b699ce9ef0e9361e058b82804e45f610f938f9fd36931ea4eccff68bafc8bf10e55645f35fcc86cc02e5b6cb94c6ee43339db382d57739e99550c2e83e396743af483f2c48192370edcf38a2e7280ca408e68ab3b40dc2c15f7b190063880860c890a0f165f1dd3e2d32a6107623e8cfff13f1be8f5d21c6cabcb3e3bd42b61648365bbad17c2278302468fff109cd0c44926945187df01a45eb3ea690b84f1bd32569f7c33f38bd3496258771ccc4388ea7f816166ac603e884153f473dd426275d52cb12b8202e68cc260610b5502d8c86e160cfa19866ec0a6fe79027f48f2c75d7b01cf125efd55ddba3c5ee6755d8bcf884a59b30080be356273bb256b4765b44632f0653006c83561cd50313b392badc3a455a5a1eda14a8a3b93c362e683707f8070848765454e5d6e2f8164e9a8287aa174f3d9463ab76f7a5b4df86a65d4a2ccff8e8513eee4bcecdcdf570862be2c1a0b7a1c33150b9744087708dfa53e0079fbe411789988f00be3110bb880c04ea7ad5e86090b805552e624cb7221b21b457a472841bb67bc447150872f58770c122ba23a2177cf467008fac5c21a1e303d53a461c9334e6d21419f923d38c504376ebb0384acabe50c6de5c216da739c2d9a25c429c80f9df1dd9e3468d9b91d175dce961f6b50f9168d0e84591c6cc4f8fbbe60a4b276c6b2194eb725a8977b77b57e9eb0df1dd8c53022de4b342e8ddebcf4aa3ba3ed5b58cd52a39d07892b4712e92ab8ad75b0f49dded2a20f328ec2b1b94c9f5cda1fe9445acfeb8d0f3d4dba05394555845b074bdbe7d149eac439c35ef057dff9462dad1cb8d472977cf02794e838c8538b1e58fabea1223fbbc9e5cefc06cd789b23fcbb9a204ac2b252006f3ec6ae9ec4333683c6f2de3d6ff4d28a6bfe893229e47e6c991cc830e9ad92199b5c4ca0a603ba9f50d2c20ba920eefa93da7a95197f51332c7096c2bbadea9ee36011f619a190b2555fc0cefdd0d18dc0c1286bd7f9ff23c7593ac8d63c7fef3815b57dcfb076c777bc2f29f2b27096464e94646c9f26ad21b0971667f9a7d4921dec270a66ed735682e0599cde22b98a8458bfab88dbe41decd848f4e4c47af9eaa94ed39b5e69b122cad54325a328ca8c45eaa2228bea992ce775c76824a171d161e66cce64fa67d43eecf4d9d6b6060f76f78e9d0aaff1e974dccfcee01f1d5b008ec53e825394ef1b28643e093a47219868d9a79a3f45e9c501090f04869a2301150c098593a833fb1bc7d89604dec514c9d25fd7142405da1658a5b40eb3bfd37e6e458cf019212c08ae95986bd29a7b3a3136544e4e24655d46c75eb4e25b6740c88337981abbc1e8a99ad00b81cc630b38332fd9b03ab04b0b253f5287d65fac1d6baca2eb30c15dbb0fdda341bfbf65d8d689458af3278432c01f023a18c61499af84f6e5e9bc64e4ee3a79556ea81afae7f4fdd680a0201eeefd9106cd859f46727e96348db60811346f4a1da44eff4e0802f151beb7ee7a6c5c2a203f3b718e42e0ffdb44bc39632bb01d460f879f30548b882743019f2a1e8077062c928e765b0569d6ea497781d30cbde0a9b620086ba10d9fff7e15ab4b86ea068741b046aa843c667cd9dc14d3bf4ec9e933b51561c3bb26f9ceac0d462f4d97b1543786cf8f4b1e1bab04f5f20e14bb3c1a4517180d8768c304a9fcb9ad6992d754d6b2d913bb737b0ff2e7213fa927fdadfbb45f4f0788d336776a326e2ba4b1959def2ac027c612e81fb1c263c4337c831d8084dcf1a9f632d96ba529d0a4c093c374f290913bd58e3409e2c9a597867f1b880d4084367155e64ef85763c2b45262d4e76cadf544c6da3d09c2432e7b8e60b9d4147a87553c4543fc4610164485ac72647931cdeb467ae00d40af5569e97415b03998c4206b17a4107aa20d6ed7b5e6468d23b588c3a77b7cc8c38d14cae894cc902096b25e904d5353d52bed88c1dd6586f7b9431f0a59858a9e1633136fd85fea28f908046234a45c44c91787ca2cf56af03ab8b335325e0f91347055c763ff50c4fcf89b8a2f46f192828f34b7d4a1742765ae88c0007132b8117755c1c33206d0ae3d996c2c7f196fa66485423a595377ce9f8422de3a9a4d36ce7c8b0b197229c7e9ce0121f40deea39c02d0f6346fbb3288bb192690f7dae07c663f43ec108be08f4015dcc57cba49beda45583962ec6f9bbcf92c76ffd04d5edbfd7cf5f600ec249849f70344a70060741f17f0686daf77af8503039894ce0400658406cdbe11deddb76fd2fb1775556b7d55a579535d8278473bbe6d8e8a4c7dbe5f49aba94f3a34c49b89652814d91d674cf7a3cf94bd15d655a2cc578c8476c516b4c91b9695bc7f423a058ba74ae9941c82b3682400001a487537f21f3e56ba881d3c46ef4a038f6e12e790d6033fdb8ede27bdec7b9e29682df07c52c90eb7e4a65846a3e37a3401ae6bb89c1448fc170be266d3aae6092495f500c04986bc8aa0a1605d597d988ddccdfe3c7762b2be0596d4075301e20e200e720201da7cbe86774dd36961a85a06302dc66fa28b3fd435fe68b692737e0f13ab66df31f4424c24924c1df9d00bbe84bb58b4922e2cc06c329744e6ea50769c7735003b9809488423ab04064fc2e4b57a63bd64d68f55ad4d33813c0bb86889f3627478b5416c3c1e4906dc232d8466c288d01f6bf3906983018829d1472339809de1ef2c30bf7b2bb28b4069401a66a40b765381a985e9b6c0db789859d4690cb79bbd425ac891d37fb68a3f610b5e7de89a1339501e0aa94eb4ebd45c69137f81cb4fab664192fa3095aefdea1041eb3a5c87009013aed86f87c5e132784cd81cf3c9f63e7d0bbdd2606a25b54b3bac29dacec27aabf371f3bc54c2f3e0eaf9a0fe0ca6e5b0a3193f3888007f56e75d4b5bab446ff2b03810313a4cb556bacd655540105322403616f7b3c7fbfecc2d67d8cdfb8879f7a78eb2b39c71f40d8a1a753f5896453f64cad9401d8e5ee8fdc7882e177da08acfdaa5394d397ba6ae88c92c0493d43d89288bc7280eb8a1ca27f1e6eb87c65e1d8581d5b9a98d8477e11d627a0891a52605191432c3b3556d9fb9e8201b287ec287f9efad834ffb8e521a09f72d830d41d949af5b40888aa138c537da69cc3a503fcdb09caf1525316ee236be386fbff411b21f4e80e6c179500eaa111be713e35c3417853bde3932c3995db3cd86f53212aa59cc96399aba261101fe57e4145e910242be102a259c152480c8a0df9f020a700736c5b2156afb5579b905e32481734a57256f1466096e018b793b2867cc314e111bd5a3c3369f2c0e4f6e35ff20eaa182f549f5fa18dc16f422497807f80ce58620e7507183a107380e6d1623e2e4cc7086bee3c611a5c08e007db68e84444b320223982524871493dc680781ed15120aef93c897509fdac6a668b8834ba9da4678dca0829621e3a779962af75238ef18dd81f5465e9e1e3564c2784c22c11a1fa8dd9bdb4fd23dbcf1f70722d684fd35a5653b3a420879ff260607c56b8d5a770ece8d43c5e6393a858f696d439de16a577e3377fec0edb711f6bf6e33bc5c4874780e618ad1f4fa35d1585eadef2ac5e4c9a573aa061c63c3bfaa84647f4903f69f0003381ec521f910d714831c6299a90b700974f2e7c4ce097bfefef5c5d92e84f45b287492ff82793af4baf823b21ba505a7c355d6e58d3e4449c961e20cad4119726485329d26f4554d82bf916476ab501d92327249cbb5148d0fafbad4ae8b3ff94a125a89634e5ec9709233cbe77b3616d262249303c3915166c7feef09b377e148daf99d81734d8da6deb2cb4cfbc0b56124f5a495f7985806844c5cbbb25b2be0697f814f034273a02475ee6fc85e06cb172513ad5afc77914ac30d2c7cacbf9cd064bb6149b92fd0f26e750725777f1ec7572ca0af8e2441799e65f137d44264e9861819dccce37ebc46e54e1f5932fb1e591f19bb87dfa25597d556564a608b1c3b0cf87bbcbec11cc9fb75201ef8d123deb598fcc1a839bec88318319fb7fc512f3358b628a52724dd2e94e1c13c5cc31837a59ff22378e62414d596123f32ec498ed409c8de18b768878c7eaa944c04ce74adf32840329b339342b359094c2cc3e9b36664d1d09e13fc62c5e9b1da37aa740e05cd518cc0de74118d4515f2277939fa3ada9bfb5a34263ab4250b5a3063af8ad91841413c76f41d80c3ed1af2047c2672b779d5bd7dd8d6bfc771d7f7a819993edc9e1fd44b8a12b33fb564015d37bf2b3a5c745ff62cee456cba9fc29bc78f815b6a83d210028a01f97fa351f6bdd4d10dd341261137b24f1a356296653d3c913165a0a1f1218af9d170d4a21b19fe06b98ab06a9570465123aa6fb5ac17c69761e0dba67ed171599abf2f035cc2c774f828dddcd569d93a84dbea81981b544a970ad403e767f70f50edd3bb0d006e216148fcf1d34904031d5793d7183d6c51a2f9ddfbed92fd6f7687c67279241c7307b625fb9cfc1bde9f596d0bde5ce07f96de548846aee9e786640a3e0f7217cae5259a717529b2949d67b68d7b740880b96691b785ffbb16d2c3f47e2fa5b76e01b4a5c41be18c3d183ecdcd57bf222b96e46ca96d4d3ba6e37d9ebd41d14cdb334da5acc2c5ab7feee0e1284c093fbe493b924a81c2f5ed235f5fff9467ad32b5b89b6fd244c738e4601d1ae71419710b6bc9151738ba95eac36014f7e484c11a58018aa85667b447ffbbf6a867a78f5f932abf402960dff1980ad58c9a2a6b7c014f083ffcef056917446a03874d89cae2cc52a5c05aaf97a733684f26491b6d22ce8f42afccda98fe565096125b23c34d2b0d60468c3aecb990f75c1dce96ec4ba5348d63a1412c02cf16d6a310de4b371c19ad45666f1fbb0ba963770987c1a2cca30eb39ee7177ef1f51ca2d12ca11c6b827122bedc3b363689c019d365e3382ba9733918dad2b3f12904d2287276b1713da6085cf0bec45eed8ffcb144e13017efd873532b4887ee967b6944cb682aa334511b7e4cd2630dc4531fff813484ca378fe129f5404f5cec0d7bdc60f000e5fe2e29e5d188a6bd6782ebc687cbb31f0bb8a6591727706c448aa39a190a6b9833f67d44ac5d194b9283574263760abe1dbbd5bcd904f1a6782cf472e493f418017b4d05867067baccdb5c8260a8b8c511725ce55801db22372624feebde3c825c41257ba80848393cb3d67a735f68fc92e05f9ca41a3190fdcedfc6ca980d4d37a0ed3ff5e445d255fcccb5bba31e9436983f4d0f8875d430de6c558c900b6c01f2981ad5832503bd3343e572453579d5b53467be9be4c9cc2c60127536f334bb33a07a5324ad285d12aef9c8f458b81c1b538d3a3f2599d7d5278020ea92afc4e9415842912d0b3f836908ea20c484f458c5eebd23ad9c8bd2b2a5c377a20ff52503f18c23f62278145b02d1e07be95e2eb067ac323a993f4d012977c19eee341588f9f0c6baa89b80386e17ccf617136b0fe4fd3db8722e47953e3a020f879a83c696948ab378d53bfa279ab4ce16fd3838f7cef14c47df08ba9a423d8cf03b900d3112c278c8d61f9ac29e2086c69937f4571afb9a55dc87c5d46cb4a386f476f6d2d5ab01467fa61219216f65331b850917b474cf2648def69e1f008a863b8b5624f92aa9251da6c7d30cbf7948561f840119bb08208f14a9b31edaa091eb85b54b8bfaa1d4994f9b8ced192f32a71cc1fe5e926e7ac9fc36d438d176d59df05118b91fcb9e3c2b3088bfe16ebed7d51b28349ff8c793b89af2cbd69cd9796c323640e92ba6088ebf89cbf48d3fb9f8afd43f681eeca2500328e11e5265c4c52410966d77a4c2b5defb32669ab9c116249d44372ba1f736220826bf17cfb372cba3ee6fddea93b4c8334e95eb14f19a3608c3ecdb875e222d70f30bf302faccedaf674daf8a6ade57ac3b48c3724c157857459e0f07f51c8bb852e0f7e2d8e90f69734c8edd25fc1fd562b850a8fd9b05a84a8f712ebbb98404975c7e89d9ff93a3c06becf22023a501c43757fe32dd378e4ddf7153b322f57385aaa657768e1451a953e36772dc9d2e723a1fcaea408608cd71a0910ed952b26eaeb990b7b6f12efb4ea8d37aee92cd73e74354fa7d30235b372db4f23d5dd58455a28fa4ddf4d51a350842af3d0a4f597a0c9313d02fb76f10c776cb5d3dffaca29a96be5b735597d869a3ba530ff690559b20375bf78b89f4304a0b0b590d3de0bcbb4ea8b858300be0a2af95449dd739a5e02c0ef1ccaebdc80ae5f582741a7ca30478c7e24bfe25b596b267974b09366e2b03488597
   </script>
   <div class="hbe hbe-content">
     <form id="hbeForm" class="hbe hbe-form" onsubmit="return false">
@@ -3067,10 +3179,10 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2026-07-17T23:31:09+00:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2026-07-20T23:01:50+00:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：2026年7月17日</p>
+    <p>本页文档最后更新于：2026年7月20日</p>
   </a>
 </div>
 
@@ -3100,7 +3212,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           >
           
-            <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <img src="volantis-static/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="volantis-static/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
           
         </a>
       
@@ -3112,7 +3224,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           >
           
-            <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <img src="volantis-static/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="volantis-static/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
           
         </a>
       
@@ -3124,7 +3236,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           >
           
-            <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <img src="volantis-static/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="volantis-static/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
           
         </a>
       
@@ -3132,7 +3244,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
       
         
         <div class='hoverbox'>
-          <a class='share'><img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/wechat.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/wechat.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a>
+          <a class='share'><img src="volantis-static/media/org.volantis/logo/128/wechat.png" class="lazyload" data-srcset="volantis-static/media/org.volantis/logo/128/wechat.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a>
           <div class='target'>
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAADAklEQVR42u3aQZLCMAwEQP7/afYDS0UaC4iK9g0qAat9mZL8eFr/rgcCMGDAgAEDZg3MI1zV97vPvdzwi9979VxcDxgwYMCAAQNmHUw5AIXPpxDd90/rAQMGDBgwYMDshakGtatCukFtquDTesCAAQMGDBgwvwOTQnUbWnFgAwMGDBgwYMCAKcJMFdJtZIEBAwYMGDBgwJwGqHSD042vr08iwYABAwYMGDAfgzm9AH23z7e5GQ4GDBgwYMCAeRvM6boaqHW/7743vcCAAQMGDBgwe2BOLyynF5erv1MNmN0gd9zBAwMGDBgwYMB8Haa7gemgFxcQ7u/yf8CAAQMGDBgw62C6jalq4JoOYlNBbryDBwYMGDBgwID5OMxUoVXIagOsO4hLB3LtG1VgwIABAwYMmNvAdBtN6cCtW9jYAK174GDAgAEDBgyYtTDdjXQbQlODu6mBYDyJBAMGDBgwYMB8HaYKkQ600gZXd+A3NYADAwYMGDBgwOyDSQNROgDrHkS3kZXWAQYMGDBgwIDZA9MNatOBamow121gXQY8MGDAgAEDBsw6mDRgdQtJYdMgVw6eYMCAAQMGDJg1MN0LQu+6QNQtOG1sHU8iwYABAwYMGDC3gUmBpgdf042s9P/AgAEDBgwYMPtg0gtBaSPqU8Gt/X9gwIABAwYMmDUwpxd9phpap42qKnC7gwcGDBgwYMCAuS1Mt/H07sFcN/hVAygYMGDAgAED5ndgpgZdU5BpA6t9QRsMGDBgwIABswYmDUZTg7dqsOseTHogYMCAAQMGDJg9MKcrBU2D4GlwvIQGAwYMGDBgwKyBeYSr+n4V5rRRlh4UGDBgwIABA2Y/TBroTgdj6QWmdD/tDh4YMGDAgAEDZg1MdyPdhtF00EuDKRgwYMCAAQMGzHTQejfUZbAEAwYMGDBgwICZGoBdfD+1fzBgwIABAwbMfph04DY1iEsbUc+hBQYMGDBgwIDZB5MOrqYvCk3tKz1oMGDAgAEDBsweGOtFwLPAgAEDBgyYu64/+oefqFohbVIAAAAASUVORK5CYII=">
           </div>
@@ -3146,7 +3258,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
           
           >
           
-            <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/telegram.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/telegram.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <img src="volantis-static/media/org.volantis/logo/128/telegram.png" class="lazyload" data-srcset="volantis-static/media/org.volantis/logo/128/telegram.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
           
         </a>
       
@@ -3228,7 +3340,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
 
 
 
-
+<div class="pjax"><!-- pjax占位 related--></div>
 
     
   
@@ -3237,6 +3349,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
     
     
       
+
 
 
 <section class="widget desktop mobile shadow floatable blur pjax">
@@ -3249,7 +3362,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
 
 
   <div class='content'>
-    <widget class="widget-wrapper} recent post-list"><div class="widget-body fs14"><a class="item title" href="/About-InstrumentationCallback/"><span class="title">关于 InstrumentationCallback</span></a><a class="item title" href="/ArchLinux-install-notes/"><span class="title">ArchLinux 安装笔记</span></a><a class="item title" href="/IDA-VM-System/"><span class="title">IDA + VMWare 调试系统</span></a><a class="item title" href="/Legacy-INF-Template/"><span class="title">传统 INF 模板</span></a><a class="item title" href="/Modern-INF-Template/"><span class="title">现代 INF 模板</span></a><a class="item title" href="/PDU-Encode/"><span class="title">PDU 编码规则</span></a><a class="item title" href="/Windbg-Network/"><span class="title">配置 Windows 网络模式内核调试</span></a><a class="item title" href="/About-ProcessHollowing/"><span class="title">关于 ProcessHollowing</span></a><a class="item title" href="/driver-load-order/"><span class="title">让你的驱动启动顺序快人一步!</span></a></div></widget>
+    <widget class="widget-wrapper recent post-list"><div class="widget-body fs14"><a class="item title" href="/About-ProcessHollowing/"><span class="title">关于 ProcessHollowing</span></a><a class="item title" href="/IDA-VM-System/"><span class="title">IDA + VMWare 调试系统</span></a><a class="item title" href="/Legacy-INF-Template/"><span class="title">传统 INF 模板</span></a><a class="item title" href="/Modern-INF-Template/"><span class="title">现代 INF 模板</span></a><a class="item title" href="/About-InstrumentationCallback/"><span class="title">关于 InstrumentationCallback</span></a><a class="item title" href="/PDU-Encode/"><span class="title">PDU 编码规则</span></a><a class="item title" href="/Windbg-Network/"><span class="title">配置 Windows 网络模式内核调试</span></a><a class="item title" href="/ArchLinux-install-notes/"><span class="title">ArchLinux 安装笔记</span></a><a class="item title" href="/driver-load-order/"><span class="title">让你的驱动启动顺序快人一步!</span></a></div></widget>
   </div>
 </section>
 
@@ -3257,14 +3370,15 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
   
 
 
-<div class="widget-sticky pjax">
+<div class="widget-sticky">
 
   
   
 
 
 
-  <section class="widget toc-wrapper desktop mobile shadow floatable blur " id="toc-div" style="display:none" >
+
+  <section class="widget toc-wrapper desktop mobile shadow floatable blur pjax" id="toc-div" style="display:none" >
     
   <header>
     
@@ -3278,64 +3392,34 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
     </div>
   </section>
 
+
   
 
 </div>
 
 
-<!-- 没有 pjax 占位会报错 万恶的 pjax -->
+<div class="widget pjax"><!-- pjax占位 blogger--></div>
 
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
+<div class="widget pjax"><!-- pjax占位 category--></div>
 
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
+<div class="widget pjax"><!-- pjax占位 tagcloud--></div>
 
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
+<div class="widget pjax"><!-- pjax占位 qrcode--></div>
 
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
+<div class="widget pjax"><!-- pjax占位 webinfo--></div>
 
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
+<div class="widget pjax"><!-- pjax占位 lastupdate--></div>
 
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
+<div class="widget pjax"><!-- pjax占位 tree--></div>
 
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
+<div class="widget pjax"><!-- pjax占位 tagtree--></div>
 
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
+<div class="widget pjax"><!-- pjax占位 artalk--></div>
 
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
+<div class="widget pjax"><!-- pjax占位 memos_carousel--></div>
 
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
+<div class="widget pjax"><!-- pjax占位 bulletin--></div>
 
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
-
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
-
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
 
   <!-- Custom Files side begin -->
   
@@ -3354,7 +3438,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
-  //  see: /layout/_partial/scripts/_ctrl.ejs
+  //  see: /layout/_logic/_cover_ctrl.ejs
   
     // header
     var l_header=document.getElementById("l_header");
@@ -3372,6 +3456,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
   
 </script>
 </pjax>
+
         </div>
         
   
@@ -3414,7 +3499,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
                 target="_blank"
                 rel="external nofollow noopener noreferrer" itemprop="url">
                 
-                  <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/020-rss.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/020-rss.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                  <img src="volantis-static/media/org.volantis/icon/1322024-social-media/020-rss.svg" class="lazyload" data-srcset="volantis-static/media/org.volantis/icon/1322024-social-media/020-rss.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
                 
               </a>
             
@@ -3425,7 +3510,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
                 target="_blank"
                 rel="external nofollow noopener noreferrer" itemprop="url">
                 
-                  <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/029-github.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/029-github.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                  <img src="volantis-static/media/org.volantis/icon/1322024-social-media/029-github.svg" class="lazyload" data-srcset="volantis-static/media/org.volantis/icon/1322024-social-media/029-github.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
                 
               </a>
             
@@ -3436,7 +3521,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
                 target="_blank"
                 rel="external nofollow noopener noreferrer" itemprop="url">
                 
-                  <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/018-twitter.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/018-twitter.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                  <img src="volantis-static/media/org.volantis/icon/1322024-social-media/018-twitter.svg" class="lazyload" data-srcset="volantis-static/media/org.volantis/icon/1322024-social-media/018-twitter.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
                 
               </a>
             
@@ -3445,7 +3530,7 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
       
     
       
-        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#6.2.0" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
+        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#6.4.0" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
 
       
     
@@ -3474,19 +3559,6 @@ volantis.pjax.send(volantis.clearAllTimers,"clearAllTimers");
     </div>
     <div>
       <script>
-  /******************** volantis.dom ********************************/
-  // 页面选择器 将dom对象缓存起来 see: /source/js/app.js etc.
-  volantis.dom.bodyAnchor = volantis.dom.$(document.getElementById("safearea")); // 页面主体
-  volantis.dom.topBtn = volantis.dom.$(document.getElementById('s-top')); // 向上
-  volantis.dom.wrapper = volantis.dom.$(document.getElementById('wrapper')); // 整个导航栏
-  volantis.dom.coverAnchor = volantis.dom.$(document.querySelector('#l_cover .cover-wrapper')); // 1个
-  volantis.dom.switcher = volantis.dom.$(document.querySelector('#l_header .switcher .s-search')); // 搜索按钮   移动端 1个
-  volantis.dom.header = volantis.dom.$(document.getElementById('l_header')); // 移动端导航栏
-  volantis.dom.search = volantis.dom.$(document.querySelector('#l_header .m_search')); // 搜索框 桌面端 移动端 1个
-  volantis.dom.mPhoneList = volantis.dom.$(document.querySelectorAll('#l_header .m-phone .list-v')); //  手机端 子菜单 多个
-</script>
-
-<script>
   
   volantis.css("https://unpkg.com/volantis-static@0.0.1761982841160/libs/@fortawesome/fontawesome-pro/css/all.min.css");
   
@@ -4248,7 +4320,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/004.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/042.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4306,7 +4378,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   <script>
   function load_swiper() {
-    if (!document.querySelectorAll(".swiper-container")[0]) return;
+    if (!document.querySelector(".swiper-container")) return;
     volantis.css("https://unpkg.com/swiper@11.1.14/swiper-bundle.min.css");
     volantis.js("https://unpkg.com/swiper@11.1.14/swiper-bundle.min.js").then(() => {
       pjax_swiper();
@@ -4316,11 +4388,13 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   load_swiper();
 
   function pjax_swiper() {
+    const effect = document.querySelector(".swiper-container").getAttribute('effect') || 'cards';
     volantis.swiper = new Swiper('.swiper-container', {
       slidesPerView: 'auto',
       spaceBetween: 8,
       centeredSlides: true,
-      loop: true,
+      effect: effect,
+      rewind: true,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -4339,8 +4413,9 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     } else {
       pjax_swiper();
     }
-  });
+  },"swiper");
 </script>
+
 
 
 
@@ -4360,7 +4435,12 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   volantis.js("https://unpkg.com/pace-js@1.2.4/pace.min.js").then(() => {
     Pace.options.restartOnPushState = false;
     volantis.pjax.send(Pace.restart,"Pace.restart");
-    volantis.pjax.push(()=>{setTimeout(()=>{Pace.stop()},1200)},"Pace.stop");
+    volantis.pjax.push(()=>{
+      setTimeout(()=>{
+        Pace.stop();
+        document.body.className = document.body.className.replaceAll("pace-running ","");
+    },1200)},"Pace.stop");
+    
     // 阅读进度
     volantis.scroll.push(volantis.debounce(() => {
       Pace.stop();
@@ -4369,7 +4449,144 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
       document.body.className = document.body.className.replaceAll("pace-running ","");
     }),"阅读进度")
     // todo：配置项开关, 哪些页面添加阅读进度
+    
   })
+</script>
+
+
+
+
+
+
+<!-- pjax -->
+
+  <!--
+  pjax重载区域接口：
+  1.  <pjax></pjax> 标签 pjax 标签必须存在于所有页面 否则 pjax error
+  2.  script[data-pjax]
+  3.  .pjax-reload script
+  4.  .pjax
+-->
+
+
+
+<script src="https://unpkg.com/pjax@0.2.8/pjax.min.js"></script>
+
+<script>
+// 性能监控与降级控制
+const performanceMonitor = {
+  slowThreshold: 800,     // 慢请求阈值(毫秒)
+  slowCount: 0,           // 连续慢请求计数
+  maxSlowAllowed: 1,      // 允许的最大连续慢请求数
+  requestStartTime: 0,    // 请求开始时间戳
+
+  // 记录请求开始时间
+  start() {
+    this.requestStartTime = Date.now();
+  },
+
+  // 计算请求耗时并判断
+  check() {
+    const duration = Date.now() - this.requestStartTime;
+    
+    if (duration > this.slowThreshold) {
+      this.slowCount++;
+    } else {
+      this.slowCount = 0;    // 耗时正常，重置计数
+    }
+  },
+  // 测试结果
+  res(){
+    // 连续慢请求达到阈值，强制刷新
+    if (this.slowCount >= this.maxSlowAllowed) {         
+      return true;    // 需要降级
+    }
+    return false;     // 无需降级
+  }
+};
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox]):not([onclick="return false;"]):not([onclick="return!1"]):not([target="_blank"]):not([target="view_window"]):not([href$=".xml"])',
+        // 这里的 selectors 需要保证每个页面都含有相同的数目
+        selectors: [
+          "head title",
+          "head meta[name=keywords]",
+          "head meta[name=description]",
+          
+          "#l_main",
+          "#pjax-header-nav-list",
+          ".pjax",
+          "pjax", // <pjax></pjax> 标签
+          // 临时测试
+          "meta[name=robots]",
+          "link[rel=canonical]",
+          "meta[property='og:title']",
+          "meta[property='og:description']",
+          "meta[property='og:url']",
+          "meta[property='og:image']",
+          "script[type='application/ld+json']",
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 900,
+        
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      window.stop(); // 相当于点击了浏览器的停止按钮
+      performanceMonitor.start();  // 请求开始计时
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var excludeList = [""];
+        if (excludeList[0] != "") {
+          excludeList.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+        if (performanceMonitor.res()){
+          window.location.href = targetUrl;
+        }
+      } catch (error) {}
+
+      // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+      volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 降级控制检测
+      performanceMonitor.check()
+      // 这里的 script 不需要保证每个页面都含有相同的数目
+      document.querySelectorAll('script[data-pjax], .pjax-reload script').forEach(e=>{
+        const code = e.text || e.textContent || e.innerHTML || '';
+        const script = document.createElement('script');
+        Object.keys(e.attributes).forEach(i=>{
+          script.setAttribute(e.attributes[i].nodeName,e.attributes[i].nodeValue)
+        })
+        if (code) {
+          script.appendChild(document.createTextNode(code));
+        }
+        e.parentNode.replaceChild(script, e);
+      });
+
+      // 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+      volantis.pjax.method.complete.start();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      if(volantis.debug === "pjax") {
+        console.error(e);
+        console.log('pjax error: \n' + JSON.stringify(e));
+      }else{
+        // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+        volantis.pjax.method.error.start();
+        window.location.href = e.triggerElement.href;
+      }
+    });
 </script>
 
 
@@ -4605,137 +4822,10 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-      
-        <!--
-  pjax重载区域接口：
-  1.  <pjax></pjax> 标签 pjax 标签必须存在于所有页面 否则 pjax error
-  2.  script[data-pjax]
-  3.  .pjax-reload script
-  4.  .pjax
--->
 
 
 
-<script src="https://unpkg.com/pjax@0.2.8/pjax.min.js"></script>
 
-<script>
-// 性能监控与降级控制
-const performanceMonitor = {
-  slowThreshold: 800,     // 慢请求阈值(毫秒)
-  slowCount: 0,           // 连续慢请求计数
-  maxSlowAllowed: 1,      // 允许的最大连续慢请求数
-  requestStartTime: 0,    // 请求开始时间戳
-
-  // 记录请求开始时间
-  start() {
-    this.requestStartTime = Date.now();
-  },
-
-  // 计算请求耗时并判断
-  check() {
-    const duration = Date.now() - this.requestStartTime;
-    
-    if (duration > this.slowThreshold) {
-      this.slowCount++;
-    } else {
-      this.slowCount = 0;    // 耗时正常，重置计数
-    }
-  },
-  // 测试结果
-  res(){
-    // 连续慢请求达到阈值，强制刷新
-    if (this.slowCount >= this.maxSlowAllowed) {         
-      return true;    // 需要降级
-    }
-    return false;     // 无需降级
-  }
-};
-    var pjax;
-    document.addEventListener('DOMContentLoaded', function () {
-      pjax = new Pjax({
-        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox]):not([onclick="return false;"]):not([onclick="return!1"]):not([target="_blank"]):not([target="view_window"]):not([href$=".xml"])',
-        // 这里的 selectors 需要保证每个页面都含有相同的数目
-        selectors: [
-          "head title",
-          "head meta[name=keywords]",
-          "head meta[name=description]",
-          
-          "#l_main",
-          "#pjax-header-nav-list",
-          ".pjax",
-          "pjax", // <pjax></pjax> 标签
-          // 临时测试
-          "meta[name=robots]",
-          "link[rel=canonical]",
-          "meta[property='og:title']",
-          "meta[property='og:description']",
-          "meta[property='og:url']",
-          "meta[property='og:image']",
-          "script[type='application/ld+json']",
-        ],
-        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
-        timeout: 900,
-        
-      });
-    });
-
-    document.addEventListener('pjax:send', function (e) {
-      window.stop(); // 相当于点击了浏览器的停止按钮
-      performanceMonitor.start();  // 请求开始计时
-
-      try {
-        var currentUrl = window.location.pathname;
-        var targetUrl = e.triggerElement.href;
-        var excludeList = [""];
-        if (excludeList[0] != "") {
-          excludeList.forEach(item => {
-            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
-              window.location.href = targetUrl;
-            }
-          });
-        }
-        if (performanceMonitor.res()){
-          window.location.href = targetUrl;
-        }
-      } catch (error) {}
-
-      // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
-      volantis.pjax.method.send.start();
-    });
-
-    document.addEventListener('pjax:complete', function () {
-      // 降级控制检测
-      performanceMonitor.check()
-      // 这里的 script 不需要保证每个页面都含有相同的数目
-      document.querySelectorAll('script[data-pjax], .pjax-reload script').forEach(e=>{
-        const code = e.text || e.textContent || e.innerHTML || '';
-        const script = document.createElement('script');
-        Object.keys(e.attributes).forEach(i=>{
-          script.setAttribute(e.attributes[i].nodeName,e.attributes[i].nodeValue)
-        })
-        if (code) {
-          script.appendChild(document.createTextNode(code));
-        }
-        e.parentNode.replaceChild(script, e);
-      });
-
-      // 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
-      volantis.pjax.method.complete.start();
-    });
-
-    document.addEventListener('pjax:error', function (e) {
-      if(volantis.debug === "pjax") {
-        console.error(e);
-        console.log('pjax error: \n' + JSON.stringify(e));
-      }else{
-        // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
-        volantis.pjax.method.error.start();
-        window.location.href = e.triggerElement.href;
-      }
-    });
-</script>
-
-      
     </div>
     <!-- import body_end begin-->
     <!-- import body_end end-->
