@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#6.4.0'>
+    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#6.5.0'>
   <meta name="generator" content="Hexo 8.1.2">
-  <meta name="Volantis" content="6.4.0">
+  <meta name="Volantis" content="6.5.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
   <meta name="robots" content="index,follow,max-image-preview:large">
@@ -36,7 +36,7 @@
   <title>IDA + VMWare 调试系统 - 喵石榴-MeeSong</title>
   <meta name="keywords" content="Windows, Kernel,Windbg,Debug,Windows,Veil,MiroKaku,MeeSong">
   <meta desc name="description" content="“自由从不降临于人类，人类必须上升至其高度。” - MeeSong - 喵石榴-MeeSong">
-  
+  <meta name="description" content="配置虚拟机打开虚拟机目录下的 vmx 文件, 添加设置项 32 位客户机系统1234567debugStub.port.guest32          &#x3D; &quot;54232&quot;   ; x86 默认调试端口 8832debugStub.listen.guest32        &#x3D; &quot;TRUE&quot;debugStub.listen.guest32.remote &#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IDA + VMWare 调试系统">
 <meta property="og:url" content="https://mirokaku.github.io/IDA-VM-System/">
@@ -45,7 +45,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2017-05-12T19:00:18.000Z">
-<meta property="article:modified_time" content="2026-07-22T10:35:36.000Z">
+<meta property="article:modified_time" content="2026-07-23T01:39:32.000Z">
 <meta property="article:author" content="MeeSong">
 <meta property="article:tag" content="Debug">
 <meta property="article:tag" content="Kernel">
@@ -1791,8 +1791,8 @@ ul.list-v >li>a:hover {
   <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
   <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
     <script>
-      let userColorScheme=localStorage.getItem("color-scheme")
-      if(userColorScheme){
+      let userColorScheme=localStorage.getItem("color-scheme");
+      if (userColorScheme){
         document.documentElement.setAttribute("color-scheme", userColorScheme);
       }
     </script>
@@ -2339,7 +2339,7 @@ volantis.css = (src) => {
   }
   /********************** 节流和防抖 ********************************/
   // 节流函数：确保指定时间内仅执行一次 时间戳版本的节流实现
-  volantis.throttle=(func, delay = 200) => {
+  volantis.throttle = (func, delay = 200) => {
     let lastTime = 0;
     return function (...args) {
       const now = Date.now();
@@ -2350,7 +2350,7 @@ volantis.css = (src) => {
     };
   };
   // 防抖函数 setTimeout实现
-  volantis.debounce=(func, wait = 200) => {
+  volantis.debounce = (func, wait = 200) => {
     let timer = null;
     return function () {
       if (timer) {
@@ -2372,6 +2372,17 @@ volantis.css = (src) => {
       };
     }
     return window.requestAnimationFrame(fn);
+  };
+  // 3. 基于 requestAnimationFrame 的节流函数
+  volantis.rafThrottle = (fn) => {
+      let rafId = null
+      return (...args) => {
+        if (rafId) return
+        rafId = volantis.requestAnimationFrame(() => {
+          fn(...args)
+          rafId = null
+        })
+      }
   };
 /************************ layoutHelper *****************************************/
 // Layout Helper
@@ -2516,14 +2527,15 @@ volantis.scroll = {
 /******************************************************************************/
 //图像加载出错时的处理
 // 图片错误降级
-  function errorImgAvatar(img) {
-    img.src = "https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/avatar/round/3442075.svg";
-    img.onerror = null;
-  }
-  function errorImgCover(img) {
-    img.src = "https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/cover/76b86c0226ffd.svg";
-    img.onerror = null;
-  }
+function errorImgAvatar(img) {
+  img.src = volantis.GLOBAL_CONFIG.default.avatar;
+  img.onerror = null;
+}
+
+function errorImgCover(img) {
+  img.src = volantis.GLOBAL_CONFIG.default.cover;
+  img.onerror = null;
+}
 /******************************************************************************/
 // Hack Interval
 // 保存原生定时器方法
@@ -2612,7 +2624,7 @@ document.addEventListener('DOMContentLoaded', function () {
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1761982841160/media/placeholder/image/2659360.svg","topic":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/10433048.png","project":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2779789.png"},
-    lastupdate: new Date(1784716566852),
+    lastupdate: new Date(1784770807201),
     cdn: {
       izitoast_css: 'https://unpkg.com/izitoast@1.4.0/dist/css/iziToast.min.css',
       izitoast_js: 'https://unpkg.com/izitoast@1.4.0/dist/js/iziToast.min.js',
@@ -2664,9 +2676,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-  
-    <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“自由从不降临于人类，人类必须上升至其高度。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴-MeeSong"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/Windows/","name":"Windows"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/IDA-VM-System/","name":"IDA + VMWare 调试系统"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","keywords":"Windows,Veil,MiroKaku,MeeSong","description":"“自由从不降临于人类，人类必须上升至其高度。”","author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“自由从不降临于人类，人类必须上升至其高度。”"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"IDA + VMWare 调试系统","description":"“自由从不降临于人类，人类必须上升至其高度。”","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/IDA-VM-System/"},"author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/IDA-VM-System/","wordCount":0,"datePublished":"2017-05-12T19:00:18.000Z","dateModified":"2026-07-22T10:35:36.000Z","articleSection":"Windows","keywords":"Kernel,Windbg,Debug","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
-  
+    <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","sameAs":["https://github.com/volantis-x"],"description":"“自由从不降临于人类，人类必须上升至其高度。”"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://mirokaku.github.io/","name":"喵石榴-MeeSong"}},{"@type":"ListItem","position":2,"item":{"@id":"https://mirokaku.github.io/categories/Windows/","name":"Windows"}},{"@type":"ListItem","position":3,"item":{"@id":"https://mirokaku.github.io/IDA-VM-System/","name":"IDA + VMWare 调试系统"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","keywords":"Windows,Veil,MiroKaku,MeeSong","description":"“自由从不降临于人类，人类必须上升至其高度。”","author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/","description":"“自由从不降临于人类，人类必须上升至其高度。”"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","url":"https://mirokaku.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://mirokaku.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"IDA + VMWare 调试系统","description":"“自由从不降临于人类，人类必须上升至其高度。”","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://mirokaku.github.io/IDA-VM-System/"},"author":{"@type":"Person","name":"MeeSong","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://mirokaku.github.io/"},"publisher":{"@type":"Organization","name":"喵石榴-MeeSong","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://mirokaku.github.io/IDA-VM-System/","wordCount":0,"datePublished":"2017-05-12T19:00:18.000Z","dateModified":"2026-07-23T01:39:32.000Z","articleSection":"Windows","keywords":"Kernel,Windbg,Debug","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
   <!-- import head_end begin -->
   <!-- import head_end end -->
   <!-- Custom Files headEnd begin-->
@@ -3055,9 +3065,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
+
+
+
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <!-- 结构化数据：统一解码永久链接 -->
   <link itemprop="mainEntityOfPage" href="https://mirokaku.github.io/IDA-VM-System/">
+  <!-- 结构化数据：发布者信息（隐藏） -->
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="喵石榴-MeeSong">
   </span>
@@ -3065,36 +3081,35 @@ document.addEventListener('DOMContentLoaded', function () {
     <meta itemprop="name" content="IDA + VMWare 调试系统">
     <meta itemprop="description" content="“自由从不降临于人类，人类必须上升至其高度。”">
   </span>
+  <!-- 文章顶部元信息：标题、作者、日期等（复用子模板） -->
   
 
 
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
   
   <div class="article-meta" id="top">
     
     
     
-      <h1 class="title" itemprop="name headline">
+      <h1 class="title allow-select" itemprop="name headline">
         IDA + VMWare 调试系统
       </h1>
-      <div class='new-meta-box'>
+    
+    
+    <div class='new-meta-box'>
+      
         
           
-            
 <div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
   <a itemprop="url" class='author' target="_blank" href="https://github.com/MiroKaku/" rel="nofollow noopener" alt="author">
-    <img itemprop="image" src="/static/img/avatar.jpg" class="lazyload" data-srcset="/static/img/avatar.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <img itemprop="image" src="/static/img/avatar.jpg" class="lazyload" data-srcset="/static/img/avatar.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="author">
     <p itemprop="name">MiroKaku</p>
   </a>
 </div>
 
-          
+        
+      
         
           
-            
   
   
   
@@ -3111,27 +3126,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-          
         
-          
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2017-05-12T19:00:18+00:00">
+      
+        
+          <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2017-05-12T19:00:18+00:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
     <p>发布于：2017年5月12日</p>
   </a>
 </div>
 
-          
         
-        <!-- Custom Files topMeta begin-->
-        
-        <!-- Custom Files topMeta end-->
-      </div>
+      
+      <!-- Custom Files topMeta begin-->
+      
+      <!-- Custom Files topMeta end-->
+    </div>
     
   </div>
 
 
+  <!-- 插件注入点 -->
   <div id="layoutHelper-page-plugins"></div>
+  <!-- 文章核心内容区 -->
   <div id="post-body" itemprop="articleBody">
     <div class="story post-story"><h2 id="配置虚拟机"><a href="#配置虚拟机" class="headerlink" title="配置虚拟机"></a>配置虚拟机</h2><p>打开虚拟机目录下的 <code>vmx</code> 文件, 添加设置项</p>
 <h3 id="32-位客户机系统"><a href="#32-位客户机系统" class="headerlink" title="32 位客户机系统"></a>32 位客户机系统</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">debugStub.port.guest32</span>          = <span class="string">&quot;54232&quot;</span>   <span class="comment">; x86 默认调试端口 8832</span></span><br><span class="line"><span class="attr">debugStub.listen.guest32</span>        = <span class="string">&quot;TRUE&quot;</span></span><br><span class="line"><span class="attr">debugStub.listen.guest32.remote</span> = <span class="string">&quot;TRUE&quot;</span>    </span><br><span class="line"><span class="attr">debugStub.hideBreakpoints</span>       = <span class="string">&quot;TRUE&quot;</span>    <span class="comment">; 启用使用硬件断点而不是软件 (INT3) 断点</span></span><br><span class="line"><span class="attr">monitor.debugOnStartGuest32</span>     = <span class="string">&quot;TRUE&quot;</span>    <span class="comment">; 在第一条指令 (在BIOS! 中警告) 中断进入DebugStub</span></span><br><span class="line">                                            <span class="comment">; 这将在第一条指令在0xFFFF0处停止VM, 您可以设置下一个断点来破坏* 0x7c00引导加载程序由BIOS加载</span></span><br><span class="line"><span class="attr">bios.bootDelay</span>                  = <span class="string">&quot;3000&quot;</span>    <span class="comment">; 延迟启动BIOS代码</span></span><br></pre></td></tr></table></figure>
@@ -3148,20 +3165,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </div>
   </div>
+  <!-- 原文链接/阅读更多：仅当page.link存在时显示 -->
   
+  <!-- 文章底部组件区：仅对「post」「docs」布局生效 -->
   
     
     <div class='footer'>
-       <!-- 参考资料、相关资料等 -->
+       <!-- 参考资料：仅当参考列表非空时显示 -->
       
        <!-- 相关文章 -->
       
-      <!-- 版权声明组件 -->
+      <!-- 版权声明：post布局+启用+未禁用时显示 -->
       
       <!-- 打赏组件 -->
       
     </div>
   
+  <!-- 文章底部元信息：复用子模板 -->
   
     
 
@@ -3170,10 +3190,10 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2026-07-22T10:35:36+00:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2026-07-23T01:39:32+00:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：2026年7月22日</p>
+    <p>本页文档最后更新于：2026年7月23日</p>
   </a>
 </div>
 
@@ -3203,7 +3223,7 @@ document.addEventListener('DOMContentLoaded', function () {
           
           >
           
-            <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <img alt="share" src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
           
         </a>
       
@@ -3215,7 +3235,7 @@ document.addEventListener('DOMContentLoaded', function () {
           
           >
           
-            <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <img alt="share" src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
           
         </a>
       
@@ -3227,7 +3247,7 @@ document.addEventListener('DOMContentLoaded', function () {
           
           >
           
-            <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <img alt="share" src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
           
         </a>
       
@@ -3235,7 +3255,7 @@ document.addEventListener('DOMContentLoaded', function () {
       
         
         <div class='hoverbox'>
-          <a class='share'><img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/wechat.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/wechat.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a>
+          <a class='share'><img alt="share" src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/wechat.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/wechat.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a>
           <div class='target'>
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYCAAAAACi5bZQAAADB0lEQVR42u3aQXLCQAwEQP7/6eSeCuXVSFAW9N4M2N5tLlOSHj/Wv+uBAAwYMGDAgFkD8wjX3/ufXV+95+q+Z/ef/q58HjBgwIABAwbMOpjjAHQIc7qRVwHG5wEDBgwYMGDArIXpBrqr+6pA6Xvi84ABAwYMGDBgvgamWljqBkQwYMCAAQMGDJjpgFctTHULWNVgCAYMGDBgwID5fJhqg6r7eTVITgVQMGDAgAEDBsznwFRXtfD07uv4PGDAgAEDBgyYNTDTq9swSwPm2P7BgAEDBgwYMGtgqgWhbgBMG2np/eUGHBgwYMCAAQNmDUw1mB03roYHibr7Oh48AgMGDBgwYMCsg7kKTNUDVuHS/XT3fdxwAwMGDBgwYMDcHmaqgNQFO71Of/f0ezBgwIABAwbMx8F0B31Og1wa7MYaeGDAgAEDBgyYNTDdwHQKmRamukCn+wcDBgwYMGDA7IV51UBz2jDrFrbiPwYMGDBgwIABsw5mqoFV3VAcxJpAT+8DAwYMGDBgwKyDmQ5u3QBXhRwLqGDAgAEDBgyYNTCnG6sepPucaoFpqvEGBgwYMGDAgNkDUw1kUxtNA+BUEIwLVWDAgAEDBgyY28GcHiwFSBtxabCsFtjAgAEDBgwYMPtgTlc1UJ0Gt3RwKG0YXj4PDBgwYMCAAbMGpluIOoWZ/l1ayIobbmDAgAEDBgyY28JUH1wNail4GhTj84EBAwYMGDBg1sJ0B3i6ga47MJ02AsGAAQMGDBgwe2GqgzrVQea4cNQcDGoHPDBgwIABAwbMbWG6qwqUFrLSwle5oAYGDBgwYMCAWQPzCNdUA64b3LrviSeqwIABAwYMGDC3gakGuulg1i2YVRuC5U4kGDBgwIABA+b2MK8qMHW/nwqklwNJYMCAAQMGDJivg3lVYIwHgMI/FAwYMGDAgAHzPTBpkJsCmS6IgQEDBgwYMGD2wlQDWXdAufqedDD77Z1IMGDAgAEDBszbYOIHFQd3ukEyfe4pNBgwYMCAAQNmD4wFBgwYMGDAgFm2fgG9jmZ/5Rdg+wAAAABJRU5ErkJggg==">
           </div>
@@ -3249,7 +3269,7 @@ document.addEventListener('DOMContentLoaded', function () {
           
           >
           
-            <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/telegram.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/telegram.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <img alt="share" src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/telegram.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/logo/128/telegram.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
           
         </a>
       
@@ -3269,6 +3289,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   
+  <!-- 文档导航（group+order） -->
   
 
   
@@ -3297,7 +3318,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   <!-- Custom Files postEnd end-->
 </article>
-
+<!-- 评论区：仅当未明确禁用时显示 -->
 
   
 
@@ -3335,7 +3356,6 @@ document.addEventListener('DOMContentLoaded', function () {
       
 
 
-
 <div class="pjax"><!-- pjax占位 related--></div>
 
     
@@ -3345,7 +3365,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
       
-
 
 
 <section class="widget desktop mobile shadow floatable blur pjax">
@@ -3358,7 +3377,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   <div class='content'>
-    <widget class="widget-wrapper recent post-list"><div class="widget-body fs14"><a class="item title" href="/About-InstrumentationCallback/"><span class="title">关于 InstrumentationCallback</span></a><a class="item title" href="/About-ProcessHollowing/"><span class="title">关于 ProcessHollowing</span></a><a class="item title" href="/ArchLinux-install-notes/"><span class="title">ArchLinux 安装笔记</span></a><a class="item title" href="/IDA-VM-System/"><span class="title">IDA + VMWare 调试系统</span></a><a class="item title" href="/Legacy-INF-Template/"><span class="title">传统 INF 模板</span></a><a class="item title" href="/Modern-INF-Template/"><span class="title">现代 INF 模板</span></a><a class="item title" href="/driver-load-order/"><span class="title">让你的驱动启动顺序快人一步!</span></a><a class="item title" href="/PDU-Encode/"><span class="title">PDU 编码规则</span></a><a class="item title" href="/Windbg-Network/"><span class="title">配置 Windows 网络模式内核调试</span></a></div></widget>
+    <widget class="widget-wrapper recent post-list"><div class="widget-body fs14"><a class="item title" href="/About-InstrumentationCallback/"><span class="title">关于 InstrumentationCallback</span></a><a class="item title" href="/About-ProcessHollowing/"><span class="title">关于 ProcessHollowing</span></a><a class="item title" href="/ArchLinux-install-notes/"><span class="title">ArchLinux 安装笔记</span></a><a class="item title" href="/IDA-VM-System/"><span class="title">IDA + VMWare 调试系统</span></a><a class="item title" href="/Legacy-INF-Template/"><span class="title">传统 INF 模板</span></a><a class="item title" href="/Modern-INF-Template/"><span class="title">现代 INF 模板</span></a><a class="item title" href="/PDU-Encode/"><span class="title">PDU 编码规则</span></a><a class="item title" href="/Windbg-Network/"><span class="title">配置 Windows 网络模式内核调试</span></a><a class="item title" href="/driver-load-order/"><span class="title">让你的驱动启动顺序快人一步!</span></a></div></widget>
   </div>
 </section>
 
@@ -3370,7 +3389,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   
   
-
 
 
 
@@ -3495,7 +3513,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 target="_blank"
                 rel="external nofollow noopener noreferrer" itemprop="url">
                 
-                  <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/020-rss.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/020-rss.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                  <img alt="img" src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/020-rss.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/020-rss.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
                 
               </a>
             
@@ -3506,7 +3524,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 target="_blank"
                 rel="external nofollow noopener noreferrer" itemprop="url">
                 
-                  <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/029-github.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/029-github.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                  <img alt="img" src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/029-github.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/029-github.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
                 
               </a>
             
@@ -3517,7 +3535,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 target="_blank"
                 rel="external nofollow noopener noreferrer" itemprop="url">
                 
-                  <img src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/018-twitter.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/018-twitter.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                  <img alt="img" src="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/018-twitter.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1761982841160/media/org.volantis/icon/1322024-social-media/018-twitter.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
                 
               </a>
             
@@ -3526,7 +3544,7 @@ document.addEventListener('DOMContentLoaded', function () {
       
     
       
-        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#6.4.0" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
+        <p>本站使用 <a href="https://github.com/volantis-x/hexo-theme-volantis/#6.5.0" target="_blank" rel="noopener external nofollow noreferrer">Volantis</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/volantis-x/volantis-docs" target="_blank" rel="noopener external nofollow noreferrer">本站源码</a>。</p>
 
       
     
@@ -3554,7 +3572,8 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
     <div>
-      <script>
+      
+<script>
   
   volantis.css("https://unpkg.com/volantis-static@0.0.1761982841160/libs/@fortawesome/fontawesome-pro/css/all.min.css");
   
@@ -3990,7 +4009,7 @@ applyCustomDarkModeSettings();
 document.addEventListener("DOMContentLoaded", ()=>{
   volantis.requestAnimationFrame(bindToggleButton)
 });
-volantis.pjax.push(bindToggleButton);
+volantis.pjax.push(bindToggleButton,"dark_bindToggleButton");
 
 const darkModelListeners={
   dark:(mediaQueryList )=>{
@@ -4043,7 +4062,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   loadIssuesJS()
   volantis.pjax.push(()=>{
     loadIssuesJS();
-  })
+  },"loadIssuesJS")
 
 </script>
 
@@ -4226,8 +4245,8 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     giscusIframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
   }
   pjax_giscus();
-  volantis.pjax.push(pjax_giscus);
-  volantis.dark.push(dark_giscus);
+  volantis.pjax.push(pjax_giscus,"giscus");
+  volantis.dark.push(dark_giscus,"giscus");
 </script>
 
     
@@ -4304,7 +4323,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     VolantisApp.utilCopyCode(".highlight .code pre, .article pre code")
   }
   volantis.requestAnimationFrame(pjax_highlightjs_copyCode)
-  volantis.pjax.push(pjax_highlightjs_copyCode)
+  volantis.pjax.push(pjax_highlightjs_copyCode,"pjax_highlightjs_copyCode")
 
 </script>
 
@@ -4315,8 +4334,9 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
+
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/025.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1761982841160/media/wallpaper/minimalist/2020/039.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4365,7 +4385,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     volantis.pjax.send(()=>{
       clearInterval(IntervalParallax)
     },"clearIntervalParallax");
-    volantis.pjax.push(parallax);
+    volantis.pjax.push(parallax,"parallax");
   }
 </script>
 
@@ -4593,6 +4613,7 @@ const performanceMonitor = {
 </pjax>
 
 <script>
+  // 发现一个问题：手动写的h2标记会进入toc，但是没有锚点定位
   function listenSidebarTOC() {
     const navItems = document.querySelectorAll(".toc li");
     if (!navItems.length) return;
@@ -4600,7 +4621,7 @@ const performanceMonitor = {
     const sections = Array.from(navItems).forEach((element) => {
       const link = element.querySelector(".toc-link");
       const target = document.getElementById(
-        link.getAttribute("href") ? decodeURI(link.getAttribute("href")).replace("#", "") : link.getAttribute("toc-action").split("toc-")[1] // 兼容 hexo-blog-encrypt
+        link.getAttribute("href") ? decodeURI(link.getAttribute("href")).replace("#", "") : link.getAttribute("toc-action")?.split("toc-")[1] // 兼容 hexo-blog-encrypt
       );
       targets.push(target)
       // 解除 a 标签 href 的 锚点定位, a 标签 href 的 锚点定位 会随机启用?? 产生错位???
@@ -4792,7 +4813,7 @@ const performanceMonitor = {
       resizeResilientDeferredRendering(".post-story");
     };
     contentVisibilityScrollFix();
-    volantis.pjax.push(contentVisibilityScrollFix);
+    volantis.pjax.push(contentVisibilityScrollFix,"contentVisibilityScrollFix");
   } catch (error) {
     console.log(error);
   }
@@ -4814,7 +4835,6 @@ const performanceMonitor = {
     }
   }
 </script>
-
 
 
 
