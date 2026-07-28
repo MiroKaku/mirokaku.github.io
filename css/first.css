@@ -6,6 +6,115 @@
   contain-intrinsic-size: 10px 500px;
 }
 :root {
+  --hue: 166.53846153846155deg;
+  --sat: 67.24137931034481%;
+  --light: 54.509803921568626%;
+  --alpha: 1;
+  --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+  --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+  --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+  --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+  --accent: #ff5722;
+  --link: hsla(206.47058823529412deg 84.29752066115704% 52.54901960784314% / 1);
+  --link-a20: hsla(206.47058823529412deg 84.29752066115704% 52.54901960784314% / 0.2);
+  --background: hsla(210deg 20% 98% / 1);
+  --card: #fff;
+  --bg-a20: hsla(210deg 0% 100% / 0.2);
+  --bg-a50: hsla(210deg 0% 100% / 0.5);
+  --bg-a60: hsla(210deg 0% 100% / 0.6);
+  --bg-a75: hsla(210deg 0% 100% / 0.75);
+  --bg-a100: hsla(210deg 0% 100% / 1);
+  --text: hsla(210deg 0% 0% / 1);
+  --text-reverse: hsla(210deg 0% 100% / 1);
+  --text-p1: hsla(210deg 0% 0% / 0.8);
+  --text-p2: hsla(210deg 0% 0% / 0.7);
+  --text-p3: hsla(210deg 0% 0% / 0.5);
+  --text-p4: hsla(210deg 0% 0% / 0.4);
+  --text-meta: hsla(210deg 0% 0% / 0.2);
+  --text-code: hsla(210deg 0% 0% / 0.9);
+  --text-a10: hsla(210deg 0% 0% / 0.1);
+  --text-a20: hsla(210deg 0% 0% / 0.2);
+  --block: hsla(210deg 50% 12% / 0.04);
+  --block-border: hsla(210deg 50% 12% / 0.06);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: hsla(210deg 8% 12% / 1);
+    --card: hsla(210deg 10% 24% / 1);
+    --bg-a20: hsla(210deg 0% 0% / 0.2);
+    --bg-a50: hsla(210deg 0% 0% / 0.5);
+    --bg-a60: hsla(210deg 0% 0% / 0.6);
+    --bg-a75: hsla(210deg 0% 0% / 0.75);
+    --bg-a100: hsla(210deg 0% 0% / 1);
+    --text: hsla(210deg 0% 100% / 1);
+    --text-reverse: hsla(210deg 0% 0% / 1);
+    --text-p1: hsla(210deg 0% 100% / 0.8);
+    --text-p2: hsla(210deg 0% 100% / 0.7);
+    --text-p3: hsla(210deg 0% 100% / 0.5);
+    --text-p4: hsla(210deg 0% 100% / 0.4);
+    --text-meta: hsla(210deg 0% 100% / 0.2);
+    --text-code: hsla(210deg 0% 100% / 0.9);
+    --text-a10: hsla(210deg 0% 100% / 0.1);
+    --text-a20: hsla(210deg 0% 100% / 0.2);
+    --block: hsla(210deg 24% 72% / 0.08);
+    --block-border: hsla(210deg 24% 72% / 0.12);
+    --text-code: hsla(20 75 60 / 1);
+  }
+}
+@media screen and (prefers-color-scheme: dark) and (max-width: 667px) {
+  :root {
+    --background: #000;
+  }
+}
+:root[color-scheme="light"] {
+  --background: hsla(210deg 20% 98% / 1);
+  --card: #fff;
+  --bg-a20: hsla(210deg 0% 100% / 0.2);
+  --bg-a50: hsla(210deg 0% 100% / 0.5);
+  --bg-a60: hsla(210deg 0% 100% / 0.6);
+  --bg-a75: hsla(210deg 0% 100% / 0.75);
+  --bg-a100: hsla(210deg 0% 100% / 1);
+  --text: hsla(210deg 0% 0% / 1);
+  --text-reverse: hsla(210deg 0% 100% / 1);
+  --text-p1: hsla(210deg 0% 0% / 0.8);
+  --text-p2: hsla(210deg 0% 0% / 0.7);
+  --text-p3: hsla(210deg 0% 0% / 0.5);
+  --text-p4: hsla(210deg 0% 0% / 0.4);
+  --text-meta: hsla(210deg 0% 0% / 0.2);
+  --text-code: hsla(210deg 0% 0% / 0.9);
+  --text-a10: hsla(210deg 0% 0% / 0.1);
+  --text-a20: hsla(210deg 0% 0% / 0.2);
+  --block: hsla(210deg 50% 12% / 0.04);
+  --block-border: hsla(210deg 50% 12% / 0.06);
+}
+:root[color-scheme="dark"] {
+  --background: hsla(210deg 8% 12% / 1);
+  --card: hsla(210deg 10% 24% / 1);
+  --bg-a20: hsla(210deg 0% 0% / 0.2);
+  --bg-a50: hsla(210deg 0% 0% / 0.5);
+  --bg-a60: hsla(210deg 0% 0% / 0.6);
+  --bg-a75: hsla(210deg 0% 0% / 0.75);
+  --bg-a100: hsla(210deg 0% 0% / 1);
+  --text: hsla(210deg 0% 100% / 1);
+  --text-reverse: hsla(210deg 0% 0% / 1);
+  --text-p1: hsla(210deg 0% 100% / 0.8);
+  --text-p2: hsla(210deg 0% 100% / 0.7);
+  --text-p3: hsla(210deg 0% 100% / 0.5);
+  --text-p4: hsla(210deg 0% 100% / 0.4);
+  --text-meta: hsla(210deg 0% 100% / 0.2);
+  --text-code: hsla(210deg 0% 100% / 0.9);
+  --text-a10: hsla(210deg 0% 100% / 0.1);
+  --text-a20: hsla(210deg 0% 100% / 0.2);
+  --block: hsla(210deg 24% 72% / 0.08);
+  --block-border: hsla(210deg 24% 72% / 0.12);
+  --text-code: hsla(20 75 60 / 1);
+}
+@media screen and (max-width: 667px) {
+  :root[color-scheme="dark"] {
+    --background: #000;
+  }
+}
+:root {
   --color-site-body: #f4f4f4;
   --color-site-bg: #f4f4f4;
   --color-site-inner: #fff;
@@ -807,6 +916,9 @@ button {
   }
   :root:not([color-scheme]) .u-search-input:focus {
     background: var(--color-site-body) !important;
+  }
+  :root:not([color-scheme]) .friend-card.color-bk-dark {
+    filter: brightness(0.8);
   }
 }
 [color-scheme='dark'] {

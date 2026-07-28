@@ -23,7 +23,7 @@ document.addEventListener("error", function (e) {
   if (!pParentElem) return;
   const pParentElemClass = pParentElem.className;
 
-  elem.classList.add('fix-cursor-default', 'error');
+  elem.classList.add('error');
 
   if (parentElemClass === 'fancybox' && pParentElemClass === 'fancybox') {
     pParentElem.classList.add('hideFancybox');
@@ -31,10 +31,6 @@ document.addEventListener("error", function (e) {
     parentElem.classList.remove('fancybox');
   } else if (parentElemClass === 'img-bg' && pParentElemClass === 'img-wrap') {
     pParentElem.classList.add('hideFancybox');
-  } else if (parentElemClass === 'author') {
-    pParentElem.classList.add('fix-author-imgError');
-  } else if (parentElemClass.includes('tk-avatar')) {
-    pParentElem.classList.add('fix-avatar-imgError');
   }
 }, true);
 
@@ -59,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
       volantis.dom.switcher.removeClass('active'); // 关闭移动端激活的搜索框
       volantis.dom.header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
       volantis.dom.wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
-      volantis.EventListener.remove() // 移除事件监听器 see: layout/_partial/scripts/global.ejs
+      volantis.EventListener.remove() // 移除事件监听器 see: global.js
     }, 'app.js');
   });
 });
