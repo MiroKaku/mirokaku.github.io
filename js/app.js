@@ -14,6 +14,7 @@
 document.addEventListener("error", function (e) {
   const elem = e.target;
   if (elem.tagName.toLowerCase() !== 'img') return;
+  if (typeof elem.attributes.onerror !== "undefined") return;
 
   const parentElem = elem.parentElement;
   if (!parentElem) return;
@@ -23,7 +24,7 @@ document.addEventListener("error", function (e) {
   if (!pParentElem) return;
   const pParentElemClass = pParentElem.className;
 
-  elem.classList.add('error');
+  elem.classList.add('fix-error');
 
   if (parentElemClass === 'fancybox' && pParentElemClass === 'fancybox') {
     pParentElem.classList.add('hideFancybox');

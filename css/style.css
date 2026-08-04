@@ -815,15 +815,15 @@
 }
 :root {
   --width-main: 720px;
-  --fsp: $fs-body;
+  --fsp: 16px;
   --fsh2: calc(var(--fsp) + 11px);
   --fsh3: calc(var(--fsp) + 7px);
   --fsh4: calc(var(--fsp) + 4px);
   --side-content-width: 224px;
   --gap-margin: 16px;
   --gap-padding: 16px;
-  --gap-p: calc($fs-body + 4px);
-  --gap-p-compact: calc($fs-body * 0.75);
+  --gap-p: calc(16px + 4px);
+  --gap-p-compact: calc(16px * 0.75);
 }
 @media screen and (min-width: 2048px) {
   :root {
@@ -2225,7 +2225,7 @@ footer.footer .copyright p {
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
   display: none;
 }
-img.error {
+img.fix-error {
   min-height: 100%;
   min-width: 100%;
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
@@ -2238,12 +2238,12 @@ img.error {
   -o-transform: scale(1);
   -ms-transform: scale(1);
 }
-img.error.avatar {
+img.fix-error.avatar {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
   display: none !important;
 }
-img.error:before {
+img.fix-error:before {
   content: '';
   position: absolute;
   left: 0;
@@ -2251,12 +2251,12 @@ img.error:before {
   width: 100%;
   height: 100%;
   background: #f5f5f5 url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyBjbGFzcz0iaWNvbiIgd2lkdGg9IjIwMHB4IiBoZWlnaHQ9IjIwMC4wMHB4IiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iI2RjZGVlMCIgZD0iTTE5Ny4zMzMzMzMgMjgxLjY1MzMzM2E0OC40OCA0OC40OCAwIDEgMCA0OC40OCA0OC40OEE0OC40OCA0OC40OCAwIDAgMCAxOTcuMzMzMzMzIDI4MS42NTMzMzN6IiAgLz48cGF0aCBmaWxsPSIjZGNkZWUwIiBkPSJNOTcwLjY2NjY2NyAxNzAuNjY2NjY3SDUxOC42MTMzMzNhNS4zMzMzMzMgNS4zMzMzMzMgMCAwIDAtNC41ODY2NjYgMi42NjY2NjZsLTY0IDExMS42OGE1LjMzMzMzMyA1LjMzMzMzMyAwIDAgMCAwIDUuMzMzMzM0bDUzLjgxMzMzMyA5Ny40NGE1LjMzMzMzMyA1LjMzMzMzMyAwIDAgMSAwIDUuNjUzMzMzTDQwOC4yNjY2NjcgNTMwLjU2YTEuMDY2NjY3IDEuMDY2NjY3IDAgMCAxLTEuOTczMzM0LTAuNzQ2NjY3TDQyNi42NjY2NjcgMzg5LjMzMzMzM2E0LjkwNjY2NyA0LjkwNjY2NyAwIDAgMC0wLjQyNjY2Ny0yLjg4bC00My4yLTk3LjM4NjY2NmE1LjMzMzMzMyA1LjMzMzMzMyAwIDAgMSAwLTMuOTQ2NjY3TDQyMS4zMzMzMzMgMTc3LjgxMzMzM2E1LjMzMzMzMyA1LjMzMzMzMyAwIDAgMC00LjkwNjY2Ni03LjE0NjY2Nkg0Mi42NjY2NjdhNS4zMzMzMzMgNS4zMzMzMzMgMCAwIDAtNS4zMzMzMzQgNS4zMzMzMzN2NjcyYTUuMzMzMzMzIDUuMzMzMzMzIDAgMCAwIDUuMzMzMzM0IDUuMzMzMzMzaDkyOGE1LjMzMzMzMyA1LjMzMzMzMyAwIDAgMCA1LjMzMzMzMy01LjMzMzMzM1YxNzZhNS4zMzMzMzMgNS4zMzMzMzMgMCAwIDAtNS4zMzMzMzMtNS4zMzMzMzN6IG0tNjkuMzMzMzM0IDQ1Ni4wNTMzMzNhNS4zMzMzMzMgNS4zMzMzMzMgMCAwIDEtOS4yOCAzLjQ2NjY2N2wtMjE1LjQxMzMzMy0yNDQuMzJhNS4zMzMzMzMgNS4zMzMzMzMgMCAwIDAtOCAwbC0yOTEuODQgMzMxLjA5MzMzM2E1LjMzMzMzMyA1LjMzMzMzMyAwIDAgMS03LjQ2NjY2NyAwLjQ4bC0xNjcuNzMzMzMzLTE0Mi45MzMzMzNhNS4zMzMzMzMgNS4zMzMzMzMgMCAwIDAtNi44OCAwbC03My45NzMzMzMgNjMuMDRhNS4zMzMzMzMgNS4zMzMzMzMgMCAwIDEtOC43NDY2NjctNC4wNTMzMzRWMjUwLjY2NjY2N2E1LjMzMzMzMyA1LjMzMzMzMyAwIDAgMSA1LjMzMzMzMy01LjMzMzMzNGgyMDcuNTJsLTEzLjQ5MzMzMyA1MC43NzMzMzRhNS4zMzMzMzMgNS4zMzMzMzMgMCAwIDAgMC43NDY2NjcgNC4zNzMzMzNsNzAuNzczMzMzIDEwMi45MzMzMzNhNS4zMzMzMzMgNS4zMzMzMzMgMCAwIDEgMC45NiAzLjQxMzMzNGwtMTQuMjQgMTk1LjA5MzMzM2ExLjEyIDEuMTIgMCAwIDAgMS45MiAwLjhsMTgwLjE2LTIwMC44NTMzMzNhNS4zMzMzMzMgNS4zMzMzMzMgMCAwIDAgMS4xMi01LjMzMzMzNGwtMzItMTAxLjA2NjY2NmE1LjMzMzMzMyA1LjMzMzMzMyAwIDAgMSAwLjY0LTQuNTg2NjY3bDMxLjItNDUuNTQ2NjY3SDg5NmE1LjMzMzMzMyA1LjMzMzMzMyAwIDAgMSA1LjMzMzMzMyA1LjMzMzMzNHoiICAvPjwvc3ZnPg==") no-repeat center/80% 80%;
-  background-color: var(--color-img-error);
+  background-color: transparent;
 }
-img.error[alt='']:after {
+img.fix-error[alt='']:after {
   content: "图片加载失败";
 }
-img.error:after {
+img.fix-error:after {
   content: attr(alt);
   position: absolute;
   left: 0;
@@ -2272,24 +2272,24 @@ img.error:after {
   text-overflow: ellipsis;
 }
 @media screen and (max-width: 300px) {
-  img.error:after {
+  img.fix-error:after {
     display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
     display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
     display: none;
   }
 }
-.headimg-div img.error {
+.headimg-div img.fix-error {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
   display: inline-block !important;
 }
-.headimg-div img.error:before {
+.headimg-div img.fix-error:before {
   background-color: var(--color-card);
 }
-.tag.link img.error {
+.tag.link img.fix-error {
   min-height: 100%;
 }
-img[alt="Author"].error {
+img[alt="Author"].fix-error {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
   display: none;
@@ -4666,6 +4666,16 @@ img.lazyload:not(.placeholder).loaded {
   color: #f7e751;
   background: #000;
 }
+svg.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+  overflow: hidden;
+}
+svg.active-icon {
+  color: var(--theme);
+}
 #l_side .toc-wrapper {
   z-index: 1;
   overflow: hidden;
@@ -4821,6 +4831,73 @@ img.lazyload:not(.placeholder).loaded {
 }
 .md .video-wrap {
   margin: 1.5rem auto;
+}
+.tag-plugin.blockquote {
+  position: relative;
+  text-align: center;
+  --inset: calc(var(--fsp) * 2);
+  margin-left: var(--inset);
+  margin-right: var(--inset);
+  background: var(--block);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+.tag-plugin.blockquote p:not([class]) {
+  text-indent: 0 !important;
+}
+.tag-plugin.blockquote[indent='true'] p:not([class]) {
+  text-indent: calc(var(--fsp) * 2) !important;
+}
+.tag-plugin.blockquote:before,
+.tag-plugin.blockquote:after {
+  position: absolute;
+  font-size: 2rem;
+  background-color: hsla(var(--hue) var(--sat) var(--light) / 0.25);
+  top: -0.3em;
+  width: 1em;
+  height: 1em;
+  content: '';
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -khtml-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+}
+.tag-plugin.blockquote:before {
+  left: -0.3em;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3C!-- Icon from BoxIcons Solid by Atisa - https://creativecommons.org/licenses/by/4.0/ --%3E%3Cpath fill='currentColor' d='M3.691 6.292C5.094 4.771 7.217 4 10 4h1v2.819l-.804.161c-1.37.274-2.323.813-2.833 1.604A2.9 2.9 0 0 0 6.925 10H10a1 1 0 0 1 1 1v7c0 1.103-.897 2-2 2H3a1 1 0 0 1-1-1v-5l.003-2.919c-.009-.111-.199-2.741 1.688-4.789M20 20h-6a1 1 0 0 1-1-1v-5l.003-2.919c-.009-.111-.199-2.741 1.688-4.789C16.094 4.771 18.217 4 21 4h1v2.819l-.804.161c-1.37.274-2.323.813-2.833 1.604A2.9 2.9 0 0 0 17.925 10H21a1 1 0 0 1 1 1v7c0 1.103-.897 2-2 2'/%3E%3C/svg%3E");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3C!-- Icon from BoxIcons Solid by Atisa - https://creativecommons.org/licenses/by/4.0/ --%3E%3Cpath fill='currentColor' d='M3.691 6.292C5.094 4.771 7.217 4 10 4h1v2.819l-.804.161c-1.37.274-2.323.813-2.833 1.604A2.9 2.9 0 0 0 6.925 10H10a1 1 0 0 1 1 1v7c0 1.103-.897 2-2 2H3a1 1 0 0 1-1-1v-5l.003-2.919c-.009-.111-.199-2.741 1.688-4.789M20 20h-6a1 1 0 0 1-1-1v-5l.003-2.919c-.009-.111-.199-2.741 1.688-4.789C16.094 4.771 18.217 4 21 4h1v2.819l-.804.161c-1.37.274-2.323.813-2.833 1.604A2.9 2.9 0 0 0 17.925 10H21a1 1 0 0 1 1 1v7c0 1.103-.897 2-2 2'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+.tag-plugin.blockquote:after {
+  right: -0.3em;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3C!-- Icon from BoxIcons Solid by Atisa - https://creativecommons.org/licenses/by/4.0/ --%3E%3Cpath fill='currentColor' d='M20.309 17.708C22.196 15.66 22.006 13.03 22 13V5a1 1 0 0 0-1-1h-6c-1.103 0-2 .897-2 2v7a1 1 0 0 0 1 1h3.078a2.9 2.9 0 0 1-.429 1.396c-.508.801-1.465 1.348-2.846 1.624l-.803.16V20h1c2.783 0 4.906-.771 6.309-2.292m-11.007 0C11.19 15.66 10.999 13.03 10.993 13V5a1 1 0 0 0-1-1h-6c-1.103 0-2 .897-2 2v7a1 1 0 0 0 1 1h3.078a2.9 2.9 0 0 1-.429 1.396c-.508.801-1.465 1.348-2.846 1.624l-.803.16V20h1c2.783 0 4.906-.771 6.309-2.292'/%3E%3C/svg%3E");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3C!-- Icon from BoxIcons Solid by Atisa - https://creativecommons.org/licenses/by/4.0/ --%3E%3Cpath fill='currentColor' d='M20.309 17.708C22.196 15.66 22.006 13.03 22 13V5a1 1 0 0 0-1-1h-6c-1.103 0-2 .897-2 2v7a1 1 0 0 0 1 1h3.078a2.9 2.9 0 0 1-.429 1.396c-.508.801-1.465 1.348-2.846 1.624l-.803.16V20h1c2.783 0 4.906-.771 6.309-2.292m-11.007 0C11.19 15.66 10.999 13.03 10.993 13V5a1 1 0 0 0-1-1h-6c-1.103 0-2 .897-2 2v7a1 1 0 0 0 1 1h3.078a2.9 2.9 0 0 1-.429 1.396c-.508.801-1.465 1.348-2.846 1.624l-.803.16V20h1c2.783 0 4.906-.771 6.309-2.292'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+.tag-plugin.blockquote p:not([class]) {
+  color: var(--text-p2);
+  font-size: 16px;
+  text-indent: 2em;
+}
+.tag-plugin.blockquote:hover:before,
+.tag-plugin.blockquote:hover:after {
+  background-color: hsla(var(--hue) var(--sat) var(--light) / 0.5);
 }
 .article span.btn,
 .md span.btn {
@@ -5199,6 +5276,1312 @@ img.lazyload:not(.placeholder).loaded {
   border-radius: 16px;
   -webkit-border-radius: 16px;
 }
+a.tag-plugin.button {
+  background: var(--theme);
+  color: var(--bg-a100);
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-inline-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-inline-flex /* NEW - Chrome */;
+  display: inline-flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  padding: 0 0.5rem;
+  transition: background 0.2s ease-out;
+  -webkit-transition: background 0.2s ease-out;
+  -khtml-transition: background 0.2s ease-out;
+  -moz-transition: background 0.2s ease-out;
+  -o-transition: background 0.2s ease-out;
+  -ms-transition: background 0.2s ease-out;
+  margin: 0.5em 0;
+  font-size: 1em;
+  line-height: 1.5;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+a.tag-plugin.button svg,
+a.tag-plugin.button img {
+  height: 1.2em;
+  width: auto;
+  margin: 0 -0.25em 0 0.5em;
+  flex-shrink: 0;
+  align-self: center;
+}
+a.tag-plugin.button span {
+  text-indent: 0;
+  margin: 0.5em;
+}
+a.tag-plugin.button[size='xs'] {
+  margin: 0;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  padding: 0 4px;
+}
+a.tag-plugin.button[size='xs'] svg,
+a.tag-plugin.button[size='xs'] img,
+a.tag-plugin.button[size='xs'] span {
+  margin: 0 2px;
+}
+a.tag-plugin.button:hover {
+  --theme: var(--accent);
+}
+.tag-plugin.grid a.tag-plugin.button {
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+:root {
+  --chat-bg: #f1f2f5;
+  --chat-block: #fff;
+  --chat-border: #f2f2f2;
+  --chat-qq-right-bg: #09f;
+  --chat-qq-right-text: #fff;
+  --chat-wechat-news-num: #d8dadf;
+  --chat-video-button: rgba(255,255,255,0.902);
+  --chat-wechat-right-bg: #91ed61;
+  --chat-quote-blink-color: rgba(24,92,109,0.102);
+  --chat-wechat-quote-color: #808080;
+  --chat-wechat-quote-bg: rgba(128,128,128,0.102);
+}
+:root[color-scheme="light"] {
+  --chat-bg: #f1f2f5;
+  --chat-block: #fff;
+  --chat-border: #f2f2f2;
+  --chat-qq-right-bg: #09f;
+  --chat-qq-right-text: #fff;
+  --chat-wechat-news-num: #d8dadf;
+  --chat-video-button: rgba(255,255,255,0.902);
+  --chat-wechat-right-bg: #91ed61;
+  --chat-quote-blink-color: rgba(24,92,109,0.102);
+  --chat-wechat-quote-color: #808080;
+  --chat-wechat-quote-bg: rgba(128,128,128,0.102);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-mode: 'dark';
+  }
+  :root:not([color-scheme]) {
+    --chat-bg: #1f2224;
+    --chat-block: #25282a;
+    --chat-border: #303437;
+    --chat-qq-right-bg: rgba(0,153,255,0.502);
+    --chat-qq-right-text: rgba(255,255,255,0.6);
+    --chat-wechat-news-num: #25282a;
+    --chat-video-button: rgba(37,40,42,0.851);
+    --chat-wechat-right-bg: #305034;
+    --chat-quote-blink-color: rgba(24,92,109,0.149);
+    --chat-wechat-quote-color: #858585;
+    --chat-wechat-quote-bg: rgba(133,133,133,0.102);
+  }
+}
+[color-scheme='dark'] {
+  --chat-bg: #1f2224;
+  --chat-block: #25282a;
+  --chat-border: #303437;
+  --chat-qq-right-bg: rgba(0,153,255,0.502);
+  --chat-qq-right-text: rgba(255,255,255,0.6);
+  --chat-wechat-news-num: #25282a;
+  --chat-video-button: rgba(37,40,42,0.851);
+  --chat-wechat-right-bg: #305034;
+  --chat-quote-blink-color: rgba(24,92,109,0.149);
+  --chat-wechat-quote-color: #858585;
+  --chat-wechat-quote-bg: rgba(133,133,133,0.102);
+}
+.md .tag-plugin.chat {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 375px;
+  margin: 1rem auto;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  background: var(--chat-block);
+  box-shadow: rgba(0,0,0,0.16) 0px 1px 4px;
+  -webkit-box-shadow: rgba(0,0,0,0.16) 0px 1px 4px;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 658px;
+  width: 329px;
+  overflow: hidden;
+}
+.md .tag-plugin.chat .fs12 {
+  font-size: 0.75rem;
+}
+.md .tag-plugin.chat .cap {
+  color: var(--text-p3);
+}
+.md .tag-plugin.chat.iphone11 {
+  width: 329px;
+  height: 658px;
+  border-radius: 3em;
+  -webkit-border-radius: 3em;
+  padding: 1em;
+  position: relative;
+  box-shadow: unset;
+  -webkit-box-shadow: unset;
+}
+.md .tag-plugin.chat.iphone11 >.device-image {
+  background-image: url("https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.14/frame/iphone11.svg");
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.md .tag-plugin.chat.iphone11 >.status-bar {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  margin: 0.5em 0.7em;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -khtml-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+}
+.md .tag-plugin.chat.iphone11 >.status-bar >.left-items {
+  font-size: 0.75rem;
+  width: 5em;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+}
+.md .tag-plugin.chat.iphone11 >.status-bar >.right-items {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  align-items: center;
+}
+.md .tag-plugin.chat.iphone11 >.status-bar >.right-items >svg.icon {
+  width: 1.3em;
+  height: 1.3em;
+}
+.md .tag-plugin.chat.iphone11 >.status-bar >.right-items >svg.icon.earphone,
+.md .tag-plugin.chat.iphone11 >.status-bar >.right-items >svg.icon.bluetooth {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+}
+.md .tag-plugin.chat.iphone11 >.status-bar >.right-items >svg.icon >path {
+  fill: var(--text-p1);
+}
+.md .tag-plugin.chat.iphone11 >.chat-navbar,
+.md .tag-plugin.chat.iphone11 >.content {
+  margin: 0 0.4em;
+}
+.md .tag-plugin.chat.iphone11 >.bottom {
+  margin: 0 0.4em;
+  padding-bottom: 0.75em;
+}
+.md .tag-plugin.chat >.chat-navbar {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  padding: 0.3rem 0;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -khtml-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  z-index: 4;
+}
+.md .tag-plugin.chat >.chat-navbar .left-items {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-items: center;
+}
+.md .tag-plugin.chat >.chat-navbar .left-items .back-btn {
+  margin-left: 0.2em;
+}
+.md .tag-plugin.chat >.chat-navbar .left-items .back-btn .icon.back {
+  width: 1.3em;
+  height: 1.3em;
+}
+.md .tag-plugin.chat >.chat-navbar .left-items .news-num {
+  background: var(--chat-bg);
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  font-size: 0.75em;
+  padding: 0px 4px;
+  margin-right: 8px;
+  color: var(--text-p2);
+}
+.md .tag-plugin.chat >.chat-navbar .right-items>.more-btn {
+  height: 100%;
+  margin-right: 0.5em;
+}
+.md .tag-plugin.chat >.chat-navbar .left-items>.back-btn,
+.md .tag-plugin.chat >.chat-navbar .right-items>.more-btn {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-items: center;
+}
+.md .tag-plugin.chat >.chat-navbar .left-items>.back-btn >svg>path,
+.md .tag-plugin.chat >.chat-navbar .right-items>.more-btn >svg>path {
+  fill: var(--text-p1);
+}
+.md .tag-plugin.chat >.content {
+  background: var(--chat-bg);
+  overflow: auto;
+  position: relative;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 0;
+  -ms-flex: 1 0;
+  flex: 1 0;
+  z-index: 3;
+}
+.md .tag-plugin.chat >.content::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+.md .tag-plugin.chat >.content::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+.md .tag-plugin.chat >.content::-webkit-scrollbar-thumb {
+  background: transparent;
+  cursor: pointer;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.md .tag-plugin.chat >.content:hover::-webkit-scrollbar-thumb {
+  background: rgba(68,68,68,0.5);
+}
+.md .tag-plugin.chat >.content:hover::-webkit-scrollbar-thumb:hover {
+  background: #ff5722;
+}
+.md .tag-plugin.chat >.bottom {
+  z-index: 1;
+  padding-bottom: 0.5em;
+  background: var(--chat-bg);
+  box-shadow: rgba(0,0,0,0.06) 0px 1px 1px 0px inset;
+  -webkit-box-shadow: rgba(0,0,0,0.06) 0px 1px 1px 0px inset;
+}
+.md .tag-plugin.chat >.bottom .input {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -khtml-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  margin: 0 0.5em;
+  margin-top: 0.5em;
+  height: 32px;
+}
+.md .tag-plugin.chat >.bottom .input .input-text {
+  background: var(--chat-block);
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  width: calc(100% - 40px - 0.5em);
+  height: 100%;
+}
+.md .tag-plugin.chat >.bottom .input .submit-btn {
+  padding: 3px 6px;
+  background: var(--theme-a30);
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  font-size: 0.875rem;
+  color: var(--theme);
+}
+.md .tag-plugin.chat >.bottom .icons {
+  margin: 0 0.5em;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -khtml-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  margin-top: 0.5em;
+}
+.md .tag-plugin.chat >.bottom .icons >svg.icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+.md .tag-plugin.chat >.bottom .icons >svg.icon.voice {
+  width: 1.3em !important;
+  height: 1.3em !important;
+}
+.md .tag-plugin.chat >.bottom .icons >svg.icon path {
+  fill: var(--text-p2);
+}
+.md .tag-plugin.chat >.content >div:first-child {
+  margin-top: 0.5em;
+}
+.md .tag-plugin.chat >.content >div:last-child {
+  margin-bottom: 0.5em;
+}
+.md .tag-plugin.chat >.content .chattip {
+  font-size: 0.75rem;
+  color: var(--text-p3);
+  margin: auto;
+  width: fit-content;
+  padding: 0.5em;
+}
+.md .tag-plugin.chat >.content .chatcell {
+  padding: 0.5em;
+}
+.md .tag-plugin.chat >.content .chatcell img {
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+.md .tag-plugin.chat >.content .chatcell .user-avatar {
+  float: left;
+}
+.md .tag-plugin.chat >.content .chatcell .user-avatar img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main {
+  padding: 0 0.5em;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  flex-flow: column;
+  -webkit-flex-flow: column;
+  -khtml-flex-flow: column;
+  -moz-flex-flow: column;
+  -o-flex-flow: column;
+  -ms-flex-flow: column;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .header {
+  line-height: 1.5;
+  font-size: 13px;
+  margin-bottom: 0.3em;
+  overflow: hidden;
+  position: relative;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -khtml-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  align-items: center;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .header .label {
+  padding: 0 4px;
+  color: var(--theme);
+  background: var(--theme-a30);
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  margin-right: 4px;
+  font-size: calc(0.75rem - .1rem);
+  font-weight: 600;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .header .name {
+  color: var(--text-p3);
+  font-size: 0.75rem;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk {
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  background: var(--chat-block);
+  padding: calc((32px - 1.3 * 0.875rem) / 2) .5em;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk p {
+  font-size: 0.875rem;
+  line-height: 1.3;
+  margin: 0;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk >.error-img-to-show {
+  min-width: 100px;
+  min-height: 100px;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk >.quote {
+  color: var(--text-p3);
+  background: var(--text-a20);
+  padding: 0.3rem;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 0.3em;
+  transition: color 0.2s ease-out, background 0.2s ease-out;
+  -webkit-transition: color 0.2s ease-out, background 0.2s ease-out;
+  -khtml-transition: color 0.2s ease-out, background 0.2s ease-out;
+  -moz-transition: color 0.2s ease-out, background 0.2s ease-out;
+  -o-transition: color 0.2s ease-out, background 0.2s ease-out;
+  -ms-transition: color 0.2s ease-out, background 0.2s ease-out;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk >.quote:hover {
+  color: var(--theme);
+  background: var(--theme-a30);
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk >.quote:hover .quote-user>svg>path {
+  fill: var(--theme);
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk >.quote .quote-user {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -khtml-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  align-items: center;
+  column-gap: 1em;
+  -webkit-column-gap: 1em;
+  -moz-column-gap: 1em;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk >.quote .quote-user >span {
+  font-size: 0.75rem;
+  height: 16px;
+  line-height: 16px;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk >.quote .quote-user >svg {
+  width: 0.75em;
+  height: 0.75em;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk >.quote .quote-user >svg path {
+  fill: var(--text-p3);
+  transition: color 0.2s ease-out, 0.5s 0.2s ease-out;
+  -webkit-transition: color 0.2s ease-out, 0.5s 0.2s ease-out;
+  -khtml-transition: color 0.2s ease-out, 0.5s 0.2s ease-out;
+  -moz-transition: color 0.2s ease-out, 0.5s 0.2s ease-out;
+  -o-transition: color 0.2s ease-out, 0.5s 0.2s ease-out;
+  -ms-transition: color 0.2s ease-out, 0.5s 0.2s ease-out;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk >.quote .quote-content {
+  margin-top: 0.3em;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk >.quote .quote-content span {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: inline-block;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk >.quote .quote-content span p,
+.md .tag-plugin.chat >.content .chatcell .user-main .talk >.quote .quote-content span span {
+  font-size: 0.75rem;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.md .tag-plugin {
+  margin-bottom: 0;
+  margin: 0.2rem 0;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.image,
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.emoji,
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.link,
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.video,
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.chat-file {
+  background: unset !important;
+  padding: 0 !important;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.link .link-card {
+  background: var(--chat-block);
+  box-shadow: unset;
+  -webkit-box-shadow: unset;
+  transition: unset;
+  -webkit-transition: unset;
+  -khtml-transition: unset;
+  -moz-transition: unset;
+  -o-transition: unset;
+  -ms-transition: unset;
+  -webkit-transition: unset;
+  -moz-transition: unset;
+  -o-transition: unset;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.link .link-card:hover {
+  transform: none;
+  -webkit-transform: none;
+  -khtml-transform: none;
+  -moz-transform: none;
+  -o-transform: none;
+  -ms-transform: none;
+  color: var(--text-p3);
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.link .link-card .top {
+  margin: 0.5em;
+  max-width: unset;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.link .link-card .top span {
+  white-space: unset;
+  font-size: 0.875rem;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.link .link-card .center {
+  margin: 0 0.5em;
+  column-gap: 0.5em;
+  -webkit-column-gap: 0.5em;
+  -moz-column-gap: 0.5em;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-self: unset;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.link .link-card .center .left {
+  width: calc(100% - 32px - 0.5em);
+  height: 32px;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.link .link-card .center .left .desc {
+  -webkit-line-clamp: 2;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.link .link-card .center .right {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 0;
+  -ms-flex: 1 0;
+  flex: 1 0;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.link .link-card .bottom {
+  margin: 0.5em 0.5em 0.3em 0.5em;
+  padding-top: 0.3em;
+  border-top: 1px solid var(--chat-border);
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-items: center;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.link .link-card .bottom >svg,
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.link .link-card .bottom >span {
+  height: 0.8rem;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.voice {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  -webkit-justify-content: left;
+  -khtml-justify-content: left;
+  -moz-justify-content: left;
+  -o-justify-content: left;
+  -ms-justify-content: left;
+  padding: 4.5px 0.5em;
+  cursor: pointer;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.voice .voice-btns {
+  flex-shrink: 0;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.voice .voice-btns svg.icon {
+  width: 1.3em;
+  height: 1.3em;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.voice .voice-btns svg.icon >path {
+  fill: var(--text-p1);
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.voice canvas.voice-wave {
+  margin: 0 0.5em;
+  height: 23px;
+  width: 36px;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.voice div.voice-wave {
+  height: 1.2em;
+  margin: 0 0.5em;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.voice div.voice-wave .play-line {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  height: 140%;
+  width: 1px;
+  background: var(--text-p2);
+  content: "";
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.voice div.voice-wave .play-line.active {
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.voice div.voice-wave .play-line.back {
+  transition: transform 0.3s linear !important;
+  -webkit-transition: transform 0.3s linear !important;
+  -khtml-transition: transform 0.3s linear !important;
+  -moz-transition: transform 0.3s linear !important;
+  -o-transition: transform 0.3s linear !important;
+  -ms-transition: transform 0.3s linear !important;
+  -moz-transition: transform 0.3s linear !important;
+  -webkit-transition: transform 0.3s linear !important;
+  -o-transition: transform 0.3s linear !important;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.voice div.voice-wave span.voice-wave-item {
+  background: var(--text-p2);
+  width: 2px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  flex-shrink: 0;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.voice .voice-metas {
+  font-size: 0.875rem;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  flex-shrink: 0;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.voice .voice-metas span {
+  line-height: 1;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.video {
+  position: relative;
+  line-height: 0;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.video .video-btns {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.video .video-btns .play-btn,
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.video .video-btns .pause-btn {
+  align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.video .video-btns svg.icon {
+  width: 3em;
+  height: 3em;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.video .video-btns svg.icon >path {
+  fill: var(--chat-video-button);
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.video video {
+  width: 100%;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.chat-file {
+  background: transparent !important;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  padding: unset !important;
+  column-gap: 0.3rem;
+  -webkit-column-gap: 0.3rem;
+  -moz-column-gap: 0.3rem;
+  width: calc(100% - 32px);
+  cursor: pointer;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.chat-file >.content {
+  background: var(--chat-block);
+  padding: 0.5em;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  flex-grow: 1;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.chat-file >.content >.top {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  -webkit-column-gap: 0.5rem;
+  -moz-column-gap: 0.5rem;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.chat-file >.content >.top >.left {
+  height: 2.5rem;
+  flex-grow: 1;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.chat-file >.content >.top >.left >span {
+  white-space: unset;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-p1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: calc(2.5rem / 2);
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.chat-file >.content >.top >.right {
+  height: fit-content;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.chat-file >.content >.top >.right >svg.icon {
+  height: 2.5rem;
+  width: unset;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.chat-file >.content >.bottom {
+  margin-top: 0.5em;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.chat-file >.content >.bottom >span {
+  line-height: 0.75rem;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.chat-file >.download-btn {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-items: flex-end;
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.chat-file >.download-btn >svg.icon {
+  height: 1rem;
+  width: 1rem;
+  padding: 0.2em;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background: var(--chat-block);
+}
+.md .tag-plugin.chat >.content .chatcell .user-main .talk.chat-file >.download-btn >svg.icon >path {
+  fill: var(--text-p1);
+}
+.md .tag-plugin.chat >.content .chatcell.right .user-avatar {
+  float: right;
+}
+.md .tag-plugin.chat >.content .chatcell.right .user-main {
+  flex-flow: row-reverse;
+  -webkit-flex-flow: row-reverse;
+  -khtml-flex-flow: row-reverse;
+  -moz-flex-flow: row-reverse;
+  -o-flex-flow: row-reverse;
+  -ms-flex-flow: row-reverse;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -khtml-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+}
+.md .tag-plugin.chat >.content .chatcell.right .user-main .header {
+  flex-basis: 100%;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -khtml-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  -o-justify-content: flex-end;
+  -ms-justify-content: flex-end;
+}
+.md .tag-plugin.chat >.content .chatcell.right .user-main .talk.chat-file {
+  -webkit-box-direction: reverse;
+  -moz-box-direction: reverse;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+.md .tag-plugin.chat >.content .chatcell.right .user-main .talk.voice .voice-btns svg.icon>path {
+  fill: var(--chat-qq-right-text);
+}
+.md .tag-plugin.chat >.content .chatcell.right .user-main .talk.md,
+.md .tag-plugin.chat >.content .chatcell.right .user-main .talk.voice {
+  background: var(--chat-qq-right-bg);
+  color: var(--chat-qq-right-text);
+}
+.md .tag-plugin.chat >.content .chatcell.quote-blink {
+  animation: chatQuoteblinking 1s;
+  -webkit-animation: chatQuoteblinking 1s;
+  -khtml-animation: chatQuoteblinking 1s;
+  -moz-animation: chatQuoteblinking 1s;
+  -o-animation: chatQuoteblinking 1s;
+  -ms-animation: chatQuoteblinking 1s;
+}
+.md .tag-plugin.chat.person >.content >.chatcell >.user-main {
+  min-height: 32px;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  align-content: unset;
+}
+.md .tag-plugin.chat.person >.content >.chatcell >.user-main >.header {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+}
+.md .tag-plugin.chat.person >.content >.chatcell.right>.user-main {
+  justify-content: unset;
+  -webkit-justify-content: unset;
+  -khtml-justify-content: unset;
+  -moz-justify-content: unset;
+  -o-justify-content: unset;
+  -ms-justify-content: unset;
+  align-content: center;
+}
+.md .tag-plugin.chat.wechat.iphone11 {
+  background: var(--chat-bg);
+}
+.md .tag-plugin.chat.wechat.iphone11 >.bottom {
+  padding-bottom: 0.75rem;
+}
+.md .tag-plugin.chat.wechat >.chat-navbar {
+  background: var(--chat-bg);
+  box-shadow: rgba(27,31,35,0.02) 0px 1px 0px;
+  -webkit-box-shadow: rgba(27,31,35,0.02) 0px 1px 0px;
+}
+.md .tag-plugin.chat.wechat >.chat-navbar >.left-items >.news-num {
+  background: var(--chat-wechat-news-num);
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell img {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-avatar>img {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.header {
+  line-height: 1;
+  margin-bottom: 0.2em;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.header >.label {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk {
+  position: relative;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk:before {
+  content: "";
+  position: absolute;
+  left: -2.5px;
+  top: 11px;
+  width: 10px;
+  height: 10px;
+  border-radius: 1.5px;
+  -webkit-border-radius: 1.5px;
+  transform: rotate3d(0, 0, 1, -45deg);
+  -webkit-transform: rotate3d(0, 0, 1, -45deg);
+  -khtml-transform: rotate3d(0, 0, 1, -45deg);
+  -moz-transform: rotate3d(0, 0, 1, -45deg);
+  -o-transform: rotate3d(0, 0, 1, -45deg);
+  -ms-transform: rotate3d(0, 0, 1, -45deg);
+  background: var(--chat-block);
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.emoji:before,
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.video:before,
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.image:before {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.link>.link-card,
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.video>video,
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.chat-file>.content,
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.image>img,
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.emoji>img {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.chat-file .download-btn {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.voice {
+  padding: 8px 0.5em;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.voice >.wechat-voice {
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  transform: rotate3d(0, 0, 1, 135deg);
+  -webkit-transform: rotate3d(0, 0, 1, 135deg);
+  -khtml-transform: rotate3d(0, 0, 1, 135deg);
+  -moz-transform: rotate3d(0, 0, 1, 135deg);
+  -o-transform: rotate3d(0, 0, 1, 135deg);
+  -ms-transform: rotate3d(0, 0, 1, 135deg);
+  margin-left: 0.2rem;
+  margin-right: 0;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.voice >.wechat-voice >.voice-circle {
+  border: 2px solid var(--text-p1);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  position: absolute;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.voice >.wechat-voice >.voice-circle.first {
+  width: 5px;
+  height: 5px;
+  background: var(--text-p1);
+  top: 12px;
+  left: 12px;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.voice >.wechat-voice >.voice-circle.second {
+  width: 13px;
+  height: 13px;
+  top: 8px;
+  left: 8px;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.voice >.wechat-voice >.voice-circle.third {
+  width: 21px;
+  height: 21px;
+  top: 4px;
+  left: 4px;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.voice >.wechat-voice.play >.second {
+  animation: wehcatVoicefadeInOut 1s infinite 0.2s;
+  -webkit-animation: wehcatVoicefadeInOut 1s infinite 0.2s;
+  -khtml-animation: wehcatVoicefadeInOut 1s infinite 0.2s;
+  -moz-animation: wehcatVoicefadeInOut 1s infinite 0.2s;
+  -o-animation: wehcatVoicefadeInOut 1s infinite 0.2s;
+  -ms-animation: wehcatVoicefadeInOut 1s infinite 0.2s;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.talk.voice >.wechat-voice.play >.third {
+  animation: wehcatVoicefadeInOut 1s infinite 0.4s;
+  -webkit-animation: wehcatVoicefadeInOut 1s infinite 0.4s;
+  -khtml-animation: wehcatVoicefadeInOut 1s infinite 0.4s;
+  -moz-animation: wehcatVoicefadeInOut 1s infinite 0.4s;
+  -o-animation: wehcatVoicefadeInOut 1s infinite 0.4s;
+  -ms-animation: wehcatVoicefadeInOut 1s infinite 0.4s;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.quote {
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  background: var(--chat-wechat-quote-bg);
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  margin-top: 0.2em;
+  font-size: 0.75rem;
+  color: var(--chat-wechat-quote-color);
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  column-gap: 4px;
+  -webkit-column-gap: 4px;
+  -moz-column-gap: 4px;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.quote.image-chat {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  column-gap: 0.4em;
+  -webkit-column-gap: 0.4em;
+  -moz-column-gap: 0.4em;
+  padding: 0.5em;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.quote img {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: inline;
+  width: 64px;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.quote .tag-plugin {
+  margin-bottom: 0;
+  margin: 0.2rem 0;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.quote .tag-plugin.image img {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  width: unset;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.quote p,
+.md .tag-plugin.chat.wechat >.content >.chatcell >.user-main >.quote span {
+  font-size: 0.75rem;
+  margin: 0;
+  padding: 0;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell.right>.user-main >.header {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell.right>.user-main >.talk:before {
+  right: -2px;
+  left: unset;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell.right>.user-main >.talk.md,
+.md .tag-plugin.chat.wechat >.content >.chatcell.right>.user-main >.talk.md:before,
+.md .tag-plugin.chat.wechat >.content >.chatcell.right>.user-main >.talk.voice,
+.md .tag-plugin.chat.wechat >.content >.chatcell.right>.user-main >.talk.voice:before {
+  background: var(--chat-wechat-right-bg);
+  color: var(--text-p1);
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell.right>.user-main >.talk.voice {
+  -webkit-box-direction: reverse;
+  -moz-box-direction: reverse;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+.md .tag-plugin.chat.wechat >.content >.chatcell.right>.user-main >.talk.voice >.wechat-voice {
+  transform: rotate3d(0, 0, 1, -45deg);
+  -webkit-transform: rotate3d(0, 0, 1, -45deg);
+  -khtml-transform: rotate3d(0, 0, 1, -45deg);
+  -moz-transform: rotate3d(0, 0, 1, -45deg);
+  -o-transform: rotate3d(0, 0, 1, -45deg);
+  -ms-transform: rotate3d(0, 0, 1, -45deg);
+  margin-left: 0;
+  margin-right: 0.2rem;
+}
+.md .tag-plugin.chat.wechat >.bottom {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -khtml-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  padding: 0.5em;
+  column-gap: 0.5em;
+  -webkit-column-gap: 0.5em;
+  -moz-column-gap: 0.5em;
+}
+.md .tag-plugin.chat.wechat >.bottom .input-text {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  flex-grow: 1;
+  height: 2rem;
+  background: var(--chat-block);
+}
+.md .tag-plugin.chat.wechat >.bottom .icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.md .tag-plugin.chat.wechat >.bottom .icon >path {
+  fill: var(--text-p2);
+}
+@-moz-keyframes wehcatVoicefadeInOut {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0; /*初始状态 透明度为0*/
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1; /*结尾状态 透明度为1*/
+  }
+}
+@-webkit-keyframes wehcatVoicefadeInOut {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0; /*初始状态 透明度为0*/
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1; /*结尾状态 透明度为1*/
+  }
+}
+@-o-keyframes wehcatVoicefadeInOut {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0; /*初始状态 透明度为0*/
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1; /*结尾状态 透明度为1*/
+  }
+}
+@keyframes wehcatVoicefadeInOut {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0; /*初始状态 透明度为0*/
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1; /*结尾状态 透明度为1*/
+  }
+}
+@-moz-keyframes chatQuoteblinking {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--chat-quote-blink-color);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+@-webkit-keyframes chatQuoteblinking {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--chat-quote-blink-color);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+@-o-keyframes chatQuoteblinking {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--chat-quote-blink-color);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+@keyframes chatQuoteblinking {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--chat-quote-blink-color);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
 .md .checkbox {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
@@ -5520,6 +6903,319 @@ article .checkbox p {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
+.md .tag-plugin.checkbox {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-items: center;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  --gap-p: calc(var(--gap-p-compact) / 2);
+/* Checkbox */
+/* Radio */
+/* Colors */
+}
+.md .tag-plugin.checkbox input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: inline-block;
+  outline: none;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  flex-shrink: 0;
+  margin-right: 8px;
+  pointer-events: none;
+}
+.md .tag-plugin.checkbox input[type=checkbox]:before,
+.md .tag-plugin.checkbox input[type=checkbox]:after {
+  position: absolute;
+  content: "";
+  background: var(--background);
+}
+.md .tag-plugin.checkbox input[type=checkbox]:before {
+  left: 1px;
+  top: 5px;
+  width: 0px;
+  height: 2px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -khtml-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+.md .tag-plugin.checkbox input[type=checkbox]:after {
+  right: 7px;
+  bottom: 3px;
+  width: 2px;
+  height: 0px;
+  transform: rotate(40deg);
+  -webkit-transform: rotate(40deg);
+  -khtml-transform: rotate(40deg);
+  -moz-transform: rotate(40deg);
+  -o-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  -webkit-transform: rotate(40deg);
+  -moz-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  -o-transform: rotate(40deg);
+}
+.md .tag-plugin.checkbox input[type=checkbox]:checked:before {
+  left: 0px;
+  top: 7px;
+  width: 6px;
+  height: 2px;
+}
+.md .tag-plugin.checkbox input[type=checkbox]:checked:after {
+  right: 3px;
+  bottom: 1px;
+  width: 2px;
+  height: 10px;
+}
+.md .tag-plugin.checkbox[symbol=minus] input[type=checkbox]:before {
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+  -khtml-transform: rotate(0);
+  -moz-transform: rotate(0);
+  -o-transform: rotate(0);
+  -ms-transform: rotate(0);
+  left: 1px;
+  top: 5px;
+  width: 0px;
+  height: 2px;
+}
+.md .tag-plugin.checkbox[symbol=minus] input[type=checkbox]:after {
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+  -khtml-transform: rotate(0);
+  -moz-transform: rotate(0);
+  -o-transform: rotate(0);
+  -ms-transform: rotate(0);
+  left: 1px;
+  top: 5px;
+  width: 0px;
+  height: 2px;
+}
+.md .tag-plugin.checkbox[symbol=minus] input[type=checkbox]:checked:before {
+  left: 1px;
+  top: 5px;
+  width: 10px;
+  height: 2px;
+}
+.md .tag-plugin.checkbox[symbol=minus] input[type=checkbox]:checked:after {
+  left: 1px;
+  top: 5px;
+  width: 10px;
+  height: 2px;
+}
+.md .tag-plugin.checkbox[symbol=plus] input[type=checkbox]:before {
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+  -khtml-transform: rotate(0);
+  -moz-transform: rotate(0);
+  -o-transform: rotate(0);
+  -ms-transform: rotate(0);
+  left: 1px;
+  top: 5px;
+  width: 0px;
+  height: 2px;
+}
+.md .tag-plugin.checkbox[symbol=plus] input[type=checkbox]:after {
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+  -khtml-transform: rotate(0);
+  -moz-transform: rotate(0);
+  -o-transform: rotate(0);
+  -ms-transform: rotate(0);
+  left: 5px;
+  top: 1px;
+  width: 2px;
+  height: 0px;
+}
+.md .tag-plugin.checkbox[symbol=plus] input[type=checkbox]:checked:before {
+  left: 1px;
+  top: 5px;
+  width: 10px;
+  height: 2px;
+}
+.md .tag-plugin.checkbox[symbol=plus] input[type=checkbox]:checked:after {
+  left: 5px;
+  top: 1px;
+  width: 2px;
+  height: 10px;
+}
+.md .tag-plugin.checkbox[symbol=times] input[type=checkbox]:before {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -khtml-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  left: 3px;
+  top: 1px;
+  width: 0px;
+  height: 2px;
+}
+.md .tag-plugin.checkbox[symbol=times] input[type=checkbox]:after {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  -khtml-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  right: 3px;
+  top: 1px;
+  width: 0px;
+  height: 2px;
+}
+.md .tag-plugin.checkbox[symbol=times] input[type=checkbox]:checked:before {
+  left: 1px;
+  top: 5px;
+  width: 10px;
+  height: 2px;
+}
+.md .tag-plugin.checkbox[symbol=times] input[type=checkbox]:checked:after {
+  right: 1px;
+  top: 5px;
+  width: 10px;
+  height: 2px;
+}
+.md .tag-plugin.checkbox input[type=radio] {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  transform: translateY(-1px);
+  -webkit-transform: translateY(-1px);
+  -khtml-transform: translateY(-1px);
+  -moz-transform: translateY(-1px);
+  -o-transform: translateY(-1px);
+  -ms-transform: translateY(-1px);
+}
+.md .tag-plugin.checkbox input[type=radio]:before {
+  content: "";
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  margin: 2px;
+  transform: scale(0);
+  -webkit-transform: scale(0);
+  -khtml-transform: scale(0);
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  -ms-transform: scale(0);
+}
+.md .tag-plugin.checkbox input[type=radio]:checked:before {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -khtml-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
+}
+.md .tag-plugin.checkbox input {
+  border: 2px solid var(--theme);
+}
+.md .tag-plugin.checkbox input[type=checkbox]:checked {
+  background: var(--theme);
+}
+.md .tag-plugin.checkbox input[type=radio]:checked:before {
+  background: var(--theme);
+}
+.tag-plugin.checkbox:not([color]) {
+  --theme: #2196f3;
+}
+.md .tag-plugin.copy {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -khtml-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background: var(--card);
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border: 1px solid var(--block-border);
+  overflow: hidden;
+  width: 100%;
+  min-width: 200px;
+}
+.md .tag-plugin.copy span {
+  padding: 0.25rem 0.5rem;
+  margin: auto 0.5rem;
+  line-height: 1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+  color: var(--theme);
+  font-family: Menlo, UbuntuMono, Monaco, monospace, courier, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.md .tag-plugin.copy input.copy-area {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: inline-block;
+  padding: 0;
+  width: 100%;
+  color: var(--text-p2);
+  line-height: 3;
+  text-indent: 1rem;
+}
+.md .tag-plugin.copy span+input.copy-area {
+  text-indent: 0;
+}
+.md .tag-plugin.copy button.copy-btn {
+  margin: 2px 2px 2px 0;
+  border-radius: calc(8px - 2px);
+  -webkit-border-radius: calc(8px - 2px);
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: inline-block;
+  background: var(--block);
+  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -khtml-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  line-height: 0;
+  font-size: 1rem;
+  padding: 0 0.75rem;
+  color: var(--text-p2);
+}
+.md .tag-plugin.copy button.copy-btn:hover {
+  color: var(--theme);
+  background: var(--theme-a20);
+}
 div.dropmenu-wrapper {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
@@ -5573,6 +7269,77 @@ div.dropmenu .list-v .list-v {
   height: 1.75em;
   border-radius: 0;
   -webkit-border-radius: 0;
+}
+.tag-plugin.folders {
+  margin: var(--gap-p) 0;
+  --fsp: calc(16px - 2px);
+  font-size: var(--fsp);
+  border-top: 1px solid var(--block-border);
+  overflow: hidden;
+}
+.tag-plugin.folders .folder {
+  border-bottom: 1px solid var(--block-border);
+  padding: 1rem;
+}
+.tag-plugin.folders summary {
+  cursor: pointer;
+  color: var(--text-p2);
+  font-weight: 500;
+  position: relative;
+  line-height: 1.2;
+  outline: none;
+  padding: 1rem;
+  margin: -1rem;
+}
+.tag-plugin.folders summary:last-child {
+  border-bottom: none;
+}
+.tag-plugin.folders summary > span {
+  margin-left: 0.25em;
+}
+.tag-plugin.folders summary > p,
+.tag-plugin.folders summary > h1,
+.tag-plugin.folders summary > h2,
+.tag-plugin.folders summary > h3,
+.tag-plugin.folders summary > h4,
+.tag-plugin.folders summary > h5,
+.tag-plugin.folders summary > h6 {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: inline;
+  border-bottom: none !important;
+}
+.tag-plugin.folders summary:hover {
+  color: var(--text);
+}
+.tag-plugin.folders summary:after {
+  position: absolute;
+  content: '+';
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -khtml-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  right: 1rem;
+}
+.tag-plugin.folders details[open] >summary {
+  color: var(--text-p1);
+  font-weight: 700;
+}
+.tag-plugin.folders details[open] >summary:after {
+  content: '-';
+}
+.tag-plugin.folders details[open] >div.body {
+  --fsp: calc(16px - 1px);
+}
+.tag-plugin.folders details[open] >div.body >:first-child {
+  margin-top: 1rem;
+}
+.tag-plugin.folders details[open] >div.body >:last-child {
+  margin-bottom: 0;
 }
 details {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
@@ -5735,6 +7502,134 @@ details[open] >div.content > .highlight:last-child,
 details[open] >div.content > .note:last-child,
 details[open] >div.content > details:last-child {
   margin-bottom: 0;
+}
+details.folding {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  corner-shape: superellipse(1.2);
+  background: var(--theme-block);
+  border: 1px solid var(--theme-border);
+}
+details.folding summary {
+  cursor: pointer;
+  padding: 1rem;
+  margin: -1rem;
+  color: var(--text-p2);
+  font-weight: 500;
+  --fsp: calc(16px - 2px);
+  font-size: var(--fsp);
+  position: relative;
+  line-height: 1.2;
+  outline: none;
+}
+details.folding summary > span {
+  margin-left: 0.25em;
+}
+details.folding summary > p,
+details.folding summary > h1,
+details.folding summary > h2,
+details.folding summary > h3,
+details.folding summary > h4,
+details.folding summary > h5,
+details.folding summary > h6 {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: inline;
+  border-bottom: none !important;
+}
+details.folding summary:hover {
+  color: var(--text);
+}
+details.folding summary:after {
+  position: absolute;
+  content: '+';
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -khtml-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  right: 1rem;
+  line-height: 1;
+}
+details.folding[open] >summary {
+  color: var(--text-p1);
+  font-weight: 700;
+  z-index: 1;
+}
+details.folding[open] >summary:after {
+  content: '-';
+}
+details.folding[open] >div.body {
+  padding: 0 1rem 1rem;
+  margin: 0 -1rem -1rem;
+  color: var(--text-p1);
+  --fsp: calc(16px - 1px);
+}
+details.folding[open] >div.body >:first-child {
+  margin-top: 1rem;
+}
+details.folding[open] >div.body >:last-child {
+  margin-bottom: 0;
+}
+details.folding[child=codeblock]>div.body {
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+}
+details.folding[child=codeblock]>div.body .highlight {
+  border: none;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  background: transparent;
+  margin: 0;
+}
+details.folding[child=codeblock]>div.body .highlight figcaption {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+}
+details.folding[child=codeblock]>div.body .highlight figcaption span {
+  background: var(--theme-block);
+}
+details.folding[child=codeblock]>div.body .highlight .code:before {
+  content: none;
+}
+details.folding[child=codeblock]>div.body .highlight+.highlight {
+  border-top: 1px dashed var(--theme-border);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+details.folding[child=iframe] {
+  overflow: hidden;
+  background: none;
+}
+details.folding[child=iframe] >summary {
+  background: none;
+}
+details.folding[child=iframe] >div.body {
+  padding: 0;
+  background: none;
+  overflow: hidden;
+}
+.tag-plugin details >summary {
+  background: unset;
+}
+.tag-plugin details[open] >summary {
+  border-bottom: unset;
+}
+details.tag-plugin >summary {
+  background: unset;
+}
+details[open].tag-plugin >summary {
+  border-bottom: unset;
 }
 .users-posts-wrap .grid-box {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
@@ -6128,6 +8023,84 @@ details[open] >div.content > details:last-child {
     height: 476px;
   }
 }
+.md .frame-wrap {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  max-width: 100%;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+}
+.md .frame-wrap img,
+.md .frame-wrap video {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+}
+.md .frame-wrap .frame {
+  z-index: 1;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  position: absolute;
+  background-size: 100%;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.md .tag-plugin.img-wrap .frame-wrap[focus] {
+  height: auto;
+}
+.md .frame-wrap#iphone11 img,
+.md .frame-wrap#iphone11 video {
+  width: 287px;
+  margin-top: 19px;
+  margin-bottom: 20px;
+}
+.md .frame-wrap#iphone11 .frame {
+  background-image: url("https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/frame/iphone11.svg");
+  width: 329px;
+  height: 658px;
+}
+.md .frame-wrap[focus='top'] img,
+.md .frame-wrap[focus='top'] video {
+  margin-bottom: 0 !important;
+}
+.md .frame-wrap:not([focus='bottom']) .frame {
+  top: 0;
+}
+.md .frame-wrap[focus='bottom'] img,
+.md .frame-wrap[focus='bottom'] video {
+  bottom: 0;
+  margin-top: 0 !important;
+}
+.md .frame-wrap[focus='bottom'] .frame {
+  bottom: 0;
+}
+@media screen and (max-width: 500px) {
+  .md .frame-wrap#iphone11 img,
+  .md .frame-wrap#iphone11 video {
+    width: 208px;
+    margin-top: 13px;
+    margin-bottom: 14px;
+  }
+  .md .frame-wrap#iphone11 .frame {
+    width: 238px;
+    height: 476px;
+  }
+}
 .users-wrap {
   overflow: hidden;
 }
@@ -6494,6 +8467,217 @@ div.fancybox .image-caption:empty {
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
   display: none;
 }
+.tag-plugin.gallery .grid-cell,
+.tag-plugin.gallery .flow-cell {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  overflow: hidden;
+  z-index: 0;
+  position: relative;
+}
+.tag-plugin.gallery .grid-cell:hover .image-meta,
+.tag-plugin.gallery .flow-cell:hover .image-meta {
+  background: rgba(0,0,0,0.5);
+}
+.tag-plugin.gallery .grid-cell:hover .image-caption,
+.tag-plugin.gallery .flow-cell:hover .image-caption {
+  color: #fff;
+}
+.tag-plugin.gallery img {
+  object-fit: cover;
+  max-height: 100%;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+}
+.tag-plugin.gallery .image-meta {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: transparent;
+  transition: background 0.2s ease-out;
+  -webkit-transition: background 0.2s ease-out;
+  -khtml-transition: background 0.2s ease-out;
+  -moz-transition: background 0.2s ease-out;
+  -o-transition: background 0.2s ease-out;
+  -ms-transition: background 0.2s ease-out;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -khtml-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  -o-justify-content: flex-end;
+  -ms-justify-content: flex-end;
+}
+.tag-plugin.gallery .image-meta .image-caption {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  font-size: 0.8125rem;
+  color: transparent;
+  pointer-events: none;
+  line-height: 1.2;
+  margin: 0.5rem;
+  transition: color 0.2s ease-out;
+  -webkit-transition: color 0.2s ease-out;
+  -khtml-transition: color 0.2s ease-out;
+  -moz-transition: color 0.2s ease-out;
+  -o-transition: color 0.2s ease-out;
+  -ms-transition: color 0.2s ease-out;
+  text-align: left;
+}
+.tag-plugin.gallery .image-meta .image-caption:empty {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+}
+.tag-plugin.gallery .grid-cell >img {
+  transition: transform 0.5s ease-out;
+  -webkit-transition: transform 0.5s ease-out;
+  -khtml-transition: transform 0.5s ease-out;
+  -moz-transition: transform 0.5s ease-out;
+  -o-transition: transform 0.5s ease-out;
+  -ms-transition: transform 0.5s ease-out;
+}
+.tag-plugin.gallery .grid-cell:hover >img {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -khtml-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+}
+.tag-plugin.gallery.grid-box {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: grid;
+}
+.tag-plugin.gallery.grid-box .grid-cell {
+  corner-shape: superellipse(1.2);
+}
+.tag-plugin.gallery.grid-box[size='xs'] {
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  grid-gap: 2px;
+}
+.tag-plugin.gallery.grid-box[size='xs'] .grid-cell,
+.tag-plugin.gallery.grid-box[size='xs'] img {
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+.tag-plugin.gallery.grid-box[size='xs'] .image-caption {
+  font-size: 0.75rem;
+}
+.tag-plugin.gallery.grid-box[size='s'] {
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-gap: 2px;
+}
+.tag-plugin.gallery.grid-box[size='s'] .grid-cell,
+.tag-plugin.gallery.grid-box[size='s'] img {
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+.tag-plugin.gallery.grid-box[size='m'] {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 4px;
+}
+.tag-plugin.gallery.grid-box[size='m'] .grid-cell,
+.tag-plugin.gallery.grid-box[size='m'] img {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.tag-plugin.gallery.grid-box[size='l'] {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 8px;
+}
+.tag-plugin.gallery.grid-box[size='l'] .grid-cell,
+.tag-plugin.gallery.grid-box[size='l'] img {
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+.tag-plugin.gallery.grid-box[size='xl'] {
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 16px;
+}
+.tag-plugin.gallery.grid-box[size='xl'] .grid-cell,
+.tag-plugin.gallery.grid-box[size='xl'] img {
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+}
+.tag-plugin.gallery.grid-box[size='mix'] {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 4px;
+}
+.tag-plugin.gallery.grid-box[size='mix'] .grid-cell,
+.tag-plugin.gallery.grid-box[size='mix'] img {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.tag-plugin.gallery.grid-box[size='mix'] .grid-cell:nth-child(3n+1) {
+  grid-column: auto/span 2;
+  grid-row: auto/span 2;
+}
+.tag-plugin.gallery.grid-box[ratio='square'] .grid-cell {
+  aspect-ratio: 1;
+}
+.tag-plugin.gallery.grid-box[ratio='portrait'] .grid-cell {
+  aspect-ratio: 2/3;
+}
+.tag-plugin.gallery.grid-box .grid-cell {
+  background: var(--block);
+}
+.tag-plugin.gallery.grid-box .grid-cell img {
+  width: 100%;
+  height: 100%;
+}
+.tag-plugin.gallery.flow-box {
+  column-count: 3;
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-gap: 8px;
+  -webkit-column-gap: 8px;
+  -moz-column-gap: 8px;
+}
+.tag-plugin.gallery.flow-box .flow-cell {
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  padding-bottom: 8px;
+}
+.tag-plugin.gallery.flow-box .flow-cell img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+}
+.tag-plugin.gallery.flow-box .flow-cell:has(img.loading),
+.tag-plugin.gallery.flow-box .flow-cell:has(img.error) {
+  background-color: var(--block);
+}
+.tag-plugin.gallery.flow-box .flow-cell:has(img.loading) img,
+.tag-plugin.gallery.flow-box .flow-cell:has(img.error) img {
+  background-color: var(--block);
+}
+.tag-plugin.gallery.flow-box .image-meta {
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  margin-bottom: 8px;
+}
 a.ghcard {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
@@ -6511,6 +8695,80 @@ a.ghcard {
 }
 .md .ghcard-group .ghcard {
   margin: 8px;
+}
+.tag-plugin.grid {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: grid;
+  grid-gap: 16px;
+}
+.tag-plugin.grid[bg]>.cell> p {
+  line-height: 1.5;
+}
+.tag-plugin.grid[bg]>.cell> :first-child {
+  margin-top: 0;
+}
+.tag-plugin.grid[bg]>.cell> :last-child {
+  margin-bottom: 0;
+}
+.tag-plugin.grid[bg]>.cell> p:first-child {
+  margin-top: -0.25em;
+}
+.tag-plugin.grid[bg]>.cell> p:last-child {
+  margin-bottom: -0.25em;
+}
+.tag-plugin.grid[bg]>.cell {
+  padding: 1rem;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  corner-shape: superellipse(1.2);
+}
+.tag-plugin.grid[bg='box']>.cell {
+  background: var(--block);
+}
+.tag-plugin.grid[bg='card']>.cell {
+  background: var(--card);
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+.tag-plugin.grid[bg='card']>.cell:hover {
+  box-shadow: 0 0 4px rgba(0,0,0,0.1), 0 0 8px rgba(0,0,0,0.08);
+  -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.1), 0 0 8px rgba(0,0,0,0.08);
+}
+.md .tag-plugin.hashtag {
+  padding: 0px 8px;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  background: var(--theme-block);
+  color: var(--text-p2);
+  margin: 2px 0;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-inline-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-inline-flex /* NEW - Chrome */;
+  display: inline-flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: inline-flex;
+  align-items: center;
+  --fsp: calc(16px - 2px);
+  font-size: var(--fsp);
+  font-weight: 500;
+  transition: background 0.2s ease-out, color 0.2s ease-out;
+  -webkit-transition: background 0.2s ease-out, color 0.2s ease-out;
+  -khtml-transition: background 0.2s ease-out, color 0.2s ease-out;
+  -moz-transition: background 0.2s ease-out, color 0.2s ease-out;
+  -o-transition: background 0.2s ease-out, color 0.2s ease-out;
+  -ms-transition: background 0.2s ease-out, color 0.2s ease-out;
+}
+.md .tag-plugin.hashtag span {
+  margin: 0 2px;
+}
+.md .tag-plugin.hashtag:hover {
+  background: var(--text-p2);
+  color: var(--theme-block);
 }
 span.tag-plugin.icon {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
@@ -6553,6 +8811,115 @@ img.inline {
   -moz-transform: translateY(-4px);
   -o-transform: translateY(-4px);
   -ms-transform: translateY(-4px);
+}
+.tag-plugin.image {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.tag-plugin.image .image-bg {
+  text-align: center;
+  border-radius: $border-image;
+  -webkit-border-radius: $border-image;
+  corner-shape: superellipse(1.2);
+  position: relative;
+  overflow: hidden;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  align-items: center;
+  margin: auto;
+  max-width: 100%;
+}
+.tag-plugin.image .image-bg:has(img.lazy.loading),
+.tag-plugin.image .image-bg:has(img.lazy.error) {
+  background-color: var(--block);
+}
+.tag-plugin.image .image-bg:hover .image-download {
+  opacity: 1 !important;
+  -webkit-opacity: 1 !important;
+  -moz-opacity: 1 !important;
+}
+.tag-plugin.image .image-bg img {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  object-fit: cover;
+  border-radius: $border-image;
+  -webkit-border-radius: $border-image;
+  corner-shape: superellipse(1.2);
+}
+.tag-plugin.image .image-bg .image-download {
+  z-index: 2;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-size: 1.125rem;
+  padding: 6px;
+  line-height: 0;
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  transition: color 0.2s ease-out, opacity 0.2s ease-out, background 0.2s ease-out;
+  -webkit-transition: color 0.2s ease-out, opacity 0.2s ease-out, background 0.2s ease-out;
+  -khtml-transition: color 0.2s ease-out, opacity 0.2s ease-out, background 0.2s ease-out;
+  -moz-transition: color 0.2s ease-out, opacity 0.2s ease-out, background 0.2s ease-out;
+  -o-transition: color 0.2s ease-out, opacity 0.2s ease-out, background 0.2s ease-out;
+  -ms-transition: color 0.2s ease-out, opacity 0.2s ease-out, background 0.2s ease-out;
+  color: var(--text-p1);
+}
+.tag-plugin.image .image-bg .image-download:hover {
+  background: var(--card) !important;
+  color: var(--theme);
+}
+.tag-plugin.image .image-meta {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  padding: 0.5rem 0;
+}
+.tag-plugin.image .image-meta .image-caption {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--text-p2);
+  line-height: 1.5;
+  text-align: justify;
+}
+.tag-plugin.image .image-meta .image-caption:empty {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
 }
 .md .tag.link {
   margin-top: 1em;
@@ -6657,6 +9024,184 @@ img.inline {
 .md .link-group .link-card {
   width: 100%;
 }
+.md .tag-plugin.link {
+  margin: 1em auto;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  text-align: left;
+}
+.md .tag-plugin .link-card {
+  background: var(--card);
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-inline-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-inline-flex /* NEW - Chrome */;
+  display: inline-flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: inline-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -khtml-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  width: 300px;
+  max-width: 100%;
+  border-radius: $border-card-s;
+  -webkit-border-radius: $border-card-s;
+  corner-shape: superellipse(1.2);
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+.md .tag-plugin .link-card:hover {
+  box-shadow: 0 0 4px rgba(0,0,0,0.1), 0 0 8px rgba(0,0,0,0.08);
+  -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.1), 0 0 8px rgba(0,0,0,0.08);
+}
+.md .tag-plugin .link-card.plain {
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  align-items: center;
+}
+.md .tag-plugin .link-card.rich {
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: stretch;
+  width: 460px;
+  text-align: justify;
+}
+.md .tag-plugin .link-card >.left {
+  overflow: hidden;
+  margin: 0.75rem 0 0.75rem 0.75rem;
+}
+.md .tag-plugin .link-card >.left .title {
+  font-size: 0.875rem;
+}
+.md .tag-plugin .link-card >.left span+span {
+  margin-top: 0.25rem;
+}
+.md .tag-plugin .link-card >.right {
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: 0.75rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.md .tag-plugin .link-card >.top {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  margin: 1rem 1rem 0.75rem;
+  overflow: hidden;
+  max-width: calc(100% - 1rem * 2);
+  align-items: center;
+}
+.md .tag-plugin .link-card >.top .img {
+  line-height: 0;
+  height: 16px;
+  width: 16px;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  margin-right: 8px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  background-position: left center;
+}
+.md .tag-plugin .link-card >.top span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.md .tag-plugin .link-card >.bottom {
+  margin: 0 1rem 1rem;
+}
+.md .tag-plugin .link-card >.bottom .title {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.md .tag-plugin .link-card {
+  line-height: 1.2;
+}
+.md .tag-plugin .link-card .title {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+}
+.md .tag-plugin .link-card .cap {
+  flex-shrink: 0;
+  color: var(--text-p3);
+}
+.md .tag-plugin .link-card .link {
+  line-height: 1.5;
+  opacity: 0.75;
+  -webkit-opacity: 0.75;
+  -moz-opacity: 0.75;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.md .tag-plugin .link-card .desc {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+}
+.md .tag-plugin .link-card .img {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.md .tag-plugin .link-card span {
+  margin: 0;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+}
+.md .tag-plugin .link-card .title {
+  font-weight: 500;
+  color: var(--text-p1);
+}
+.md .tag-plugin.mark {
+  padding: 1px 2px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  background: var(--theme-mark);
+  color: var(--text);
+}
 audio,
 video {
   border-radius: 4px;
@@ -6756,6 +9301,22 @@ div.videos[col='3'] iframe {
 div.videos[col='4'] .video,
 div.videos[col='4'] iframe {
   width: calc(25% - 2 * 4px);
+}
+.tag-plugin.video-player {
+  line-height: 0;
+  margin: auto;
+}
+.tag-plugin.video-player video,
+.tag-plugin.video-player iframe {
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  box-shadow: 0 2px 4px 0px rgba(0,0,0,0.1), 0 4px 8px 0px rgba(0,0,0,0.1), 0 8px 16px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 2px 4px 0px rgba(0,0,0,0.1), 0 4px 8px 0px rgba(0,0,0,0.1), 0 8px 16px 0px rgba(0,0,0,0.1);
+  z-index: 1;
+  background: var(--block);
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 div.note {
   position: relative;
@@ -6948,6 +9509,745 @@ div.note.blue {
 }
 div.note.blue::before {
   color: #2196f3;
+}
+.md .tag-plugin.note {
+  position: relative;
+  padding: 0.25rem 1rem;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  corner-shape: superellipse(1.2);
+  background: var(--theme-block);
+  overflow: hidden;
+  border: 1px solid var(--theme-border);
+  color: var(--text-p1);
+}
+.md .tag-plugin.note::before {
+  content: unset;
+}
+.md .tag-plugin.note >.title {
+  --fsp: calc(16px - 1px);
+  font-size: var(--fsp);
+  line-height: 1.5;
+  margin-top: var(--gap-p-compact);
+  font-weight: 500;
+  color: var(--text);
+}
+.md .tag-plugin.note >.body {
+  margin-top: var(--gap-p-compact);
+  margin-bottom: var(--gap-p-compact);
+}
+.md .tag-plugin.note >.body,
+.md .tag-plugin.note >.body p {
+  --fsp: calc(16px - 2px);
+  font-size: var(--fsp);
+  line-height: 1.5;
+}
+.md .tag-plugin.note >.body:only-child {
+  margin: calc(var(--gap-p) - 0.25rem) 0;
+}
+.md .tag-plugin.note[color] code {
+  background: none;
+}
+.md .tag-plugin.note[child=codeblock] {
+  padding: 0;
+  background: var(--theme-codeblock);
+}
+.md .tag-plugin.note[child=codeblock] >.title,
+.md .tag-plugin.note[child=codeblock] >.body:only-child {
+  margin-top: 0;
+}
+.md .tag-plugin.note[child=codeblock] >.body {
+  margin-bottom: 0;
+}
+.md .tag-plugin.note[child=codeblock] .highlight {
+  margin: 0;
+  border: none;
+  background: none;
+}
+.md .tag-plugin.note[child=codeblock] .highlight figcaption span {
+  background: var(--theme-block);
+}
+.md .tag-plugin.note[child=codeblock] .highlight+.highlight {
+  border-top: 1px dashed var(--theme-border);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.md .tag-plugin.note[child=tabs] >.body {
+  margin: 0;
+}
+.md .tag-plugin.note[child=tabs] >.body >.tabs {
+  margin-top: 0.5rem;
+}
+.md .tag-plugin.note[child=iframe] {
+  padding: 0;
+}
+.md .tag-plugin.note[child=iframe] >.body {
+  margin: 0;
+}
+.md .tag-plugin.note[child=iframe] >.body iframe {
+  margin: 0;
+}
+.md .tag-plugin .tag-plugin.note {
+  --gap-p: 1rem;
+}
+.md .tag-plugin.okr {
+  position: relative;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  corner-shape: superellipse(1.2);
+  background: var(--theme-block);
+  border: 1px solid var(--theme-border);
+  overflow: hidden;
+  color: var(--text-p1);
+  line-height: 1.5;
+}
+.md .tag-plugin.okr .o .title {
+  font-size: 0.9375rem;
+}
+.md .tag-plugin.okr .o .okr-note {
+  font-size: 0.875rem;
+}
+.md .tag-plugin.okr .o .okr-note p {
+  font-size: 0.875rem;
+}
+.md .tag-plugin.okr .kr .title {
+  font-size: 0.875rem;
+}
+.md .tag-plugin.okr .kr .okr-note {
+  font-size: 0.875rem;
+}
+.md .tag-plugin.okr .kr .okr-note p,
+.md .tag-plugin.okr .kr .okr-note li,
+.md .tag-plugin.okr .kr .okr-note .tag-plugin {
+  font-size: 0.875rem;
+}
+.md .tag-plugin.okr .title {
+  font-weight: 600;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+}
+.md .tag-plugin.okr .okr-note {
+  font-weight: 400;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  margin-top: 0.5rem;
+}
+.md .tag-plugin.okr .okr-note >p,
+.md .tag-plugin.okr .okr-note >ul {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.md .tag-plugin.okr .okr-note >.tag-plugin {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.md .tag-plugin.okr .okr-note >*:last-child {
+  margin-bottom: 0;
+}
+.md .tag-plugin.okr .status {
+  font-size: 0.75rem;
+  padding: 2px 4px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+.md .tag-plugin.okr .okr-item.o {
+  border-bottom: 4px solid var(--block-border);
+}
+.md .tag-plugin.okr .okr-item.kr+.okr-item.kr {
+  border-top: 1px dashed var(--block-border);
+}
+.tag-plugin.okr .okr-item {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: grid;
+  grid-template-columns: 3.2rem auto 100px;
+  grid-column-gap: 0.75rem;
+  padding: 1rem;
+}
+.tag-plugin.okr .okr-item .okr-left .title {
+  background: var(--card);
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+.tag-plugin.okr .okr-item .labels {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -khtml-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -khtml-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+}
+.tag-plugin.okr .okr-item .labels .label {
+  background: var(--theme-block);
+  color: var(--text-p1);
+}
+.tag-plugin.okr .okr-item .progress {
+  margin-top: 4px;
+  height: 4px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  position: relative;
+  background: var(--card);
+}
+.tag-plugin.okr .okr-item .progress .fill {
+  position: absolute;
+  background: var(--theme);
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+.tag-plugin.okr .okr-item .progress .fill:before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  right: -4px;
+  width: 8px;
+  height: 12px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  background: #fff;
+  box-shadow: $boxshadow-button;
+  -webkit-box-shadow: $boxshadow-button;
+}
+.tag-plugin.okr .okr-item .progress .fill:after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  width: 4px;
+  height: 8px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--theme);
+}
+@media screen and (max-width: 667px) {
+  .tag-plugin.okr .okr-item {
+    grid-template-columns: 2.8rem auto 50px;
+    grid-column-gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  .tag-plugin.okr .okr-item .okr-left .title {
+    padding: 0 0.25rem;
+  }
+  .tag-plugin.okr .okr-item .label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.md .tag-plugin.paper {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--gap-padding);
+  padding-bottom: var(--gap-padding);
+}
+.md .tag-plugin.paper >.content {
+  border-left: 1px dashed var(--text-meta);
+  border-right: 1px dashed var(--text-meta);
+  border-bottom: 1px dashed var(--text-meta);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 1rem;
+  max-width: calc(95%);
+}
+.md .tag-plugin.paper >.content >.title {
+  font-weight: 500;
+  text-align: center;
+}
+.md .tag-plugin.paper >.content >.meta {
+  color: var(--text-p2);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.md .tag-plugin.paper >.content >.body >.paragraph {
+  text-indent: 2em;
+}
+.md .tag-plugin.paper >.content >.body >.section >.section-title {
+  text-align: center;
+}
+.md .tag-plugin.paper >.content >.body >.section >.section-content {
+  text-indent: 2em;
+}
+.md .tag-plugin.paper >.content >.body >.line.right >p {
+  text-align: right;
+}
+.md .tag-plugin.paper >.content >.body .tag-plugin {
+  margin: 0;
+}
+.md .tag-plugin.paper >.content >.footer {
+  color: var(--text-p4);
+  font-size: 0.75rem;
+  text-align: right;
+}
+.md .tag-plugin.paper >.content >.footer >.author-date {
+  text-align: right;
+}
+.md .tag-plugin.paper >.content >.footer >.author-date >span {
+  color: var(--text-p2);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.md .tag-plugin.paper >.content >.footer >.author-date >.author {
+  margin-right: calc(0.5 * var(--gap-p));
+}
+.md .tag-plugin.paper>.content {
+  position: relative;
+}
+.md .tag-plugin.paper>.content:before {
+  content: '';
+  position: absolute;
+  height: 4px;
+  left: -16px;
+  top: -4px;
+  right: -16px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--block);
+}
+.md .tag-plugin.paper>.content >.title {
+  position: relative;
+}
+.md .tag-plugin.paper>.content >.title:before {
+  content: '';
+  position: absolute;
+  height: 4px;
+  left: calc(-1rem - 6px);
+  top: calc(-1rem - 4px);
+  right: calc(100% + 1rem - 6px);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--accent);
+}
+.md .tag-plugin.paper>.content >.title:after {
+  content: '';
+  position: absolute;
+  height: 4px;
+  right: calc(-1rem - 6px);
+  top: calc(-1rem - 4px);
+  left: calc(100% + 1rem - 6px);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--accent);
+}
+.md .tag-plugin.paper > .content.underline > .title,
+.md .tag-plugin.paper > .content.underline > .meta,
+.md .tag-plugin.paper > .content.underline > .author-date,
+.md .tag-plugin.paper > .content.underline > .footer,
+.md .tag-plugin.paper > .content.underline > .body {
+  background: linear-gradient(transparent 1.5rem, var(--text-meta) 1px);
+  background-size: 100% calc(1.5rem + 1px);
+  -webkit-background-size: 100% calc(1.5rem + 1px);
+  -moz-background-size: 100% calc(1.5rem + 1px);
+  line-height: calc(1.5rem + 1px);
+  padding: 0 3px;
+}
+.md .tag-plugin.paper > .content.underline p {
+  margin: 0;
+}
+.md .tag-plugin.paper > .content.underline >.title {
+  border-top: 1px solid var(--text-meta);
+}
+.md .tag-plugin.poetry {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  --fsp: 16px;
+}
+.md .tag-plugin.poetry .content >.title {
+  font-weight: 500;
+  margin-top: var(--gap-p);
+}
+.md .tag-plugin.poetry .content >.meta {
+  color: var(--text-p2);
+  --fsp: calc(16px - 3px);
+  font-size: var(--fsp);
+  font-weight: 500;
+}
+.md .tag-plugin.poetry .content >.meta span+span {
+  margin-left: 4px;
+}
+.md .tag-plugin.poetry .content >.body {
+  margin: var(--gap-p) 0;
+  border-top: 1px dashed var(--block-border);
+  border-bottom: 1px dashed var(--block-border);
+  line-height: 2;
+}
+.md .tag-plugin.poetry .content >.footer {
+  font-style: italic;
+  color: var(--text-p4);
+  margin: var(--gap-p) 0;
+  --fsp: calc(16px - 3px);
+  font-size: var(--fsp);
+}
+.md .tag-plugin.poetry .content {
+  padding-left: 1rem;
+  position: relative;
+}
+.md .tag-plugin.poetry .content:before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  left: -4px;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--block);
+}
+.md .tag-plugin.poetry .content >.title {
+  position: relative;
+}
+.md .tag-plugin.poetry .content >.title:before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  left: calc(-1rem - 4px);
+  top: 6px;
+  bottom: 6px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--accent);
+}
+.md .tag-plugin.quot {
+  text-align: center;
+  align-items: center;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  --gap-p: 2rem;
+  margin: var(--gap-p) 1rem;
+}
+.md .tag-plugin.quot .content {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-items: center;
+  border-bottom: none;
+  font-weight: 700;
+  padding: 0 24px;
+  line-height: 1.2;
+}
+@media screen and (max-width: 500px) {
+  .md .tag-plugin.quot .content {
+    padding: 0 20px;
+  }
+}
+.md .tag-plugin.quot .content {
+  position: relative;
+}
+.md.content .tag-plugin.quot {
+  text-wrap: balance;
+}
+.md.content .tag-plugin.quot h1,
+.md.content .tag-plugin.quot h2 {
+  font-size: calc(16px + 11px);
+  font-weight: 900;
+  padding: 4px 32px 0;
+}
+@media screen and (max-width: 500px) {
+  .md.content .tag-plugin.quot h1,
+  .md.content .tag-plugin.quot h2 {
+    padding: 4px 24px 0;
+  }
+}
+.md.content .tag-plugin.quot h3,
+.md.content .tag-plugin.quot h4,
+.md.content .tag-plugin.quot h5,
+.md.content .tag-plugin.quot h6 {
+  font-size: calc(16px + 7px);
+}
+.md.content .tag-plugin.quot p {
+  font-size: calc(var(--fsp) + 2px);
+  color: var(--text);
+}
+.md .tag-plugin.quot img,
+.md .tag-plugin.quot svg {
+  height: 1.5em;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: inline-block;
+  color: var(--accent);
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  flex-shrink: 0;
+}
+.md .tag-plugin.quot span.text {
+  margin: 0 0.5rem;
+  padding-top: 1px;
+}
+.md .tag-plugin.quot span.empty {
+  padding: 0 8px;
+}
+.md .tag-plugin.quot.p .content {
+  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -khtml-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+}
+.md .tag-plugin.quot.p .content .text {
+  position: relative;
+}
+.md .tag-plugin.quot.p .content .text:after {
+  content: "";
+  position: absolute;
+  --width: 90%;
+  width: var(--width);
+  height: 4px;
+  left: calc(50% - var(--width) / 2);
+  bottom: -8px;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  background: var(--text);
+  opacity: 0.1;
+  -webkit-opacity: 0.1;
+  -moz-opacity: 0.1;
+  filter: blur(2px);
+  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -khtml-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+}
+.md .tag-plugin.quot.p:hover .content {
+  transform: translateY(-4px) scale(1.05);
+  -webkit-transform: translateY(-4px) scale(1.05);
+  -khtml-transform: translateY(-4px) scale(1.05);
+  -moz-transform: translateY(-4px) scale(1.05);
+  -o-transform: translateY(-4px) scale(1.05);
+  -ms-transform: translateY(-4px) scale(1.05);
+}
+.md .tag-plugin.quot.p:hover .content .text:after {
+  opacity: 0.2;
+  -webkit-opacity: 0.2;
+  -moz-opacity: 0.2;
+  filter: blur(8px);
+  transform: translateY(4px) scale(1.2, 1.5);
+  -webkit-transform: translateY(4px) scale(1.2, 1.5);
+  -khtml-transform: translateY(4px) scale(1.2, 1.5);
+  -moz-transform: translateY(4px) scale(1.2, 1.5);
+  -o-transform: translateY(4px) scale(1.2, 1.5);
+  -ms-transform: translateY(4px) scale(1.2, 1.5);
+}
+.md .tag-plugin.reel {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--gap-padding);
+  padding-bottom: var(--gap-padding);
+}
+.md .tag-plugin.reel >.content {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  writing-mode: vertical-rl;
+  border-top: 1px dashed var(--text-meta);
+  border-bottom: 1px dashed var(--text-meta);
+  max-width: calc(100% - 80px);
+  padding: 1rem;
+}
+.md .tag-plugin.reel >.content >.title {
+  font-weight: 500;
+  font-size: 1rem;
+}
+.md .tag-plugin.reel >.content >.meta {
+  color: var(--text-p2);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.md .tag-plugin.reel >.content >.body {
+  overflow: auto;
+  margin: calc(var(--gap-padding) - 4px);
+}
+.md .tag-plugin.reel >.content >.body::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+.md .tag-plugin.reel >.content >.body::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+.md .tag-plugin.reel >.content >.body::-webkit-scrollbar-thumb {
+  background: #3dd9b6;
+  cursor: pointer;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+.md .tag-plugin.reel >.content >.body::-webkit-scrollbar-thumb:hover {
+  background: #ff5722;
+}
+.md .tag-plugin.reel >.content >.body .main p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+.md .tag-plugin.reel >.content >.date {
+  color: var(--text-p2);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: right;
+}
+.md .tag-plugin.reel >.content >.footer {
+  color: var(--text-p4);
+  font-size: 0.75rem;
+  text-align: right;
+}
+.md .tag-plugin.reel>.content {
+  position: relative;
+}
+.md .tag-plugin.reel>.content:before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  left: -4px;
+  top: -16px;
+  bottom: -16px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--block);
+}
+.md .tag-plugin.reel>.content:after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  left: calc(100%);
+  top: -16px;
+  bottom: -16px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--block);
+}
+.md .tag-plugin.reel>.content >.title {
+  position: relative;
+}
+.md .tag-plugin.reel>.content >.title:before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  right: calc(-1rem - 4px);
+  top: calc(-1rem - 6px);
+  bottom: calc(100% + 1rem - 6px);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--accent);
+  z-index: 1;
+}
+.md .tag-plugin.reel>.content >.title:after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  right: calc(-1rem - 4px);
+  top: calc(100% + 1rem - 6px);
+  bottom: calc(-1rem - 6px);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--accent);
+  z-index: 1;
+}
+.md .tag-plugin.reel>.content >.footer {
+  position: relative;
+}
+.md .tag-plugin.reel>.content >.footer:before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  left: calc(-1rem - 4px);
+  top: calc(-1rem - 6px);
+  bottom: calc(100% + 1rem - 6px);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--accent);
+}
+.md .tag-plugin.reel>.content >.footer:after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  left: calc(-1rem - 4px);
+  top: calc(100% + 1rem - 6px);
+  bottom: calc(-1rem - 6px);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background: var(--accent);
 }
 .sites-wrap .group-header {
   margin: 0 0 1rem;
@@ -9244,30 +12544,6 @@ ul.list-v.rightmenu li.music .nav.volume .aplayer-volume-bar .aplayer-volume {
   :root:not([color-scheme]) .lazyload {
     filter: brightness(70%) !important;
   }
-  :root:not([color-scheme]) .shadow {
-    box-shadow: 0 1px 2px 0px #3dd9b6;
-    -webkit-box-shadow: 0 1px 2px 0px #3dd9b6;
-  }
-  :root:not([color-scheme]) .shadow.floatable {
-    transition: all 0.28s ease;
-    -webkit-transition: all 0.28s ease;
-    -khtml-transition: all 0.28s ease;
-    -moz-transition: all 0.28s ease;
-    -o-transition: all 0.28s ease;
-    -ms-transition: all 0.28s ease;
-  }
-  :root:not([color-scheme]) .shadow.floatable:hover {
-    box-shadow: 0 2px 4px 0px #3dd9b6, 0 4px 8px 0px #3dd9b6, 0 8px 16px 0px #3dd9b6;
-    -webkit-box-shadow: 0 2px 4px 0px #3dd9b6, 0 4px 8px 0px #3dd9b6, 0 8px 16px 0px #3dd9b6;
-  }
-  :root:not([color-scheme]) .l_header {
-    box-shadow: 0 1px 2px 0px #3dd9b6;
-    -webkit-box-shadow: 0 1px 2px 0px #3dd9b6;
-  }
-  :root:not([color-scheme]) #u-search .modal .modal-header {
-    box-shadow: 0 1px 2px 0px #3dd9b6;
-    -webkit-box-shadow: 0 1px 2px 0px #3dd9b6;
-  }
   :root:not([color-scheme]) .widget.blogger .content .social-wrapper a.social:hover {
     background: var(--color-card);
   }
@@ -9339,36 +12615,6 @@ ul.list-v.rightmenu li.music .nav.volume .aplayer-volume-bar .aplayer-volume {
 [color-scheme='dark'] .lazyload {
   filter: brightness(70%) !important;
 }
-[color-scheme='dark'] .shadow {
-  box-shadow: 0 1px 2px 0px #3dd9b6;
-  -webkit-box-shadow: 0 1px 2px 0px #3dd9b6;
-}
-[color-scheme='dark'] .shadow.floatable {
-  transition: all 0.28s ease;
-  -webkit-transition: all 0.28s ease;
-  -khtml-transition: all 0.28s ease;
-  -moz-transition: all 0.28s ease;
-  -o-transition: all 0.28s ease;
-  -ms-transition: all 0.28s ease;
-}
-[color-scheme='dark'] .shadow.floatable:hover {
-  box-shadow: 0 2px 4px 0px #3dd9b6, 0 4px 8px 0px #3dd9b6, 0 8px 16px 0px #3dd9b6;
-  -webkit-box-shadow: 0 2px 4px 0px #3dd9b6, 0 4px 8px 0px #3dd9b6, 0 8px 16px 0px #3dd9b6;
-}
-[color-scheme='dark'] .l_header {
-  box-shadow: 0 1px 2px 0px #3dd9b6;
-  -webkit-box-shadow: 0 1px 2px 0px #3dd9b6;
-}
-@media screen and (max-width: 768px) {
-  [color-scheme='dark'] #l_side .toc-wrapper {
-    box-shadow: 0 4px 8px 0px #3dd9b6;
-    -webkit-box-shadow: 0 4px 8px 0px #3dd9b6;
-  }
-}
-[color-scheme='dark'] #u-search .modal .modal-header {
-  box-shadow: 0 1px 2px 0px #3dd9b6;
-  -webkit-box-shadow: 0 1px 2px 0px #3dd9b6;
-}
 [color-scheme='dark'] .widget.blogger .content .social-wrapper a.social:hover {
   background: var(--color-card);
 }
@@ -9425,10 +12671,4 @@ ul.list-v.rightmenu li.music .nav.volume .aplayer-volume-bar .aplayer-volume {
 }
 [color-scheme='dark'] .btn-copy:hover {
   background: var(--color-site-body);
-}
-@media screen and (prefers-color-scheme: dark) and (max-width: 768px) {
-  #l_side .toc-wrapper {
-    box-shadow: 0 4px 8px 0px #3dd9b6;
-    -webkit-box-shadow: 0 4px 8px 0px #3dd9b6;
-  }
 }
