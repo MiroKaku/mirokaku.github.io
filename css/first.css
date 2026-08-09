@@ -6,6 +6,11 @@
   contain-intrinsic-size: 10px 500px;
 }
 :root {
+  --blur-px: 12px;
+  --blur-bg: var(--bg-a50);
+  --blur-sat: 300%;
+}
+:root {
   --hue: 166.53846153846155deg;
   --sat: 67.24137931034481%;
   --light: 54.509803921568626%;
@@ -14,6 +19,8 @@
   --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
   --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
   --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+  --theme-a50: hsla(var(--hue) var(--sat) var(--light) / 0.5);
+  --theme-a90: hsla(var(--hue) var(--sat) var(--light) / 0.9);
   --accent: #ff5722;
   --link: hsla(206.47058823529412deg 84.29752066115704% 52.54901960784314% / 1);
   --link-a20: hsla(206.47058823529412deg 84.29752066115704% 52.54901960784314% / 0.2);
@@ -138,6 +145,29 @@
   --color-read-post: #f8f1e2;
   --color-copyright-bkg: #f5f5f5;
   --link-color: #00323c;
+  --color-text-a10: rgba(68,68,68,0.1);
+  --color-text-a50: rgba(68,68,68,0.5);
+  --color-text-a60: rgba(68,68,68,0.6);
+  --color-text-a70: rgba(68,68,68,0.7);
+  --color-text-a80: rgba(68,68,68,0.8);
+  --color-text-a85: rgba(68,68,68,0.85);
+  --color-text-a90: rgba(68,68,68,0.9);
+  --color-card-a50: rgba(255,255,255,0.5);
+  --color-card-a60: rgba(255,255,255,0.6);
+  --color-card-a70: rgba(255,255,255,0.7);
+  --color-card-a80: rgba(255,255,255,0.8);
+  --color-card-a90: rgba(255,255,255,0.9);
+  --color-card-darken2: #fafafa;
+  --color-card-lighten5: #fff;
+  --color-p-a20: rgba(68,68,68,0.2);
+  --color-p-a70: rgba(68,68,68,0.7);
+  --color-p-a75: rgba(68,68,68,0.75);
+  --color-block-lighten3: #fefefe;
+  --color-block-darken2: #f1f1f1;
+  --color-mix60-p-card: #8e8e8e;
+  --color-codeblock-darken6: #ffebcb;
+  --color-mix75-theme-text: #3eb399;
+  --color-mix90-block-text: #e4e4e4;
 }
 * {
   box-sizing: border-box;
@@ -155,13 +185,13 @@
   background: transparent;
 }
 *::-webkit-scrollbar-thumb {
-  background: #3dd9b6;
+  background: var(--theme);
   cursor: pointer;
   border-radius: 2px;
   -webkit-border-radius: 2px;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: #ff5722;
+  background: var(--accent);
 }
 html {
   color: var(--color-text);
@@ -178,13 +208,13 @@ html >::-webkit-scrollbar-track-piece {
   background: transparent;
 }
 html >::-webkit-scrollbar-thumb {
-  background: #3dd9b6;
+  background: var(--theme);
   cursor: pointer;
   border-radius: 2px;
   -webkit-border-radius: 2px;
 }
 html >::-webkit-scrollbar-thumb:hover {
-  background: #ff5722;
+  background: var(--accent);
 }
 body {
   background-color: var(--color-site-body);
@@ -207,7 +237,7 @@ body.modal-active {
   }
 }
 a {
-  color: #2092ec;
+  color: var(--link);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.28s ease;
@@ -218,7 +248,7 @@ a {
   -ms-transition: all 0.28s ease;
 }
 a:hover {
-  color: #ff5722;
+  color: var(--accent);
 }
 a:active,
 a:hover {
@@ -261,6 +291,8 @@ input {
   color: inherit;
   font: inherit;
   margin: 0;
+  background: none;
+  border: none;
 }
 button {
   overflow: visible;
@@ -270,7 +302,7 @@ button {
 }
 @supports (backdrop-filter: blur(20px)) {
   .blur {
-    background: rgba(255,255,255,0.9) !important;
+    background: var(--color-card-a90) !important;
     backdrop-filter: saturate(200%) blur(20px);
   }
 }
@@ -632,7 +664,7 @@ button {
   width: 32px;
   top: 0;
   left: 5px;
-  color: rgba(68,68,68,0.75);
+  color: var(--color-p-a75);
 }
 .cover-wrapper .cover-body .m_search .input {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
@@ -650,7 +682,7 @@ button {
   padding-left: 36px;
   border-radius: 1.4rem;
   -webkit-border-radius: 1.4rem;
-  background: rgba(255,255,255,0.6);
+  background: var(--color-card-a60);
   backdrop-filter: blur(10px);
   border: none;
   color: var(--color-text);
@@ -661,10 +693,10 @@ button {
   }
 }
 .cover-wrapper .cover-body .m_search .input:hover {
-  background: rgba(255,255,255,0.8);
+  background: var(--color-card-a80);
 }
 .cover-wrapper .cover-body .m_search .input:focus {
-  background: #fff;
+  background: var(--color-card);
 }
 .cover-wrapper .list-h {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
@@ -870,6 +902,29 @@ button {
     --color-link: rgba(191,191,191,0.871);
     --color-copyright-bkg: #21252b;
     --link-color: #e4e4e4;
+    --color-text-a10: rgba(238,238,238,0.1);
+    --color-text-a50: rgba(238,238,238,0.5);
+    --color-text-a60: rgba(238,238,238,0.6);
+    --color-text-a70: rgba(238,238,238,0.7);
+    --color-text-a80: rgba(238,238,238,0.8);
+    --color-text-a85: rgba(238,238,238,0.85);
+    --color-text-a90: rgba(238,238,238,0.9);
+    --color-card-a50: rgba(38,38,38,0.5);
+    --color-card-a60: rgba(38,38,38,0.6);
+    --color-card-a70: rgba(38,38,38,0.7);
+    --color-card-a80: rgba(38,38,38,0.8);
+    --color-card-a90: rgba(38,38,38,0.9);
+    --color-card-darken2: #212121;
+    --color-card-lighten5: #333;
+    --color-p-a20: rgba(217,217,217,0.2);
+    --color-p-a70: rgba(217,217,217,0.7);
+    --color-p-a75: rgba(217,217,217,0.75);
+    --color-block-lighten3: #4b4b4b;
+    --color-block-darken2: #3e3e3e;
+    --color-mix60-p-card: rgba(133,133,133,0.922);
+    --color-codeblock-darken6: #101010;
+    --color-mix75-theme-text: rgba(97,221,193,0.968);
+    --color-mix90-block-text: rgba(80,80,80,0.987);
   }
   :root:not([color-scheme]) img {
     filter: brightness(70%) !important;
@@ -917,9 +972,6 @@ button {
   :root:not([color-scheme]) .u-search-input:focus {
     background: var(--color-site-body) !important;
   }
-  :root:not([color-scheme]) .friend-card.color-bk-dark {
-    filter: brightness(0.8);
-  }
 }
 [color-scheme='dark'] {
   --color-site-body: #121212;
@@ -946,6 +998,29 @@ button {
   --color-link: rgba(191,191,191,0.871);
   --color-copyright-bkg: #21252b;
   --link-color: #e4e4e4;
+  --color-text-a10: rgba(238,238,238,0.1);
+  --color-text-a50: rgba(238,238,238,0.5);
+  --color-text-a60: rgba(238,238,238,0.6);
+  --color-text-a70: rgba(238,238,238,0.7);
+  --color-text-a80: rgba(238,238,238,0.8);
+  --color-text-a85: rgba(238,238,238,0.85);
+  --color-text-a90: rgba(238,238,238,0.9);
+  --color-card-a50: rgba(38,38,38,0.5);
+  --color-card-a60: rgba(38,38,38,0.6);
+  --color-card-a70: rgba(38,38,38,0.7);
+  --color-card-a80: rgba(38,38,38,0.8);
+  --color-card-a90: rgba(38,38,38,0.9);
+  --color-card-darken2: #212121;
+  --color-card-lighten5: #333;
+  --color-p-a20: rgba(217,217,217,0.2);
+  --color-p-a70: rgba(217,217,217,0.7);
+  --color-p-a75: rgba(217,217,217,0.75);
+  --color-block-lighten3: #4b4b4b;
+  --color-block-darken2: #3e3e3e;
+  --color-mix60-p-card: rgba(133,133,133,0.922);
+  --color-codeblock-darken6: #101010;
+  --color-mix75-theme-text: rgba(97,221,193,0.968);
+  --color-mix90-block-text: rgba(80,80,80,0.987);
 }
 [color-scheme='dark'] img {
   filter: brightness(70%) !important;
@@ -997,9 +1072,6 @@ button {
   [color-scheme='dark'] .l_header .m_search {
     background: var(--color-site-bg) !important;
   }
-}
-[color-scheme='dark'] .friend-card.color-bk-dark {
-  filter: brightness(0.8);
 }
 @font-face {
   font-family: 'Dosis';
@@ -1214,7 +1286,7 @@ button {
   -moz-transition: all 0.28s ease;
   -o-transition: all 0.28s ease;
   -ms-transition: all 0.28s ease;
-  color: #3dd9b6;
+  color: var(--theme);
 }
 .l_header .switcher >li >a:hover {
   border: none;
@@ -1326,7 +1398,7 @@ button {
   line-height: 1.3;
   width: 100%;
   color: var(--color-text);
-  background: #fafafa;
+  background: var(--color-card-darken2);
   box-shadow: none;
   -webkit-box-shadow: none;
   box-sizing: border-box;
@@ -1367,7 +1439,7 @@ button {
     width: 0;
     overflow: hidden;
     position: absolute;
-    background: #fff;
+    background: var(--color-card-lighten5);
     transition: all 0.28s ease;
     -webkit-transition: all 0.28s ease;
     -khtml-transition: all 0.28s ease;
@@ -1394,7 +1466,7 @@ ul.m-pc >li>a {
 }
 ul.m-pc >li>a:active,
 ul.m-pc >li>a.active {
-  border-bottom: 2px solid #3dd9b6;
+  border-bottom: 2px solid var(--theme);
 }
 ul.m-pc li:hover >ul.list-v,
 ul.list-v li:hover >ul.list-v {
@@ -1533,7 +1605,7 @@ ul.list-v >li>a:hover {
 }
 .l_header ul.nav-list-h>li >a:active,
 .l_header ul.nav-list-h>li >a.active {
-  color: #3dd9b6;
+  color: var(--theme);
 }
 .l_header ul.nav-list-h>li:hover>a {
   color: var(--color-list-hl);
