@@ -13846,7 +13846,7 @@ ul.list-v.rightmenu li.music .nav.volume .aplayer-volume-bar .aplayer-volume {
   :root:not([color-scheme]) .widget >.content a:hover {
     color: var(--color-list-hl) !important;
   }
-  :root:not([color-scheme]) .note {
+  :root:not([color-scheme]) .note.v5 {
     background: var(--color-block) !important;
   }
   :root:not([color-scheme]) div.tabs ul.nav-tabs li.tab.active a {
@@ -13860,6 +13860,14 @@ ul.list-v.rightmenu li.music .nav.volume .aplayer-volume-bar .aplayer-volume {
   :root:not([color-scheme]) .cover-wrapper.featured .menu .list-h a:hover,
   :root:not([color-scheme]) .cover-wrapper.focus .menu .list-h a:hover {
     color: var(--color-text) !important;
+  }
+  :root:not([color-scheme]) details[v5]>summary {
+    color: var(--color-p) !important;
+    background: var(--color-site-bg) !important;
+  }
+  :root:not([color-scheme]) details[v5] {
+    border: 1px solid var(--color-site-bg) !important;
+    background: var(--color-site-bg) !important;
   }
   :root:not([color-scheme]) *:not(.highlight) >table tr {
     background-color: var(--color-card);
@@ -13923,7 +13931,7 @@ ul.list-v.rightmenu li.music .nav.volume .aplayer-volume-bar .aplayer-volume {
 [color-scheme='dark'] .widget >.content a:hover {
   color: var(--color-list-hl) !important;
 }
-[color-scheme='dark'] .note {
+[color-scheme='dark'] .note.v5 {
   background: var(--color-block) !important;
 }
 [color-scheme='dark'] div.tabs ul.nav-tabs li.tab.active a {
@@ -13937,6 +13945,14 @@ ul.list-v.rightmenu li.music .nav.volume .aplayer-volume-bar .aplayer-volume {
 [color-scheme='dark'] .cover-wrapper.featured .menu .list-h a:hover,
 [color-scheme='dark'] .cover-wrapper.focus .menu .list-h a:hover {
   color: var(--color-text) !important;
+}
+[color-scheme='dark'] details[v5]>summary {
+  color: var(--color-p) !important;
+  background: var(--color-site-bg) !important;
+}
+[color-scheme='dark'] details[v5] {
+  border: 1px solid var(--color-site-bg) !important;
+  background: var(--color-site-bg) !important;
 }
 [color-scheme='dark'] *:not(.highlight) >table tr {
   background-color: var(--color-card);

@@ -950,14 +950,6 @@ button {
   :root:not([color-scheme]) .article-title a {
     color: var(--color-h1) !important;
   }
-  :root:not([color-scheme]) details>summary {
-    color: var(--color-p) !important;
-    background: var(--color-site-bg) !important;
-  }
-  :root:not([color-scheme]) details {
-    border: 1px solid var(--color-site-bg) !important;
-    background: var(--color-site-bg) !important;
-  }
   :root:not([color-scheme]) #u-search .modal,
   :root:not([color-scheme]) #u-search .modal-header,
   :root:not([color-scheme]) #u-search .modal-body {
@@ -1045,14 +1037,6 @@ button {
 }
 [color-scheme='dark'] .article-title a {
   color: var(--color-h1) !important;
-}
-[color-scheme='dark'] details>summary {
-  color: var(--color-p) !important;
-  background: var(--color-site-bg) !important;
-}
-[color-scheme='dark'] details {
-  border: 1px solid var(--color-site-bg) !important;
-  background: var(--color-site-bg) !important;
 }
 [color-scheme='dark'] #u-search .modal,
 [color-scheme='dark'] #u-search .modal-header,
