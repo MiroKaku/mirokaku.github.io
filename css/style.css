@@ -11451,7 +11451,6 @@ div.timenode-v5:hover .meta:after {
 }
 .article mjx-container {
   font-family: Menlo, UbuntuMono, Monaco, monospace, courier, sans-serif;
-  padding: 16px 8px;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   min-width: 0 !important;

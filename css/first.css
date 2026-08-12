@@ -169,6 +169,9 @@
   --color-mix75-theme-text: #3eb399;
   --color-mix90-block-text: #e4e4e4;
 }
+:root {
+  text-autospace: normal;
+}
 * {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
